@@ -1,0 +1,127 @@
+[
+  {
+    "NumberOfFloors": 2,
+    "HasGarage": true,
+    "Type": "Villa",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 5,
+    "ID": 1,
+    "Address": {
+      "Street": "123 Main St",
+      "ZipCode": "11122",
+      "City": "Stockholm",
+      "Country": 164
+    }
+  },
+  {
+    "FloorLevel": 2,
+    "Type": "Apartment",
+    "LegalForm": {
+      "FormType": 2
+    },
+    "NumberOfRooms": 2,
+    "ID": 2,
+    "Address": {
+      "Street": "321 Main St",
+      "ZipCode": "1112332",
+      "City": "Test",
+      "Country": 0
+    }
+  },
+  {
+    "NumberOfFloors": 2,
+    "HasGarage": true,
+    "Type": "Villa",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 3,
+    "ID": 0,
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "test",
+      "Country": 164
+    }
+  },
+  {
+    "NumberOfFloors": 2,
+    "HasGarage": true,
+    "Type": "Villa",
+    "LegalForm": {
+      "FormType": 1
+    },
+    "NumberOfRooms": 1,
+    "ID": 0,
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "nicht",
+      "Country": 164
+    }
+  },
+  {
+    "NumberOfFloors": 5,
+    "HasGarage": false,
+    "Type": "Villa",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 3,
+    "ID": 0,
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "tjenare",
+      "Country": 164
+    }
+  },
+  {
+    "FloorLevel": 3,
+    "Type": "Apartment",
+    "LegalForm": {
+      "FormType": 1
+    },
+    "NumberOfRooms": 2,
+    "ID": 0,
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "aptest",
+      "Country": 164
+    }
+  },
+  {
+    "NumberOfFloors": 0,
+    "HasGarage": true,
+    "Type": "Villa",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 0,
+    "ID": 0,
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "gkaKAK",
+      "Country": 164
+    }
+  },
+  {
+    "FloorLevel": 54,
+    "Type": "Apartment",
+    "LegalForm": {
+      "FormType": 1
+    },
+    "NumberOfRooms": 2,
+    "ID": 0,
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "apapappa",
+      "Country": 164
+    }
+  }
+]

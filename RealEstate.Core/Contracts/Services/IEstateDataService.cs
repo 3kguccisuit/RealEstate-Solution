@@ -7,5 +7,6 @@ namespace RealEstate.Core.Contracts.Services
     {
         Task<IEnumerable<Estate>> GetEstatesAsync();
         Task AddEstateAsync(Estate estate);
+        Task RemoveEstateAsync(int estateId);
     }
 }

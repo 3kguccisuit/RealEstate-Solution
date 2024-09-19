@@ -4,6 +4,7 @@ using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Enums;
 using RealEstate.Core.Models;
 using RealEstate.Core.Models.ConcreteModels;
+using RealEstate.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,9 @@ namespace RealEstate.ViewModels
         public ApartmentFormViewModel(IEstateDataService estateDataService)
         {
             _estateDataService = estateDataService;
+            int id = IDGenerator.GetNextID();
             // Initialize Apartment object with default values
-            Apartment = new Apartment(0,
+            Apartment = new Apartment(id,
                 new Address("Street name", "Zip code", "City", Country.Sverige),
                                       new LegalForm(LegalFormType.Ownership),
                                       0,

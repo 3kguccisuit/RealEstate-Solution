@@ -6,6 +6,7 @@ using RealEstate.Core.Models;
 using RealEstate.Core.Enums;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Services;
+using RealEstate.Helpers;
 
 namespace RealEstate.ViewModels
 {
@@ -18,9 +19,11 @@ namespace RealEstate.ViewModels
         public List<LegalFormType> LegalForms { get; }
         public VillaFormViewModel(IEstateDataService estateDataService)
         {
+
             _estateDataService = estateDataService;
+            int id = IDGenerator.GetNextID();
             // Initialize Villa object with default values
-            Villa = new Villa(0,
+            Villa = new Villa(id,
                         new Address("Street name","Zip code","City",
                         Country.Sverige), new LegalForm(LegalFormType.Ownership),
                         0,

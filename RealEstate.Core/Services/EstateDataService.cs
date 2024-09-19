@@ -13,8 +13,9 @@ namespace RealEstate.Core.Services
 {
     public class EstateDataService : IEstateDataService
     {
-       // private const string FilePath = "C:\\Users\\ludwi\\source\\repos\\RealEstate.Core\\Services\\estates.json.txt.json"; // Path to the JSON file
+        // private const string FilePath = "C:\\Users\\ludwi\\source\\repos\\RealEstate.Core\\Services\\estates.json.txt.json"; // Path to the JSON file
         private const string FilePath = "C:\\Users\\ludwi\\source\\repos\\RealEstate-Solution\\RealEstate.Core\\Services\\estates.json";
+
         // Return the list of estates, either from JSON or with mock data
         public async Task<IEnumerable<Estate>> GetEstatesAsync()
         {
@@ -45,6 +46,22 @@ namespace RealEstate.Core.Services
         }
 
 
+        public async Task RemoveEstateAsync(int estateId)
+        {
+            var estates = await LoadEstatesFromFileAsync();
+            var estateList = estates.ToList();
+            var estateToRemove = estateList.FirstOrDefault(e => e.ID == estateId);
+
+            if (estateToRemove != null)
+            {
+                estateList.Remove(estateToRemove);
+                await SaveEstatesToFileAsync(estateList);
+            }
+            else
+            {
+                Console.WriteLine($"Estate with ID {estateId} not found.");
+            }
+        }
 
         public async Task AddEstateAsync(Estate estate)
         {
@@ -64,6 +81,12 @@ namespace RealEstate.Core.Services
         {
             var json = await Task.Run(() => File.ReadAllText(FilePath));
 
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                Console.WriteLine("The JSON file is empty.");
+                return new List<Estate>();
+            }
+
             var options = new JsonSerializerOptions
             {
                 Converters = {
@@ -74,7 +97,7 @@ namespace RealEstate.Core.Services
             };
 
             var estates = JsonSerializer.Deserialize<IEnumerable<Estate>>(json, options);
-            return estates ?? new List<Estate>();
+            return estates;
         }
 
         // Mock data that will be used to initialize the file if it doesn't exist

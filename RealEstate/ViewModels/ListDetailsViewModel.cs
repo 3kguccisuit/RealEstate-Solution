@@ -36,21 +36,31 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void EditEstate(Estate selected)
         {
-            MessageBox.Show($"Wish to change:\n{selected}");
+            if (selected != null)
+            {
+                MessageBox.Show($"Wish to change:\n{selected}");
+            }
+            else
+                MessageBox.Show("Please select an estate");
+
         }
 
         [RelayCommand]
         private void DeleteEstate(Estate selected) {
-            MessageBox.Show($"Wish to delete:\n{selected.DisplayDetails()}");
+            if (selected != null)
+            {
+                _estateDataService.RemoveEstateAsync(selected.ID);
+                MessageBox.Show($"Deleted estate:\n{selected.DisplayDetails()}");
+            }
+            else
+                MessageBox.Show("Please select an estate");
         }
 
         [RelayCommand]
         private void NewApartment()
         {
-            //ApartmentFormViewModel viewModel = new();
             var viewModel = _serviceProvider.GetRequiredService<ApartmentFormViewModel>();
             var dlg = new ApartmentFormWindow(viewModel);
-            //ApartmentFormWindow dlg = new(viewModel);
             dlg.ShowDialog();
         }
 

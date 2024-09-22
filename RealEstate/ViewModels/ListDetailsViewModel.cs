@@ -2,16 +2,12 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RealEstate.Contracts.ViewModels;
-using RealEstate.Contracts.Services;
-using RealEstate.Models;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
 using System.Windows;
 using RealEstate.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Models.ConcreteModels;
-using RealEstate.Core.Models;
+
 
 namespace RealEstate.ViewModels
 {
@@ -38,7 +34,7 @@ namespace RealEstate.ViewModels
         }
 
         [RelayCommand]
-        private void EditEstate(Estate selected)
+        private async Task EditEstate(Estate selected)
         {
             if (selected != null)
             {
@@ -47,16 +43,17 @@ namespace RealEstate.ViewModels
 
                 var editWindow = new EditEstateWindow(viewModel);
                 editWindow.ShowDialog();
+                await RefreshEstatesAsync();
+                SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
 
             }
             else
                 MessageBox.Show("Please select an estate");
-
         }
 
 
         [RelayCommand]
-        private void DeleteEstate(Estate selected)
+        private async Task DeleteEstate(Estate selected)
         {
             if (selected != null)
             {
@@ -70,32 +67,48 @@ namespace RealEstate.ViewModels
                     //force update
                     Estates.Remove(selected);
                     //remove from json
-                    _estateDataService.RemoveEstateAsync(selected.ID);
-
+                    await _estateDataService.RemoveEstateAsync(selected.ID);
+                    SelectedEstate = Estates.FirstOrDefault();
                 }
             }
             else
             {
-                // Show a message if no estate is selected
                 MessageBox.Show("Please select an estate", "No Estate Selected", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
 
         [RelayCommand]
-        private void OpenEstateForm(string estateType)
+        private async Task OpenEstateForm(string selectedType)
         {
             // Resolve the ViewModel from the DI container
             var viewModel = _serviceProvider.GetRequiredService<CreateEstateViewModel>();
 
             // Initialize the ViewModel with the estate
-            viewModel.InitializeEstate(estateType);
+            viewModel.InitializeEstate(selectedType);
 
             // Open the CreateEstateWindow with the ViewModel
             var window = new CreateEstateWindow(viewModel);
             window.ShowDialog();
+
+            //force refresh
+           await RefreshEstatesAsync();
+           SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
+
+
         }
 
+        private async Task RefreshEstatesAsync()
+        {
+            Estates.Clear();
+
+            var data = await _estateDataService.GetEstatesAsync();
+
+            foreach (var estate in data)
+            {
+                Estates.Add(estate);
+            }
+        }
 
         // This method will be called when the view is navigated to
         public async void OnNavigatedTo(object parameter)
@@ -111,6 +124,7 @@ namespace RealEstate.ViewModels
 
             SelectedEstate = Estates.FirstOrDefault();
         }
+
 
         // Empty method to handle navigation away from the view (optional)
         public void OnNavigatedFrom()

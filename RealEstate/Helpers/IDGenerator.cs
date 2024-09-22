@@ -17,5 +17,10 @@ namespace RealEstate.Helpers
             // Return the current ID, then increment it for the next request
             return currentID++;
         }
+
+        public static string GetUniqueId()
+        {
+            return Guid.NewGuid().ToString("D");
+        }
     }
 }

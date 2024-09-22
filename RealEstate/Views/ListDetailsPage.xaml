@@ -46,8 +46,8 @@
                 <ui:DropDownButton Margin="2" Content="&#xE710;" ToolTip="New Estate" FontFamily="Segoe MDL2 Assets" FontSize="10" Width="30" Height="30" >
                     <ui:DropDownButton.Flyout>
                         <ContextMenu>
-                            <MenuItem Header="Villa" Command="{Binding NewVillaCommand}" />
-                            <MenuItem Header="Apartment" Command="{Binding NewApartmentCommand}"/>
+                            <MenuItem Header="Villa" Command="{Binding OpenEstateFormCommand}" CommandParameter="Villa" />
+                            <MenuItem Header="Apartment" Command="{Binding OpenEstateFormCommand}" CommandParameter="Apartment"/>
                         </ContextMenu>
                     </ui:DropDownButton.Flyout>
                 </ui:DropDownButton>
@@ -84,5 +84,6 @@
             Content="{Binding SelectedEstate}"
             ContentTemplateSelector="{StaticResource EstateTemplateSelector}"
             Margin="20,0,0,0" />
+
     </Grid>
 </Page>

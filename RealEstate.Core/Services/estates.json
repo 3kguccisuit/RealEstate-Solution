@@ -1,12 +1,13 @@
 [
   {
-    "FloorLevel": 3,
-    "Type": "Apartment",
+    "NumberOfFloors": 3,
+    "HasGarage": true,
+    "Type": "Villa",
     "LegalForm": {
       "FormType": 0
     },
-    "NumberOfRooms": 2,
-    "ID": 1,
+    "NumberOfRooms": 5,
+    "ID": "345da5c2-167b-45c2-a622-faf296c53f28",
     "Address": {
       "Street": "Street name",
       "ZipCode": "Zip code",

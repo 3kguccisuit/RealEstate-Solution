@@ -9,6 +9,9 @@ using RealEstate.Core.Models.BaseModels;
 using System.Windows;
 using RealEstate.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using RealEstate.Core.Enums;
+using RealEstate.Core.Models.ConcreteModels;
+using RealEstate.Core.Models;
 
 namespace RealEstate.ViewModels
 {
@@ -22,6 +25,7 @@ namespace RealEstate.ViewModels
             get { return _selectedEstate; }
             set { SetProperty(ref _selectedEstate, value); }
         }
+
 
         // Observable collection of estates (bound to the ListView)
         public ObservableCollection<Estate> Estates { get; private set; } = new ObservableCollection<Estate>();
@@ -39,54 +43,68 @@ namespace RealEstate.ViewModels
             if (selected != null)
             {
                 MessageBox.Show($"Wish to change:\n{selected}");
+                
             }
             else
                 MessageBox.Show("Please select an estate");
 
         }
 
+
         [RelayCommand]
-        private void DeleteEstate(Estate selected) {
+        private void DeleteEstate(Estate selected)
+        {
             if (selected != null)
             {
-                _estateDataService.RemoveEstateAsync(selected.ID);
-                MessageBox.Show($"Deleted estate:\n{selected.DisplayDetails()}");
+                var result = MessageBox.Show($"Are you sure you want to delete the selected estate?\n\n{selected.DisplayDetails()}",
+                                             "Confirm Deletion",
+                                             MessageBoxButton.YesNo,
+                                             MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    //force update
+                    Estates.Remove(selected);
+                    //remove from json
+                    _estateDataService.RemoveEstateAsync(selected.ID);
+                   // MessageBox.Show($"Deleted estate:\n{selected.DisplayDetails()}", "Estate Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             else
-                MessageBox.Show("Please select an estate");
+            {
+                // Show a message if no estate is selected
+                MessageBox.Show("Please select an estate", "No Estate Selected", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
-        [RelayCommand]
-        private void NewApartment()
-        {
-            var viewModel = _serviceProvider.GetRequiredService<ApartmentFormViewModel>();
-            var dlg = new ApartmentFormWindow(viewModel);
-            dlg.ShowDialog();
-        }
 
         [RelayCommand]
-        private void NewVilla()
+        private void OpenEstateForm(string estateType)
         {
-            // Resolve VillaFormViewModel from the DI container
-            var viewModel = _serviceProvider.GetRequiredService<VillaFormViewModel>();
-            var dlg = new VillaFormWindow(viewModel);
-            dlg.ShowDialog();
+            // Resolve the ViewModel from the DI container
+            var viewModel = _serviceProvider.GetRequiredService<CreateEstateViewModel>();
+
+            // Initialize the ViewModel with the estate
+            viewModel.InitializeEstate(estateType);
+
+            // Open the CreateEstateWindow with the ViewModel
+            var window = new CreateEstateWindow(viewModel);
+            window.ShowDialog();
         }
+
+
         // This method will be called when the view is navigated to
         public async void OnNavigatedTo(object parameter)
         {
             Estates.Clear();
 
-            // Fetch estate data from the data service
             var data = await _estateDataService.GetEstatesAsync();
 
-            // Add each estate to the observable collection
             foreach (var estate in data)
             {
                 Estates.Add(estate);
             }
 
-            // Set the first estate as the selected estate by default
             SelectedEstate = Estates.FirstOrDefault();
         }
 

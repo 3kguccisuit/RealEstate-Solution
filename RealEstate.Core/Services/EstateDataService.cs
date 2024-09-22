@@ -14,7 +14,9 @@ namespace RealEstate.Core.Services
     public class EstateDataService : IEstateDataService
     {
         // private const string FilePath = "C:\\Users\\ludwi\\source\\repos\\RealEstate.Core\\Services\\estates.json.txt.json"; // Path to the JSON file
-        private const string FilePath = "C:\\Users\\ludwi\\source\\repos\\RealEstate-Solution\\RealEstate.Core\\Services\\estates.json";
+        // C:\Users\Orang\Source\Repos\RealEstate-Solution\RealEstate.Core\Services\
+        // C:\Users\Orang\Source\Repos\RealEstate-Solution\RealEstate.Core\Services\estates.json
+        private const string FilePath = @"C:\Users\Orang\Source\Repos\RealEstate-Solution\RealEstate.Core\Services\estates.json";
 
         // Return the list of estates, either from JSON or with mock data
         public async Task<IEnumerable<Estate>> GetEstatesAsync()
@@ -46,7 +48,7 @@ namespace RealEstate.Core.Services
         }
 
 
-        public async Task RemoveEstateAsync(int estateId)
+        public async Task RemoveEstateAsync(string estateId)
         {
             var estates = await LoadEstatesFromFileAsync();
             var estateList = estates.ToList();
@@ -106,7 +108,7 @@ namespace RealEstate.Core.Services
             return new List<Estate>
             {
                 new Villa(
-                    id: 1,
+                    id: "Dummy",
                     address: new Address("1235 Main St", "11122", "Stockholm", Country.Sverige),
                     legalForm: new LegalForm(LegalFormType.Ownership),
                     numberOfRooms: 5,
@@ -114,7 +116,7 @@ namespace RealEstate.Core.Services
                     hasGarage: true
                 ),
                 new Apartment(
-                    id: 2,
+                    id: "Dummy",
                     address: new Address("32199 Main St", "1112332", "Järfälla", Country.Afghanistan),
                     legalForm: new LegalForm(LegalFormType.Rental),
                     numberOfRooms: 2,

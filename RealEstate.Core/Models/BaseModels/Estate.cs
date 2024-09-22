@@ -5,7 +5,7 @@ namespace RealEstate.Core.Models.BaseModels
 {
     public abstract class Estate : IEstate
     {
-        public int ID { get; set; }
+        public string ID { get; set; }
         public Address Address { get; set; }
 
         // Abstract method to be implemented by derived classes
@@ -14,7 +14,7 @@ namespace RealEstate.Core.Models.BaseModels
 
 
         [JsonConstructor]
-        protected Estate(int id, Address address)
+        protected Estate(string id, Address address)
         {
             this.ID = id;
             this.Address = address;

@@ -10,7 +10,7 @@ namespace RealEstate.Core.Models.ConcreteModels
         public override string Type => "Villa";
 
         [JsonConstructor]
-        public Villa(int id, Address address, LegalForm legalForm, int numberOfRooms, int numberOfFloors, bool hasGarage)
+        public Villa(string id, Address address, LegalForm legalForm, int numberOfRooms, int numberOfFloors, bool hasGarage)
             : base(id, address, legalForm, numberOfRooms) // Pass id, address, legalForm, numberOfRooms to base constructor
         {
             this.NumberOfFloors = numberOfFloors;

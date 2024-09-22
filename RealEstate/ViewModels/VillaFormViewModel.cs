@@ -21,7 +21,7 @@ namespace RealEstate.ViewModels
         {
 
             _estateDataService = estateDataService;
-            int id = IDGenerator.GetNextID();
+            var id = IDGenerator.GetUniqueId();
             // Initialize Villa object with default values
             Villa = new Villa(id,
                         new Address("Street name","Zip code","City",

@@ -39,6 +39,27 @@ namespace RealEstate.ViewModels
             if (selected != null)
             {
                 MessageBox.Show($"Wish to change:\n{selected}");
+
+                var viewModel = _serviceProvider.GetRequiredService<ApartmentFormViewModel>();
+
+                var buldingType = selected.Type;
+                switch (buldingType)
+                {
+                    case "Villa":
+                        var dlg = new ApartmentFormWindow(viewModel);
+                        dlg.ShowDialog();
+
+                        break;
+                    case "Apartment":
+                        //var dlg = new ApartmentFormWindow(viewModel);
+                        //dlg.ShowDialog();
+
+                        break;
+                    default:
+                        MessageBox.Show($"Unknown buldingType: {buldingType}", "Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                        break;
+                }
+
             }
             else
                 MessageBox.Show("Please select an estate");

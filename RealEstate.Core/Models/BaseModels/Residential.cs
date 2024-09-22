@@ -8,7 +8,7 @@ public abstract class Residential : Estate
     public int NumberOfRooms { get; set; }
 
         [JsonConstructor]
-        protected Residential(int id, Address address, LegalForm legalForm, int numberOfRooms) : base(id, address)
+        protected Residential(string id, Address address, LegalForm legalForm, int numberOfRooms) : base(id, address)
     {
         this.LegalForm = legalForm;
         this.NumberOfRooms = numberOfRooms;

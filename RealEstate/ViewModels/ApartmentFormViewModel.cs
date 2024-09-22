@@ -24,7 +24,7 @@ namespace RealEstate.ViewModels
         public ApartmentFormViewModel(IEstateDataService estateDataService)
         {
             _estateDataService = estateDataService;
-            int id = IDGenerator.GetNextID();
+            string id = IDGenerator.GetUniqueId();
             // Initialize Apartment object with default values
             Apartment = new Apartment(id,
                 new Address("Street name", "Zip code", "City", Country.Sverige),

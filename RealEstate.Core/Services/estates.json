@@ -1,16 +1,32 @@
 [
   {
-    "FloorLevel": 3,
+    "NumberOfFloors": 3,
+    "HasGarage": true,
+    "Type": "Villa",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 6,
+    "ID": "a2602b04-e366-4f17-8724-247d046ee1b1",
+    "Address": {
+      "Street": "B2",
+      "ZipCode": "12345",
+      "City": "Viksj\u00F6",
+      "Country": 164
+    }
+  },
+  {
+    "FloorLevel": 0,
     "Type": "Apartment",
     "LegalForm": {
       "FormType": 0
     },
-    "NumberOfRooms": 2,
-    "ID": 1,
+    "NumberOfRooms": 0,
+    "ID": "95adee7b-06fe-4787-ab96-0aec8b1cd680",
     "Address": {
       "Street": "Street name",
       "ZipCode": "Zip code",
-      "City": "test",
+      "City": "City",
       "Country": 164
     }
   }

@@ -73,6 +73,28 @@ namespace RealEstate.Core.Services
             await SaveEstatesToFileAsync(updatedEstates);
         }
 
+
+        public async Task UpdateEstateAsync(Estate updatedEstate)
+        {
+            var estates = await LoadEstatesFromFileAsync();
+            var estateList = estates.ToList();
+
+            // Find the estate to update by matching the ID
+            var estateIndex = estateList.FindIndex(e => e.ID == updatedEstate.ID);
+
+            if (estateIndex >= 0)
+            {
+                // Update the estate in the list
+                estateList[estateIndex] = updatedEstate;
+                await SaveEstatesToFileAsync(estateList);  // Save updated list back to file
+                Console.WriteLine($"Estate with ID {updatedEstate.ID} has been updated.");
+            }
+            else
+            {
+                Console.WriteLine($"Estate with ID {updatedEstate.ID} not found.");
+            }
+        }
+
         // Load estates from JSON file
         private async Task<IEnumerable<Estate>> LoadEstatesFromFileAsync()
         {

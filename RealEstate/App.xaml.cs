@@ -75,8 +75,7 @@ public partial class App : Application
         //LH
         services.AddTransient<CreateEstateViewModel>();
 
-        //services.AddTransient<VillaFormViewModel>();
-        //services.AddTransient<ApartmentFormViewModel>();
+        services.AddTransient<EditEstateViewModel>();
 
         services.AddTransient<IShellWindow, ShellWindow>();
         services.AddTransient<ShellViewModel>();

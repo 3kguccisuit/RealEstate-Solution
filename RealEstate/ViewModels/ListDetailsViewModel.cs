@@ -42,8 +42,12 @@ namespace RealEstate.ViewModels
         {
             if (selected != null)
             {
-                MessageBox.Show($"Wish to change:\n{selected}");
-                
+                var viewModel = _serviceProvider.GetRequiredService<EditEstateViewModel>();
+                viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
+
+                var editWindow = new EditEstateWindow(viewModel);
+                editWindow.ShowDialog();
+
             }
             else
                 MessageBox.Show("Please select an estate");
@@ -67,7 +71,7 @@ namespace RealEstate.ViewModels
                     Estates.Remove(selected);
                     //remove from json
                     _estateDataService.RemoveEstateAsync(selected.ID);
-                   // MessageBox.Show($"Deleted estate:\n{selected.DisplayDetails()}", "Estate Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 }
             }
             else

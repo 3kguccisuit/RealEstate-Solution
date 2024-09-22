@@ -1,0 +1,133 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:models="clr-namespace:RealEstate.Core.Models.ConcreteModels;assembly=RealEstate.Core">
+
+    <!-- DataTemplate for Editing an Apartment -->
+    <DataTemplate x:Key="ApartmentEditTemplate" DataType="{x:Type models:Apartment}">
+        <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Top">
+            <!-- Street Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Street" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding Address.Street}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Zip Code Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Zipcode" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding Address.ZipCode}" Margin="5"/>
+            </StackPanel>
+
+            <!-- City Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="City" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding Address.City}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Country ComboBox -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Country" Margin="0,5,10,5"/>
+                <ComboBox Width="200" 
+                          ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
+                          SelectedItem="{Binding Address.Country}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Legal Form ComboBox -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Legal Form" Margin="0,5,10,5"/>
+                <ComboBox Width="200" 
+                          ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
+                          SelectedItem="{Binding LegalForm.FormType}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Number of Rooms Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Number of Rooms" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding NumberOfRooms}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Floor Level Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Floor Level" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding FloorLevel}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Buttons for Save/Cancel -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Save" Width="100" Height="30"
+                        Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Margin="5"/>
+                <Button Content="Cancel" Width="100" Height="30"
+                        Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Editing a Villa -->
+    <DataTemplate x:Key="VillaEditTemplate" DataType="{x:Type models:Villa}">
+        <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Top">
+            <!-- Street Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Street" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding Address.Street}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Zip Code Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Zipcode" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding Address.ZipCode}" Margin="5"/>
+            </StackPanel>
+
+            <!-- City Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="City" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding Address.City}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Country ComboBox -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Country" Margin="0,5,10,5"/>
+                <ComboBox Width="200" 
+                          ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
+                          SelectedItem="{Binding Address.Country}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Legal Form ComboBox -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Legal Form" Margin="0,5,10,5"/>
+                <ComboBox Width="200" 
+                          ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
+                          SelectedItem="{Binding LegalForm.FormType}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Number of Rooms Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Number of Rooms" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding NumberOfRooms}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Number of Floors Input -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Number of Floors" Margin="0,5,10,5"/>
+                <TextBox Width="200" Text="{Binding NumberOfFloors}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Garage Checkbox -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Content="Has Garage" Margin="0,5,10,5"/>
+                <CheckBox IsChecked="{Binding HasGarage}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Buttons for Save/Cancel -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Save" Width="100" Height="30"
+                        Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Margin="5"/>
+                <Button Content="Cancel" Width="100" Height="30"
+                        Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

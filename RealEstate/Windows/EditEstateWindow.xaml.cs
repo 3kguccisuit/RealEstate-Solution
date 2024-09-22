@@ -4,11 +4,11 @@ using System.Windows;
 namespace RealEstate.Windows
 {
     /// <summary>
-    /// Interaction logic for CreateEstateWindow.xaml
+    /// Interaction logic for EditEstateWindow.xaml
     /// </summary>
-    public partial class CreateEstateWindow : Window
+    public partial class EditEstateWindow : Window
     {
-        public CreateEstateWindow(CreateEstateViewModel viewModel)
+        public EditEstateWindow(EditEstateViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel; 

@@ -1,17 +1,32 @@
 [
   {
-    "NumberOfFloors": 3,
+    "NumberOfFloors": 5,
     "HasGarage": true,
     "Type": "Villa",
     "LegalForm": {
       "FormType": 0
     },
-    "NumberOfRooms": 5,
-    "ID": "345da5c2-167b-45c2-a622-faf296c53f28",
+    "NumberOfRooms": 2,
+    "ID": "2a24865f-2b7b-4963-a746-f1f13b3a5575",
     "Address": {
       "Street": "Street name",
       "ZipCode": "Zip code",
       "City": "test",
+      "Country": 164
+    }
+  },
+  {
+    "FloorLevel": 5,
+    "Type": "Apartment",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 2,
+    "ID": "d7efcfe6-680f-49e5-bfaf-8ae4feb17927",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "hjhjhj",
       "Country": 164
     }
   }

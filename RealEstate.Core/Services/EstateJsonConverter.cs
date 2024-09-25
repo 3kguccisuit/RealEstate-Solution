@@ -22,6 +22,8 @@ public class EstateJsonConverter : JsonConverter<Estate>
                         return JsonSerializer.Deserialize<Villa>(rootElement.GetRawText(), options);
                     case "Apartment":
                         return JsonSerializer.Deserialize<Apartment>(rootElement.GetRawText(), options);
+                    case "Townhouse":
+                        return JsonSerializer.Deserialize<Townhouse>(rootElement.GetRawText(), options);
                     default:
                         throw new JsonException($"Unknown estate type: {typeString}");
                 }

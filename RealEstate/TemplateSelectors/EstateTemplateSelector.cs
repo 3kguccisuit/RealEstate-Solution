@@ -9,6 +9,7 @@ namespace RealEstate.TemplateSelectors
     {
         public DataTemplate VillaTemplate { get; set; }
         public DataTemplate ApartmentTemplate { get; set; }
+        public DataTemplate TownhouseTemplate { get; set; }
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
@@ -19,6 +20,10 @@ namespace RealEstate.TemplateSelectors
             else if (item is Apartment)
             {
                 return ApartmentTemplate;
+            }
+            else if (item is Townhouse)
+            {
+                return TownhouseTemplate;
             }
 
             return base.SelectTemplate(item, container);

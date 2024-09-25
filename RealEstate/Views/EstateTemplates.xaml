@@ -72,4 +72,39 @@
         </StackPanel>
     </DataTemplate>
 
+    <!-- DataTemplate for Townhouse -->
+    <DataTemplate x:Key="TownhouseTemplate" DataType="{x:Type models:Townhouse}">
+        <StackPanel>
+            <TextBlock Text="Townhouse Details" FontSize="20" FontWeight="Bold" />
+
+            <!-- ID -->
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+
+            <!-- Address -->
+            <TextBlock Text="Address:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Address.Street}" />
+            <TextBlock Text="{Binding Address.City}" />
+            <TextBlock Text="{Binding Address.ZipCode}" />
+            <TextBlock Text="{Binding Address.Country}" />
+
+            <!-- Legal Form -->
+            <TextBlock Text="Legal Form Type:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LegalForm.FormType}" />
+
+            <!-- Number of Rooms -->
+            <TextBlock Text="Number of Rooms:" FontWeight="Bold" />
+            <TextBlock Text="{Binding NumberOfRooms}" />
+
+            <!-- Has Garden -->
+            <TextBlock Text="Has Garden:" FontWeight="Bold" />
+            <TextBlock Text="{Binding HasGarden}" />
+
+            <!-- Image Display -->
+            <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        </StackPanel>
+    </DataTemplate>
+
+
 </ResourceDictionary>

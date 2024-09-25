@@ -5,24 +5,24 @@
         Title="Edit Estate" Height="550" Width="800">
 
     <Window.Resources>
-        <!-- Merging the external EditEstateTemplates ResourceDictionary -->
+        <!-- Merging the external CreateEstateTemplates ResourceDictionary -->
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!-- Make sure the path is correct for your project -->
-                <ResourceDictionary Source="pack://application:,,,/RealEstate;component/Views/EditEstateTemplates.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RealEstate;component/Views/CreateEstateTemplates.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Define the TemplateSelector -->
-            <local:EditEstateTemplateSelector 
-                x:Key="EditEstateTemplateSelector"
-                VillaEditTemplate="{StaticResource VillaEditTemplate}"
-                ApartmentEditTemplate="{StaticResource ApartmentEditTemplate}" />
+            <local:CreateEstateTemplateSelector 
+                x:Key="CreateEstateTemplateSelector"
+                VillaCreateTemplate="{StaticResource VillaCreateTemplate}"
+                ApartmentCreateTemplate="{StaticResource ApartmentCreateTemplate}"
+                TownhouseCreateTemplate="{StaticResource TownhouseCreateTemplate}"/>
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
         <!-- ContentControl to choose between Villa or Apartment input fields -->
         <ContentControl Content="{Binding SelectedEstate}" 
-                        ContentTemplateSelector="{StaticResource EditEstateTemplateSelector}" />
+                        ContentTemplateSelector="{StaticResource CreateEstateTemplateSelector}" />
     </Grid>
 </Window>

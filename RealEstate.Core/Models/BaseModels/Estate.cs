@@ -13,8 +13,6 @@ namespace RealEstate.Core.Models.BaseModels
         public virtual string Type => "Estate";
         public abstract string DisplayDetails();
 
-
-
         [JsonConstructor]
         protected Estate(string id, Address address, LegalForm legalForm)
         {

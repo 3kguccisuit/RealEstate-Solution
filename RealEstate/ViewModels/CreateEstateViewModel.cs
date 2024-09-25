@@ -57,6 +57,15 @@ namespace RealEstate.ViewModels
                     false // HasGarage
                 );
             }
+            else if (type == "Townhouse")
+            {
+                SelectedEstate = new Townhouse(id,
+                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // Number of rooms
+                    false // HasGarden
+                );
+            }
             else
             {
                 MessageBox.Show("Invalid estate type.");
@@ -79,7 +88,7 @@ namespace RealEstate.ViewModels
 
         // Create command to save the estate
         [RelayCommand]
-        private async Task Create(Window window)
+        private async Task Save(Window window)
         {
 
             MessageBox.Show($"Created {SelectedEstate.Type} with the props: {SelectedEstate}");

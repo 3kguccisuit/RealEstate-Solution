@@ -20,7 +20,8 @@
             <local:EstateTemplateSelector
                 x:Key="EstateTemplateSelector"
                 VillaTemplate="{StaticResource VillaTemplate}"
-                ApartmentTemplate="{StaticResource ApartmentTemplate}" />
+                ApartmentTemplate="{StaticResource ApartmentTemplate}"
+                TownhouseTemplate ="{StaticResource TownhouseTemplate}"/>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -48,6 +49,7 @@
                         <ContextMenu>
                             <MenuItem Header="Villa" Command="{Binding OpenEstateFormCommand}" CommandParameter="Villa"  />
                             <MenuItem Header="Apartment" Command="{Binding OpenEstateFormCommand}" CommandParameter="Apartment"/>
+                            <MenuItem Header="Townhouse" Command="{Binding OpenEstateFormCommand}" CommandParameter="Townhouse"/>
                         </ContextMenu>
                     </ui:DropDownButton.Flyout>
                 </ui:DropDownButton>

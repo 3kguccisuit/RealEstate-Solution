@@ -62,8 +62,8 @@
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
             <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Create"
-                    Command="{Binding DataContext.CreateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
                 <Button Content="Cancel"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
@@ -139,15 +139,84 @@
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <!-- Pass the current window as CommandParameter -->
-                <Button Content="Create"
-            Command="{Binding DataContext.CreateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
                 <Button Content="Cancel"
             Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
 
+        </Grid>
+    </DataTemplate>
+
+    <!-- DataTemplate for Townhouse -->
+    <DataTemplate x:Key="TownhouseCreateTemplate" DataType="{x:Type models:Townhouse}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Street Input -->
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+
+            <!-- Zip Code Input -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+
+            <!-- City Input -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+
+            <!-- Country ComboBox (Bind to parent ViewModel for Countries) -->
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+              ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
+              SelectedItem="{Binding Address.Country}" />
+
+            <!-- Legal Form ComboBox (Bind to parent ViewModel for LegalForms) -->
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+              ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
+              SelectedItem="{Binding LegalForm.FormType}" />
+
+            <!-- Number of Rooms Input -->
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Number of Rooms" />
+            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding NumberOfRooms}" />
+
+            <!-- Has Garden Checkbox -->
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Has Garden" />
+            <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding HasGarden}" />
+
+            <!-- Image selection -->
+            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
+                <TextBlock Text="{Binding ImagePath}" VerticalAlignment="Center" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
         </Grid>
     </DataTemplate>
 

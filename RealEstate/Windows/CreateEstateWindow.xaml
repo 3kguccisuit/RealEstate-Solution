@@ -15,7 +15,8 @@
             <local:CreateEstateTemplateSelector 
                 x:Key="CreateEstateTemplateSelector"
                 VillaCreateTemplate="{StaticResource VillaCreateTemplate}"
-                ApartmentCreateTemplate="{StaticResource ApartmentCreateTemplate}" />
+                ApartmentCreateTemplate="{StaticResource ApartmentCreateTemplate}"
+                TownhouseCreateTemplate="{StaticResource TownhouseCreateTemplate}"/>
         </ResourceDictionary>
     </Window.Resources>
 

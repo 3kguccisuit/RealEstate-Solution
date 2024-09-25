@@ -19,13 +19,6 @@ namespace RealEstate.Core.Services
         // Return the list of estates, either from JSON or with mock data
         public async Task<IEnumerable<Estate>> GetEstatesAsync()
         {
-            if (!File.Exists(FilePath))
-            {
-                // If the file doesn't exist, create it with mock data
-                var estates = AllEstates();
-                await SaveEstatesToFileAsync(estates);
-            }
-
             // Load the data from the JSON file
             var estatesFromFile = await LoadEstatesFromFileAsync();
             return estatesFromFile;
@@ -110,36 +103,36 @@ namespace RealEstate.Core.Services
             {
                 Converters = {
             new EstateJsonConverter(),  // Custom converter for polymorphic deserialization
-            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)  // Handle enums as strings
+            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
         },
-                PropertyNameCaseInsensitive = true // Optional: Ignore case in JSON property names
+                PropertyNameCaseInsensitive = true
             };
 
             var estates = JsonSerializer.Deserialize<IEnumerable<Estate>>(json, options);
             return estates;
         }
 
-        // Mock data that will be used to initialize the file if it doesn't exist
-        private static IEnumerable<Estate> AllEstates()
-        {
-            return new List<Estate>
-            {
-                new Villa(
-                    id: "Dummy",
-                    address: new Address("1235 Main St", "11122", "Stockholm", Country.Sverige),
-                    legalForm: new LegalForm(LegalFormType.Ownership),
-                    numberOfRooms: 5,
-                    numberOfFloors: 2,
-                    hasGarage: true
-                ),
-                new Apartment(
-                    id: "Dummy",
-                    address: new Address("32199 Main St", "1112332", "Järfälla", Country.Afghanistan),
-                    legalForm: new LegalForm(LegalFormType.Rental),
-                    numberOfRooms: 2,
-                    floorLevel: 2
-                ),
-            };
-        }
+        // Mock data that
+        //private static IEnumerable<Estate> AllEstates()
+        //{
+        //    return new List<Estate>
+        //    {
+        //        new Villa(
+        //            id: "Dummy",
+        //            address: new Address("1235 Main St", "11122", "Stockholm", Country.Sverige),
+        //            legalForm: new LegalForm(LegalFormType.Ownership),
+        //            numberOfRooms: 5,
+        //            numberOfFloors: 2,
+        //            hasGarage: true
+        //        ),
+        //        new Apartment(
+        //            id: "Dummy",
+        //            address: new Address("32199 Main St", "1112332", "Järfälla", Country.Afghanistan),
+        //            legalForm: new LegalForm(LegalFormType.Rental),
+        //            numberOfRooms: 2,
+        //            floorLevel: 2
+        //        ),
+        //    };
+        //}
     }
 }

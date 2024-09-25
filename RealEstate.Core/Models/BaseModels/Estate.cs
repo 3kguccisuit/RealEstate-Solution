@@ -7,6 +7,7 @@ namespace RealEstate.Core.Models.BaseModels
     {
         public string ID { get; set; }
         public Address Address { get; set; }
+        public LegalForm LegalForm { get; set; }
 
         public string ImagePath { get; set; }
         public virtual string Type => "Estate";
@@ -15,15 +16,16 @@ namespace RealEstate.Core.Models.BaseModels
 
 
         [JsonConstructor]
-        protected Estate(string id, Address address)
+        protected Estate(string id, Address address, LegalForm legalForm)
         {
             this.ID = id;
             this.Address = address;
+            LegalForm = legalForm;
         }
-        // Override ToString() to return a summary of the estate
+
         public override string ToString()
         {
-            return $"Estate ID: {ID}, Address: {Address}";
+            return $"Estate ID: {ID}, Address: {Address}, {LegalForm}";
         }
     }
 }

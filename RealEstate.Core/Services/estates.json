@@ -1,17 +1,67 @@
 [
   {
-    "FloorLevel": 0,
+    "FloorLevel": 5,
     "Type": "Apartment",
     "LegalForm": {
       "FormType": 0
     },
-    "NumberOfRooms": 0,
-    "ID": "c82f8f24-b5af-4b98-af00-54cd856f7f98",
+    "NumberOfRooms": 2,
+    "ID": "09d1b63b-ed6b-464e-90f7-6730f68a972c",
     "Address": {
       "Street": "Street name",
       "ZipCode": "Zip code",
-      "City": "123",
+      "City": "test",
+      "Country": 162
+    },
+    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\bg.jpg"
+  },
+  {
+    "FloorLevel": 2,
+    "Type": "Apartment",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 2,
+    "ID": "d80a8df3-3f7f-46b5-b902-b4167a65f396",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "test",
       "Country": 164
-    }
+    },
+    "ImagePath": null
+  },
+  {
+    "FloorLevel": 5,
+    "Type": "Apartment",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 2,
+    "ID": "74bdb5df-f06c-4fcf-ad78-5cdcd56d1abc",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "big picture",
+      "Country": 164
+    },
+    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
+  },
+  {
+    "NumberOfFloors": 23,
+    "HasGarage": true,
+    "Type": "Villa",
+    "LegalForm": {
+      "FormType": 0
+    },
+    "NumberOfRooms": 20,
+    "ID": "ea19ef9a-8d57-4a2b-8fa3-42fba11e091e",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "City",
+      "Country": 164
+    },
+    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
   }
 ]

@@ -18,6 +18,7 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
             <!-- Street Input -->
@@ -52,8 +53,15 @@
             <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Floor Level" />
             <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding FloorLevel}" />
 
-            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <!-- Image selection -->
+            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
             <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
+                <TextBlock Text="{Binding ImagePath}" VerticalAlignment="Center" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Create"
                     Command="{Binding DataContext.CreateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -73,6 +81,7 @@
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -120,8 +129,15 @@
             <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Has Garage" />
             <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding HasGarage}" />
 
-            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <!-- Image selection -->
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
             <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
+                <TextBlock Text="{Binding ImagePath}" VerticalAlignment="Center" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <!-- Pass the current window as CommandParameter -->
                 <Button Content="Create"
             Command="{Binding DataContext.CreateCommand, RelativeSource={RelativeSource AncestorType=Window}}"

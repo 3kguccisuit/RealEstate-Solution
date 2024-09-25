@@ -8,9 +8,10 @@ namespace RealEstate.Core.Models.BaseModels
         public string ID { get; set; }
         public Address Address { get; set; }
 
-        // Abstract method to be implemented by derived classes
+        public string ImagePath { get; set; }
         public virtual string Type => "Estate";
         public abstract string DisplayDetails();
+
 
 
         [JsonConstructor]

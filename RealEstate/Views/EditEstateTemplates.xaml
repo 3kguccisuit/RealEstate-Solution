@@ -6,7 +6,7 @@
     <DataTemplate x:Key="ApartmentEditTemplate" DataType="{x:Type models:Apartment}">
         <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Top">
             <!-- Street Input -->
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10" HorizontalAlignment="Left">
                 <Label Content="Street" Margin="0,5,10,5"/>
                 <TextBox Width="200" Text="{Binding Address.Street}" Margin="5"/>
             </StackPanel>
@@ -40,7 +40,7 @@
             </StackPanel>
 
             <!-- Number of Rooms Input -->
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+            <StackPanel Orientation="Horizontal">
                 <Label Content="Number of Rooms" Margin="0,5,10,5"/>
                 <TextBox Width="200" Text="{Binding NumberOfRooms}" Margin="5"/>
             </StackPanel>
@@ -49,6 +49,12 @@
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <Label Content="Floor Level" Margin="0,5,10,5"/>
                 <TextBox Width="200" Text="{Binding FloorLevel}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Image selection -->
+            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+                <Label Content="Select Image" Margin="0,5,10,5"/>
+                <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Save/Cancel -->
@@ -62,6 +68,8 @@
             </StackPanel>
         </StackPanel>
     </DataTemplate>
+
+
 
     <!-- DataTemplate for Editing a Villa -->
     <DataTemplate x:Key="VillaEditTemplate" DataType="{x:Type models:Villa}">
@@ -116,6 +124,12 @@
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <Label Content="Has Garage" Margin="0,5,10,5"/>
                 <CheckBox IsChecked="{Binding HasGarage}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Image selection -->
+            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+                <Label Content="Select Image" Margin="0,5,10,5"/>
+                <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Save/Cancel -->

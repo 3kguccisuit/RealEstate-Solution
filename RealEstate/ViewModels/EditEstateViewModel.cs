@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Enums;
 using RealEstate.Core.Models;
@@ -56,8 +57,19 @@ namespace RealEstate.ViewModels
             if (result == MessageBoxResult.Yes)
             {
                 window.Close();
+            }       
+        }
+
+        [RelayCommand]
+        private void SelectImage()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                SelectedEstate.ImagePath = openFileDialog.FileName;
             }
-                
         }
     }
 }

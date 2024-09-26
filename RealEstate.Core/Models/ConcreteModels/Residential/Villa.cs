@@ -11,7 +11,7 @@ namespace RealEstate.Core.Models.ConcreteModels
 
         [JsonConstructor]
         public Villa(string id, Address address, LegalForm legalForm, int numberOfRooms, int numberOfFloors, bool hasGarage)
-            : base(id, address, legalForm, numberOfRooms) // Pass id, address, legalForm, numberOfRooms to base constructor
+            : base(id, address, legalForm, numberOfRooms)
         {
             this.NumberOfFloors = numberOfFloors;
             this.HasGarage = hasGarage;

@@ -93,6 +93,7 @@ namespace RealEstate.ViewModels
 
             //force refresh
            await RefreshEstatesAsync();
+           if(viewModel.SelectedEstate.ID != "Cancel")
            SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
 
 

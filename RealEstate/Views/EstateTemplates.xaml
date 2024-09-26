@@ -106,5 +106,109 @@
         </StackPanel>
     </DataTemplate>
 
+    <!-- DataTemplate for Hospital -->
+    <DataTemplate x:Key="HospitalTemplate" DataType="{x:Type models:Hospital}">
+        <StackPanel>
+            <TextBlock Text="Hospital Details" FontSize="20" FontWeight="Bold" />
+
+            <!-- ID -->
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+
+            <!-- Address -->
+            <TextBlock Text="Address:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Address.Street}" />
+            <TextBlock Text="{Binding Address.City}" />
+            <TextBlock Text="{Binding Address.ZipCode}" />
+            <TextBlock Text="{Binding Address.Country}" />
+
+            <!-- Legal Form Type -->
+            <TextBlock Text="Legal Form Type:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LegalForm.FormType}" />
+
+            <!-- Parking Spaces (from Institutional class) -->
+            <TextBlock Text="Parking Spaces:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ParkingSpaces}" />
+
+            <!-- Number of Beds (unique to Hospital) -->
+            <TextBlock Text="Number of Beds:" FontWeight="Bold" />
+            <TextBlock Text="{Binding NumberOfBeds}" />
+
+            <!-- Image Display -->
+            <TextBlock Text="Hospital Image:" FontWeight="Bold" />
+            <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Displaying a School -->
+    <DataTemplate x:Key="SchoolTemplate" DataType="{x:Type models:School}">
+        <StackPanel>
+            <TextBlock Text="School Details" FontSize="20" FontWeight="Bold" />
+
+            <!-- ID -->
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+
+            <!-- Address -->
+            <TextBlock Text="Address:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Address.Street}" />
+            <TextBlock Text="{Binding Address.City}" />
+            <TextBlock Text="{Binding Address.ZipCode}" />
+            <TextBlock Text="{Binding Address.Country}" />
+
+            <!-- Legal Form Type -->
+            <TextBlock Text="Legal Form Type:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LegalForm.FormType}" />
+
+            <!-- Parking Spaces -->
+            <TextBlock Text="Parking Spaces:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ParkingSpaces}" />
+
+            <!-- Number of Classrooms (unique to School) -->
+            <TextBlock Text="Number of Classrooms:" FontWeight="Bold" />
+            <TextBlock Text="{Binding NumberOfClassrooms}" />
+
+            <!-- Image Display -->
+            <TextBlock Text="School Image:" FontWeight="Bold" />
+            <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Displaying a University -->
+    <DataTemplate x:Key="UniversityTemplate" DataType="{x:Type models:University}">
+        <StackPanel>
+            <TextBlock Text="University Details" FontSize="20" FontWeight="Bold" />
+
+            <!-- ID -->
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+
+            <!-- Address -->
+            <TextBlock Text="Address:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Address.Street}" />
+            <TextBlock Text="{Binding Address.City}" />
+            <TextBlock Text="{Binding Address.ZipCode}" />
+            <TextBlock Text="{Binding Address.Country}" />
+
+            <!-- Legal Form Type -->
+            <TextBlock Text="Legal Form Type:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LegalForm.FormType}" />
+
+            <!-- Parking Spaces -->
+            <TextBlock Text="Parking Spaces:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ParkingSpaces}" />
+
+            <!-- Number of Programs -->
+            <TextBlock Text="Number of Programs:" FontWeight="Bold" />
+            <TextBlock Text="{Binding NumberOfPrograms}" />
+
+            <!-- Image Display -->
+            <TextBlock Text="University Image:" FontWeight="Bold" />
+            <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </DataTemplate>
+
+
+
 
 </ResourceDictionary>

@@ -21,7 +21,10 @@
                 x:Key="EstateTemplateSelector"
                 VillaTemplate="{StaticResource VillaTemplate}"
                 ApartmentTemplate="{StaticResource ApartmentTemplate}"
-                TownhouseTemplate ="{StaticResource TownhouseTemplate}"/>
+                TownhouseTemplate ="{StaticResource TownhouseTemplate}"
+                HospitalTemplate="{StaticResource HospitalTemplate}"
+                SchoolTemplate="{StaticResource SchoolTemplate}"
+                UniversityTemplate="{StaticResource UniversityTemplate}"/>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -50,6 +53,9 @@
                             <MenuItem Header="Villa" Command="{Binding OpenEstateFormCommand}" CommandParameter="Villa"  />
                             <MenuItem Header="Apartment" Command="{Binding OpenEstateFormCommand}" CommandParameter="Apartment"/>
                             <MenuItem Header="Townhouse" Command="{Binding OpenEstateFormCommand}" CommandParameter="Townhouse"/>
+                            <MenuItem Header="Hospital" Command="{Binding OpenEstateFormCommand}" CommandParameter="Hospital"/>
+                            <MenuItem Header="School" Command="{Binding OpenEstateFormCommand}" CommandParameter="School"/>
+                            <MenuItem Header="University" Command="{Binding OpenEstateFormCommand}" CommandParameter="University"/>
                         </ContextMenu>
                     </ui:DropDownButton.Flyout>
                 </ui:DropDownButton>

@@ -66,6 +66,33 @@ namespace RealEstate.ViewModels
                     false // HasGarden
                 );
             }
+            else if (type == "Hospital")
+            {
+                SelectedEstate = new Hospital(id,
+                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // Parking spaces
+                    0 // Number of beds
+                );
+            }
+            else if (type == "School")
+            {
+                SelectedEstate = new School(id,
+                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // Parking spaces
+                    0 // Number of classrooms
+                );
+            }
+            else if (type == "University")
+            {
+                SelectedEstate = new University(id,
+                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // Parking spaces
+                    0 // Number of programs
+                );
+            }
             else
             {
                 MessageBox.Show("Invalid estate type.");
@@ -82,6 +109,7 @@ namespace RealEstate.ViewModels
             var result = MessageBox.Show("Do you really want to cancel?", appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
+                SelectedEstate.ID = "Cancel";
                 window.Close();
             }
         }

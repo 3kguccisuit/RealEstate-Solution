@@ -12,7 +12,7 @@ public abstract class Residential : Estate
     {
         this.NumberOfRooms = numberOfRooms;
     }
-    // Override ToString() to include residential-specific details
+
     public override string ToString()
     {
         return $"{base.ToString()}, Number of Rooms: {NumberOfRooms}";

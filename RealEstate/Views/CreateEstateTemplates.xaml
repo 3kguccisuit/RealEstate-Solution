@@ -220,5 +220,216 @@
         </Grid>
     </DataTemplate>
 
+    <!-- DataTemplate for Hospital -->
+    <DataTemplate x:Key="HospitalCreateTemplate" DataType="{x:Type models:Hospital}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Street Input -->
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+
+            <!-- Zip Code Input -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+
+            <!-- City Input -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+
+            <!-- Country ComboBox (Bind to parent ViewModel for Countries) -->
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+                  ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
+                  SelectedItem="{Binding Address.Country}" />
+
+            <!-- Legal Form ComboBox (Bind to parent ViewModel for LegalForms) -->
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+                  ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
+                  SelectedItem="{Binding LegalForm.FormType}" />
+
+            <!-- Parking Spaces Input -->
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Parking Spaces" />
+            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
+
+            <!-- Number of Beds Input (unique to Hospital) -->
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Beds" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfBeds}" />
+
+            <!-- Image selection -->
+            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
+                <TextBlock Text="{Binding ImagePath}" VerticalAlignment="Center" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <!-- DataTemplate for Creating a School -->
+    <DataTemplate x:Key="SchoolCreateTemplate" DataType="{x:Type models:School}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Street Input -->
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+
+            <!-- Zip Code Input -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+
+            <!-- City Input -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+
+            <!-- Country ComboBox -->
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+                  ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
+                  SelectedItem="{Binding Address.Country}" />
+
+            <!-- Legal Form ComboBox -->
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+                  ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
+                  SelectedItem="{Binding LegalForm.FormType}" />
+
+            <!-- Parking Spaces Input -->
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Parking Spaces" />
+            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
+
+            <!-- Number of Classrooms Input (unique to School) -->
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Classrooms" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfClassrooms}" />
+
+            <!-- Image selection -->
+            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
+                <TextBlock Text="{Binding ImagePath}" VerticalAlignment="Center" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <!-- DataTemplate for Creating a University -->
+    <DataTemplate x:Key="UniversityCreateTemplate" DataType="{x:Type models:University}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Street Input -->
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+
+            <!-- Zip Code Input -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+
+            <!-- City Input -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+
+            <!-- Country ComboBox -->
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+                  ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
+                  SelectedItem="{Binding Address.Country}" />
+
+            <!-- Legal Form ComboBox -->
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+                  ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
+                  SelectedItem="{Binding LegalForm.FormType}" />
+
+            <!-- Parking Spaces Input -->
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Parking Spaces" />
+            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
+
+            <!-- Number of Programs Input -->
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Programs" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfPrograms}" />
+
+            <!-- Image selection -->
+            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
+                <TextBlock Text="{Binding ImagePath}" VerticalAlignment="Center" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <!-- Buttons for Create/Cancel -->
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+
 
 </ResourceDictionary>

@@ -9,6 +9,9 @@ namespace RealEstate.TemplateSelectors
         public DataTemplate VillaCreateTemplate { get; set; }
         public DataTemplate ApartmentCreateTemplate { get; set; }
         public DataTemplate TownhouseCreateTemplate { get; set; }
+        public DataTemplate HospitalCreateTemplate { get; set; }
+        public DataTemplate SchoolCreateTemplate { get; set; }
+        public DataTemplate UniversityCreateTemplate { get; set; }
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
@@ -20,10 +23,22 @@ namespace RealEstate.TemplateSelectors
             {
                 return ApartmentCreateTemplate;
             }
-            else if (item is Townhouse) {
+            else if (item is Townhouse)
+            {
                 return TownhouseCreateTemplate;
             }
-
+            else if (item is Hospital)
+            {
+                return HospitalCreateTemplate;
+            }
+            else if (item is School)
+            {
+                return SchoolCreateTemplate;
+            }
+            else if (item is University)
+            {
+                return UniversityCreateTemplate;
+            }
             return base.SelectTemplate(item, container);
         }
     }

@@ -12,7 +12,6 @@ public class EstateJsonConverter : JsonConverter<Estate>
         {
             var rootElement = jsonDocument.RootElement;
 
-            // Check the "Type" property to determine whether it's a Villa or Apartment
             if (rootElement.TryGetProperty("Type", out var typeProperty))
             {
                 var typeString = typeProperty.GetString();
@@ -30,6 +29,14 @@ public class EstateJsonConverter : JsonConverter<Estate>
                         return JsonSerializer.Deserialize<School>(rootElement.GetRawText(), options);
                     case "University":
                         return JsonSerializer.Deserialize<University>(rootElement.GetRawText(), options);
+                    case "Hotel":
+                        return JsonSerializer.Deserialize<Hotel>(rootElement.GetRawText(), options);
+                    case "Shop":
+                        return JsonSerializer.Deserialize<Shop>(rootElement.GetRawText(), options);
+                    case "Warehouse":
+                        return JsonSerializer.Deserialize<Warehouse>(rootElement.GetRawText(), options);
+                    case "Factory":
+                        return JsonSerializer.Deserialize<Factory>(rootElement.GetRawText(), options);
                     default:
                         throw new JsonException($"Unknown estate type: {typeString}");
                 }

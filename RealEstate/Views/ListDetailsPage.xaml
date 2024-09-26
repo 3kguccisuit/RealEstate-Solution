@@ -24,7 +24,12 @@
                 TownhouseTemplate ="{StaticResource TownhouseTemplate}"
                 HospitalTemplate="{StaticResource HospitalTemplate}"
                 SchoolTemplate="{StaticResource SchoolTemplate}"
-                UniversityTemplate="{StaticResource UniversityTemplate}"/>
+                UniversityTemplate="{StaticResource UniversityTemplate}"
+                HotelTemplate="{StaticResource HotelTemplate}"
+                ShopTemplate="{StaticResource ShopTemplate}"
+                WarehouseTemplate="{StaticResource WarehouseTemplate}"
+                FactoryTemplate="{StaticResource FactoryTemplate}"
+                />
         </ResourceDictionary>
     </Page.Resources>
 
@@ -56,6 +61,10 @@
                             <MenuItem Header="Hospital" Command="{Binding OpenEstateFormCommand}" CommandParameter="Hospital"/>
                             <MenuItem Header="School" Command="{Binding OpenEstateFormCommand}" CommandParameter="School"/>
                             <MenuItem Header="University" Command="{Binding OpenEstateFormCommand}" CommandParameter="University"/>
+                            <MenuItem Header="Hotel" Command="{Binding OpenEstateFormCommand}" CommandParameter="Hotel"/>
+                            <MenuItem Header="Shop" Command="{Binding OpenEstateFormCommand}" CommandParameter="Shop"/>
+                            <MenuItem Header="Warehouse" Command="{Binding OpenEstateFormCommand}" CommandParameter="Warehouse"/>
+                            <MenuItem Header="Factory" Command="{Binding OpenEstateFormCommand}" CommandParameter="Factory"/>
                         </ContextMenu>
                     </ui:DropDownButton.Flyout>
                 </ui:DropDownButton>

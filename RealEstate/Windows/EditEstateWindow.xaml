@@ -19,7 +19,12 @@
                 TownhouseCreateTemplate="{StaticResource TownhouseCreateTemplate}"
                 HospitalCreateTemplate="{StaticResource HospitalCreateTemplate}"
                 SchoolCreateTemplate="{StaticResource SchoolCreateTemplate}"
-                UniversityCreateTemplate="{StaticResource UniversityCreateTemplate}"/>
+                UniversityCreateTemplate="{StaticResource UniversityCreateTemplate}"
+                HotelCreateTemplate="{StaticResource HotelCreateTemplate}"
+                ShopCreateTemplate="{StaticResource ShopCreateTemplate}"
+                WarehouseCreateTemplate="{StaticResource WarehouseCreateTemplate}"
+                FactoryCreateTemplate="{StaticResource FactoryCreateTemplate}"
+                />
         </ResourceDictionary>
     </Window.Resources>
 

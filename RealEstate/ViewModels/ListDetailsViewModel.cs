@@ -96,7 +96,7 @@ namespace RealEstate.ViewModels
            await RefreshEstatesAsync();
             if (viewModel.SelectedEstate.ID != "Cancel")
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
-            else
+            else if(temp != null)
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);
         }
 

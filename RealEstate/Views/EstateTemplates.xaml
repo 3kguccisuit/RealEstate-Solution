@@ -135,7 +135,6 @@
             <TextBlock Text="{Binding NumberOfBeds}" />
 
             <!-- Image Display -->
-            <TextBlock Text="Hospital Image:" FontWeight="Bold" />
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
@@ -169,7 +168,6 @@
             <TextBlock Text="{Binding NumberOfClassrooms}" />
 
             <!-- Image Display -->
-            <TextBlock Text="School Image:" FontWeight="Bold" />
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
@@ -203,12 +201,141 @@
             <TextBlock Text="{Binding NumberOfPrograms}" />
 
             <!-- Image Display -->
-            <TextBlock Text="University Image:" FontWeight="Bold" />
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
 
+    <!-- DataTemplate for Displaying a Hotel -->
+    <DataTemplate x:Key="HotelTemplate" DataType="{x:Type models:Hotel}">
+        <StackPanel>
+            <TextBlock Text="Hotel Details" FontSize="20" FontWeight="Bold" />
 
+            <!-- ID -->
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+
+            <!-- Address -->
+            <TextBlock Text="Address:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Address.Street}" />
+            <TextBlock Text="{Binding Address.City}" />
+            <TextBlock Text="{Binding Address.ZipCode}" />
+            <TextBlock Text="{Binding Address.Country}" />
+
+            <!-- Legal Form Type -->
+            <TextBlock Text="Legal Form Type:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LegalForm.FormType}" />
+
+            <!-- Square Meters -->
+            <TextBlock Text="Square Meters:" FontWeight="Bold" />
+            <TextBlock Text="{Binding SquareMeters}" />
+
+            <!-- Has Spa -->
+            <TextBlock Text="Has Spa:" FontWeight="Bold" />
+            <TextBlock Text="{Binding HasSpa}" />
+
+            <!-- Image Display -->
+            <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Displaying a Shop -->
+    <DataTemplate x:Key="ShopTemplate" DataType="{x:Type models:Shop}">
+        <StackPanel>
+            <TextBlock Text="Shop Details" FontSize="20" FontWeight="Bold" />
+
+            <!-- ID -->
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+
+            <!-- Address -->
+            <TextBlock Text="Address:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Address.Street}" />
+            <TextBlock Text="{Binding Address.City}" />
+            <TextBlock Text="{Binding Address.ZipCode}" />
+            <TextBlock Text="{Binding Address.Country}" />
+
+            <!-- Legal Form Type -->
+            <TextBlock Text="Legal Form Type:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LegalForm.FormType}" />
+
+            <!-- Square Meters -->
+            <TextBlock Text="Square Meters:" FontWeight="Bold" />
+            <TextBlock Text="{Binding SquareMeters}" />
+
+            <!-- Has Online Store -->
+            <TextBlock Text="Has Online Store:" FontWeight="Bold" />
+            <TextBlock Text="{Binding HasOnlineStore}" />
+
+            <!-- Image Display -->
+            <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Displaying a Warehouse -->
+    <DataTemplate x:Key="WarehouseTemplate" DataType="{x:Type models:Warehouse}">
+        <StackPanel>
+            <TextBlock Text="Warehouse Details" FontSize="20" FontWeight="Bold" />
+
+            <!-- ID -->
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+
+            <!-- Address -->
+            <TextBlock Text="Address:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Address.Street}" />
+            <TextBlock Text="{Binding Address.City}" />
+            <TextBlock Text="{Binding Address.ZipCode}" />
+            <TextBlock Text="{Binding Address.Country}" />
+
+            <!-- Legal Form Type -->
+            <TextBlock Text="Legal Form Type:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LegalForm.FormType}" />
+
+            <!-- Square Meters -->
+            <TextBlock Text="Square Meters:" FontWeight="Bold" />
+            <TextBlock Text="{Binding SquareMeters}" />
+
+            <!-- Loading Docks -->
+            <TextBlock Text="Loading Docks:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LoadingDocks}" />
+
+            <!-- Image Display -->
+            <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Displaying a Factory -->
+    <DataTemplate x:Key="FactoryTemplate" DataType="{x:Type models:Factory}">
+        <StackPanel>
+            <TextBlock Text="Factory Details" FontSize="20" FontWeight="Bold" />
+
+            <!-- ID -->
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+
+            <!-- Address -->
+            <TextBlock Text="Address:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Address.Street}" />
+            <TextBlock Text="{Binding Address.City}" />
+            <TextBlock Text="{Binding Address.ZipCode}" />
+            <TextBlock Text="{Binding Address.Country}" />
+
+            <!-- Legal Form Type -->
+            <TextBlock Text="Legal Form Type:" FontWeight="Bold" />
+            <TextBlock Text="{Binding LegalForm.FormType}" />
+
+            <!-- Square Meters -->
+            <TextBlock Text="Square Meters:" FontWeight="Bold" />
+            <TextBlock Text="{Binding SquareMeters}" />
+
+            <!-- Has Warehouse -->
+            <TextBlock Text="Has Warehouse:" FontWeight="Bold" />
+            <TextBlock Text="{Binding HasWarehouse}" />
+
+            <!-- Image Display -->
+            <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </DataTemplate>
 
 
 </ResourceDictionary>

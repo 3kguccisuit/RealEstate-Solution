@@ -93,6 +93,42 @@ namespace RealEstate.ViewModels
                     0 // Number of programs
                 );
             }
+            else if (type == "Hotel")
+            {
+                SelectedEstate = new Hotel(id,
+                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // SquareMeters
+                    false // hasSpa
+                );
+            }
+            else if (type == "Shop")
+            {
+                SelectedEstate = new Shop(id,
+                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // SquareMeters
+                    false // HasOnlineStore
+                );
+            }
+            else if (type == "Warehouse")
+            {
+                SelectedEstate = new Warehouse(id,
+                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // SquareMeters
+                    0 // LoadingDocks
+                );
+            }
+            else if (type == "Factory")
+            {
+                SelectedEstate = new Factory(id,
+                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // SquareMeters
+                    false // hasWarehouse
+                );
+            }
             else
             {
                 MessageBox.Show("Invalid estate type.");

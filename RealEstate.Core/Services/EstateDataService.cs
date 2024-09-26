@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
+using System.Security.Cryptography.X509Certificates;
 
 namespace RealEstate.Core.Services
 {

@@ -21,10 +21,10 @@
     "NumberOfRooms": 0,
     "ID": "10a7b82c-204b-404d-86b6-3deaedcc694b",
     "Address": {
-      "Street": "Street name",
+      "Street": "test",
       "ZipCode": "312",
       "City": "City",
-      "Country": 164
+      "Country": 192
     },
     "LegalForm": {
       "FormType": 2
@@ -46,5 +46,21 @@
       "FormType": 0
     },
     "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\bg.jpg"
+  },
+  {
+    "NumberOfClassrooms": 0,
+    "Type": "School",
+    "ParkingSpaces": 0,
+    "ID": "53711533-677b-42f0-89da-fb655b17528c",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "bkabka",
+      "Country": 165
+    },
+    "LegalForm": {
+      "FormType": 0
+    },
+    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
   }
 ]

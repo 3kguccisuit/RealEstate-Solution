@@ -81,6 +81,7 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private async Task OpenEstateForm(string selectedType)
         {
+            var temp = SelectedEstate;
             // Resolve the ViewModel from the DI container
             var viewModel = _serviceProvider.GetRequiredService<CreateEstateViewModel>();
 
@@ -93,10 +94,10 @@ namespace RealEstate.ViewModels
 
             //force refresh
            await RefreshEstatesAsync();
-           if(viewModel.SelectedEstate.ID != "Cancel")
-           SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
-
-
+            if (viewModel.SelectedEstate.ID != "Cancel")
+                SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
+            else
+                SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);
         }
 
         private async Task RefreshEstatesAsync()
@@ -127,7 +128,7 @@ namespace RealEstate.ViewModels
         }
 
 
-        // Empty method to handle navigation away from the view (optional)
+        // Empty method to handle navigation away from the view
         public void OnNavigatedFrom()
         {
         }

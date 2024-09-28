@@ -1,18 +1,3 @@
 [
-  {
-    "NumberOfClassrooms": 23,
-    "Type": "School",
-    "ParkingSpaces": 1211,
-    "ID": "a36afc8c-162e-44dc-97d6-c93857d182a5",
-    "Address": {
-      "Street": "Street name",
-      "ZipCode": "Zip code",
-      "City": "City",
-      "Country": 164
-    },
-    "LegalForm": {
-      "FormType": 0
-    },
-    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
-  }
+
 ]

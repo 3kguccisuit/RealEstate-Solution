@@ -10,21 +10,72 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock
-                Grid.Column="0"
-                Text="🏠"
-                Margin="10"
-                VerticalAlignment="Center" />
-            <StackPanel
-                Grid.Column="1"
-                Margin="10"
-                VerticalAlignment="Center">
-                <!-- Bind the estate address properties -->
+
+            <!-- The TextBlock for the Unicode symbol -->
+            <TextBlock Grid.Column="0" Margin="10" VerticalAlignment="Center" FontSize="24">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Text" Value="🏠" />
+                        <!-- Default symbol -->
+                        <Style.Triggers>
+                            <!-- Check for Residential Types -->
+                            <DataTrigger Binding="{Binding Type}" Value="Villa">
+                                <Setter Property="Text" Value="🏠" />
+                                <!-- House icon -->
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Type}" Value="Apartment">
+                                <Setter Property="Text" Value="🏢" />
+                                <!-- Office building icon -->
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Type}" Value="Townhouse">
+                                <Setter Property="Text" Value="🏘️" />
+                                <!-- Townhouse icon -->
+                            </DataTrigger>
+
+                            <!-- Check for Commercial Types -->
+                            <DataTrigger Binding="{Binding Type}" Value="Hotel">
+                                <Setter Property="Text" Value="🏨" />
+                                <!-- Hotel icon -->
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Type}" Value="Shop">
+                                <Setter Property="Text" Value="🛒" />
+                                <!-- Shop icon -->
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Type}" Value="Warehouse">
+                                <Setter Property="Text" Value="🏭" />
+                                <!-- Warehouse icon -->
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Type}" Value="Factory">
+                                <Setter Property="Text" Value="🏭" />
+                                <!-- Factory icon -->
+                            </DataTrigger>
+
+                            <!-- Check for Institutional Types -->
+                            <DataTrigger Binding="{Binding Type}" Value="Hospital">
+                                <Setter Property="Text" Value="🏥" />
+                                <!-- Hospital icon -->
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Type}" Value="School">
+                                <Setter Property="Text" Value="🏫" />
+                                <!-- School icon -->
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Type}" Value="University">
+                                <Setter Property="Text" Value="🎓" />
+                                <!-- University icon -->
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <!-- StackPanel for the estate address properties -->
+            <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Center">
                 <TextBlock FontWeight="Bold" Text="{Binding Type}" />
                 <TextBlock Text="{Binding Address.City}" />
             </StackPanel>
         </Grid>
     </DataTemplate>
+
 
     <!-- DataTemplate for Villa -->
     <DataTemplate x:Key="VillaTemplate" DataType="{x:Type models:Villa}">

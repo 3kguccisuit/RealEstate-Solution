@@ -1,7 +1,9 @@
 ﻿using System.Windows.Controls;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using RealEstate.Contracts.Services;
 using RealEstate.ViewModels;
 using RealEstate.Views;
@@ -18,6 +20,8 @@ public class PageService : IPageService
         _serviceProvider = serviceProvider;
         Configure<MainViewModel, MainPage>();
         Configure<ListDetailsViewModel, ListDetailsPage>();
+        Configure<CustomerViewModel, CustomerPage>();
+        Configure<BanksViewModel, BanksPage>();
     }
 
     public Type GetPageType(string key)

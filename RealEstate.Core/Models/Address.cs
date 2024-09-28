@@ -1,4 +1,5 @@
-﻿using RealEstate.Core.Enums;
+﻿using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Enums;
 using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models;

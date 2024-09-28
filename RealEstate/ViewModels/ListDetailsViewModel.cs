@@ -13,7 +13,8 @@ namespace RealEstate.ViewModels
 {
     public partial class ListDetailsViewModel : ObservableObject, INavigationAware
     {
-        private readonly IEstateDataService _estateDataService;
+        //private readonly IEstateDataService _estateDataService;  // DH !!!
+        private readonly IDataService<Estate> _estateDataService;  // DH !!!
         private readonly IServiceProvider _serviceProvider;
         private Estate _selectedEstate;
         public Estate SelectedEstate
@@ -27,7 +28,8 @@ namespace RealEstate.ViewModels
         public ObservableCollection<Estate> Estates { get; private set; } = new ObservableCollection<Estate>();
 
         // Constructor with the estate data service dependency injected
-        public ListDetailsViewModel(IEstateDataService estateDataService, IServiceProvider serviceProvider)
+        //public ListDetailsViewModel(IEstateDataService estateDataService, IServiceProvider serviceProvider)
+        public ListDetailsViewModel(IDataService<Estate> estateDataService, IServiceProvider serviceProvider)  // DH !!!
         {
             _estateDataService = estateDataService;
             _serviceProvider = serviceProvider;
@@ -67,7 +69,8 @@ namespace RealEstate.ViewModels
                     //force update
                     Estates.Remove(selected);
                     //remove from json
-                    await _estateDataService.RemoveEstateAsync(selected.ID);
+                    //await _estateDataService.RemoveEstateAsync(selected.ID);  // DH !!!
+                    await _estateDataService.RemoveAsync(selected.ID);  // DH !!!
                     SelectedEstate = Estates.FirstOrDefault();
                 }
             }
@@ -104,7 +107,8 @@ namespace RealEstate.ViewModels
         {
             Estates.Clear();
 
-            var data = await _estateDataService.GetEstatesAsync();
+            // var data = await _estateDataService.GetEstatesAsync(); // DH !!!
+            var data = await _estateDataService.GetAsync();
 
             foreach (var estate in data)
             {
@@ -117,7 +121,8 @@ namespace RealEstate.ViewModels
         {
             Estates.Clear();
 
-            var data = await _estateDataService.GetEstatesAsync();
+            // var data = await _estateDataService.GetEstatesAsync(); // DH !!!
+            var data = await _estateDataService.GetAsync();
 
             foreach (var estate in data)
             {

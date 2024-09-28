@@ -162,5 +162,71 @@ namespace RealEstate.Properties {
                 return ResourceManager.GetString("ShellAddEstatePage", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sample Orders.
+        /// </summary>
+        public static string CustomerListDescription
+        {
+            get
+            {
+                return ResourceManager.GetString("CustomerListDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Customer.
+        /// </summary>
+        public static string CustomerPageTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("CustomerPageTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Customer.
+        /// </summary>
+        public static string ShellCustomerPage
+        {
+            get
+            {
+                return ResourceManager.GetString("ShellCustomerPage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sample Orders.
+        /// </summary>
+        public static string BanksListDescription
+        {
+            get
+            {
+                return ResourceManager.GetString("BanksListDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Banks.
+        /// </summary>
+        public static string BanksPageTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("BanksPageTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Banks.
+        /// </summary>
+        public static string ShellBanksPage
+        {
+            get
+            {
+                return ResourceManager.GetString("ShellBanksPage", resourceCulture);
+            }
+        }
     }
 }

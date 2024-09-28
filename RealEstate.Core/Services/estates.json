@@ -1,3 +1,100 @@
 [
-
+  {
+    "NumberOfClassrooms": 0,
+    "Type": "School",
+    "ParkingSpaces": 0,
+    "ID": "90fe03ea-5b8b-4a4a-a362-c3fe9e03ace2",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "City",
+      "Country": 164
+    },
+    "LegalForm": {
+      "FormType": 0
+    },
+    "ImagePath": null
+  },
+  {
+    "HasGarden": false,
+    "Type": "Townhouse",
+    "NumberOfRooms": 0,
+    "ID": "a9ff6145-b313-4159-8a66-a15431be6387",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "City",
+      "Country": 164
+    },
+    "LegalForm": {
+      "FormType": 0
+    },
+    "ImagePath": null
+  },
+  {
+    "HasWarehouse": false,
+    "Type": "Factory",
+    "SquareMeters": 0,
+    "ID": "4489196a-cd86-42bd-a4a5-d1a9b595bcda",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "City",
+      "Country": 164
+    },
+    "LegalForm": {
+      "FormType": 0
+    },
+    "ImagePath": null
+  },
+  {
+    "NumberOfFloors": 0,
+    "HasGarage": false,
+    "Type": "Villa",
+    "NumberOfRooms": 0,
+    "ID": "c2f4892e-fda2-4bce-a442-d9f4cebef599",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "City",
+      "Country": 164
+    },
+    "LegalForm": {
+      "FormType": 0
+    },
+    "ImagePath": null
+  },
+  {
+    "NumberOfFloors": 0,
+    "HasGarage": false,
+    "Type": "Villa",
+    "NumberOfRooms": 0,
+    "ID": "335259a1-aab7-42e9-8daf-2f2931db9a5b",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "Zip code",
+      "City": "City",
+      "Country": 164
+    },
+    "LegalForm": {
+      "FormType": 0
+    },
+    "ImagePath": null
+  },
+  {
+    "HasSpa": false,
+    "Type": "Hotel",
+    "SquareMeters": 0,
+    "ID": "218fb8af-629d-4bda-92b8-2032c26b5dbb",
+    "Address": {
+      "Street": "Street name",
+      "ZipCode": "12345",
+      "City": "City",
+      "Country": 164
+    },
+    "LegalForm": {
+      "FormType": 0
+    },
+    "ImagePath": null
+  }
 ]

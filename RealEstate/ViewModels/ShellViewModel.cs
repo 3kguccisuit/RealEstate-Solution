@@ -34,6 +34,8 @@ public class ShellViewModel : ObservableObject
 
         
         //new HamburgerMenuGlyphItem() { Label = Resources.ShellAddEstatePage, Glyph = "\uE8A5", TargetPageType = typeof(AddEstateViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellCustomerPage, Glyph = "\uE716", TargetPageType = typeof(CustomerViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellBanksPage, Glyph = "\uE825", TargetPageType = typeof(BanksViewModel) },
     };
 
     public RelayCommand GoBackCommand => _goBackCommand ?? (_goBackCommand = new RelayCommand(OnGoBack, CanGoBack));

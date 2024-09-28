@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+    <data name="ShellBanksPage" xml:space="preserve">
+		    <value>Banks</value>
+    </data>
+    <data name="BanksPageTitle" xml:space="preserve">
+		    <value>Banks</value>
+    </data>
+    <data name="BanksListDescription" xml:space="preserve">
+		    <value>Sample Orders</value>
+    </data>
+    <data name="ShellCustomerPage" xml:space="preserve">
+		    <value>Customer</value>
+    </data>
+    <data name="CustomerPageTitle" xml:space="preserve">
+		    <value>Customer</value>
+    </data>
+    <data name="CustomerListDescription" xml:space="preserve">
+		    <value>Sample Orders</value>
+    </data>
     <data name="ShellAddEstatePage" xml:space="preserve">
 		    <value>AddEstate</value>
     </data>

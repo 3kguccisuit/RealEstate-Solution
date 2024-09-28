@@ -162,5 +162,38 @@ namespace RealEstate.Properties {
                 return ResourceManager.GetString("ShellAddEstatePage", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sample Orders.
+        /// </summary>
+        public static string PersonListDescription
+        {
+            get
+            {
+                return ResourceManager.GetString("PersonListDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Person.
+        /// </summary>
+        public static string PersonPageTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("PersonPageTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Person.
+        /// </summary>
+        public static string ShellPersonPage
+        {
+            get
+            {
+                return ResourceManager.GetString("ShellPersonPage", resourceCulture);
+            }
+        }
     }
 }

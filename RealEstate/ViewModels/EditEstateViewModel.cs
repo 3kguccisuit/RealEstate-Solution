@@ -16,7 +16,8 @@ namespace RealEstate.ViewModels
 {
     public partial class EditEstateViewModel : ObservableObject
     {
-        private readonly IEstateDataService _estateDataService;
+        //private readonly IEstateDataService _estateDataService;
+        private readonly IDataService<Estate> _estateDataService;
 
         [ObservableProperty]
         private Estate selectedEstate;
@@ -25,7 +26,7 @@ namespace RealEstate.ViewModels
         public List<LegalFormType> LegalForms { get; }
 
         // Constructor for dependency injection and initializing data
-        public EditEstateViewModel(IEstateDataService estateDataService)
+        public EditEstateViewModel(IDataService<Estate> estateDataService)
         {
             _estateDataService = estateDataService;
 
@@ -43,7 +44,7 @@ namespace RealEstate.ViewModels
         private async Task Save(Window window)
         {
             MessageBox.Show($"Updated: {SelectedEstate}");
-            await _estateDataService.UpdateEstateAsync( SelectedEstate );
+            await _estateDataService.UpdateAsync( SelectedEstate );
             window.Close();
         }
 

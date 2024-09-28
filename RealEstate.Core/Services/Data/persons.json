@@ -1,0 +1,52 @@
+[
+  {
+    "Type": "Buyer",
+    "ID": "1",
+    "Name": "John Doe",
+    "Address": {
+      "Street": "123 Maple Street",
+      "City": "Springfield",
+      "ZipCode": "12345",
+      "Country": 163
+    },
+    "Budget": 300000,
+    "HasLoanApproval": true
+  },
+  {
+    "Type": "Seller",
+    "ID": "2",
+    "Name": "Jane Smith",
+    "Address": {
+      "Street": "456 Oak Avenue",
+      "City": "Shelbyville",
+      "ZipCode": "54321",
+      "Country": 163
+    },
+    "AskingPrice": 350000
+  },
+  {
+    "Type": "Buyer",
+    "ID": "3",
+    "Name": "Alice Johnson",
+    "Address": {
+      "Street": "789 Pine Road",
+      "City": "Capital City",
+      "ZipCode": "67890",
+      "Country": 163
+    },
+    "Budget": 450000,
+    "HasLoanApproval": false
+  },
+  {
+    "Type": "Seller",
+    "ID": "4",
+    "Name": "Bob Brown",
+    "Address": {
+      "Street": "101 Elm Street",
+      "City": "Ogdenville",
+      "ZipCode": "98765",
+      "Country": 163
+    },
+    "AskingPrice": 250000
+  }
+]

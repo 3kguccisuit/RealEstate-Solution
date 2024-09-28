@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using RealEstate.Contracts.Services;
 using RealEstate.Contracts.Views;
 using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Models;
 using RealEstate.Services;
@@ -65,8 +66,13 @@ public partial class App : Application
         // Core Services
 
         // Services
+        services.AddSingleton<ISampleDataService, SampleDataService>();
+
         //services.AddSingleton<ISampleDataService, SampleDataService>();
-        services.AddSingleton<IEstateDataService, EstateDataService>();
+        //services.AddSingleton<IEstateDataService, EstateDataService>();
+        services.AddSingleton<IDataService<Estate>, EstateDataService>();
+        services.AddSingleton<IDataService<Person>, PersonDataService>();
+
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();
 
@@ -85,6 +91,9 @@ public partial class App : Application
 
         services.AddTransient<ListDetailsPage>();
         services.AddTransient<ListDetailsViewModel>();
+        services.AddTransient<PersonViewModel>();
+        services.AddTransient<PersonPage>();
+
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
     }

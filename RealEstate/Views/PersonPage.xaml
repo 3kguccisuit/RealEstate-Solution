@@ -1,0 +1,90 @@
+﻿<Page
+    x:Class="RealEstate.Views.PersonPage"
+    Style="{DynamicResource MahApps.Styles.Page}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:RealEstate.TemplateSelectors"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    mc:Ignorable="d"
+    d:DesignHeight="450" d:DesignWidth="800">
+
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/RealEstate;component/Views/PersonTemplates.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+			<!-- Register the PersonTemplateSelector -->
+			<local:PersonTemplateSelector
+                x:Key="PersonTemplateSelector"
+                BuyerTemplate="{StaticResource BuyerTemplate}"
+                SellerTemplate="{StaticResource SellerTemplate}" />
+		</ResourceDictionary>
+	</Page.Resources>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition MinWidth="180" MaxWidth="300" Width="*" />
+			<ColumnDefinition Width="2*" />
+		</Grid.ColumnDefinitions>
+
+		<!-- ListView (left side) displaying person items -->
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="48" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<!-- StackPanel for title and buttons -->
+			<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+				<TextBlock
+                    Style="{StaticResource PageTitleStyle}"
+                    Margin="10"
+                    Text="Person List" />
+				<ui:DropDownButton Margin="2" Content="&#xE710;" ToolTip="New Person" FontFamily="Segoe MDL2 Assets" FontSize="10" Width="30" Height="30">
+					<ui:DropDownButton.Flyout>
+						<ContextMenu>
+							<MenuItem Header="Buyer" Command="{Binding OpenPersonFormCommand}" CommandParameter="Buyer" />
+							<MenuItem Header="Seller" Command="{Binding OpenPersonFormCommand}" CommandParameter="Seller" />
+						</ContextMenu>
+					</ui:DropDownButton.Flyout>
+				</ui:DropDownButton>
+
+				<!-- Edit Person Button -->
+				<Button Content="&#xE70F;" Width="30" Height="30"
+                    Command="{Binding EditPersonCommand}"
+                    CommandParameter="{Binding SelectedPerson}"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="10"
+                    Margin="2"
+                    ToolTip="Edit Selected Person" />
+
+				<!-- Delete Person Button -->
+				<Button Content="&#xE74D;" Width="30" Height="30"
+                    Command="{Binding DeletePersonCommand}"
+                    CommandParameter="{Binding SelectedPerson}"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="10"
+                    Margin="2"
+                    ToolTip="Delete Selected Person" />
+			</StackPanel>
+
+			<ListView
+                Grid.Row="1"
+                AutomationProperties.Name="Person List"
+                ItemsSource="{Binding Persons}"
+                ItemTemplate="{StaticResource PersonItemTemplate}"
+                SelectedItem="{Binding SelectedPerson, Mode=TwoWay}" />
+		</Grid>
+
+		<!-- ContentControl (right side) displaying selected person details using DataTemplateSelector -->
+		<ContentControl
+            Grid.Column="1"
+            IsTabStop="False"
+            Content="{Binding SelectedPerson}"
+            ContentTemplateSelector="{StaticResource PersonTemplateSelector}"
+            Margin="20,0,0,0" />
+	</Grid>
+</Page>

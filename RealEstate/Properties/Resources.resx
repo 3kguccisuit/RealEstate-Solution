@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+    <data name="ShellPersonPage" xml:space="preserve">
+		    <value>Person</value>
+    </data>
+    <data name="PersonPageTitle" xml:space="preserve">
+		    <value>Person</value>
+    </data>
+    <data name="PersonListDescription" xml:space="preserve">
+		    <value>Sample Orders</value>
+    </data>
     <data name="ShellAddEstatePage" xml:space="preserve">
 		    <value>AddEstate</value>
     </data>

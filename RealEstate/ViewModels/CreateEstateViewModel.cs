@@ -17,7 +17,8 @@ namespace RealEstate.ViewModels
 {
     public partial class CreateEstateViewModel : ObservableObject
     {
-        private readonly IEstateDataService _estateDataService;
+        //private readonly IEstateDataService _estateDataService;
+        private readonly IDataService<Estate> _estateDataService;
 
         [ObservableProperty]
         private Estate selectedEstate;
@@ -25,7 +26,7 @@ namespace RealEstate.ViewModels
         public List<Country> Countries { get; }
         public List<LegalFormType> LegalForms { get; }
 
-        public CreateEstateViewModel(IEstateDataService estateDataService)
+        public CreateEstateViewModel(IDataService<Estate> estateDataService)
         {
             _estateDataService = estateDataService;
 
@@ -156,7 +157,7 @@ namespace RealEstate.ViewModels
         {
 
             MessageBox.Show($"Created {SelectedEstate.Type} with the props: {SelectedEstate}");
-            await _estateDataService.AddEstateAsync(SelectedEstate);
+            await _estateDataService.AddAsync(SelectedEstate);
 
             window.Close();
         }

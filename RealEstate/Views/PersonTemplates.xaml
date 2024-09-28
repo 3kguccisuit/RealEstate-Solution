@@ -19,7 +19,7 @@
                 Margin="10"
                 VerticalAlignment="Center">
                 <TextBlock FontWeight="Bold" Text="{Binding Name}" />
-                <TextBlock Text="{Binding Address.City}" />
+                <TextBlock Text="{Binding Type}" />
             </StackPanel>
         </Grid>
     </DataTemplate>

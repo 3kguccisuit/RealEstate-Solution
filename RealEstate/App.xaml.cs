@@ -66,7 +66,6 @@ public partial class App : Application
         // Core Services
 
         // Services
-        services.AddSingleton<ISampleDataService, SampleDataService>();
 
         //services.AddSingleton<ISampleDataService, SampleDataService>();
         //services.AddSingleton<IEstateDataService, EstateDataService>();

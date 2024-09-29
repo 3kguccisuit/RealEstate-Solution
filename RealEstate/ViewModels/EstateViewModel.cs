@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace RealEstate.ViewModels
 {
-    public partial class ListDetailsViewModel : ObservableObject, INavigationAware
+    public partial class EstateViewModel : ObservableObject, INavigationAware
     {
         //private readonly IEstateDataService _estateDataService;
         private readonly IDataService<Estate> _estateDataService;
@@ -28,7 +28,7 @@ namespace RealEstate.ViewModels
         public ObservableCollection<Estate> Estates { get; private set; } = new ObservableCollection<Estate>();
 
         // Constructor with the estate data service dependency injected
-        public ListDetailsViewModel(IDataService<Estate> estateDataService, IServiceProvider serviceProvider)
+        public EstateViewModel(IDataService<Estate> estateDataService, IServiceProvider serviceProvider)
         {
             _estateDataService = estateDataService;
             _serviceProvider = serviceProvider;

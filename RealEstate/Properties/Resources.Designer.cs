@@ -10,7 +10,8 @@
 
 namespace RealEstate.Properties {
     using System;
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -18,19 +19,19 @@ namespace RealEstate.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
-
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -44,7 +45,7 @@ namespace RealEstate.Properties {
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -58,140 +59,147 @@ namespace RealEstate.Properties {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to ts.ItemName.
+        ///   Looks up a localized string similar to AddEstate.
+        /// </summary>
+        public static string AddEstatePageTitle {
+            get {
+                return ResourceManager.GetString("AddEstatePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RealEstate.
         /// </summary>
         public static string AppDisplayName {
             get {
                 return ResourceManager.GetString("AppDisplayName", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to ShellGoBackButton.
+        ///   Looks up a localized string similar to Bank List Desc.
+        /// </summary>
+        public static string BankListDescription {
+            get {
+                return ResourceManager.GetString("BankListDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank List.
+        /// </summary>
+        public static string BankPageTitle {
+            get {
+                return ResourceManager.GetString("BankPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estate List Desc.
+        /// </summary>
+        public static string EstateListDescription {
+            get {
+                return ResourceManager.GetString("EstateListDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estate List.
+        /// </summary>
+        public static string EstatePageTitle {
+            get {
+                return ResourceManager.GetString("EstatePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main.
+        /// </summary>
+        public static string MainPageTitle {
+            get {
+                return ResourceManager.GetString("MainPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person List Desc.
+        /// </summary>
+        public static string PersonListDescription {
+            get {
+                return ResourceManager.GetString("PersonListDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person List.
+        /// </summary>
+        public static string PersonPageTitle {
+            get {
+                return ResourceManager.GetString("PersonPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AddEstate.
+        /// </summary>
+        public static string ShellAddEstatePage {
+            get {
+                return ResourceManager.GetString("ShellAddEstatePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank List.
+        /// </summary>
+        public static string ShellBankPage {
+            get {
+                return ResourceManager.GetString("ShellBankPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go back.
         /// </summary>
         public static string ShellGoBackButton {
             get {
                 return ResourceManager.GetString("ShellGoBackButton", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to ShellHamburgerButtonName.
+        ///   Looks up a localized string similar to Open or close navigation.
         /// </summary>
         public static string ShellHamburgerButtonName {
             get {
                 return ResourceManager.GetString("ShellHamburgerButtonName", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Main.
+        ///   Looks up a localized string similar to Estate List.
         /// </summary>
-        public static string MainPageTitle
-        {
-            get
-            {
-                return ResourceManager.GetString("MainPageTitle", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Main.
-        /// </summary>
-        public static string ShellMainPage
-        {
-            get
-            {
-                return ResourceManager.GetString("ShellMainPage", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Sample Orders.
-        /// </summary>
-        public static string ListDetailsListDescription
-        {
-            get
-            {
-                return ResourceManager.GetString("ListDetailsListDescription", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to ListDetails.
-        /// </summary>
-        public static string ListDetailsPageTitle
-        {
-            get
-            {
-                return ResourceManager.GetString("ListDetailsPageTitle", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to ListDetails.
-        /// </summary>
-        public static string ShellListDetailsPage
-        {
-            get
-            {
+        public static string ShellListDetailsPage {
+            get {
                 return ResourceManager.GetString("ShellListDetailsPage", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to AddEstate.
+        ///   Looks up a localized string similar to Main.
         /// </summary>
-        public static string AddEstatePageTitle
-        {
-            get
-            {
-                return ResourceManager.GetString("AddEstatePageTitle", resourceCulture);
+        public static string ShellMainPage {
+            get {
+                return ResourceManager.GetString("ShellMainPage", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to AddEstate.
+        ///   Looks up a localized string similar to Person List.
         /// </summary>
-        public static string ShellAddEstatePage
-        {
-            get
-            {
-                return ResourceManager.GetString("ShellAddEstatePage", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Sample Orders.
-        /// </summary>
-        public static string PersonListDescription
-        {
-            get
-            {
-                return ResourceManager.GetString("PersonListDescription", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Person.
-        /// </summary>
-        public static string PersonPageTitle
-        {
-            get
-            {
-                return ResourceManager.GetString("PersonPageTitle", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Person.
-        /// </summary>
-        public static string ShellPersonPage
-        {
-            get
-            {
+        public static string ShellPersonPage {
+            get {
                 return ResourceManager.GetString("ShellPersonPage", resourceCulture);
             }
         }

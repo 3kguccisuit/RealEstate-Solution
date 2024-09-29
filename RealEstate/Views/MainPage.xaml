@@ -14,6 +14,21 @@
 
 
     <Grid>
+        <RichTextBox IsReadOnly="True">
 
+            <FlowDocument>
+                <Paragraph>
+                    <Bold>
+                        <Run>Welcome to REALESTATE!</Run>
+                    </Bold>
+                </Paragraph>
+                <Paragraph>
+                    <Run>Your App to success!</Run>
+                </Paragraph>
+                <Paragraph>
+                    <Run>The REALESTATE Team!</Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
     </Grid>
 </Page>

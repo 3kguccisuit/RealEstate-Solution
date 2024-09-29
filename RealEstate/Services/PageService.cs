@@ -19,8 +19,9 @@ public class PageService : IPageService
     {
         _serviceProvider = serviceProvider;
         Configure<MainViewModel, MainPage>();
-        Configure<ListDetailsViewModel, ListDetailsPage>();
+        Configure<EstateViewModel, EstatePage>();
         Configure<PersonViewModel, PersonPage>();
+        Configure<BankViewModel, BankPage>();
     }
 
     public Type GetPageType(string key)

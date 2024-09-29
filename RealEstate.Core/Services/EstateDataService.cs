@@ -93,11 +93,21 @@ namespace RealEstate.Core.Services
         // Load estates from JSON file
         private async Task<IEnumerable<Estate>> LoadEstatesFromFileAsync()
         {
-            var json = await Task.Run(() => File.ReadAllText(FilePath));
+            var json = String.Empty;
 
-            if (string.IsNullOrWhiteSpace(json))
+            if (File.Exists(FilePath))
             {
-                Console.WriteLine("The JSON file is empty.");
+                json = await Task.Run(() => File.ReadAllText(FilePath));
+
+                if (string.IsNullOrWhiteSpace(json))
+                {
+                    Console.WriteLine("The JSON file is empty.");
+                    return new List<Estate>();
+                }
+            }
+            else
+            {
+                Console.WriteLine("The JSON file does not exist.");
                 return new List<Estate>();
             }
 

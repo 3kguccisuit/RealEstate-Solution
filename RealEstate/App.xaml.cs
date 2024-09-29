@@ -66,11 +66,11 @@ public partial class App : Application
         // Core Services
 
         // Services
-
         //services.AddSingleton<ISampleDataService, SampleDataService>();
         //services.AddSingleton<IEstateDataService, EstateDataService>();
         services.AddSingleton<IDataService<Estate>, EstateDataService>();
         services.AddSingleton<IDataService<Person>, PersonDataService>();
+        services.AddSingleton<IDataService<Payment>, PaymentDataService>();
 
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();
@@ -88,10 +88,13 @@ public partial class App : Application
         services.AddTransient<MainViewModel>();
         services.AddTransient<MainPage>();
 
-        services.AddTransient<ListDetailsPage>();
-        services.AddTransient<ListDetailsViewModel>();
+        services.AddTransient<EstatePage>();
+        services.AddTransient<EstateViewModel>();
         services.AddTransient<PersonViewModel>();
         services.AddTransient<PersonPage>();
+
+        services.AddTransient<BankViewModel>();
+        services.AddTransient<BankPage>();
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));

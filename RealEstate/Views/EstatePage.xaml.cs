@@ -4,9 +4,9 @@ using RealEstate.ViewModels;
 
 namespace RealEstate.Views;
 
-public partial class ListDetailsPage : Page
+public partial class EstatePage : Page
 {
-    public ListDetailsPage(ListDetailsViewModel viewModel)
+    public EstatePage(EstateViewModel viewModel)
     {
         InitializeComponent();
         DataContext = viewModel;

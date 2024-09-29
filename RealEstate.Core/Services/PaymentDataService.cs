@@ -5,30 +5,30 @@ using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Services
 {
-    public class PersonDataService : IDataService<Person>
+    public class PaymentDataService : IDataService<Payment>
     {
         private readonly string FilePath;
 
-        public PersonDataService()
+        public PaymentDataService()
         {
             // Navigate from bin\Debug to RealEstate.Core\Services
             var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            FilePath = Path.Combine(baseDirectory, "..", "..", "..", "..", "RealEstate.Core", "Services","Data", "persons.json");
+            FilePath = Path.Combine(baseDirectory, "..", "..", "..", "..", "RealEstate.Core", "Services","Data", "payments.json");
 
             // Normalize the path
             FilePath = Path.GetFullPath(FilePath);
         }
 
         // Return the list of persons, either from JSON or with mock data
-        public async Task<IEnumerable<Person>> GetAsync()
+        public async Task<IEnumerable<Payment>> GetAsync()
         {
             // Load the data from the JSON file
-            var personsFromFile = await LoadPersonsFromFileAsync();
+            var personsFromFile = await LoadPaymentsFromFileAsync();
             return personsFromFile;
         }
 
         // Save persons to JSON file
-        private async Task SavePersonsToFileAsync(IEnumerable<Person> persons)
+        private async Task SavePaymentListToFileAsync(IEnumerable<Payment> payments)
         {
             var options = new JsonSerializerOptions
             {
@@ -36,21 +36,21 @@ namespace RealEstate.Core.Services
                 Converters = { new PersonJsonConverter() }  // Ensure the custom converter is used
             };
 
-            var json = JsonSerializer.Serialize(persons, options);
+            var json = JsonSerializer.Serialize(payments, options);
 
             await Task.Run(() => File.WriteAllText(FilePath, json));
         }
 
         public async Task RemoveAsync(string id)
         {
-            var persons = await LoadPersonsFromFileAsync();
-            var personList = persons.ToList();
-            var personToRemove = personList.FirstOrDefault(p => p.ID == id);
+            var payments = await LoadPaymentsFromFileAsync();
+            var paymentList = payments.ToList();
+            var personToRemove = paymentList.FirstOrDefault(p => p.ID == id);
 
             if (personToRemove != null)
             {
-                personList.Remove(personToRemove);
-                await SavePersonsToFileAsync(personList);
+                paymentList.Remove(personToRemove);
+                await SavePaymentListToFileAsync(paymentList);
             }
             else
             {
@@ -58,39 +58,39 @@ namespace RealEstate.Core.Services
             }
         }
 
-        public async Task AddAsync(Person person)
+        public async Task AddAsync(Payment payment)
         {
-            var persons = await LoadPersonsFromFileAsync();
+            var payments = await LoadPaymentsFromFileAsync();
 
-            var updatedPersons = persons.ToList();
-            updatedPersons.Add(person);
+            var updatedPayments = payments.ToList();
+            updatedPayments.Add(payment);
 
-            await SavePersonsToFileAsync(updatedPersons);
+            await SavePaymentListToFileAsync(updatedPayments);
         }
 
-        public async Task UpdateAsync(Person updatedPerson)
+        public async Task UpdateAsync(Payment updatedPayment)
         {
-            var persons = await LoadPersonsFromFileAsync();
+            var persons = await LoadPaymentsFromFileAsync();
             var personList = persons.ToList();
 
             // Find the person to update by matching the ID
-            var personIndex = personList.FindIndex(p => p.ID == updatedPerson.ID);
+            var personIndex = personList.FindIndex(p => p.ID == updatedPayment.ID);
 
             if (personIndex >= 0)
             {
                 // Update the person in the list
-                personList[personIndex] = updatedPerson;
-                await SavePersonsToFileAsync(personList);  // Save updated list back to file
-                Console.WriteLine($"Person with ID {updatedPerson.ID} has been updated.");
+                personList[personIndex] = updatedPayment;
+                await SavePaymentListToFileAsync(personList);  // Save updated list back to file
+                Console.WriteLine($"Person with ID {updatedPayment.ID} has been updated.");
             }
             else
             {
-                Console.WriteLine($"Person with ID {updatedPerson.ID} not found.");
+                Console.WriteLine($"Person with ID {updatedPayment.ID} not found.");
             }
         }
 
         // Load persons from JSON file
-        private async Task<IEnumerable<Person>> LoadPersonsFromFileAsync()
+        private async Task<IEnumerable<Payment>> LoadPaymentsFromFileAsync()
         {
             var json = String.Empty;
 
@@ -101,15 +101,14 @@ namespace RealEstate.Core.Services
                 if (string.IsNullOrWhiteSpace(json))
                 {
                     Console.WriteLine("The JSON file is empty.");
-                    return new List<Person>();
+                    return new List<Payment>();
                 }
             }
             else
             {
                 Console.WriteLine("The JSON file does not exist.");
-                return new List<Person>();
+                return new List<Payment>();
             }
-
 
             var options = new JsonSerializerOptions
             {
@@ -120,8 +119,8 @@ namespace RealEstate.Core.Services
                 PropertyNameCaseInsensitive = true
             };
 
-            var persons = JsonSerializer.Deserialize<IEnumerable<Person>>(json, options);
-            return persons;
+            var payments = JsonSerializer.Deserialize<IEnumerable<Payment>>(json, options);
+            return payments;
         }
     }
 }

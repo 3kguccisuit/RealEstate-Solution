@@ -1,14 +1,30 @@
 [
   {
+    "IbanNumber": "XYZ123",
+    "Type": "Bank",
     "ID": "d8f04ab7-8be3-409f-9f68-0ca50fff977d",
-    "Name": "name",
-    "Type": "Payment",
-    "Amount": 123
+    "Name": "SEB",
+    "Amount": 1234
   },
   {
-    "ID": "5bdcd6da-6af4-42d2-aa30-58200436f925",
-    "Name": "name",
+    "IbanNumber": "ABC123",
     "Type": "Bank",
-    "Amount": 123
+    "ID": "5bdcd6da-6af4-42d2-aa30-58200436f925",
+    "Name": "Swedbank",
+    "Amount": 1230
+  },
+  {
+    "IbanNumber": "IBAN3",
+    "Type": "Bank",
+    "ID": "6faac3aa-1cd6-413b-b4ae-eb2ea456a3db",
+    "Name": "Kalle",
+    "Amount": 1256565
+  },
+  {
+    "IbanNumber": "IBAN-456",
+    "Type": "Bank",
+    "ID": "28443087-3269-457a-bf76-f060646eebaf",
+    "Name": "Eva",
+    "Amount": 7890
   }
 ]

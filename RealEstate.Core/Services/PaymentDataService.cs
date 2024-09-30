@@ -23,8 +23,8 @@ namespace RealEstate.Core.Services
         public async Task<IEnumerable<Payment>> GetAsync()
         {
             // Load the data from the JSON file
-            var personsFromFile = await LoadPaymentsFromFileAsync();
-            return personsFromFile;
+            var paymentsFromFile = await LoadPaymentsFromFileAsync();
+            return paymentsFromFile;
         }
 
         // Save payments to JSON file
@@ -33,7 +33,7 @@ namespace RealEstate.Core.Services
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,  // Pretty-print JSON
-                Converters = { new PersonJsonConverter() }  // Ensure the custom converter is used
+                Converters = { new PaymentJsonConverter() }  // Ensure the custom converter is used
             };
 
             var json = JsonSerializer.Serialize(payments, options);
@@ -113,7 +113,7 @@ namespace RealEstate.Core.Services
             var options = new JsonSerializerOptions
             {
                 Converters = {
-                    new PersonJsonConverter(),  // Custom converter for polymorphic deserialization
+                    new PaymentJsonConverter(),  // Custom converter for polymorphic deserialization
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
                 },
                 PropertyNameCaseInsensitive = true

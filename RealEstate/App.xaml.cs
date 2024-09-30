@@ -79,9 +79,10 @@ public partial class App : Application
         // Views and ViewModels
         //LH
         services.AddTransient<CreateEstateViewModel>();
-        services.AddTransient<CreatePaymentViewModel>();
-
         services.AddTransient<EditEstateViewModel>();
+
+        services.AddTransient<CreatePaymentViewModel>();
+        services.AddTransient<EditPaymentViewModel>();
 
         services.AddTransient<IShellWindow, ShellWindow>();
         services.AddTransient<ShellViewModel>();

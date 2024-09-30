@@ -19,7 +19,6 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
     private readonly IServiceProvider _serviceProvider;
     private Payment _selected;
 
-
     public Payment Selected
     {
         get { return _selected; }
@@ -38,19 +37,19 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
     private async Task EditPayment(Payment selected)
     {
         MessageBox.Show($"EditPayment {selected}", "EditPayment", MessageBoxButton.OK, MessageBoxImage.Information);
-        //if (selected != null)
-        //{
-        //    var viewModel = _serviceProvider.GetRequiredService<PaymentViewModel>();
-        //    viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
+        if (selected != null)
+        {
+            var viewModel = _serviceProvider.GetRequiredService<EditPaymentViewModel>();
+            viewModel.Initialize(selected); // Pass the selected payment to the view model
 
-        //    var editWindow = new EditEstateWindow(viewModel);
-        //    editWindow.ShowDialog();
-        //    await RefreshEstatesAsync();
-        //    Selected = Payments.FirstOrDefault(e => e.ID == selected.ID);
+            var editWindow = new EditPaymentWindow(viewModel);
+            editWindow.ShowDialog();
+            await RefreshEstatesAsync();
+            Selected = Payments.FirstOrDefault(e => e.ID == selected.ID);
 
-        //}
-        //else
-        //    MessageBox.Show("Please select a payment");
+        }
+        else
+            MessageBox.Show("Please select a payment");
     }
 
     [RelayCommand]

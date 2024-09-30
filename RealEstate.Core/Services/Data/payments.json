@@ -7,26 +7,11 @@
     "Amount": 3500
   },
   {
-    "PhoneNumber": "070-123 45 67",
+    "PhoneNumber": "08-67563",
     "HasLoanApproval": false,
     "Type": "Vipps",
-    "ID": "7f5c72aa-f704-4abc-af4f-7ed3279272bf",
-    "Name": "Vipps",
-    "Amount": 44123
-  },
-  {
-    "Email": "MyEmail@real.com",
-    "HasLoanApproval": false,
-    "Type": "PayPal",
-    "ID": "de298308-dbc2-47de-afa3-ddb02053a505",
-    "Name": "PayPal",
-    "Amount": 7878123
-  },
-  {
-    "Email": "SomeOne@example.com",
-    "Type": "WesternUnion",
-    "ID": "098a53bc-9bc6-420f-9ecb-68e4cdcc7d1b",
-    "Name": "WU",
-    "Amount": 8785
+    "ID": "1e3fe434-f057-4bed-ad34-07ed611cf83c",
+    "Name": "Donald",
+    "Amount": 10000
   }
 ]

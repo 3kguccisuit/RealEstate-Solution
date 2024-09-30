@@ -98,14 +98,20 @@ public partial class App : Application
 
         services.AddTransient<EstatePage>();
         services.AddTransient<EstateViewModel>();
+
+
         services.AddTransient<PersonViewModel>();
         services.AddTransient<PersonPage>();
+        services.AddTransient<CreatePersonViewModel>();
+        services.AddTransient<EditPersonViewModel>();
 
         services.AddTransient<PaymentViewModel>();
         services.AddTransient<PaymentPage>();
 
         services.AddTransient<SettingsViewModel>();
         services.AddTransient<SettingsPage>();
+
+
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));

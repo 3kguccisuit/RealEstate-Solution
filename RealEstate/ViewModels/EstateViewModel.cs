@@ -40,7 +40,7 @@ namespace RealEstate.ViewModels
             if (selected != null)
             {
                 var viewModel = _serviceProvider.GetRequiredService<EditEstateViewModel>();
-                viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
+                await viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
 
                 var editWindow = new EditEstateWindow(viewModel);
                 editWindow.ShowDialog();
@@ -87,7 +87,7 @@ namespace RealEstate.ViewModels
             var viewModel = _serviceProvider.GetRequiredService<CreateEstateViewModel>();
 
             // Initialize the ViewModel with the estate
-            viewModel.InitializeEstate(selectedType);
+            await viewModel.InitializeEstate(selectedType);
 
             // Open the CreateEstateWindow with the ViewModel
             var window = new CreateEstateWindow(viewModel);

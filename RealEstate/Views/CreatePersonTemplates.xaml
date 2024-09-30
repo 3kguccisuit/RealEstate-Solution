@@ -1,0 +1,116 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:models="clr-namespace:RealEstate.Core.Models.ConcreteModels.Persons;assembly=RealEstate.Core">
+
+    <!-- DataTemplate for Buyer -->
+    <DataTemplate x:Key="BuyerCreateTemplate" DataType="{x:Type models:Buyer}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Buyer Form" FontWeight="Bold" FontSize="16"/>
+            <!-- Name -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+
+            <!-- Address -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Zip Code" />
+            <TextBox Grid.Row="4" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Country" />
+            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding Address.Country}" />
+
+            <!-- Budget -->
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Budget" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding Budget}" />
+
+            <!-- Has Loan Approval -->
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Has Loan Approval" />
+            <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding HasLoanApproval}" />
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <!-- DataTemplate for Seller -->
+    <DataTemplate x:Key="SellerCreateTemplate" DataType="{x:Type models:Seller}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Seller Form" FontWeight="Bold" FontSize="16"/>
+            <!-- Name -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+
+            <!-- Address -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Zip Code" />
+            <TextBox Grid.Row="4" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Country" />
+            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding Address.Country}" />
+
+            <!-- Asking Price -->
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Asking Price" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding AskingPrice}" />
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

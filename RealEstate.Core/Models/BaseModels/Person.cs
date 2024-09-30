@@ -11,6 +11,7 @@ namespace RealEstate.Core.Models.BaseModels
         public string Name { get; set; }
         public virtual string Type => "Person";
         public Address Address { get; set; }
+
         [JsonConstructor]
         public Person(string id, string name, Address address)
         {

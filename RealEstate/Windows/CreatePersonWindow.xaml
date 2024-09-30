@@ -1,0 +1,27 @@
+﻿<Window x:Class="RealEstate.Windows.CreatePersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:RealEstate.TemplateSelectors"
+        Title="Create Person" Height="400" Width="325">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/RealEstate;component/Views/CreatePersonTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Define the TemplateSelector -->
+            <local:CreatePersonTemplateSelector 
+                x:Key="CreatePersonTemplateSelector"
+                   SellerCreateTemplate="{StaticResource SellerCreateTemplate}"
+                   BuyerCreateTemplate="{StaticResource BuyerCreateTemplate}"
+               />
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <!-- ContentControl to choose between-->
+        <ContentControl Content="{Binding Selected}" 
+                        ContentTemplateSelector="{StaticResource CreatePersonTemplateSelector}" />
+    </Grid>
+</Window>

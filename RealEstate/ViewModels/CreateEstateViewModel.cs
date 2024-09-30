@@ -6,6 +6,7 @@ using RealEstate.Core.Enums;
 using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Models.ConcreteModels;
+using RealEstate.Core.Models.ConcreteModels.Persons;
 using RealEstate.Helpers;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,23 @@ namespace RealEstate.ViewModels
     {
         //private readonly IEstateDataService _estateDataService;
         private readonly IDataService<Estate> _estateDataService;
-
+        private readonly IDataService<Person> _personDataService;
         [ObservableProperty]
         private Estate selectedEstate;
+        [ObservableProperty]
+        private Buyer selectedBuyer;
+        [ObservableProperty]
+        private Seller selectedSeller;
 
+        public List<Buyer> Buyers { get; private set; } = new List<Buyer>();
+        public List<Seller> Sellers { get; private set; } = new List<Seller>();
         public List<Country> Countries { get; }
         public List<LegalFormType> LegalForms { get; }
 
-        public CreateEstateViewModel(IDataService<Estate> estateDataService)
+        public CreateEstateViewModel(IDataService<Estate> estateDataService, IDataService<Person> personDataService)
         {
             _estateDataService = estateDataService;
+            _personDataService = personDataService;
 
             // Populate the list of countries and legal forms
             Countries = Enum.GetValues(typeof(Country)).Cast<Country>().ToList();
@@ -36,7 +44,7 @@ namespace RealEstate.ViewModels
         }
 
         // Initialize the estate based on the provided type
-        public void InitializeEstate(string type)
+        public async Task InitializeEstate(string type)
         {
             var id = IDGenerator.GetUniqueId();
             if (type == "Apartment")
@@ -134,6 +142,19 @@ namespace RealEstate.ViewModels
             {
                 MessageBox.Show("Invalid estate type.");
             }
+            await LoadBuyersAndSellers();
+        }
+
+        private async Task LoadBuyersAndSellers()
+        {
+            var persons = await _personDataService.GetAsync();
+
+            Buyers = persons.OfType<Buyer>().ToList();
+            Sellers = persons.OfType<Seller>().ToList();
+
+
+            SelectedBuyer = Buyers.FirstOrDefault();
+            SelectedSeller = Sellers.FirstOrDefault();
         }
 
         // Cancel command
@@ -155,7 +176,8 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private async Task Save(Window window)
         {
-
+            SelectedEstate.LinkedBuyer = SelectedBuyer;
+            SelectedEstate.LinkedSeller = SelectedSeller;
             MessageBox.Show($"Created {SelectedEstate.Type} with the props: {SelectedEstate}");
             await _estateDataService.AddAsync(SelectedEstate);
 

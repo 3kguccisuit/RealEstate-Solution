@@ -47,7 +47,6 @@ namespace RealEstate.ViewModels
             var result = MessageBox.Show("Do you really want to cancel?", appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Selected.ID = "Cancel";
                 window.Close();
             }
         }

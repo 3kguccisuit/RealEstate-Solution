@@ -96,6 +96,10 @@
             <TextBlock Text="{Binding NumberOfFloors}" />
             <TextBlock Text="Has Garage:" FontWeight="Bold" />
             <TextBlock Text="{Binding HasGarage}" />
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
@@ -118,10 +122,15 @@
             <TextBlock Text="{Binding NumberOfRooms}" />
             <TextBlock Text="Floor Level:" FontWeight="Bold" />
             <TextBlock Text="{Binding FloorLevel}" />
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
+
 
     <!-- DataTemplate for Townhouse -->
     <DataTemplate x:Key="TownhouseTemplate" DataType="{x:Type models:Townhouse}">
@@ -150,6 +159,11 @@
             <!-- Has Garden -->
             <TextBlock Text="Has Garden:" FontWeight="Bold" />
             <TextBlock Text="{Binding HasGarden}" />
+
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
 
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -185,12 +199,17 @@
             <TextBlock Text="Number of Beds:" FontWeight="Bold" />
             <TextBlock Text="{Binding NumberOfBeds}" />
 
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
+
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
 
-    <!-- DataTemplate for Displaying a School -->
+    <!-- DataTemplate for School -->
     <DataTemplate x:Key="SchoolTemplate" DataType="{x:Type models:School}">
         <StackPanel>
             <TextBlock Text="School Details" FontSize="20" FontWeight="Bold" />
@@ -214,16 +233,21 @@
             <TextBlock Text="Parking Spaces:" FontWeight="Bold" />
             <TextBlock Text="{Binding ParkingSpaces}" />
 
-            <!-- Number of Classrooms (unique to School) -->
+            <!-- Number of Classrooms-->
             <TextBlock Text="Number of Classrooms:" FontWeight="Bold" />
             <TextBlock Text="{Binding NumberOfClassrooms}" />
+
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
 
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
 
-    <!-- DataTemplate for Displaying a University -->
+    <!-- DataTemplate for University -->
     <DataTemplate x:Key="UniversityTemplate" DataType="{x:Type models:University}">
         <StackPanel>
             <TextBlock Text="University Details" FontSize="20" FontWeight="Bold" />
@@ -251,12 +275,17 @@
             <TextBlock Text="Number of Programs:" FontWeight="Bold" />
             <TextBlock Text="{Binding NumberOfPrograms}" />
 
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
+
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
 
-    <!-- DataTemplate for Displaying a Hotel -->
+    <!-- DataTemplate for Hotel -->
     <DataTemplate x:Key="HotelTemplate" DataType="{x:Type models:Hotel}">
         <StackPanel>
             <TextBlock Text="Hotel Details" FontSize="20" FontWeight="Bold" />
@@ -284,12 +313,17 @@
             <TextBlock Text="Has Spa:" FontWeight="Bold" />
             <TextBlock Text="{Binding HasSpa}" />
 
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
+
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
 
-    <!-- DataTemplate for Displaying a Shop -->
+    <!-- DataTemplate for Shop -->
     <DataTemplate x:Key="ShopTemplate" DataType="{x:Type models:Shop}">
         <StackPanel>
             <TextBlock Text="Shop Details" FontSize="20" FontWeight="Bold" />
@@ -317,12 +351,17 @@
             <TextBlock Text="Has Online Store:" FontWeight="Bold" />
             <TextBlock Text="{Binding HasOnlineStore}" />
 
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
+
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
 
-    <!-- DataTemplate for Displaying a Warehouse -->
+    <!-- DataTemplate for Warehouse -->
     <DataTemplate x:Key="WarehouseTemplate" DataType="{x:Type models:Warehouse}">
         <StackPanel>
             <TextBlock Text="Warehouse Details" FontSize="20" FontWeight="Bold" />
@@ -350,12 +389,17 @@
             <TextBlock Text="Loading Docks:" FontWeight="Bold" />
             <TextBlock Text="{Binding LoadingDocks}" />
 
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
+
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </StackPanel>
     </DataTemplate>
 
-    <!-- DataTemplate for Displaying a Factory -->
+    <!-- DataTemplate for Factory -->
     <DataTemplate x:Key="FactoryTemplate" DataType="{x:Type models:Factory}">
         <StackPanel>
             <TextBlock Text="Factory Details" FontSize="20" FontWeight="Bold" />
@@ -382,6 +426,11 @@
             <!-- Has Warehouse -->
             <TextBlock Text="Has Warehouse:" FontWeight="Bold" />
             <TextBlock Text="{Binding HasWarehouse}" />
+
+            <TextBlock Text="{Binding LinkedSeller.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedSeller.Name}" />
+            <TextBlock Text="{Binding LinkedBuyer.Type}" FontWeight="Bold" />
+            <TextBlock Text="{Binding LinkedBuyer.Name}" />
 
             <!-- Image Display -->
             <Image Source="{Binding ImagePath}" Height="450" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left"/>

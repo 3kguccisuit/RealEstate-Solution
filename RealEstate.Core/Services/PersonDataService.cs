@@ -2,6 +2,7 @@
 using RealEstate.Core.Contracts.Services;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using RealEstate.Core.Models.ConcreteModels.Persons;
 
 namespace RealEstate.Core.Services
 {

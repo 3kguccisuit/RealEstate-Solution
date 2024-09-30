@@ -8,6 +8,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -19,48 +21,65 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Apartment Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+            
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox (Bind to parent ViewModel for Countries) -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox (Bind to parent ViewModel for LegalForms) -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Number of Rooms Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Number of Rooms" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding NumberOfRooms}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Rooms" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfRooms}" />
 
             <!-- Floor Level Input -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Floor Level" />
-            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding FloorLevel}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Floor Level" />
+            <TextBox Grid.Row="7" Grid.Column="1" Width="120" Text="{Binding FloorLevel}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -78,6 +97,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -90,52 +111,70 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Villa Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox (Bind to parent ViewModel for Countries) -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox (Bind to parent ViewModel for LegalForms) -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Number of Rooms Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Number of Rooms" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding NumberOfRooms}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Rooms" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfRooms}" />
 
             <!-- Number of Floors Input -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Floors" />
-            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfFloors}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Number of Floors" />
+            <TextBox Grid.Row="7" Grid.Column="1" Width="120" Text="{Binding NumberOfFloors}" />
 
             <!-- Garage Checkbox -->
-            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Has Garage" />
-            <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding HasGarage}" />
+            <Label Grid.Row="8" Grid.Column="0" Margin="3" Content="Has Garage" />
+            <CheckBox Grid.Row="8" Grid.Column="1" IsChecked="{Binding HasGarage}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="9" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
-            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal">
                 <!-- Pass the current window as CommandParameter -->
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
@@ -154,6 +193,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -165,48 +206,65 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Townhouse Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox (Bind to parent ViewModel for Countries) -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
               ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
               SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox (Bind to parent ViewModel for LegalForms) -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
               ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
               SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Number of Rooms Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Number of Rooms" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding NumberOfRooms}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Rooms" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfRooms}" />
 
             <!-- Has Garden Checkbox -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Has Garden" />
-            <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding HasGarden}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Has Garden" />
+            <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding HasGarden}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -223,6 +281,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -234,48 +294,65 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Hospital Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+            
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox (Bind to parent ViewModel for Countries) -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox (Bind to parent ViewModel for LegalForms) -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Parking Spaces Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Parking Spaces" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Parking Spaces" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
 
             <!-- Number of Beds Input (unique to Hospital) -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Beds" />
-            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfBeds}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Number of Beds" />
+            <TextBox Grid.Row="7" Grid.Column="1" Width="120" Text="{Binding NumberOfBeds}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -292,6 +369,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -303,48 +382,65 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="School Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Parking Spaces Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Parking Spaces" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Parking Spaces" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
 
             <!-- Number of Classrooms Input (unique to School) -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Classrooms" />
-            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfClassrooms}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Number of Classrooms" />
+            <TextBox Grid.Row="7" Grid.Column="1" Width="120" Text="{Binding NumberOfClassrooms}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -361,6 +457,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -372,48 +470,66 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="University Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Parking Spaces Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Parking Spaces" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Parking Spaces" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding ParkingSpaces}" />
 
             <!-- Number of Programs Input -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Number of Programs" />
-            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding NumberOfPrograms}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Number of Programs" />
+            <TextBox Grid.Row="7" Grid.Column="1" Width="120" Text="{Binding NumberOfPrograms}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -430,6 +546,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -441,48 +559,66 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Hotel Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Square Meters Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Square Meters" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding SquareMeters}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Square Meters" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding SquareMeters}" />
 
             <!-- Has Spa Checkbox -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Has Spa" />
-            <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding HasSpa}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Has Spa" />
+            <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding HasSpa}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -499,6 +635,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -510,48 +648,66 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Shop Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Square Meters Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Square Meters" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding SquareMeters}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Square Meters" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding SquareMeters}" />
 
             <!-- Has Online Store Checkbox -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Has Online Store" />
-            <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding HasOnlineStore}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Has Online Store" />
+            <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding HasOnlineStore}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -568,6 +724,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -579,48 +737,66 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Warehouse Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Square Meters Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Square Meters" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding SquareMeters}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Square Meters" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding SquareMeters}" />
 
             <!-- Loading Docks Input -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Loading Docks" />
-            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding LoadingDocks}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Loading Docks" />
+            <TextBox Grid.Row="7" Grid.Column="1" Width="120" Text="{Binding LoadingDocks}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
@@ -637,6 +813,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -648,48 +826,66 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Factory Form" FontWeight="Bold" FontSize="16"/>
+
+            <!-- Select Seller-->
+            <Label Grid.Row="1" Grid.Column="2" Margin="3" Content="Seller" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Sellers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedSeller, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Buyer-->
+            <Label Grid.Row="2" Grid.Column="2" Margin="3" Content="Buyer" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+
             <!-- Street Input -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
 
             <!-- Zip Code Input -->
-            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Zipcode" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.ZipCode}" />
 
             <!-- City Input -->
-            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="City" />
-            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="City" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Address.City}" />
 
             <!-- Country ComboBox -->
-            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Country" />
-            <ComboBox Grid.Row="3" Grid.Column="1" Width="120"
+            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Country" />
+            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.Countries, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding Address.Country}" />
 
             <!-- Legal Form ComboBox -->
-            <Label Grid.Row="4" Grid.Column="0" Margin="3" Content="Legal Form" />
-            <ComboBox Grid.Row="4" Grid.Column="1" Width="120"
+            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Legal Form" />
+            <ComboBox Grid.Row="5" Grid.Column="1" Width="120"
                   ItemsSource="{Binding DataContext.LegalForms, RelativeSource={RelativeSource AncestorType=Window}}"
                   SelectedItem="{Binding LegalForm.FormType}" />
 
             <!-- Square Meters Input -->
-            <Label Grid.Row="5" Grid.Column="0" Margin="3" Content="Square Meters" />
-            <TextBox Grid.Row="5" Grid.Column="1" Width="120" Text="{Binding SquareMeters}" />
+            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Square Meters" />
+            <TextBox Grid.Row="6" Grid.Column="1" Width="120" Text="{Binding SquareMeters}" />
 
             <!-- Has Warehouse Checkbox -->
-            <Label Grid.Row="6" Grid.Column="0" Margin="3" Content="Has Warehouse" />
-            <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding HasWarehouse}" />
+            <Label Grid.Row="7" Grid.Column="0" Margin="3" Content="Has Warehouse" />
+            <CheckBox Grid.Row="7" Grid.Column="1" IsChecked="{Binding HasWarehouse}" />
 
             <!-- Image selection -->
-            <Label Grid.Row="7" Grid.Column="0" Content="Image" Margin="3" />
-            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Label Grid.Row="8" Grid.Column="0" Content="Image" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Browse" Command="{Binding DataContext.SelectImageCommand, RelativeSource={RelativeSource AncestorType=Window}}" Width="100" Margin="3"/>
             </StackPanel>
 
             <!-- Buttons for Create/Cancel -->
-            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Save"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />

@@ -11,15 +11,19 @@ public class ApplicationHostService : IHostedService
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly INavigationService _navigationService;
+    private readonly IPersistAndRestoreService _persistAndRestoreService;
+    private readonly IThemeSelectorService _themeSelectorService;
     private readonly IEnumerable<IActivationHandler> _activationHandlers;
     private IShellWindow _shellWindow;
     private bool _isInitialized;
 
-    public ApplicationHostService(IServiceProvider serviceProvider, IEnumerable<IActivationHandler> activationHandlers, INavigationService navigationService)
+    public ApplicationHostService(IServiceProvider serviceProvider, IEnumerable<IActivationHandler> activationHandlers, INavigationService navigationService, IThemeSelectorService themeSelectorService, IPersistAndRestoreService persistAndRestoreService)
     {
         _serviceProvider = serviceProvider;
         _activationHandlers = activationHandlers;
         _navigationService = navigationService;
+        _themeSelectorService = themeSelectorService;
+        _persistAndRestoreService = persistAndRestoreService;
     }
 
     public async Task StartAsync(CancellationToken cancellationToken)
@@ -36,6 +40,7 @@ public class ApplicationHostService : IHostedService
 
     public async Task StopAsync(CancellationToken cancellationToken)
     {
+        _persistAndRestoreService.PersistData();
         await Task.CompletedTask;
     }
 
@@ -43,6 +48,8 @@ public class ApplicationHostService : IHostedService
     {
         if (!_isInitialized)
         {
+            _persistAndRestoreService.RestoreData();
+            _themeSelectorService.InitializeTheme();
             await Task.CompletedTask;
         }
     }

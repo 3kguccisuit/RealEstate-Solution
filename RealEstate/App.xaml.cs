@@ -64,8 +64,14 @@ public partial class App : Application
         // Activation Handlers
 
         // Core Services
+        services.AddSingleton<IFileService, FileService>();
 
         // Services
+        services.AddSingleton<IApplicationInfoService, ApplicationInfoService>();
+        services.AddSingleton<ISystemService, SystemService>();
+        services.AddSingleton<IPersistAndRestoreService, PersistAndRestoreService>();
+        services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+
         //services.AddSingleton<ISampleDataService, SampleDataService>();
         //services.AddSingleton<IEstateDataService, EstateDataService>();
         services.AddSingleton<IDataService<Estate>, EstateDataService>();
@@ -97,6 +103,9 @@ public partial class App : Application
 
         services.AddTransient<PaymentViewModel>();
         services.AddTransient<PaymentPage>();
+
+        services.AddTransient<SettingsViewModel>();
+        services.AddTransient<SettingsPage>();
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));

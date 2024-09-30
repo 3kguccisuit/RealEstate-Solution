@@ -203,5 +203,115 @@ namespace RealEstate.Properties {
                 return ResourceManager.GetString("ShellPersonPage", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Settings page placeholder text.  Your app description goes here..
+        /// </summary>
+        public static string SettingsPageAboutText
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPageAboutText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to About this application.
+        /// </summary>
+        public static string SettingsPageAboutTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPageAboutTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Theme.
+        /// </summary>
+        public static string SettingsPageChooseThemeText
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPageChooseThemeText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Personalization.
+        /// </summary>
+        public static string SettingsPagePersonalizationTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPagePersonalizationTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Statement.
+        /// </summary>
+        public static string SettingsPagePrivacyStatementText
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPagePrivacyStatementText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        public static string SettingsPageRadioButtonDarkTheme
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPageRadioButtonDarkTheme", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        public static string SettingsPageRadioButtonLightTheme
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPageRadioButtonLightTheme", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        public static string SettingsPageRadioButtonWindowsDefaultTheme
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPageRadioButtonWindowsDefaultTheme", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string SettingsPageTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string ShellSettingsPage
+        {
+            get
+            {
+                return ResourceManager.GetString("ShellSettingsPage", resourceCulture);
+            }
+        }
     }
 }

@@ -22,6 +22,7 @@ public class PageService : IPageService
         Configure<EstateViewModel, EstatePage>();
         Configure<PersonViewModel, PersonPage>();
         Configure<PaymentViewModel, PaymentPage>();
+        Configure<SettingsViewModel, SettingsPage>();
     }
 
     public Type GetPageType(string key)

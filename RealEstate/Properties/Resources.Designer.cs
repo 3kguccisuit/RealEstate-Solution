@@ -151,7 +151,7 @@ namespace RealEstate.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bank List.
+        ///   Looks up a localized string similar to Payment List.
         /// </summary>
         public static string ShellBankPage {
             get {

@@ -4,14 +4,14 @@
     "Type": "Bank",
     "ID": "66a630fc-d60d-4c86-99aa-81d553358bd2",
     "Name": "SEB",
-    "Amount": 3500
+    "Amount": 35000
   },
   {
     "PhoneNumber": "08-67563",
     "HasLoanApproval": false,
     "Type": "Vipps",
     "ID": "1e3fe434-f057-4bed-ad34-07ed611cf83c",
-    "Name": "Donald",
+    "Name": "Donald Dump",
     "Amount": 10000
   }
 ]

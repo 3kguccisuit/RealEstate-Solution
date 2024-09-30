@@ -21,6 +21,12 @@ public class PaymentJsonConverter : JsonConverter<Payment>
                 {
                     case "Bank":
                         return JsonSerializer.Deserialize<Bank>(rootElement.GetRawText(), options);
+                    case "PayPal":
+                        return JsonSerializer.Deserialize<PayPal>(rootElement.GetRawText(), options);
+                    case "WesternUnion":
+                        return JsonSerializer.Deserialize<WesternUnion>(rootElement.GetRawText(), options);
+                    case "Vipps":
+                        return JsonSerializer.Deserialize<Vipps>(rootElement.GetRawText(), options);
                     default:
                         throw new JsonException($"Unknown payment type: {typeString}");
                 }

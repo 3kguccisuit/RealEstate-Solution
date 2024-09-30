@@ -11,7 +11,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock
                 Grid.Column="0"
-                Text="👤"
+                Text="😀"
                 Margin="10"
                 VerticalAlignment="Center" />
             <StackPanel
@@ -36,6 +36,51 @@
             <TextBlock Text="{Binding Amount}" />
             <TextBlock Text="IBAN:" FontWeight="Bold" />
             <TextBlock Text="{Binding IbanNumber}" />
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Bank -->
+    <DataTemplate x:Key="WesternUnionTemplate" DataType="{x:Type models:WesternUnion}">
+        <StackPanel>
+            <TextBlock Text="Payment Details" FontSize="20" FontWeight="Bold" />
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+            <TextBlock Text="Name:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Name}" />
+            <TextBlock Text="Amount:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Amount}" />
+            <TextBlock Text="Email:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Email}" />
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Bank -->
+    <DataTemplate x:Key="PayPalTemplate" DataType="{x:Type models:Bank}">
+        <StackPanel>
+            <TextBlock Text="Payment Details" FontSize="20" FontWeight="Bold" />
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+            <TextBlock Text="Name:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Name}" />
+            <TextBlock Text="Amount:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Amount}" />
+            <TextBlock Text="Email:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Email}" />
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- DataTemplate for Bank -->
+    <DataTemplate x:Key="VippsTemplate" DataType="{x:Type models:Vipps}">
+        <StackPanel>
+            <TextBlock Text="Payment Details" FontSize="20" FontWeight="Bold" />
+            <TextBlock Text="ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding ID}" />
+            <TextBlock Text="Name:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Name}" />
+            <TextBlock Text="Amount:" FontWeight="Bold" />
+            <TextBlock Text="{Binding Amount}" />
+            <TextBlock Text="PhoneNumber:" FontWeight="Bold" />
+            <TextBlock Text="{Binding PhoneNumber}" />
         </StackPanel>
     </DataTemplate>
 

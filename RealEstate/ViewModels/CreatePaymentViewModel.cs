@@ -37,34 +37,18 @@ namespace RealEstate.ViewModels
             {
                 Selected = new Bank(id,"name",123,"IBAN");
             }
-            //else if (type == "PayPal")
-            //{
-            //    Selected = new PayPal(id,
-            //        new Address("Street name", "Zip code", "City", Country.Sverige),
-            //        new LegalForm(LegalFormType.Ownership),
-            //        0, // Number of rooms
-            //        0, // Number of floors
-            //        false // HasGarage
-            //    );
-            //}
-            //else if (type == "Vipps")
-            //{
-            //    Selected = new Vipps(id,
-            //        new Address("Street name", "Zip code", "City", Country.Sverige),
-            //        new LegalForm(LegalFormType.Ownership),
-            //        0, // Number of rooms
-            //        false // HasGarden
-            //    );
-            //}
-            //else if (type == "WesternUnion")
-            //{
-            //    Selected = new WesternUnion(id,
-            //        new Address("Street name", "Zip code", "City", Country.Sverige),
-            //        new LegalForm(LegalFormType.Ownership),
-            //        0, // Parking spaces
-            //        0 // Number of beds
-            //    );
-            //}
+            else if (type == "PayPal")
+            {
+                Selected = new PayPal(id,"name", 123, "MyEmail@real.com");
+            }
+            else if (type == "Vipps")
+            {
+                Selected = new Vipps(id, "name", 123, "070-123 45 67");
+            }
+            else if (type == "WesternUnion")
+            {
+                Selected = new WesternUnion(id, "name", 123, "SomeOne@example.com");
+            }
             else
             {
                 MessageBox.Show("Invalid payment type.");

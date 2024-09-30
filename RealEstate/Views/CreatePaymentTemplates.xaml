@@ -46,4 +46,137 @@
         </Grid>
     </DataTemplate>
 
+    <!-- DataTemplate for PayPal -->
+    <DataTemplate x:Key="PayPalCreateTemplate" DataType="{x:Type models:PayPal}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+
+            <!-- ID -->
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="ID" />
+            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding ID}" />
+
+            <!-- Name -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+
+            <!-- Amount -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Amount" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Amount}" />
+
+            <!-- Name -->
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Email" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Email}" />
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <!-- DataTemplate for PayPal -->
+    <DataTemplate x:Key="WesternUnionCreateTemplate" DataType="{x:Type models:WesternUnion}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+
+            <!-- ID -->
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="ID" />
+            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding ID}" />
+
+            <!-- Name -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+
+            <!-- Amount -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Amount" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Amount}" />
+
+            <!-- Name -->
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="Email" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding Email}" />
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <!-- DataTemplate for PayPal -->
+    <DataTemplate x:Key="VippsCreateTemplate" DataType="{x:Type models:Vipps}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+
+            <!-- ID -->
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="ID" />
+            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding ID}" />
+
+            <!-- Name -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+
+            <!-- Amount -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Amount" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Amount}" />
+
+            <!-- Name -->
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="PhoneNumber" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding PhoneNumber}" />
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+
 </ResourceDictionary>

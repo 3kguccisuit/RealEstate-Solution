@@ -1,0 +1,19 @@
+[
+  {
+    "NumberOfFloors": 3,
+    "HasGarage": true,
+    "Type": "Villa",
+    "NumberOfRooms": 10,
+    "ID": "55b96366-db7a-4c80-9821-fc6e6893888a",
+    "Address": {
+      "Street": "Storgatan 9",
+      "ZipCode": "12345",
+      "City": "Stockholmia",
+      "Country": 167
+    },
+    "LegalForm": {
+      "FormType": 0
+    },
+    "ImagePath": "D:\\DH\\Z\u00E5gwerk\\ThisIsZ\u00E5gwerk.jpg"
+  }
+]

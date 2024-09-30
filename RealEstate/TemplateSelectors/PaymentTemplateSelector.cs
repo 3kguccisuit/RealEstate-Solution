@@ -1,34 +1,33 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-
 using RealEstate.Core.Models.ConcreteModels.Payments;
+
 
 namespace RealEstate.TemplateSelectors
 {
-    public class CreatePaymentTemplateSelector : DataTemplateSelector
+    public class PaymentTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate BankCreateTemplate { get; set; }
-        public DataTemplate PayPalCreateTemplate { get; set; }
-        public DataTemplate VippsCreateTemplate { get; set; }
-        public DataTemplate WesternUnionCreateTemplate { get; set; }
-
+        public DataTemplate BankTemplate { get; set; }
+        public DataTemplate PayPalTemplate { get; set; }
+        public DataTemplate VippsTemplate { get; set; }
+        public DataTemplate WesternUnionTemplate { get; set; }
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             if (item is Bank)
             {
-                return BankCreateTemplate;
+                return BankTemplate;
             }
             else if (item is PayPal)
             {
-                return PayPalCreateTemplate;
+                return PayPalTemplate;
             }
             else if (item is Vipps)
             {
-                return VippsCreateTemplate;
+                return VippsTemplate;
             }
             else if (item is WesternUnion)
             {
-                return WesternUnionCreateTemplate;
+                return WesternUnionTemplate;
             }
             return base.SelectTemplate(item, container);
         }

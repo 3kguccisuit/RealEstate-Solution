@@ -15,6 +15,9 @@
             <local:CreatePaymentTemplateSelector 
                 x:Key="CreatePaymentTemplateSelector"
                 BankCreateTemplate="{StaticResource BankCreateTemplate}"
+                PayPalCreateTemplate="{StaticResource PayPalCreateTemplate}"
+                VippsCreateTemplate="{StaticResource VippsCreateTemplate}"
+                WesternUnionCreateTemplate="{StaticResource WesternUnionCreateTemplate}"
                />
             
         </ResourceDictionary>

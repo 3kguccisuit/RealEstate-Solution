@@ -5,63 +5,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:RealEstate.TemplateSelectors"
 	xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:properties="clr-namespace:RealEstate.Properties"
     mc:Ignorable="d"
     d:DesignHeight="450" d:DesignWidth="800">
+
     <Page.Resources>
-        <DataTemplate x:Key="ItemTemplate">
-            <Grid Height="60">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock
-                    Grid.Column="0"
-                    Text="{Binding Symbol}"
-                    Style="{StaticResource MediumIconStyle}"
-                    Margin="{StaticResource XSmallLeftMargin}"
-                    AutomationProperties.Name="List item icon" />
-                <StackPanel
-                    Grid.Column="1"
-                    Margin="{StaticResource SmallLeftMargin}"
-                    VerticalAlignment="Center">
-                    <TextBlock Style="{StaticResource ListTitleStyle}" Text="{Binding Company}" />
-                    <TextBlock Style="{StaticResource ListSubTitleStyle}" Text="{Binding Status}" />
-                </StackPanel>
-            </Grid>
-        </DataTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/RealEstate;component/Views/PaymentTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
-        <DataTemplate x:Key="DetailTemplate">
-            <ScrollViewer
-                Name="ForegroundElement"
-                IsTabStop="True"
-                HorizontalAlignment="Stretch">
-                <StackPanel HorizontalAlignment="Left" Margin="{StaticResource MediumLeftTopRightBottomMargin}">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                        <TextBlock
-                            Text="{Binding Symbol}"
-                            Style="{StaticResource BigIconStyle}"
-                            AutomationProperties.Name="Detail icon" />
-                        <TextBlock
-                            Margin="{StaticResource SmallLeftMargin}"
-                            VerticalAlignment="Center"
-                            Text="{Binding Company, Mode=OneWay}"
-                            Style="{StaticResource PageTitleStyle}" />
-                    </StackPanel>
-                    <StackPanel Margin="{StaticResource SmallTopMargin}">
-                        <TextBlock
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Status" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding Status, Mode=OneWay}" />
-
-                    </StackPanel>
-                </StackPanel>
-            </ScrollViewer>
-        </DataTemplate>
+            <!-- Register the PaymentTemplateSelector -->
+            <local:PaymentTemplateSelector
+                x:Key="PaymentTemplateSelector"
+                BankTemplate="{StaticResource BankTemplate}"
+                PayPalTemplate="{StaticResource PayPalTemplate}"
+                VippsTemplate="{StaticResource VippsTemplate}"
+                WesternUnionTemplate="{StaticResource WesternUnionTemplate}"
+                
+                />
+        </ResourceDictionary>
     </Page.Resources>
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="180" MaxWidth="300" Width="*" />
@@ -96,7 +64,7 @@
 					FontFamily="Segoe MDL2 Assets"
 					FontSize="10"
 					Margin="2"
-					ToolTip="Edit Selected Bank" />
+					ToolTip="Edit Selected Payment" />
 				<!-- Delete Button -->
 				<Button Content="&#xE74D;" Width="30" Height="30"
 					Command="{Binding DeletePaymentCommand}"
@@ -104,20 +72,23 @@
 					FontFamily="Segoe MDL2 Assets"
 					FontSize="10"
 					Margin="2"
-					ToolTip="Delete Selected Bank" />
+					ToolTip="Delete Selected Payment" />
 			</StackPanel>
 
 			<ListView
                 Grid.Row="1"
                 AutomationProperties.Name="{x:Static properties:Resources.PaymentListDescription}"
-                ItemsSource="{Binding SampleItems}"
-                ItemTemplate="{StaticResource ItemTemplate}"
+                ItemsSource="{Binding Payments}"
+                ItemTemplate="{StaticResource PaymentItemTemplate}"
                 SelectedItem="{Binding Selected, Mode=TwoWay}" />
         </Grid>
+
+        <!-- ContentControl (right side) displaying selected payment details using DataTemplateSelector -->
         <ContentControl
             Grid.Column="1"
             IsTabStop="False"
             Content="{Binding Selected}"
-            ContentTemplate="{StaticResource DetailTemplate}" />
+            ContentTemplateSelector="{StaticResource PaymentTemplateSelector}" 
+            Margin="20,0,0,0"/>
     </Grid>
 </Page>

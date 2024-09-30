@@ -10,8 +10,7 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
     public class WesternUnion : Payment
     {
         public string Email{ get; set; }
-        public string Name { get; set; }
-        public bool HasLoanApproval { get; set; }
+      
         public override string Type => "WesternUnion";
         [JsonConstructor]
         public WesternUnion(string id, string name, decimal amount, string email)

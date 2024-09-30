@@ -1,30 +1,32 @@
 [
   {
-    "IbanNumber": "XYZ123",
+    "IbanNumber": "QWE235",
     "Type": "Bank",
-    "ID": "d8f04ab7-8be3-409f-9f68-0ca50fff977d",
+    "ID": "66a630fc-d60d-4c86-99aa-81d553358bd2",
     "Name": "SEB",
-    "Amount": 1234
+    "Amount": 3500
   },
   {
-    "IbanNumber": "ABC123",
-    "Type": "Bank",
-    "ID": "5bdcd6da-6af4-42d2-aa30-58200436f925",
-    "Name": "Swedbank",
-    "Amount": 1230
+    "PhoneNumber": "070-123 45 67",
+    "HasLoanApproval": false,
+    "Type": "Vipps",
+    "ID": "7f5c72aa-f704-4abc-af4f-7ed3279272bf",
+    "Name": "Vipps",
+    "Amount": 44123
   },
   {
-    "IbanNumber": "IBAN3",
-    "Type": "Bank",
-    "ID": "6faac3aa-1cd6-413b-b4ae-eb2ea456a3db",
-    "Name": "Kalle",
-    "Amount": 1256565
+    "Email": "MyEmail@real.com",
+    "HasLoanApproval": false,
+    "Type": "PayPal",
+    "ID": "de298308-dbc2-47de-afa3-ddb02053a505",
+    "Name": "PayPal",
+    "Amount": 7878123
   },
   {
-    "IbanNumber": "IBAN-456",
-    "Type": "Bank",
-    "ID": "28443087-3269-457a-bf76-f060646eebaf",
-    "Name": "Eva",
-    "Amount": 7890
+    "Email": "SomeOne@example.com",
+    "Type": "WesternUnion",
+    "ID": "098a53bc-9bc6-420f-9ecb-68e4cdcc7d1b",
+    "Name": "WU",
+    "Amount": 8785
   }
 ]

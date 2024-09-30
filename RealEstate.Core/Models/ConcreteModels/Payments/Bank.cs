@@ -5,12 +5,11 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Xml.Linq;
 
-namespace RealEstate.Core.Models.ConcreteModels.Bank
+namespace RealEstate.Core.Models.ConcreteModels.Payments
 {
     public class Bank : Payment
     {
         public string IbanNumber{ get; set; }
-        public bool HasLoanApproval { get; set; }
         public override string Type => "Bank";
         [JsonConstructor]
         public Bank(string id, string name, decimal amount, string ibanNumber)

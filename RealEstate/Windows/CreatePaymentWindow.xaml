@@ -1,0 +1,28 @@
+﻿<Window x:Class="RealEstate.Windows.CreatePaymentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:RealEstate.TemplateSelectors"
+        Title="Create Payment" Height="400" Width="325">
+
+    <Window.Resources>
+        <!-- Merging the external CreatePaymentTemplates ResourceDictionary -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/RealEstate;component/Views/CreatePaymentTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Define the TemplateSelector -->
+            <local:CreatePaymentTemplateSelector 
+                x:Key="CreatePaymentTemplateSelector"
+                BankCreateTemplate="{StaticResource BankCreateTemplate}"
+               />
+            
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <!-- ContentControl to choose between Bank or PayPal input fields -->
+        <ContentControl Content="{Binding Selected}" 
+                        ContentTemplateSelector="{StaticResource CreatePaymentTemplateSelector}" />
+    </Grid>
+</Window>

@@ -19,7 +19,7 @@ namespace RealEstate.Core.Services
             FilePath = Path.GetFullPath(FilePath);
         }
 
-        // Return the list of persons, either from JSON or with mock data
+        // Return the list of payments, either from JSON or with mock data
         public async Task<IEnumerable<Payment>> GetAsync()
         {
             // Load the data from the JSON file
@@ -27,7 +27,7 @@ namespace RealEstate.Core.Services
             return personsFromFile;
         }
 
-        // Save persons to JSON file
+        // Save payments to JSON file
         private async Task SavePaymentListToFileAsync(IEnumerable<Payment> payments)
         {
             var options = new JsonSerializerOptions

@@ -79,24 +79,6 @@ namespace RealEstate.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bank List Desc.
-        /// </summary>
-        public static string BankListDescription {
-            get {
-                return ResourceManager.GetString("BankListDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bank List.
-        /// </summary>
-        public static string BankPageTitle {
-            get {
-                return ResourceManager.GetString("BankPageTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Estate List Desc.
         /// </summary>
         public static string EstateListDescription {
@@ -120,6 +102,24 @@ namespace RealEstate.Properties {
         public static string MainPageTitle {
             get {
                 return ResourceManager.GetString("MainPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment List Desc.
+        /// </summary>
+        public static string PaymentListDescription {
+            get {
+                return ResourceManager.GetString("PaymentListDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment List.
+        /// </summary>
+        public static string PaymentPageTitle {
+            get {
+                return ResourceManager.GetString("PaymentPageTitle", resourceCulture);
             }
         }
         

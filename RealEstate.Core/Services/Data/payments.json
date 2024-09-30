@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "d8f04ab7-8be3-409f-9f68-0ca50fff977d",
+    "Name": "name",
+    "Type": "Payment",
+    "Amount": 123
+  },
+  {
+    "ID": "5bdcd6da-6af4-42d2-aa30-58200436f925",
+    "Name": "name",
+    "Type": "Bank",
+    "Amount": 123
+  }
+]

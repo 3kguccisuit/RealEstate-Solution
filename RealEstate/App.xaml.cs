@@ -79,6 +79,7 @@ public partial class App : Application
         // Views and ViewModels
         //LH
         services.AddTransient<CreateEstateViewModel>();
+        services.AddTransient<CreatePaymentViewModel>();
 
         services.AddTransient<EditEstateViewModel>();
 
@@ -93,8 +94,8 @@ public partial class App : Application
         services.AddTransient<PersonViewModel>();
         services.AddTransient<PersonPage>();
 
-        services.AddTransient<BankViewModel>();
-        services.AddTransient<BankPage>();
+        services.AddTransient<PaymentViewModel>();
+        services.AddTransient<PaymentPage>();
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));

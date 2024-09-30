@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Xml.Linq;
 
-namespace RealEstate.Core.Models.ConcreteModels.Bank
+namespace RealEstate.Core.Models.ConcreteModels.Payments
 {
     public class Vipps : Payment
     {

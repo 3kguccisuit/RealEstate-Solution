@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:models="clr-namespace:RealEstate.Core.Models.ConcreteModels.Payments;assembly=RealEstate.Core">
+
+    <!-- DataTemplate for Bank -->
+    <DataTemplate x:Key="BankCreateTemplate" DataType="{x:Type models:Bank}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+
+            <!-- ID -->
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="ID" />
+            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding ID}" />
+
+            <!-- Name -->
+            <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+
+            <!-- Amount -->
+            <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Amount" />
+            <TextBox Grid.Row="2" Grid.Column="1" Width="120" Text="{Binding Amount}" />
+
+            <!-- Name -->
+            <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="IBAN" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding IbanNumber}" />
+
+            <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Save"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                <Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

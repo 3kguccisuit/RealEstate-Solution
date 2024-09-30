@@ -120,11 +120,11 @@
   <data name="ShellBankPage" xml:space="preserve">
     <value>Bank List</value>
   </data>
-  <data name="BankPageTitle" xml:space="preserve">
-    <value>Bank List</value>
+  <data name="PaymentPageTitle" xml:space="preserve">
+    <value>Payment List</value>
   </data>
-  <data name="BankListDescription" xml:space="preserve">
-    <value>Bank List Desc</value>
+  <data name="PaymentListDescription" xml:space="preserve">
+    <value>Payment List Desc</value>
   </data>
   <data name="ShellPersonPage" xml:space="preserve">
     <value>Person List</value>

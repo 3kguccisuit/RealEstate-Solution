@@ -4,9 +4,9 @@ using RealEstate.ViewModels;
 
 namespace RealEstate.Views;
 
-public partial class BankPage : Page
+public partial class PaymentPage : Page
 {
-    public BankPage(BankViewModel viewModel)
+    public PaymentPage(PaymentViewModel viewModel)
     {
         InitializeComponent();
         DataContext = viewModel;

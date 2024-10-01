@@ -25,6 +25,12 @@
                        FontWeight="Bold" 
                        Foreground="Black"  
                        TextAlignment="Center" />
+            <!-- Logo or Icon (Optional) -->
+            <Image Source="Logo.png"
+                   Width="200" 
+                   Height="200" 
+                   HorizontalAlignment="Center" />
+
 
             <TextBlock Text="Your App to Success" 
                        FontSize="24" 
@@ -39,11 +45,6 @@
                        TextWrapping="Wrap" 
                        Width="600"/>
 
-            <!-- Logo or Icon (Optional) -->
-            <Image Source="C:\Users\ludwi\OneDrive\Skrivbord\bg.jpg"
-                   Width="200" 
-                   Height="200" 
-                   HorizontalAlignment="Center" />
 
             <!-- Additional Footer Text (Optional) -->
             <TextBlock Text="Use the menu to navigate to different sections."

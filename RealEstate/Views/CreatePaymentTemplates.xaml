@@ -18,9 +18,7 @@
             </Grid.RowDefinitions>
 
 
-            <!-- ID -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="ID" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding ID}" />
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Bank Form" FontWeight="Bold" FontSize="16"/>
 
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
@@ -62,9 +60,7 @@
             </Grid.RowDefinitions>
 
 
-            <!-- ID -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="ID" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding ID}" />
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="PayPal Form" FontWeight="Bold" FontSize="16"/>
 
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
@@ -107,8 +103,7 @@
 
 
             <!-- ID -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="ID" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding ID}" />
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Western Union Form" FontWeight="Bold" FontSize="16"/>
 
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
@@ -149,10 +144,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-
-            <!-- ID -->
-            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="ID" />
-            <TextBox Grid.Row="0" Grid.Column="1" Width="120" Text="{Binding ID}" />
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Vipps Form" FontWeight="Bold" FontSize="16"/>
 
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />

@@ -10,6 +10,16 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <None Remove="Views\Logo.png" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="Views\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />

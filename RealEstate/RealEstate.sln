@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate", "RealEstate.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate.Core", "..\RealEstate.Core\RealEstate.Core.csproj", "{3A63B4D2-2F4E-452D-9864-680F149AFD0A}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RealEstateSetup", "..\RealEstateSetup\RealEstateSetup.vdproj", "{A6200C7D-1AC8-4C34-BAFB-587E53459A6D}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RealEstateApp", "..\RealEstateApp\RealEstateApp.vdproj", "{D2C404D6-A7B4-434D-B1A1-A452B43657C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,8 +23,8 @@ Global
 		{3A63B4D2-2F4E-452D-9864-680F149AFD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A63B4D2-2F4E-452D-9864-680F149AFD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A63B4D2-2F4E-452D-9864-680F149AFD0A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6200C7D-1AC8-4C34-BAFB-587E53459A6D}.Debug|Any CPU.ActiveCfg = Debug
-		{A6200C7D-1AC8-4C34-BAFB-587E53459A6D}.Release|Any CPU.ActiveCfg = Release
+		{D2C404D6-A7B4-434D-B1A1-A452B43657C1}.Debug|Any CPU.ActiveCfg = Debug
+		{D2C404D6-A7B4-434D-B1A1-A452B43657C1}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

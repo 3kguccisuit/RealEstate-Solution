@@ -1,12 +1,12 @@
-﻿using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
-using System.Windows;
 using RealEstate.Windows;
-using Microsoft.Extensions.DependencyInjection;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 
 namespace RealEstate.ViewModels
@@ -80,7 +80,7 @@ namespace RealEstate.ViewModels
 
 
         [RelayCommand]
-        private async Task OpenEstateForm(string selectedType)
+        private async Task AddEstateForm(string selectedType) // addEstate
         {
             var temp = SelectedEstate;
             // Resolve the ViewModel from the DI container
@@ -94,10 +94,10 @@ namespace RealEstate.ViewModels
             window.ShowDialog();
 
             //force refresh
-           await RefreshEstatesAsync();
+            await RefreshEstatesAsync();
             if (viewModel.SelectedEstate.ID != "Cancel")
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
-            else if(temp != null)
+            else if (temp != null)
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);
         }
 

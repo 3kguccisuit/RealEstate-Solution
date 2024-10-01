@@ -1,5 +1,5 @@
-﻿using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Contracts.Services;
+﻿using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models.BaseModels;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -14,8 +14,8 @@ namespace RealEstate.Core.Services
         {
             // Navigate from bin\Debug to RealEstate.Core\Services
             var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            FilePath = Path.Combine(baseDirectory, "..", "..", "..", "..", "RealEstate.Core", "Services", "Data", "estates.json");
-
+            //FilePath = Path.Combine(baseDirectory, "..", "..", "..", "..", "RealEstate.Core", "Services", "Data", "estates.json");
+            FilePath = Path.Combine(baseDirectory, @"..\..\..\..\", "RealEstate.Core", "Services", "Data", "estates.json");
             // Normalize the path
             FilePath = Path.GetFullPath(FilePath);
         }

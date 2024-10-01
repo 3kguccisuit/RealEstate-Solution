@@ -1,6 +1,5 @@
-﻿using System.Diagnostics;
-
-using RealEstate.Contracts.Services;
+﻿using RealEstate.Contracts.Services;
+using System.Diagnostics;
 
 namespace RealEstate.Services;
 

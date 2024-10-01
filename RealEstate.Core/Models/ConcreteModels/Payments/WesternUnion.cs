@@ -1,16 +1,12 @@
 ﻿using RealEstate.Core.Models.BaseModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
 
 namespace RealEstate.Core.Models.ConcreteModels.Payments
 {
     public class WesternUnion : Payment
     {
-        public string Email{ get; set; }
-      
+        public string Email { get; set; }
+
         public override string Type => "WesternUnion";
         [JsonConstructor]
         public WesternUnion(string id, string name, decimal amount, string email)

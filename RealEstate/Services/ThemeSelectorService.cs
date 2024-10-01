@@ -1,11 +1,8 @@
-﻿using System.Windows;
-
-using ControlzEx.Theming;
-
+﻿using ControlzEx.Theming;
 using MahApps.Metro.Theming;
-
 using RealEstate.Contracts.Services;
 using RealEstate.Models;
+using System.Windows;
 
 namespace RealEstate.Services;
 

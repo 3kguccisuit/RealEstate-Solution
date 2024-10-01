@@ -1,5 +1,4 @@
-﻿using RealEstate.Core.Models.BaseModels;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models.ConcreteModels
 {

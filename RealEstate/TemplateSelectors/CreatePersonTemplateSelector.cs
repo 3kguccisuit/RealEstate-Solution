@@ -12,11 +12,11 @@ namespace RealEstate.TemplateSelectors
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            if(item is Seller)
+            if (item is Seller)
             {
                 return SellerCreateTemplate;
             }
-            else if(item is Buyer)
+            else if (item is Buyer)
             {
                 return BuyerCreateTemplate;
 

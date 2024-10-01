@@ -1,12 +1,9 @@
-﻿using System.Windows.Controls;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
-
 using RealEstate.Contracts.Services;
 using RealEstate.ViewModels;
 using RealEstate.Views;
+using System.Windows.Controls;
 
 namespace RealEstate.Services;
 

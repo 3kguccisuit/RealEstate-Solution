@@ -1,9 +1,5 @@
 ﻿using RealEstate.Core.Models.BaseModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
 
 namespace RealEstate.Core.Models.ConcreteModels.Persons
 {

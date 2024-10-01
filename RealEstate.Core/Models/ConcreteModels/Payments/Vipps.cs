@@ -1,15 +1,11 @@
 ﻿using RealEstate.Core.Models.BaseModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
 
 namespace RealEstate.Core.Models.ConcreteModels.Payments
 {
     public class Vipps : Payment
     {
-        public string PhoneNumber{ get; set; }
+        public string PhoneNumber { get; set; }
         public bool HasLoanApproval { get; set; }
         public override string Type => "Vipps";
         [JsonConstructor]

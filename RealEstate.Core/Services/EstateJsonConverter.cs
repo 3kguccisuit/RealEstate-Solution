@@ -1,8 +1,7 @@
-﻿using System;
+﻿using RealEstate.Core.Models.BaseModels;
+using RealEstate.Core.Models.ConcreteModels;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels;
 
 public class EstateJsonConverter : JsonConverter<Estate>
 {

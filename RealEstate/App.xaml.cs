@@ -1,12 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Threading;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 using RealEstate.Contracts.Services;
 using RealEstate.Contracts.Views;
 using RealEstate.Core.Contracts.Services;
@@ -16,6 +10,10 @@ using RealEstate.Models;
 using RealEstate.Services;
 using RealEstate.ViewModels;
 using RealEstate.Views;
+using System.IO;
+using System.Reflection;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace RealEstate;
 
@@ -32,8 +30,8 @@ public partial class App : Application
         where T : class
         => _host.Services.GetService(typeof(T)) as T;
 
-    public string AppName {  get; set; }
-   // public string AppLocation { get; set; }
+    public string AppName { get; set; }
+    // public string AppLocation { get; set; }
     public App()
     {
     }

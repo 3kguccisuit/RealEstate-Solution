@@ -11,7 +11,7 @@ namespace RealEstate.Windows
         public EditEstateWindow(EditEstateViewModel viewModel)
         {
             InitializeComponent();
-            DataContext = viewModel; 
+            DataContext = viewModel;
         }
     }
 }

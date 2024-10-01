@@ -4,13 +4,9 @@ using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Enums;
 using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels;
 using RealEstate.Core.Models.ConcreteModels.Persons;
 using RealEstate.Helpers;
-using System;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls.Primitives;
 
 namespace RealEstate.ViewModels
 {
@@ -36,7 +32,7 @@ namespace RealEstate.ViewModels
             }
             else if (type == "Buyer")
             {
-                Selected = new Buyer(id, "BuyerName", new Address("Street name", "Zip code", "City", Country.Sverige), 0, false); 
+                Selected = new Buyer(id, "BuyerName", new Address("Street name", "Zip code", "City", Country.Sverige), 0, false);
             }
             else
             {

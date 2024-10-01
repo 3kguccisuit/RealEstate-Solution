@@ -2,10 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls.Primitives;
 
 namespace RealEstate.ViewModels
 {
@@ -37,7 +34,7 @@ namespace RealEstate.ViewModels
             var result = MessageBox.Show("Do you really want to cancel?", appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-              //  Selected.ID = "Cancel";
+                //  Selected.ID = "Cancel";
                 window.Close();
             }
         }

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace RealEstate.Core.Contracts.Services
+﻿namespace RealEstate.Core.Contracts.Services
 {
     public interface IDataService<T>
     {

@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using RealEstate.Core.Models.ConcreteModels;
+using System.Windows;
 using System.Windows.Controls;
-using RealEstate.Core.Models.ConcreteModels;
 
 namespace RealEstate.TemplateSelectors
 {
@@ -55,7 +55,8 @@ namespace RealEstate.TemplateSelectors
             {
                 return WarehouseCreateTemplate;
             }
-            else if(item is Factory){
+            else if (item is Factory)
+            {
                 return FactoryCreateTemplate;
             }
             return base.SelectTemplate(item, container);

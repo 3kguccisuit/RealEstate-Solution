@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.IO;
-
-using Microsoft.Extensions.Options;
-
+﻿using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Models;
+using System.Collections;
+using System.IO;
 
 namespace RealEstate.Services;
 

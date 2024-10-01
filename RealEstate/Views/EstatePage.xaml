@@ -57,16 +57,16 @@
                 <ui:DropDownButton Margin="2" Content="&#xE710;" ToolTip="New Estate" FontFamily="Segoe MDL2 Assets" FontSize="10" Width="30" Height="30" >
                     <ui:DropDownButton.Flyout>
                         <ContextMenu>
-                            <MenuItem Header="Villa" Command="{Binding OpenEstateFormCommand}" CommandParameter="Villa"  />
-                            <MenuItem Header="Apartment" Command="{Binding OpenEstateFormCommand}" CommandParameter="Apartment"/>
-                            <MenuItem Header="Townhouse" Command="{Binding OpenEstateFormCommand}" CommandParameter="Townhouse"/>
-                            <MenuItem Header="Hospital" Command="{Binding OpenEstateFormCommand}" CommandParameter="Hospital"/>
-                            <MenuItem Header="School" Command="{Binding OpenEstateFormCommand}" CommandParameter="School"/>
-                            <MenuItem Header="University" Command="{Binding OpenEstateFormCommand}" CommandParameter="University"/>
-                            <MenuItem Header="Hotel" Command="{Binding OpenEstateFormCommand}" CommandParameter="Hotel"/>
-                            <MenuItem Header="Shop" Command="{Binding OpenEstateFormCommand}" CommandParameter="Shop"/>
-                            <MenuItem Header="Warehouse" Command="{Binding OpenEstateFormCommand}" CommandParameter="Warehouse"/>
-                            <MenuItem Header="Factory" Command="{Binding OpenEstateFormCommand}" CommandParameter="Factory"/>
+                            <MenuItem Header="Villa" Command="{Binding AddEstateFormCommand}" CommandParameter="Villa"  />
+                            <MenuItem Header="Apartment" Command="{Binding AddEstateFormCommand}" CommandParameter="Apartment"/>
+                            <MenuItem Header="Townhouse" Command="{Binding AddEstateFormCommand}" CommandParameter="Townhouse"/>
+                            <MenuItem Header="Hospital" Command="{Binding AddEstateFormCommand}" CommandParameter="Hospital"/>
+                            <MenuItem Header="School" Command="{Binding AddEstateFormCommand}" CommandParameter="School"/>
+                            <MenuItem Header="University" Command="{Binding AddEstateFormCommand}" CommandParameter="University"/>
+                            <MenuItem Header="Hotel" Command="{Binding AddEstateFormCommand}" CommandParameter="Hotel"/>
+                            <MenuItem Header="Shop" Command="{Binding AddEstateFormCommand}" CommandParameter="Shop"/>
+                            <MenuItem Header="Warehouse" Command="{Binding AddEstateFormCommand}" CommandParameter="Warehouse"/>
+                            <MenuItem Header="Factory" Command="{Binding AddEstateFormCommand}" CommandParameter="Factory"/>
                         </ContextMenu>
                     </ui:DropDownButton.Flyout>
                 </ui:DropDownButton>

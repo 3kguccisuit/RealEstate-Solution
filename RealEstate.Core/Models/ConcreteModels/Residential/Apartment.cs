@@ -9,7 +9,7 @@ namespace RealEstate.Core.Models.ConcreteModels
         public override string Type => "Apartment";
         [JsonConstructor]
         public Apartment(string id, Address address, LegalForm legalForm, int numberOfRooms, int floorLevel)
-            : base(id, address, legalForm, numberOfRooms) 
+            : base(id, address, legalForm, numberOfRooms)
         {
             FloorLevel = floorLevel;
         }

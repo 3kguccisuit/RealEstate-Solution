@@ -1,5 +1,4 @@
-﻿using RealEstate.Core.Models.BaseModels;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models.ConcreteModels
 {
@@ -9,7 +8,7 @@ namespace RealEstate.Core.Models.ConcreteModels
         public override string Type => "Hospital";
         [JsonConstructor]
         public Hospital(string id, Address address, LegalForm legalForm, int parkingSpaces, int numberOfBeds)
-            : base(id, address, legalForm, parkingSpaces) 
+            : base(id, address, legalForm, parkingSpaces)
         {
             NumberOfBeds = numberOfBeds;
         }

@@ -8,10 +8,6 @@ using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Models.ConcreteModels;
 using RealEstate.Core.Models.ConcreteModels.Persons;
 using RealEstate.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace RealEstate.ViewModels

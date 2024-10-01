@@ -1,6 +1,5 @@
-﻿using System.Windows.Controls;
-
-using RealEstate.ViewModels;
+﻿using RealEstate.ViewModels;
+using System.Windows.Controls;
 
 namespace RealEstate.Views;
 

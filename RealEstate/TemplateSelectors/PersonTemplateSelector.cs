@@ -1,7 +1,6 @@
-﻿using System.Windows;
+﻿using RealEstate.Core.Models.ConcreteModels.Persons;
+using System.Windows;
 using System.Windows.Controls;
-using RealEstate.Core.Models.ConcreteModels;
-using RealEstate.Core.Models.ConcreteModels.Persons;
 
 namespace RealEstate.TemplateSelectors
 {

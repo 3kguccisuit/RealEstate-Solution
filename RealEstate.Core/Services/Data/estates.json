@@ -1,133 +1,9 @@
 [
   {
-    "NumberOfFloors": 0,
-    "HasGarage": true,
-    "Type": "Villa",
-    "NumberOfRooms": 0,
-    "ID": "fa311007-5f18-45ba-8eb5-3ab57b5d8ae4",
-    "Address": {
-      "Street": "Street name",
-      "ZipCode": "Zip code",
-      "City": "City",
-      "Country": 164
-    },
-    "LegalForm": {
-      "FormType": 0
-    },
-    "LinkedBuyer": {
-      "Budget": 300000,
-      "HasLoanApproval": true,
-      "Type": "Buyer",
-      "ID": "8469CB4A-0FEB-417B-9337-23994AF7EEDF",
-      "Name": "John Doe",
-      "Address": {
-        "Street": "123 Maple Street",
-        "ZipCode": "12345",
-        "City": "Springfield",
-        "Country": 163
-      }
-    },
-    "LinkedSeller": {
-      "AskingPrice": 350000,
-      "Type": "Seller",
-      "ID": "25E23DA1-9CF9-4D43-A82C-5E55F1904AA0",
-      "Name": "Jane Smith",
-      "Address": {
-        "Street": "456 Oak Avenue",
-        "ZipCode": "54321",
-        "City": "Shelbyville",
-        "Country": 163
-      }
-    },
-    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
-  },
-  {
-    "FloorLevel": 0,
-    "Type": "Apartment",
-    "NumberOfRooms": 0,
-    "ID": "5defd8f7-5ad4-4f64-ad53-f3e8b4a1f98b",
-    "Address": {
-      "Street": "Street name",
-      "ZipCode": "Zip code",
-      "City": "City",
-      "Country": 164
-    },
-    "LegalForm": {
-      "FormType": 0
-    },
-    "LinkedBuyer": {
-      "Budget": 300000,
-      "HasLoanApproval": true,
-      "Type": "Buyer",
-      "ID": "8469CB4A-0FEB-417B-9337-23994AF7EEDF",
-      "Name": "John Doe",
-      "Address": {
-        "Street": "123 Maple Street",
-        "ZipCode": "12345",
-        "City": "Springfield",
-        "Country": 163
-      }
-    },
-    "LinkedSeller": {
-      "AskingPrice": 350000,
-      "Type": "Seller",
-      "ID": "25E23DA1-9CF9-4D43-A82C-5E55F1904AA0",
-      "Name": "Jane Smith",
-      "Address": {
-        "Street": "456 Oak Avenue",
-        "ZipCode": "54321",
-        "City": "Shelbyville",
-        "Country": 163
-      }
-    },
-    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
-  },
-  {
-    "HasGarden": true,
-    "Type": "Townhouse",
-    "NumberOfRooms": 0,
-    "ID": "3801cf7d-46d9-42aa-a6ff-346bfcefa884",
-    "Address": {
-      "Street": "Street name",
-      "ZipCode": "Zip code",
-      "City": "City",
-      "Country": 164
-    },
-    "LegalForm": {
-      "FormType": 0
-    },
-    "LinkedBuyer": {
-      "Budget": 300000,
-      "HasLoanApproval": true,
-      "Type": "Buyer",
-      "ID": "8469CB4A-0FEB-417B-9337-23994AF7EEDF",
-      "Name": "John Doe",
-      "Address": {
-        "Street": "123 Maple Street",
-        "ZipCode": "12345",
-        "City": "Springfield",
-        "Country": 163
-      }
-    },
-    "LinkedSeller": {
-      "AskingPrice": 350000,
-      "Type": "Seller",
-      "ID": "25E23DA1-9CF9-4D43-A82C-5E55F1904AA0",
-      "Name": "Jane Smith",
-      "Address": {
-        "Street": "456 Oak Avenue",
-        "ZipCode": "54321",
-        "City": "Shelbyville",
-        "Country": 163
-      }
-    },
-    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
-  },
-  {
-    "NumberOfBeds": 0,
-    "Type": "Hospital",
-    "ParkingSpaces": 0,
-    "ID": "58f55894-6889-46c8-afc1-4d65a33d0226",
+    "HasOnlineStore": true,
+    "Type": "Shop",
+    "SquareMeters": 0,
+    "ID": "81f5ba10-5308-44a9-b696-e7bc4f2d35f5",
     "Address": {
       "Street": "Street name",
       "ZipCode": "Zip code",
@@ -168,7 +44,7 @@
     "NumberOfClassrooms": 0,
     "Type": "School",
     "ParkingSpaces": 0,
-    "ID": "3b5d6231-8a86-48b1-829f-06bcbc7f9ae3",
+    "ID": "80b144da-92b0-43fe-968b-47f258752eb7",
     "Address": {
       "Street": "Street name",
       "ZipCode": "Zip code",
@@ -206,51 +82,10 @@
     "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
   },
   {
-    "LoadingDocks": 0,
-    "Type": "Warehouse",
-    "SquareMeters": 0,
-    "ID": "f123f4d0-2e0b-4678-bb63-2b42e4188714",
-    "Address": {
-      "Street": "Street name",
-      "ZipCode": "Zip code",
-      "City": "City",
-      "Country": 164
-    },
-    "LegalForm": {
-      "FormType": 0
-    },
-    "LinkedBuyer": {
-      "Budget": 300000,
-      "HasLoanApproval": true,
-      "Type": "Buyer",
-      "ID": "8469CB4A-0FEB-417B-9337-23994AF7EEDF",
-      "Name": "John Doe",
-      "Address": {
-        "Street": "123 Maple Street",
-        "ZipCode": "12345",
-        "City": "Springfield",
-        "Country": 163
-      }
-    },
-    "LinkedSeller": {
-      "AskingPrice": 350000,
-      "Type": "Seller",
-      "ID": "25E23DA1-9CF9-4D43-A82C-5E55F1904AA0",
-      "Name": "Jane Smith",
-      "Address": {
-        "Street": "456 Oak Avenue",
-        "ZipCode": "54321",
-        "City": "Shelbyville",
-        "Country": 163
-      }
-    },
-    "ImagePath": "C:\\Users\\ludwi\\OneDrive\\Skrivbord\\testImage.png"
-  },
-  {
-    "HasWarehouse": true,
-    "Type": "Factory",
-    "SquareMeters": 0,
-    "ID": "5729c53a-5290-4b1c-ba3e-ae0c5b517af0",
+    "FloorLevel": 0,
+    "Type": "Apartment",
+    "NumberOfRooms": 0,
+    "ID": "54174fae-79a8-454d-abf7-d302a9124da1",
     "Address": {
       "Street": "Street name",
       "ZipCode": "Zip code",

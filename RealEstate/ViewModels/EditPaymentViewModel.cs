@@ -1,18 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Win32;
 using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels;
-using RealEstate.Core.Models.ConcreteModels.Payments;
-using RealEstate.Core.Services;
-using RealEstate.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace RealEstate.ViewModels

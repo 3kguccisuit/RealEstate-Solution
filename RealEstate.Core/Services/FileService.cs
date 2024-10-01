@@ -1,9 +1,6 @@
-﻿using System.IO;
-using System.Text;
-
-using Newtonsoft.Json;
-
+﻿using Newtonsoft.Json;
 using RealEstate.Core.Contracts.Services;
+using System.Text;
 
 namespace RealEstate.Core.Services;
 

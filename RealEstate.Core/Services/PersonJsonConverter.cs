@@ -1,9 +1,7 @@
-﻿using System;
+﻿using RealEstate.Core.Models.BaseModels;
+using RealEstate.Core.Models.ConcreteModels.Persons;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels;
-using RealEstate.Core.Models.ConcreteModels.Persons;
 
 public class PersonJsonConverter : JsonConverter<Person>
 {

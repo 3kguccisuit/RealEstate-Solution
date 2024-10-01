@@ -1,15 +1,12 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
+using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Services;
 using RealEstate.Windows;
-using Microsoft.Extensions.DependencyInjection;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace RealEstate.ViewModels;
 

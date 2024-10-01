@@ -1,9 +1,7 @@
-﻿using System.Windows.Controls;
-
-using MahApps.Metro.Controls;
-
+﻿using MahApps.Metro.Controls;
 using RealEstate.Contracts.Views;
 using RealEstate.ViewModels;
+using System.Windows.Controls;
 
 namespace RealEstate.Views;
 

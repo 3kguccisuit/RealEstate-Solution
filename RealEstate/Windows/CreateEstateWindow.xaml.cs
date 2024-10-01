@@ -11,7 +11,7 @@ namespace RealEstate.Windows
         public CreateEstateWindow(CreateEstateViewModel viewModel)
         {
             InitializeComponent();
-            DataContext = viewModel; 
+            DataContext = viewModel;
         }
     }
 }

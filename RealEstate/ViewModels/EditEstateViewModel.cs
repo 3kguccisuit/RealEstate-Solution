@@ -3,9 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Enums;
-using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels;
 using RealEstate.Core.Models.ConcreteModels.Persons;
 using System.Windows;
 
@@ -46,7 +44,7 @@ namespace RealEstate.ViewModels
             Buyers = persons.OfType<Buyer>().ToList();
             Sellers = persons.OfType<Seller>().ToList();
 
-            if(SelectedEstate.LinkedBuyer != null)
+            if (SelectedEstate.LinkedBuyer != null)
                 SelectedBuyer = Buyers.FirstOrDefault(e => e.ID == SelectedEstate.LinkedBuyer.ID);
             if (SelectedEstate.LinkedSeller != null)
                 SelectedSeller = Sellers.FirstOrDefault(e => e.ID == SelectedEstate.LinkedSeller.ID);
@@ -60,11 +58,11 @@ namespace RealEstate.ViewModels
         }
         [RelayCommand]
         private async Task Save(Window window)
-        {   
+        {
             SelectedEstate.LinkedBuyer = SelectedBuyer;
             SelectedEstate.LinkedSeller = SelectedSeller;
             MessageBox.Show($"Updated: {SelectedEstate}");
-            await _estateDataService.UpdateAsync( SelectedEstate );
+            await _estateDataService.UpdateAsync(SelectedEstate);
             window.Close();
         }
 
@@ -78,7 +76,7 @@ namespace RealEstate.ViewModels
             if (result == MessageBoxResult.Yes)
             {
                 window.Close();
-            }       
+            }
         }
 
         [RelayCommand]

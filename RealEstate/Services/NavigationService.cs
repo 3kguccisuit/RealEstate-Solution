@@ -1,8 +1,7 @@
-﻿using System.Windows.Controls;
-using System.Windows.Navigation;
-
-using RealEstate.Contracts.Services;
+﻿using RealEstate.Contracts.Services;
 using RealEstate.Contracts.ViewModels;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace RealEstate.Services;
 

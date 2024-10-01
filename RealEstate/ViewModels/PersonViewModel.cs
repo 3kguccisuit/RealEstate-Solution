@@ -1,11 +1,11 @@
-﻿using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
-using Microsoft.Extensions.DependencyInjection;
-using CommunityToolkit.Mvvm.Input;
 using RealEstate.Windows;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace RealEstate.ViewModels
@@ -63,7 +63,7 @@ namespace RealEstate.ViewModels
             var viewModel = _serviceProvider.GetRequiredService<CreatePersonViewModel>();
 
             // Initialize the ViewModel with the person type
-             viewModel.Initialize(selectedType);
+            viewModel.Initialize(selectedType);
 
             // Open the CreatePersonWindow with the ViewModel
             var window = new CreatePersonWindow(viewModel);

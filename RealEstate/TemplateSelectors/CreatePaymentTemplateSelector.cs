@@ -1,7 +1,6 @@
-﻿using System.Windows;
+﻿using RealEstate.Core.Models.ConcreteModels.Payments;
+using System.Windows;
 using System.Windows.Controls;
-
-using RealEstate.Core.Models.ConcreteModels.Payments;
 
 namespace RealEstate.TemplateSelectors
 {

@@ -1,13 +1,10 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
-
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using MahApps.Metro.Controls;
-
 using RealEstate.Contracts.Services;
 using RealEstate.Properties;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace RealEstate.ViewModels;
 

@@ -1,13 +1,10 @@
-﻿using System.Windows.Input;
-
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using Microsoft.Extensions.Options;
-
 using RealEstate.Contracts.Services;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Models;
+using System.Windows.Input;
 
 namespace RealEstate.ViewModels;
 

@@ -29,19 +29,19 @@ namespace RealEstate.ViewModels
             var id = IDGenerator.GetUniqueId();
             if (type == "Bank")
             {
-                Selected = new Bank(id, "name", 123, "IBAN");
+                Selected = new Bank(id, "", 0, "");
             }
             else if (type == "PayPal")
             {
-                Selected = new PayPal(id, "name", 123, "MyEmail@real.com");
+                Selected = new PayPal(id, "", 0, "");
             }
             else if (type == "Vipps")
             {
-                Selected = new Vipps(id, "name", 123, "070-123 45 67");
+                Selected = new Vipps(id, "", 0, "");
             }
             else if (type == "WesternUnion")
             {
-                Selected = new WesternUnion(id, "name", 123, "SomeOne@example.com");
+                Selected = new WesternUnion(id, "", 0, "");
             }
             else
             {
@@ -79,7 +79,8 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void Autofill()
         {
-            Selected.AutoFill();
+            // MessageBox.Show($"Autofill");
+            Selected = Selected.AutoFill();
         }
     }
 }

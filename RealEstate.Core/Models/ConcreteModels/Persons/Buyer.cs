@@ -1,4 +1,5 @@
-﻿using RealEstate.Core.Models.BaseModels;
+﻿using RealEstate.Core.Enums;
+using RealEstate.Core.Models.BaseModels;
 using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models.ConcreteModels.Persons
@@ -14,6 +15,11 @@ namespace RealEstate.Core.Models.ConcreteModels.Persons
         {
             Budget = budget;
             HasLoanApproval = hasLoanApproval;
+        }
+
+        public override Person AutoFill()
+        {
+            return new Buyer(Guid.NewGuid().ToString("D"), "Alice Johnsson", new Address("321 Main st", "175575", "New York", Country.United_States_of_America), 0, true);
         }
 
         public override string ToString()

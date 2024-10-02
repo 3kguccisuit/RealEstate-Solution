@@ -9,6 +9,7 @@ using RealEstate.Core.Models.ConcreteModels;
 using RealEstate.Core.Models.ConcreteModels.Persons;
 using RealEstate.Helpers;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace RealEstate.ViewModels
 {
@@ -46,8 +47,8 @@ namespace RealEstate.ViewModels
             if (type == "Apartment")
             {
                 SelectedEstate = new Apartment(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
-                    new LegalForm(LegalFormType.Ownership),
+                    new Address("", "", "", Country.Sverige),
+                    new LegalForm(LegalFormType.Rental),
                     0, // Number of rooms
                     0  // Floor level
                 );
@@ -55,7 +56,7 @@ namespace RealEstate.ViewModels
             else if (type == "Villa")
             {
                 SelectedEstate = new Villa(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new Address("", "", "", Country.Sverige),
                     new LegalForm(LegalFormType.Ownership),
                     0, // Number of rooms
                     0, // Number of floors
@@ -65,8 +66,8 @@ namespace RealEstate.ViewModels
             else if (type == "Townhouse")
             {
                 SelectedEstate = new Townhouse(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
-                    new LegalForm(LegalFormType.Ownership),
+                    new Address("", "", "", Country.Sverige),
+                    new LegalForm(LegalFormType.Tenement),
                     0, // Number of rooms
                     false // HasGarden
                 );
@@ -74,7 +75,7 @@ namespace RealEstate.ViewModels
             else if (type == "Hospital")
             {
                 SelectedEstate = new Hospital(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new Address("", "", "", Country.Sverige),
                     new LegalForm(LegalFormType.Ownership),
                     0, // Parking spaces
                     0 // Number of beds
@@ -83,7 +84,7 @@ namespace RealEstate.ViewModels
             else if (type == "School")
             {
                 SelectedEstate = new School(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new Address("", "", "", Country.Sverige),
                     new LegalForm(LegalFormType.Ownership),
                     0, // Parking spaces
                     0 // Number of classrooms
@@ -92,7 +93,7 @@ namespace RealEstate.ViewModels
             else if (type == "University")
             {
                 SelectedEstate = new University(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new Address("", "", "", Country.Sverige),
                     new LegalForm(LegalFormType.Ownership),
                     0, // Parking spaces
                     0 // Number of programs
@@ -101,7 +102,7 @@ namespace RealEstate.ViewModels
             else if (type == "Hotel")
             {
                 SelectedEstate = new Hotel(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new Address("", "", "", Country.Sverige),
                     new LegalForm(LegalFormType.Ownership),
                     0, // SquareMeters
                     false // hasSpa
@@ -110,7 +111,7 @@ namespace RealEstate.ViewModels
             else if (type == "Shop")
             {
                 SelectedEstate = new Shop(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new Address("", "", "", Country.Sverige),
                     new LegalForm(LegalFormType.Ownership),
                     0, // SquareMeters
                     false // HasOnlineStore
@@ -119,7 +120,7 @@ namespace RealEstate.ViewModels
             else if (type == "Warehouse")
             {
                 SelectedEstate = new Warehouse(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new Address("", "", "", Country.Sverige),
                     new LegalForm(LegalFormType.Ownership),
                     0, // SquareMeters
                     0 // LoadingDocks
@@ -128,7 +129,7 @@ namespace RealEstate.ViewModels
             else if (type == "Factory")
             {
                 SelectedEstate = new Factory(id,
-                    new Address("Street name", "Zip code", "City", Country.Sverige),
+                    new Address("", "", "", Country.Sverige),
                     new LegalForm(LegalFormType.Ownership),
                     0, // SquareMeters
                     false // hasWarehouse
@@ -192,6 +193,12 @@ namespace RealEstate.ViewModels
             }
         }
 
-
+        // AutofillCommand to populate the TextBoxes with default values
+        [RelayCommand]
+        private void Autofill()
+        {
+            // MessageBox.Show($"Autofill");
+            SelectedEstate = SelectedEstate.AutoFill();
+        }
     }
 }

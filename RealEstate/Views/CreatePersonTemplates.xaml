@@ -4,7 +4,12 @@
 
     <!-- DataTemplate for Buyer -->
     <DataTemplate x:Key="BuyerCreateTemplate" DataType="{x:Type models:Buyer}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusBuyer}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -25,7 +30,7 @@
             <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Buyer Form" FontWeight="Bold" FontSize="16"/>
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" x:Name="TextBoxFocusBuyer" />
 
             <!-- Address -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Street" />
@@ -62,7 +67,12 @@
 
     <!-- DataTemplate for Seller -->
     <DataTemplate x:Key="SellerCreateTemplate" DataType="{x:Type models:Seller}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusSeller}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -82,7 +92,7 @@
             <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Seller Form" FontWeight="Bold" FontSize="16"/>
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" x:Name="TextBoxFocusSeller"/>
 
             <!-- Address -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Street" />

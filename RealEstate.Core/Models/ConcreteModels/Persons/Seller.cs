@@ -1,4 +1,5 @@
-﻿using RealEstate.Core.Models.BaseModels;
+﻿using RealEstate.Core.Enums;
+using RealEstate.Core.Models.BaseModels;
 using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models.ConcreteModels.Persons
@@ -14,6 +15,10 @@ namespace RealEstate.Core.Models.ConcreteModels.Persons
             AskingPrice = askingPrice;
         }
 
+        public override Person AutoFill()
+        {
+            return new Seller(Guid.NewGuid().ToString("D"), "John Doe", new Address("123 main st", "165523", "Stockholm", Country.Sverige), 0);
+        }
         public override string ToString()
         {
             return $"{Name}, ID: {ID}, Asking Price: {AskingPrice}, Address: {Address.Street}, {Address.City}";

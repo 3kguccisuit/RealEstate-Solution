@@ -14,6 +14,7 @@ namespace RealEstate.Core.Models.BaseModels
         public string ImagePath { get; set; }
         public virtual string Type => "Estate";
         public abstract string DisplayDetails();
+        public abstract Estate AutoFill();
 
         [JsonConstructor]
         protected Estate(string id, Address address, LegalForm legalForm)

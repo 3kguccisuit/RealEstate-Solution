@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using RealEstate.Core.Enums;
+using RealEstate.Core.Models.BaseModels;
+using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models.ConcreteModels
 {
@@ -13,6 +15,14 @@ namespace RealEstate.Core.Models.ConcreteModels
             LoadingDocks = loadingDocks;
         }
 
+        public override Estate AutoFill()
+        {
+            return new Warehouse(Guid.NewGuid().ToString("D"), new Address("123 Main St", "17523", "Stockholm", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // SquareMeters
+                    0 // LoadingDocks
+                );
+        }
         public override string DisplayDetails()
         {
             return $"{base.ToString()}, Loading Docks: {LoadingDocks}";

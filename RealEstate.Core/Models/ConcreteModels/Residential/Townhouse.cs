@@ -1,4 +1,5 @@
-﻿using RealEstate.Core.Models.BaseModels;
+﻿using RealEstate.Core.Enums;
+using RealEstate.Core.Models.BaseModels;
 using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models.ConcreteModels
@@ -14,6 +15,15 @@ namespace RealEstate.Core.Models.ConcreteModels
             : base(id, address, legalForm, numberOfRooms)  // Pass LegalForm and other common properties to base class
         {
             HasGarden = hasGarden;
+        }
+
+        public override Estate AutoFill()
+        {
+            return new Townhouse(Guid.NewGuid().ToString("D"), new Address("123 Main St", "17523", "Stockholm", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // Parking spaces
+                    true // Number of programs
+                );
         }
 
         public override string DisplayDetails()

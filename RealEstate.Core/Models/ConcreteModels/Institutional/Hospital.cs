@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using RealEstate.Core.Enums;
+using RealEstate.Core.Models.BaseModels;
+using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models.ConcreteModels
 {
@@ -12,7 +14,14 @@ namespace RealEstate.Core.Models.ConcreteModels
         {
             NumberOfBeds = numberOfBeds;
         }
-
+        public override Estate AutoFill()
+        {
+            return new Hospital(Guid.NewGuid().ToString("D"), new Address("123 Main St", "17523", "Stockholm", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0, // Parking spaces
+                    0 // Number of beds
+                );
+        }
         public override string DisplayDetails()
         {
             return $"{base.ToString()}, Number of Beds: {NumberOfBeds}";

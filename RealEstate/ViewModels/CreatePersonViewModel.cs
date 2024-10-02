@@ -28,11 +28,11 @@ namespace RealEstate.ViewModels
             var id = IDGenerator.GetUniqueId();
             if (type == "Seller")
             {
-                Selected = new Seller(id, "Name", new Address("Street name", "Zip code", "City", Country.Sverige), 0);
+                Selected = new Seller(id, "", new Address("", "", "", Country.Sverige), 0);
             }
             else if (type == "Buyer")
             {
-                Selected = new Buyer(id, "BuyerName", new Address("Street name", "Zip code", "City", Country.Sverige), 0, false);
+                Selected = new Buyer(id, "", new Address("", "", "", Country.Sverige), 0, false);
             }
             else
             {
@@ -63,6 +63,14 @@ namespace RealEstate.ViewModels
             await _personDataService.AddAsync(Selected);
 
             window.Close();
+        }
+
+        // AutofillCommand to populate the TextBoxes with default values
+        [RelayCommand]
+        private void Autofill()
+        {
+            // MessageBox.Show($"Autofill");
+            Selected = Selected.AutoFill();
         }
     }
 }

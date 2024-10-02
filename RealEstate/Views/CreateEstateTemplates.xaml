@@ -4,7 +4,13 @@
 
     <!-- DataTemplate for Apartment -->
     <DataTemplate x:Key="ApartmentCreateTemplate" DataType="{x:Type models:Apartment}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusApartment}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -42,7 +48,8 @@
             
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}"  x:Name="TextBoxFocusApartment"/>
+            
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -93,7 +100,12 @@
 
     <!-- DataTemplate for Villa -->
     <DataTemplate x:Key="VillaCreateTemplate" DataType="{x:Type models:Villa}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusVilla}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -133,7 +145,7 @@
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusVilla" />
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -189,7 +201,12 @@
 
     <!-- DataTemplate for Townhouse -->
     <DataTemplate x:Key="TownhouseCreateTemplate" DataType="{x:Type models:Townhouse}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusTownhouse}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -227,7 +244,7 @@
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusTownhouse"/>
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -277,7 +294,12 @@
 
     <!-- DataTemplate for Hospital -->
     <DataTemplate x:Key="HospitalCreateTemplate" DataType="{x:Type models:Hospital}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusHospital}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -315,7 +337,7 @@
             
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusHospital" />
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -365,7 +387,12 @@
 
     <!-- DataTemplate for Creating a School -->
     <DataTemplate x:Key="SchoolCreateTemplate" DataType="{x:Type models:School}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusSchool}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -403,7 +430,7 @@
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusSchool"/>
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -453,7 +480,12 @@
 
     <!-- DataTemplate for Creating a University -->
     <DataTemplate x:Key="UniversityCreateTemplate" DataType="{x:Type models:University}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusUniversity}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -492,7 +524,7 @@
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusUniversity" />
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -542,7 +574,12 @@
 
     <!-- DataTemplate for Creating a Hotel -->
     <DataTemplate x:Key="HotelCreateTemplate" DataType="{x:Type models:Hotel}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusHotel}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -581,7 +618,7 @@
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusHotel" />
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -631,7 +668,12 @@
 
     <!-- DataTemplate for Creating a Shop -->
     <DataTemplate x:Key="ShopCreateTemplate" DataType="{x:Type models:Shop}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusShop}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -670,7 +712,7 @@
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusShop"/>
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -720,7 +762,12 @@
 
     <!-- DataTemplate for Creating a Warehouse -->
     <DataTemplate x:Key="WarehouseCreateTemplate" DataType="{x:Type models:Warehouse}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusWarehouse}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -759,7 +806,7 @@
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusWarehouse" />
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />
@@ -809,7 +856,12 @@
 
     <!-- DataTemplate for Creating a Factory -->
     <DataTemplate x:Key="FactoryCreateTemplate" DataType="{x:Type models:Factory}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusFactory}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+G to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -848,7 +900,7 @@
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusFactory" />
 
             <!-- Zip Code Input -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Zipcode" />

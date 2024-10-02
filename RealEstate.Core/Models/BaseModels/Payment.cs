@@ -1,8 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using RealEstate.Core.Contracts.Services;
+using System.Text.Json.Serialization;
 
 namespace RealEstate.Core.Models.BaseModels
 {
-    public class Payment
+    public abstract class Payment : IPayment
     {
         public string ID { get; set; }
         public string Name { get; set; }
@@ -15,6 +16,8 @@ namespace RealEstate.Core.Models.BaseModels
             Name = name;
             Amount = amount;
         }
+
+        public abstract Payment AutoFill();
     }
 
 }

@@ -84,7 +84,7 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
         // Resolve the ViewModel from the DI container
         var viewModel = _serviceProvider.GetRequiredService<CreatePaymentViewModel>();
 
-        // Initialize the ViewModel with the estate
+        // Initialize the ViewModel with the choosen estate type
         viewModel.Initialize(selectedType);
 
         // Open the CreateEstateWindow with the ViewModel

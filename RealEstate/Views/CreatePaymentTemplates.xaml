@@ -1,10 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:models="clr-namespace:RealEstate.Core.Models.ConcreteModels.Payments;assembly=RealEstate.Core">
+                    xmlns:models="clr-namespace:RealEstate.Core.Models.ConcreteModels.Payments;assembly=RealEstate.Core"
+                    >
 
     <!-- DataTemplate for Bank -->
     <DataTemplate x:Key="BankCreateTemplate" DataType="{x:Type models:Bank}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusBank}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -17,12 +23,11 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-
             <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Bank Form" FontWeight="Bold" FontSize="16"/>
 
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+            <TextBox x:Name="TextBoxFocusBank" Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
 
             <!-- Amount -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Amount" />
@@ -30,7 +35,7 @@
 
             <!-- Name -->
             <Label Grid.Row="3" Grid.Column="0" Margin="3" Content="IBAN" />
-            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding IbanNumber}" />
+            <TextBox Grid.Row="3" Grid.Column="1" Width="120" Text="{Binding IbanNumber}"/>
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
             <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
@@ -46,7 +51,13 @@
 
     <!-- DataTemplate for PayPal -->
     <DataTemplate x:Key="PayPalCreateTemplate" DataType="{x:Type models:PayPal}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusPayPal}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -64,7 +75,7 @@
 
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+            <TextBox x:Name="TextBoxFocusPayPal" Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
 
             <!-- Amount -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Amount" />
@@ -86,9 +97,15 @@
         </Grid>
     </DataTemplate>
 
-    <!-- DataTemplate for PayPal -->
+    <!-- DataTemplate for Western Union -->
     <DataTemplate x:Key="WesternUnionCreateTemplate" DataType="{x:Type models:WesternUnion}">
-        <Grid>
+        <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusWesternUnion}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -107,7 +124,7 @@
 
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+            <TextBox x:Name="TextBoxFocusWesternUnion" Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
 
             <!-- Amount -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Amount" />
@@ -131,7 +148,13 @@
 
     <!-- DataTemplate for PayPal -->
     <DataTemplate x:Key="VippsCreateTemplate" DataType="{x:Type models:Vipps}">
-        <Grid>
+        <Grid FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusVipps}">
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+G" 
+                    Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -148,7 +171,7 @@
 
             <!-- Name -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Name" />
-            <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
+            <TextBox x:Name="TextBoxFocusVipps" Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Name}" />
 
             <!-- Amount -->
             <Label Grid.Row="2" Grid.Column="0" Margin="3" Content="Amount" />

@@ -22,7 +22,7 @@
             
         </ResourceDictionary>
     </Window.Resources>
-
+    
     <Grid>
         <!-- ContentControl to choose between Bank or PayPal input fields -->
         <ContentControl Content="{Binding Selected}" 

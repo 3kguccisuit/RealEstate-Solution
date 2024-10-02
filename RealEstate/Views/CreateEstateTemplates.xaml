@@ -87,10 +87,10 @@
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save" IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -188,10 +188,10 @@
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
             <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal">
                 <!-- Pass the current window as CommandParameter -->
-                <Button Content="Save"
+                <Button Content="Save" IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
             Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -282,10 +282,10 @@
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save"  IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                 Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -375,10 +375,10 @@
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save"  IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -468,10 +468,10 @@
 
             <!-- Buttons for Create/Cancel (Bind to parent ViewModel commands) -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save"  IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -562,10 +562,10 @@
 
             <!-- Buttons for Create/Cancel -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save"  IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -656,10 +656,10 @@
 
             <!-- Buttons for Create/Cancel -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save"  IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -750,10 +750,10 @@
 
             <!-- Buttons for Create/Cancel -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save"  IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -844,10 +844,10 @@
 
             <!-- Buttons for Create/Cancel -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save"  IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>
@@ -938,10 +938,10 @@
 
             <!-- Buttons for Create/Cancel -->
             <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Save"
+                <Button Content="Save"  IsDefault="True"
                     Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
-                <Button Content="Cancel"
+                <Button Content="Cancel" IsCancel="True"
                     Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
             </StackPanel>

@@ -1,6 +1,7 @@
 ﻿using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Helpers;
+using Serilog;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -50,7 +51,7 @@ namespace RealEstate.Core.Services
             }
             else
             {
-                Console.WriteLine($"Person with ID {id} not found.");
+                Log.Information($"Person with ID {id} not found.");
             }
         }
 
@@ -77,11 +78,11 @@ namespace RealEstate.Core.Services
                 // Update the person in the list
                 personList[personIndex] = updatedPerson;
                 await SavePersonsToFileAsync(personList);  // Save updated list back to file
-                Console.WriteLine($"Person with ID {updatedPerson.ID} has been updated.");
+                Log.Information($"Person with ID {updatedPerson.ID} has been updated.");
             }
             else
             {
-                Console.WriteLine($"Person with ID {updatedPerson.ID} not found.");
+                Log.Information($"Person with ID {updatedPerson.ID} not found.");
             }
         }
 
@@ -96,13 +97,13 @@ namespace RealEstate.Core.Services
 
                 if (string.IsNullOrWhiteSpace(json))
                 {
-                    Console.WriteLine("The JSON file is empty.");
+                    Log.Information("The Person JSON file is empty.");
                     return new List<Person>();
                 }
             }
             else
             {
-                Console.WriteLine("The JSON file does not exist.");
+                Log.Information("The Person JSON file does not exist.");
                 return new List<Person>();
             }
 

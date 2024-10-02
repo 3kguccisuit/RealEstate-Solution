@@ -3,6 +3,7 @@ using RealEstate.Core.Models.BaseModels;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using RealEstate.Helpers;
+using Serilog;
 
 namespace RealEstate.Core.Services
 {
@@ -51,7 +52,7 @@ namespace RealEstate.Core.Services
             }
             else
             {
-                Console.WriteLine($"Estate with ID {id} not found.");
+                Log.Information($"Estate with ID {id} not found.");
             }
         }
 
@@ -78,11 +79,11 @@ namespace RealEstate.Core.Services
                 // Update the estate in the list
                 estateList[estateIndex] = updatedEstate;
                 await SaveEstatesToFileAsync(estateList);  // Save updated list back to file
-                Console.WriteLine($"Estate with ID {updatedEstate.ID} has been updated.");
+                Log.Information($"Estate with ID {updatedEstate.ID} has been updated.");
             }
             else
             {
-                Console.WriteLine($"Estate with ID {updatedEstate.ID} not found.");
+                Log.Information($"Estate with ID {updatedEstate.ID} not found.");
             }
         }
 
@@ -97,13 +98,13 @@ namespace RealEstate.Core.Services
 
                 if (string.IsNullOrWhiteSpace(json))
                 {
-                    Console.WriteLine("The JSON file is empty.");
+                    Log.Information("The Estate JSON file is empty.");
                     return new List<Estate>();
                 }
             }
             else
             {
-                Console.WriteLine("The JSON file does not exist.");
+                Log.Information("The Estate JSON file does not exist.");
                 return new List<Estate>();
             }
 

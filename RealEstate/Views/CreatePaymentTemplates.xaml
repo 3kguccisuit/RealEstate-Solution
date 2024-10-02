@@ -7,7 +7,7 @@
     <DataTemplate x:Key="BankCreateTemplate" DataType="{x:Type models:Bank}">
         <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusBank}">
             <Grid.InputBindings>
-                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <!-- Bind Ctrl+G to the AutofillCommand -->
                 <KeyBinding Gesture="Ctrl+G" 
                     Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
             </Grid.InputBindings>
@@ -53,7 +53,7 @@
     <DataTemplate x:Key="PayPalCreateTemplate" DataType="{x:Type models:PayPal}">
         <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusPayPal}">
             <Grid.InputBindings>
-                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <!-- Bind Ctrl+G to the AutofillCommand -->
                 <KeyBinding Gesture="Ctrl+G" 
                     Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
             </Grid.InputBindings>
@@ -101,7 +101,7 @@
     <DataTemplate x:Key="WesternUnionCreateTemplate" DataType="{x:Type models:WesternUnion}">
         <Grid  FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusWesternUnion}">
             <Grid.InputBindings>
-                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <!-- Bind Ctrl+G to the AutofillCommand -->
                 <KeyBinding Gesture="Ctrl+G" 
                     Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
             </Grid.InputBindings>
@@ -150,7 +150,7 @@
     <DataTemplate x:Key="VippsCreateTemplate" DataType="{x:Type models:Vipps}">
         <Grid FocusManager.FocusedElement="{Binding ElementName=TextBoxFocusVipps}">
             <Grid.InputBindings>
-                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <!-- Bind Ctrl+G to the AutofillCommand -->
                 <KeyBinding Gesture="Ctrl+G" 
                     Command="{Binding DataContext.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
             </Grid.InputBindings>

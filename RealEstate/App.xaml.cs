@@ -10,6 +10,7 @@ using RealEstate.Models;
 using RealEstate.Services;
 using RealEstate.ViewModels;
 using RealEstate.Views;
+using Serilog;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -34,10 +35,12 @@ public partial class App : Application
     // public string AppLocation { get; set; }
     public App()
     {
+        ConfigureLogging();
     }
 
     private async void OnStartup(object sender, StartupEventArgs e)
     {
+        Log.Information("RealEstate has started");
         var appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
         // For more information about .NET generic host see  https://docs.microsoft.com/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
@@ -52,6 +55,17 @@ public partial class App : Application
         await _host.StartAsync();
     }
 
+    private void ConfigureLogging()
+    {
+        // Configure Serilog
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug() // Set the minimum log level (Debug, Information, Warning, Error, etc.)
+            .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day) // Write logs to a file, one per day
+            .CreateLogger();
+
+        // Optional: Log an initial message to confirm setup
+        Log.Information("Serilog is configured and ready to log!");
+    }
     private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
     {
         // TODO: Register your services, viewmodels and pages here
@@ -117,6 +131,7 @@ public partial class App : Application
 
     private async void OnExit(object sender, ExitEventArgs e)
     {
+        Log.CloseAndFlush();
         await _host.StopAsync();
         _host.Dispose();
         _host = null;

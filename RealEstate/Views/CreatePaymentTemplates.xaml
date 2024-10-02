@@ -5,6 +5,11 @@
     <!-- DataTemplate for Bank -->
     <DataTemplate x:Key="BankCreateTemplate" DataType="{x:Type models:Bank}">
         <Grid>
+            <Grid.InputBindings>
+                <!-- Bind Ctrl+A to the AutofillCommand -->
+                <KeyBinding Gesture="Ctrl+Shift+G" 
+                    Command="{Binding DataContext.Selected.AutofillCommand, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -16,7 +21,6 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-
 
             <Label Grid.Row="0" Grid.Column="0" Margin="3" Content="Bank Form" FontWeight="Bold" FontSize="16"/>
 

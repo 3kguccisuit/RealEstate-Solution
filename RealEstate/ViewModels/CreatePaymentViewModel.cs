@@ -5,6 +5,8 @@ using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Models.ConcreteModels.Payments;
 using RealEstate.Helpers;
 using System.Windows;
+using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace RealEstate.ViewModels
 {
@@ -71,6 +73,13 @@ namespace RealEstate.ViewModels
             await _paymentDataService.AddAsync(Selected);
 
             window.Close();
+        }
+
+        // AutofillCommand to populate the TextBoxes with default values
+        [RelayCommand]
+        private void Autofill()
+        {
+            Selected.AutoFill();
         }
     }
 }

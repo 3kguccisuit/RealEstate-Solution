@@ -2,7 +2,7 @@
 
 namespace RealEstate.Core.Models.BaseModels
 {
-    public class Payment
+    public abstract class Payment
     {
         public string ID { get; set; }
         public string Name { get; set; }
@@ -14,6 +14,13 @@ namespace RealEstate.Core.Models.BaseModels
             ID = id;
             Name = name;
             Amount = amount;
+        }
+
+        public void AutoFill()
+        {
+            ID = "ID";
+            Name = "Name";
+            Amount = 99;
         }
     }
 

@@ -2,7 +2,7 @@
 using RealEstate.Core.Models.BaseModels;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
+using RealEstate.Helpers;
 
 namespace RealEstate.Core.Services
 {
@@ -12,13 +12,9 @@ namespace RealEstate.Core.Services
 
         public EstateDataService()
         {
-            // Navigate from bin\Debug to RealEstate.Core\Services
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            //FilePath = Path.Combine(baseDirectory, "..", "..", "..", "..", "RealEstate.Core", "Services", "Data", "estates.json");
-            FilePath = Path.Combine(baseDirectory, @"..\..\..\..\", "RealEstate.Core", "Services", "Data", "estates.json");
-            // Normalize the path
-            FilePath = Path.GetFullPath(FilePath);
+            FilePath = EstateLib.GetDataLocation(Directory.GetCurrentDirectory(), "estates.json");
         }
+
         // Return the list of estates, either from JSON or with mock data
         public async Task<IEnumerable<Estate>> GetAsync()
         {

@@ -1,5 +1,6 @@
 ﻿using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
+using RealEstate.Helpers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -11,12 +12,7 @@ namespace RealEstate.Core.Services
 
         public PersonDataService()
         {
-            // Navigate from bin\Debug to RealEstate.Core\Services
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            FilePath = Path.Combine(baseDirectory, "..", "..", "..", "..", "RealEstate.Core", "Services", "Data", "persons.json");
-
-            // Normalize the path
-            FilePath = Path.GetFullPath(FilePath);
+            FilePath = EstateLib.GetDataLocation(Directory.GetCurrentDirectory(), "persons.json");
         }
 
         // Return the list of persons, either from JSON or with mock data

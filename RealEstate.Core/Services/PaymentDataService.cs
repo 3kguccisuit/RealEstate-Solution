@@ -1,5 +1,6 @@
 ﻿using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
+using RealEstate.Helpers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -11,12 +12,7 @@ namespace RealEstate.Core.Services
 
         public PaymentDataService()
         {
-            // Navigate from bin\Debug to RealEstate.Core\Services
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            FilePath = Path.Combine(baseDirectory, "..", "..", "..", "..", "RealEstate.Core", "Services", "Data", "payments.json");
-
-            // Normalize the path
-            FilePath = Path.GetFullPath(FilePath);
+            FilePath = EstateLib.GetDataLocation(Directory.GetCurrentDirectory(), "payments.json");
         }
 
         // Return the list of payments, either from JSON or with mock data

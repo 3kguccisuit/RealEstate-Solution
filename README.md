@@ -26,13 +26,6 @@ A WPF application designed to manage estates, buyers, sellers, and payments, ini
 3. Restore NuGet packages.
 4. Build and run the project. 
 
-## Project Structure
-- **Estates**: Abstract classes for Institutional and Commercial properties, with concrete implementations like Hospital, School, Hotel, Shop, Warehouse, and Factory.
-- **Person**: Buyer and seller entities with attributes such as budget, loan approval, and asking price.
-- **Payment System**: A flexible payment system with support for Bank transfers, Western Union, and PayPal.
-- **Services**: Each entity type (estate, person, payment) has a dedicated data service handling CRUD operations via JSON.
-- **Generics and Collections**: The application manages multiple estate objects using a collection of estates.
-
 ## Technologies Used
 - **MVVM Framework**: [CommunityToolkit.Mvvm](https://github.com/CommunityToolkit/MVVM)
 - **UI Framework**: [MahApps.Metro](https://github.com/MahApps/MahApps.Metro), [WPF-UI](https://github.com/lepoco/WPFUI)

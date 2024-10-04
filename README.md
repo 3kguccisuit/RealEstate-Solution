@@ -42,9 +42,8 @@ A WPF application designed to manage estates, buyers, sellers, and payments, ini
 
 ## Future Plans
 - **Add More Estate Types**: Expand the system with more estate categories such as office spaces and retail locations.
-- **Enhanced Payment Management**: Extend the payment system with more advanced features such as transaction history.
 - **Dictionary Usage**: Implement a search system that maps cities to estates using dictionary collections.
-- **XML Serialization**: Future expansion to support XML serialization in addition to JSON for more flexible data handling.
+- **XML Serialization**: Support XML serialization in addition to JSON for more flexible data handling.
 
 
 

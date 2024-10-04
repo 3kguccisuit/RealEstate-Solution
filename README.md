@@ -2,6 +2,7 @@
 
 A WPF application designed to manage estates, buyers, sellers, and payments, initially created as part of a school project. The system provides a robust foundation for managing different types of estates with plans for future expansions and enhanced data handling.
 
+![Estate Management Screenshot](https://github.com/3kguccisuit/RealEstate-Solution/blob/master/EstateListView.png)
 ## Features
 - **Estate Management**: Create, update, and delete estates (Apartment, Villa, Townhouse, etc.) with specific attributes.
 - **Person Management**: Handles buyer and seller data, including attributes like name, address, budget, loan approval, and asking price.

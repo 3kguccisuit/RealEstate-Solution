@@ -6,7 +6,7 @@ A WPF application designed to manage estates, buyers, sellers, and payments, ini
 ## Features
 - **Estate Management**: Create, update, and delete estates (Apartment, Villa, Townhouse, etc.) with specific attributes.
 - **Person Management**: Handles buyer and seller data, including attributes like name, address, budget, loan approval, and asking price.
-- **Payment System**: Manage payments through various methods such as Bank transfers, Western Union, and PayPal. Each payment option is represented by different attributes like account number or email.
+- **Payment System**: Create, update, and delete payments through various methods such as Bank transfers, Western Union, and PayPal. Each payment option is represented by different attributes like account number or email.
 - **Data Services**: JSON-based data persistence for estates, people, and payments using a service pattern.
 - **Modern UI**: Utilizes MahApps.Metro and WPF-UI for a modern and fluent user experience.
 - **Dynamic Binding**: Estate types are determined at runtime based on user input.
@@ -31,7 +31,7 @@ A WPF application designed to manage estates, buyers, sellers, and payments, ini
 - **Person**: Buyer and seller entities with attributes such as budget, loan approval, and asking price.
 - **Payment System**: A flexible payment system with support for Bank transfers, Western Union, and PayPal.
 - **Services**: Each entity type (estate, person, payment) has a dedicated data service handling CRUD operations via JSON.
-- **Generics and Collections**: The application manages multiple estate objects using a collection of estates, enabling CRUD operations.
+- **Generics and Collections**: The application manages multiple estate objects using a collection of estates.
 
 ## Technologies Used
 - **MVVM Framework**: [CommunityToolkit.Mvvm](https://github.com/CommunityToolkit/MVVM)

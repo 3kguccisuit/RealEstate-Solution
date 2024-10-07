@@ -31,7 +31,7 @@
                     Modifiers="Alt"
                     Command="{Binding ExitCommand}" />
     </Window.InputBindings>
-    
+
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
             <Button
@@ -102,37 +102,31 @@
         </templateSelectors:MenuItemTemplateSelector>
     </controls:MetroWindow.Resources>
     <controls:MetroWindow.Content>
-        
+
         <DockPanel>
             <!--Vanlig meny-->
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="File">
                     <MenuItem Header="New" InputGestureText="Ctrl+N" Command="{Binding NewCommand}" />
 
-                    <MenuItem Header="Open" >
-                        <MenuItem Header="Text File" Command="{Binding OpenTextFileCommand}" />
-                        <MenuItem Header="Json" Command="{Binding OpenJsonFileCommand}" />
+                    <MenuItem Header="Open">
+                        <MenuItem Header="Open JSON..." Command="{Binding OpenJsonFileCommand}" />
+                        <MenuItem Header="Open XML..." Command="{Binding OpenXmlFileCommand}" />
                     </MenuItem>
 
                     <MenuItem Header="Save" Command="{Binding SaveCommand}" />
 
                     <!-- Save As... with sub-items -->
-                    <MenuItem Header="Save as...">
-                        <MenuItem Header="Text file" Command="{Binding SaveAsTextFileCommand}" />
-                        <MenuItem Header="Json" Command="{Binding SaveAsJsonFileCommand}" />
-                    </MenuItem>
-
-                    <!-- XML as a submenu with multiple options -->
-                    <MenuItem Header="XML">
-                        <MenuItem Header="Text File" Command="{Binding SaveAsXmlTextFileCommand}" />
-                        <MenuItem Header="Json" Command="{Binding SaveAsXmlJsonCommand}" />
+                    <MenuItem Header="Save as" >
+                        <MenuItem Header="Save as JSON..." Command="{Binding SaveAsJsonFileCommand}" />
+                        <MenuItem Header="Save as XML..." Command="{Binding SaveAsXmlFileCommand}" />
                     </MenuItem>
 
                     <!-- Exit -->
                     <MenuItem Header="Exit" InputGestureText="Alt+X" Command="{Binding ExitCommand}" />
                 </MenuItem>
-            </Menu>            
-            
+            </Menu>
+
             <!--Hamburger Meny-->
             <controls:HamburgerMenu
             x:Name="hamburgerMenu"
@@ -147,14 +141,14 @@
             OptionsItemCommand="{Binding OptionsMenuItemInvokedCommand}"
             OptionsItemTemplateSelector="{StaticResource MenuItemTemplateSelector}"
             ItemTemplateSelector="{StaticResource MenuItemTemplateSelector}">
-            <controls:HamburgerMenu.Content>
-                <Frame
+                <controls:HamburgerMenu.Content>
+                    <Frame
                     x:Name="shellFrame"
                     Grid.Row="1"
                     NavigationUIVisibility="Hidden"
                     Focusable="False" />
-            </controls:HamburgerMenu.Content>
-        </controls:HamburgerMenu>
+                </controls:HamburgerMenu.Content>
+            </controls:HamburgerMenu>
         </DockPanel>
     </controls:MetroWindow.Content>
 </controls:MetroWindow>

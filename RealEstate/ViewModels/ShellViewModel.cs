@@ -2,9 +2,14 @@
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls;
 using RealEstate.Contracts.Services;
+using RealEstate.Core.Models.BaseModels;
+using RealEstate.Core.Services;
 using RealEstate.Properties;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
@@ -21,7 +26,8 @@ public class ShellViewModel : ObservableObject
     private ICommand _optionsMenuItemInvokedCommand;
     private ICommand _loadedCommand;
     private ICommand _unloadedCommand;
-
+    private readonly EstateManager _estateManager;
+    private readonly PersonManager _personManager;
 
     // Define the commands for the menu items
     public ICommand NewCommand { get; }
@@ -77,9 +83,12 @@ public class ShellViewModel : ObservableObject
 
     public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-    public ShellViewModel(INavigationService navigationService)
+    public ShellViewModel(INavigationService navigationService, EstateManager estateManager, PersonManager personManager)
     {
         _navigationService = navigationService;
+
+        _estateManager = estateManager;
+        _personManager = personManager; 
 
         NewCommand = new RelayCommand(OnNew);
 
@@ -118,13 +127,51 @@ public class ShellViewModel : ObservableObject
             if (result == true)
             {
                 // Open document
-                var Name = dialog.FileName;
+                var name = dialog.FileName;
+
+            var json = File.ReadAllText(name);
+            var options = new JsonSerializerOptions
+            {
+                Converters = {
+            new EstateJsonConverter(),  // Custom converter for polymorphic deserialization
+            new PersonJsonConverter(),
+            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+        },
+                PropertyNameCaseInsensitive = true
+            };
+
+            var rootObject = JsonSerializer.Deserialize<RootObject>(json, options);
+
+            foreach (var item in _estateManager.GetAll())
+            {
+                _estateManager.Remove(item.ID);
+                
             }
+            foreach (var item in _personManager.GetAll())
+            {
+                _personManager.Remove(item.ID);
+
+            }
+
+            foreach (var item in rootObject.EstateList)
+            {
+                _estateManager.Add(item.ID,item);
+            }
+            foreach (var item in rootObject.PersonList)
+            {
+                _personManager.Add(item.ID, item);
+            }
+        }
     }
 
     private void OnSaveJsonFile()
     {
         // Logic for "OnSaveJsonFile"
+
+
+        // Estates
+        // Persons
+        // 
     }
 
     private void OnSaveAsJsonFile()
@@ -144,9 +191,20 @@ public class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            var Name = dialog.FileName;
-        }
+            var name = dialog.FileName;
+            // var mngr = ((App)Application.Current).EstateManager;
 
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,  // Pretty-print JSON
+                Converters = { new EstateJsonConverter(), new PersonJsonConverter() }  // Ensure the custom converter is used
+            };
+
+            var json = JsonSerializer.Serialize(new RootObject { EstateList=_estateManager.GetAll(),PersonList=_personManager.GetAll() }, options);
+
+            File.WriteAllText(name, json);
+        }
     }
 
     private void OnSave()
@@ -254,4 +312,12 @@ public class ShellViewModel : ObservableObject
 
         GoBackCommand.NotifyCanExecuteChanged();
     }
+}
+
+public class RootObject
+{
+    public List<Estate> EstateList { get; set; }
+    public List<Person> PersonList { get; set; }
+
+    //public List<Payment> PaymentList { get; set; }
 }

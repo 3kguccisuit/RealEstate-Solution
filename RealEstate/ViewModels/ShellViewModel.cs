@@ -4,7 +4,10 @@ using MahApps.Metro.Controls;
 using RealEstate.Contracts.Services;
 using RealEstate.Properties;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace RealEstate.ViewModels;
 
@@ -18,6 +21,15 @@ public class ShellViewModel : ObservableObject
     private ICommand _optionsMenuItemInvokedCommand;
     private ICommand _loadedCommand;
     private ICommand _unloadedCommand;
+
+
+    // Define the commands for the menu items
+    public ICommand NewCommand { get; }
+    public ICommand OpenJsonFileCommand { get; }
+    public ICommand SaveCommand { get; }
+    public ICommand SaveAsTextFileCommand { get; }
+    public ICommand SaveAsJsonFileCommand { get; }
+    public ICommand ExitCommand { get; }
 
     public HamburgerMenuItem SelectedMenuItem
     {
@@ -61,6 +73,60 @@ public class ShellViewModel : ObservableObject
     public ShellViewModel(INavigationService navigationService)
     {
         _navigationService = navigationService;
+
+        NewCommand = new RelayCommand(OnNew);
+        OpenJsonFileCommand = new RelayCommand(OpenJsonFile);
+        SaveCommand = new RelayCommand(OnSave);
+        SaveAsTextFileCommand = new RelayCommand(OnSaveAsTextFile);
+        SaveAsJsonFileCommand = new RelayCommand(OnSaveAsJsonFile);
+        ExitCommand = new RelayCommand(OnExit);
+    }
+
+    private void OnNew()
+    {
+        // Logic for "New"
+        MessageBox.Show("");
+    }
+
+    private void OpenJsonFile()
+    {
+        // Logic for "Open"
+            // Configure open file dialog box
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.FileName = "Document"; // Default file name
+            dialog.DefaultExt = ".json"; // Default file extension
+
+            dialog.Filter = "JSON|*.json|All Files|*.*";
+
+            // Show open file dialog box
+            bool? result = dialog.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                var Name = dialog.FileName;
+            }
+    }
+
+    private void OnSave()
+    {
+        // Logic for "Save"
+    }
+
+    private void OnSaveAsTextFile()
+    {
+        // Logic for "Save as Text File"
+    }
+
+    private void OnSaveAsJsonFile()
+    {
+        // Logic for "Save as JSON"
+    }
+
+    private void OnExit()
+    {
+        System.Windows.Application.Current.Shutdown();
     }
 
     private void OnLoaded()

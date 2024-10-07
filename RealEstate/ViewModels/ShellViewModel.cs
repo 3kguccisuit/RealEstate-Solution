@@ -25,10 +25,17 @@ public class ShellViewModel : ObservableObject
 
     // Define the commands for the menu items
     public ICommand NewCommand { get; }
+
+    // JSON
     public ICommand OpenJsonFileCommand { get; }
-    public ICommand SaveCommand { get; }
-    public ICommand SaveAsTextFileCommand { get; }
+    public ICommand SaveJsonCommand { get; }
     public ICommand SaveAsJsonFileCommand { get; }
+
+    // XML
+    public ICommand OpenXmlFileCommand { get; }
+    public ICommand SaveXmlFileCommand { get; }
+    public ICommand SaveAsXmlFileCommand { get; }
+
     public ICommand ExitCommand { get; }
 
     public HamburgerMenuItem SelectedMenuItem
@@ -75,10 +82,16 @@ public class ShellViewModel : ObservableObject
         _navigationService = navigationService;
 
         NewCommand = new RelayCommand(OnNew);
+
         OpenJsonFileCommand = new RelayCommand(OpenJsonFile);
-        SaveCommand = new RelayCommand(OnSave);
-        SaveAsTextFileCommand = new RelayCommand(OnSaveAsTextFile);
+        SaveJsonCommand = new RelayCommand(OnSaveJsonFile);
         SaveAsJsonFileCommand = new RelayCommand(OnSaveAsJsonFile);
+
+        OpenXmlFileCommand = new RelayCommand(OnOpenXmlFile);
+        SaveXmlFileCommand = new RelayCommand(OnSaveXmlFile);
+        SaveAsXmlFileCommand = new RelayCommand(OnSaveAsXmlFile);
+
+
         ExitCommand = new RelayCommand(OnExit);
     }
 
@@ -88,9 +101,9 @@ public class ShellViewModel : ObservableObject
         MessageBox.Show("");
     }
 
+    #region JSON
     private void OpenJsonFile()
     {
-        // Logic for "Open"
             // Configure open file dialog box
             var dialog = new Microsoft.Win32.OpenFileDialog();
             dialog.FileName = "Document"; // Default file name
@@ -109,20 +122,84 @@ public class ShellViewModel : ObservableObject
             }
     }
 
-    private void OnSave()
+    private void OnSaveJsonFile()
     {
-        // Logic for "Save"
-    }
-
-    private void OnSaveAsTextFile()
-    {
-        // Logic for "Save as Text File"
+        // Logic for "OnSaveJsonFile"
     }
 
     private void OnSaveAsJsonFile()
     {
         // Logic for "Save as JSON"
+        // Configure open file dialog box
+        var dialog = new Microsoft.Win32.SaveFileDialog();
+        dialog.FileName = "Document"; // Default file name
+        dialog.DefaultExt = ".json"; // Default file extension
+
+        dialog.Filter = "JSON|*.json|All Files|*.*";
+
+        // Show open file dialog box
+        bool? result = dialog.ShowDialog();
+
+        // Process open file dialog box results
+        if (result == true)
+        {
+            // Open document
+            var Name = dialog.FileName;
+        }
+
     }
+
+    private void OnSave()
+    {
+    }
+    #endregion
+
+    #region XML
+
+    private void OnOpenXmlFile()
+    {
+        // Configure open file dialog box
+        var dialog = new Microsoft.Win32.OpenFileDialog();
+        dialog.FileName = "Document"; // Default file name
+        dialog.DefaultExt = ".xml"; // Default file extension
+
+        dialog.Filter = "XML|*.xml|All Files|*.*";
+
+        // Show open file dialog box
+        bool? result = dialog.ShowDialog();
+
+        // Process open file dialog box results
+        if (result == true)
+        {
+            // Open document
+            var Name = dialog.FileName;
+        }
+    }
+    private void OnSaveXmlFile()
+    {
+
+    }
+    private void OnSaveAsXmlFile()
+    {
+        // Logic for "Save as JSON"
+        // Configure open file dialog box
+        var dialog = new Microsoft.Win32.SaveFileDialog();
+        dialog.FileName = "Document"; // Default file name
+        dialog.DefaultExt = ".xml"; // Default file extension
+
+        dialog.Filter = "XML|*.xml|All Files|*.*";
+
+        // Show open file dialog box
+        bool? result = dialog.ShowDialog();
+
+        // Process open file dialog box results
+        if (result == true)
+        {
+            // Open document
+            var Name = dialog.FileName;
+        }
+    }
+    #endregion
 
     private void OnExit()
     {

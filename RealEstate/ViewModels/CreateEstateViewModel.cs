@@ -7,6 +7,7 @@ using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Models.ConcreteModels;
 using RealEstate.Core.Models.ConcreteModels.Persons;
+using RealEstate.Core.Services;
 using RealEstate.Helpers;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -16,8 +17,9 @@ namespace RealEstate.ViewModels
     public partial class CreateEstateViewModel : ObservableObject
     {
         //private readonly IEstateDataService _estateDataService;
-        private readonly IDataService<Estate> _estateDataService;
+        //private readonly IDataService<Estate> _estateDataService;
         private readonly IDataService<Person> _personDataService;
+        private readonly PersonManager _personManager;
         [ObservableProperty]
         private Estate selectedEstate;
         [ObservableProperty]
@@ -30,10 +32,11 @@ namespace RealEstate.ViewModels
         public List<Country> Countries { get; }
         public List<LegalFormType> LegalForms { get; }
 
-        public CreateEstateViewModel(IDataService<Estate> estateDataService, IDataService<Person> personDataService)
+        public CreateEstateViewModel(IDataService<Person> personDataService, PersonManager personManager)
         {
-            _estateDataService = estateDataService;
+            //_estateDataService = estateDataService;
             _personDataService = personDataService;
+            _personManager = personManager;
 
             // Populate the list of countries and legal forms
             Countries = Enum.GetValues(typeof(Country)).Cast<Country>().ToList();
@@ -41,7 +44,7 @@ namespace RealEstate.ViewModels
         }
 
         // Initialize the estate based on the provided type
-        public async Task InitializeEstate(string type)
+        public void InitializeEstate(string type)
         {
             var id = IDGenerator.GetUniqueId();
             if (type == "Apartment")
@@ -139,19 +142,22 @@ namespace RealEstate.ViewModels
             {
                 MessageBox.Show("Invalid estate type.");
             }
-            await LoadBuyersAndSellers();
+            LoadBuyersAndSellers();
         }
 
-        private async Task LoadBuyersAndSellers()
+        private void LoadBuyersAndSellers()
         {
-            var persons = await _personDataService.GetAsync();
+            // Retrieve all persons from PersonManager (Buyers and Sellers)
+            var persons = _personManager.GetAll();  // Replacing the async call with in-memory access
 
             Buyers = persons.OfType<Buyer>().ToList();
             Sellers = persons.OfType<Seller>().ToList();
 
-
-            SelectedBuyer = Buyers.FirstOrDefault();
-            SelectedSeller = Sellers.FirstOrDefault();
+            // Link the selected buyer and seller to the estate
+            if (SelectedEstate.LinkedBuyer != null)
+                SelectedBuyer = Buyers.FirstOrDefault(b => b.ID == SelectedEstate.LinkedBuyer.ID);
+            if (SelectedEstate.LinkedSeller != null)
+                SelectedSeller = Sellers.FirstOrDefault(s => s.ID == SelectedEstate.LinkedSeller.ID);
         }
 
         // Cancel command
@@ -171,12 +177,12 @@ namespace RealEstate.ViewModels
 
         // Create command to save the estate
         [RelayCommand]
-        private async Task Save(Window window)
+        private void Save(Window window)
         {
             SelectedEstate.LinkedBuyer = SelectedBuyer;
             SelectedEstate.LinkedSeller = SelectedSeller;
             MessageBox.Show($"Created {SelectedEstate.Type} with the props: {SelectedEstate}");
-            await _estateDataService.AddAsync(SelectedEstate);
+           // await _estateDataService.AddAsync(SelectedEstate);
 
             window.Close();
         }

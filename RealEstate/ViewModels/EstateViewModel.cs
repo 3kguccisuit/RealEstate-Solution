@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
+using RealEstate.Core.Services;
 using RealEstate.Windows;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -13,9 +14,10 @@ namespace RealEstate.ViewModels
 {
     public partial class EstateViewModel : ObservableObject, INavigationAware
     {
-        //private readonly IEstateDataService _estateDataService;
-        private readonly IDataService<Estate> _estateDataService;
+        //private readonly IDataService<Estate> _estateDataService;
         private readonly IServiceProvider _serviceProvider;
+        private readonly EstateManager _estateManager;
+
         private Estate _selectedEstate;
         public Estate SelectedEstate
         {
@@ -28,23 +30,26 @@ namespace RealEstate.ViewModels
         public ObservableCollection<Estate> Estates { get; private set; } = new ObservableCollection<Estate>();
 
         // Constructor with the estate data service dependency injected
-        public EstateViewModel(IDataService<Estate> estateDataService, IServiceProvider serviceProvider)
+        public EstateViewModel(IServiceProvider serviceProvider, EstateManager estateManager)
         {
-            _estateDataService = estateDataService;
+            //_estateDataService = estateDataService;
             _serviceProvider = serviceProvider;
+            _estateManager = estateManager;
         }
 
         [RelayCommand]
-        private async Task EditEstate(Estate selected)
+        private void EditEstate(Estate selected)
         {
             if (selected != null)
             {
                 var viewModel = _serviceProvider.GetRequiredService<EditEstateViewModel>();
-                await viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
+                viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
 
                 var editWindow = new EditEstateWindow(viewModel);
                 editWindow.ShowDialog();
-                await RefreshEstatesAsync();
+
+                _estateManager.Update(selected.ID, selected);
+                RefreshEstatesAsync();
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
 
             }
@@ -54,7 +59,7 @@ namespace RealEstate.ViewModels
 
 
         [RelayCommand]
-        private async Task DeleteEstate(Estate selected)
+        private void DeleteEstate(Estate selected)
         {
             if (selected != null)
             {
@@ -65,10 +70,9 @@ namespace RealEstate.ViewModels
 
                 if (result == MessageBoxResult.Yes)
                 {
+                    _estateManager.Remove(selected.ID);
                     //force update
                     Estates.Remove(selected);
-                    //remove from json
-                    await _estateDataService.RemoveAsync(selected.ID);
                     SelectedEstate = Estates.FirstOrDefault();
                 }
             }
@@ -80,54 +84,51 @@ namespace RealEstate.ViewModels
 
 
         [RelayCommand]
-        private async Task AddEstateForm(string selectedType) // addEstate
+        private void AddEstateForm(string selectedType) // addEstate
         {
             var temp = SelectedEstate;
             // Resolve the ViewModel from the DI container
             var viewModel = _serviceProvider.GetRequiredService<CreateEstateViewModel>();
 
             // Initialize the ViewModel with the estate
-            await viewModel.InitializeEstate(selectedType);
+            viewModel.InitializeEstate(selectedType);
 
             // Open the CreateEstateWindow with the ViewModel
             var window = new CreateEstateWindow(viewModel);
             window.ShowDialog();
-
+            
             //force refresh
-            await RefreshEstatesAsync();
+            RefreshEstatesAsync();
             if (viewModel.SelectedEstate.ID != "Cancel")
+            {
+                _estateManager.Add(viewModel.SelectedEstate.ID, viewModel.SelectedEstate);
+                Estates.Add(viewModel.SelectedEstate);
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
+                
+            }
+                
             else if (temp != null)
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);
         }
 
-        private async Task RefreshEstatesAsync()
+        private void RefreshEstatesAsync()
         {
             Estates.Clear();
 
-            var data = await _estateDataService.GetAsync();
+            // Retrieve the list of estates from the EstateManager instead of the data service
+            var estates = _estateManager.GetAll();
 
-            foreach (var estate in data)
+            foreach (var estate in estates)
             {
                 Estates.Add(estate);
             }
         }
 
-        // This method will be called when the view is navigated to
-        public async void OnNavigatedTo(object parameter)
+        public void OnNavigatedTo(object parameter)
         {
-            Estates.Clear();
-
-            var data = await _estateDataService.GetAsync();
-
-            foreach (var estate in data)
-            {
-                Estates.Add(estate);
-            }
-
+            RefreshEstatesAsync();
             SelectedEstate = Estates.FirstOrDefault();
         }
-
 
         // Empty method to handle navigation away from the view
         public void OnNavigatedFrom()

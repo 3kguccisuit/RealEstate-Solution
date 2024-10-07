@@ -57,10 +57,10 @@ namespace RealEstate.ViewModels
 
         // Save command to save the person
         [RelayCommand]
-        private async Task Save(Window window)
+        private void Save(Window window)
         {
             MessageBox.Show($"Created {Selected.GetType().Name} with the details: {Selected}");
-            await _personDataService.AddAsync(Selected);
+            //await _personDataService.AddAsync(Selected);
 
             window.Close();
         }

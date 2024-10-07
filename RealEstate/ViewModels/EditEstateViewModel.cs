@@ -5,14 +5,16 @@ using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Enums;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Models.ConcreteModels.Persons;
+using RealEstate.Core.Services;
 using System.Windows;
 
 namespace RealEstate.ViewModels
 {
     public partial class EditEstateViewModel : ObservableObject
     {
-        private readonly IDataService<Estate> _estateDataService;
+        //private readonly IDataService<Estate> _estateDataService;
         private readonly IDataService<Person> _personDataService;
+        private readonly PersonManager _personManager;
         [ObservableProperty]
         private Estate selectedEstate;
         [ObservableProperty]
@@ -26,10 +28,11 @@ namespace RealEstate.ViewModels
         public List<LegalFormType> LegalForms { get; }
 
         // Constructor for dependency injection and initializing data
-        public EditEstateViewModel(IDataService<Estate> estateDataService, IDataService<Person> personDataService)
+        public EditEstateViewModel(IDataService<Person> personDataService, PersonManager personManager)
         {
-            _estateDataService = estateDataService;
+            //_estateDataService = estateDataService;
             _personDataService = personDataService;
+            _personManager = personManager;
 
             // Populate the list of countries and legal forms
             Countries = Enum.GetValues(typeof(Country)).Cast<Country>().ToList();
@@ -37,32 +40,34 @@ namespace RealEstate.ViewModels
 
         }
 
-        private async Task LoadBuyersAndSellers()
+        private void LoadBuyersAndSellers()
         {
-            var persons = await _personDataService.GetAsync();
+            // Retrieve all persons from PersonManager (Buyers and Sellers)
+            var persons = _personManager.GetAll();  // Replacing the async call with in-memory access
 
             Buyers = persons.OfType<Buyer>().ToList();
             Sellers = persons.OfType<Seller>().ToList();
 
+            // Link the selected buyer and seller to the estate
             if (SelectedEstate.LinkedBuyer != null)
-                SelectedBuyer = Buyers.FirstOrDefault(e => e.ID == SelectedEstate.LinkedBuyer.ID);
+                SelectedBuyer = Buyers.FirstOrDefault(b => b.ID == SelectedEstate.LinkedBuyer.ID);
             if (SelectedEstate.LinkedSeller != null)
-                SelectedSeller = Sellers.FirstOrDefault(e => e.ID == SelectedEstate.LinkedSeller.ID);
+                SelectedSeller = Sellers.FirstOrDefault(s => s.ID == SelectedEstate.LinkedSeller.ID);
         }
 
         // Method to initialize the estate with an existing estate
-        public async Task InitializeEstate(Estate estate)
+        public void InitializeEstate(Estate estate)
         {
             SelectedEstate = estate;
-            await LoadBuyersAndSellers();
+            LoadBuyersAndSellers();
         }
         [RelayCommand]
-        private async Task Save(Window window)
+        private void Save(Window window)
         {
             SelectedEstate.LinkedBuyer = SelectedBuyer;
             SelectedEstate.LinkedSeller = SelectedSeller;
             MessageBox.Show($"Updated: {SelectedEstate}");
-            await _estateDataService.UpdateAsync(SelectedEstate);
+           // await _estateDataService.UpdateAsync(SelectedEstate);
             window.Close();
         }
 

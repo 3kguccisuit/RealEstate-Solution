@@ -93,6 +93,12 @@ public partial class App : Application
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();
 
+        // Register EstateManager as a singleton, so it's available application-wide
+        services.AddSingleton<IDictionaryManager<string, Estate>, EstateManager>();
+        services.AddSingleton<EstateManager>(); // Register the concrete class
+
+        services.AddSingleton<IDictionaryManager<string, Person>, PersonManager>();
+        services.AddSingleton<PersonManager>(); // Register PersonManager
 
         // Views and ViewModels
         //LH

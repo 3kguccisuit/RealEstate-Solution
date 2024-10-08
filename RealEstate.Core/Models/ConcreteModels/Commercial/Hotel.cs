@@ -15,6 +15,10 @@ namespace RealEstate.Core.Models.ConcreteModels
         {
             HasSpa = hasSpa;
         }
+        public Hotel() : base(Guid.NewGuid().ToString("D"), new Address(), new LegalForm(), 0)
+        {
+            
+        }
         public override Estate AutoFill()
         {
             return new Hotel(Guid.NewGuid().ToString("D"), new Address("123 Main St", "17523", "Stockholm", Country.Sverige),

@@ -1,10 +1,25 @@
 ﻿using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models.ConcreteModels;
+using RealEstate.Core.Models.ConcreteModels.Payments;
 using RealEstate.Core.Models.ConcreteModels.Persons;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace RealEstate.Core.Models.BaseModels
 {
+
+    [XmlInclude(typeof(Factory))]
+    [XmlInclude(typeof(Hotel))]  
+    [XmlInclude(typeof(Shop))]  
+    [XmlInclude(typeof(Warehouse))]
+    [XmlInclude(typeof(Hospital))]
+    [XmlInclude(typeof(School))]
+    [XmlInclude(typeof(University))]
+    [XmlInclude(typeof(Apartment))]
+    [XmlInclude(typeof(Villa))]
+    [XmlInclude(typeof(Townhouse))]
+
     public abstract class Estate : IEstate
     {
         public string ID { get; set; }

@@ -1,7 +1,12 @@
-﻿using System.Text.Json.Serialization;
+﻿using RealEstate.Core.Models.ConcreteModels;
+using RealEstate.Core.Models.ConcreteModels.Persons;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace RealEstate.Core.Models.BaseModels
 {
+    [XmlInclude(typeof(Buyer))]
+    [XmlInclude(typeof(Seller))]
     public abstract class Person
     {
         public string ID { get; set; }

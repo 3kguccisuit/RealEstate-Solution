@@ -18,7 +18,7 @@ using System.Xml.Linq;
 
 namespace RealEstate.ViewModels;
 
-public class ShellViewModel : ObservableObject
+public partial class ShellViewModel : ObservableObject
 {
     private readonly INavigationService _navigationService;
     private HamburgerMenuItem _selectedMenuItem;
@@ -31,6 +31,9 @@ public class ShellViewModel : ObservableObject
     private readonly EstateManager _estateManager;
     private readonly PersonManager _personManager;
     private readonly PaymentManager _paymentManager;
+
+    [ObservableProperty]
+    private string fileName;
 
     // Define the commands for the menu items
     public ICommand NewCommand { get; }
@@ -110,8 +113,14 @@ public class ShellViewModel : ObservableObject
 
     private void OnNew()
     {
-        // Logic for "New"
-        MessageBox.Show("");
+        // Töm befintliga estates, persons och payments
+        _estateManager.Clear();
+        _personManager.Clear();
+        _paymentManager.Clear();
+
+        // Navigate to Home Page
+        _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+
     }
 
     #region JSON
@@ -131,9 +140,9 @@ public class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            var name = dialog.FileName;
+            FileName = dialog.FileName;
 
-            var json = File.ReadAllText(name);
+            var json = File.ReadAllText(FileName);
             var options = new JsonSerializerOptions
             {
                 Converters = {
@@ -148,20 +157,9 @@ public class ShellViewModel : ObservableObject
             var rootObject = JsonSerializer.Deserialize<RootObject>(json, options);
 
             // Töm befintliga estates, persons och payments
-            foreach (var item in _estateManager.GetAll())
-            {
-                _estateManager.Remove(item.ID);
-            }
-
-            foreach (var item in _personManager.GetAll())
-            {
-                _personManager.Remove(item.ID);
-            }
-
-            foreach (var item in _paymentManager.GetAll())
-            {
-                _paymentManager.Remove(item.ID);
-            }
+            _estateManager.Clear();
+            _personManager.Clear();
+            _paymentManager.Clear();
 
             // Lägg till nya estates, persons och payments från fil
             foreach (var item in rootObject.EstateList)
@@ -178,6 +176,10 @@ public class ShellViewModel : ObservableObject
             {
                 _paymentManager.Add(item.ID, item);
             }
+
+            // Navigate to Home Page
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+
         }
     }
 
@@ -208,7 +210,7 @@ public class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            var name = dialog.FileName;
+            FileName = dialog.FileName;
             // var mngr = ((App)Application.Current).EstateManager;
 
 
@@ -226,7 +228,7 @@ public class ShellViewModel : ObservableObject
             },
                 options);
 
-            File.WriteAllText(name, json);
+            File.WriteAllText(FileName, json);
         }
     }
 
@@ -253,50 +255,37 @@ public class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            var name = dialog.FileName;
+            FileName = dialog.FileName;
 
-            var xml = File.ReadAllText(name);
+            var xml = File.ReadAllText(FileName);
 
             // Deserialize the XML back to a list
-            List<Payment> deserializedList = XmlHelper.DeserializeFromXml<List<Payment>>(xml);
-
-            //var rootObject = JsonSerializer.Deserialize<RootObject>(json, options);
+            RootObject rootObject = XmlHelper.DeserializeFromXml<RootObject>(xml);
 
             // Töm befintliga estates, persons och payments
-            foreach (var item in _estateManager.GetAll())
-            {
-                _estateManager.Remove(item.ID);
-            }
-
-            foreach (var item in _personManager.GetAll())
-            {
-                _personManager.Remove(item.ID);
-            }
-
-            foreach (var item in _paymentManager.GetAll())
-            {
-                _paymentManager.Remove(item.ID);
-            }
-
-            // Temp fix
+            _estateManager.Clear();
+            _personManager.Clear();
+            _paymentManager.Clear();
 
 
             // Lägg till nya estates, persons och payments från fil
-            //foreach (var item in rootObject.EstateList)
-            //{
-            //    _estateManager.Add(item.ID, item);
-            //}
+            foreach (var item in rootObject.EstateList)
+            {
+                _estateManager.Add(item.ID, item);
+            }
 
-            //foreach (var item in rootObject.PersonList)
-            //{
-            //    _personManager.Add(item.ID, item);
-            //}
+            foreach (var item in rootObject.PersonList)
+            {
+                _personManager.Add(item.ID, item);
+            }
 
-            //foreach (var item in rootObject.PaymentList)
-            //{
-            //    _paymentManager.Add(item.ID, item);
-            //}
+            foreach (var item in rootObject.PaymentList)
+            {
+                _paymentManager.Add(item.ID, item);
+            }
 
+            // Navigate to Home Page
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
         }
     }
     private void OnSaveXmlFile()
@@ -320,12 +309,12 @@ public class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            var name = dialog.FileName;
+            FileName = dialog.FileName;
 
             // Serialize the list to XML
-            //string xml = XmlHelper.SerializeToXml(new RootObject { EstateList = _estateManager.GetAll(), PersonList = _personManager.GetAll(), PaymentList = _paymentManager.GetAll() });
-            string xml = XmlHelper.SerializeToXml(_paymentManager.GetAll());
-            File.WriteAllText(name, xml);
+            string xml = XmlHelper.SerializeToXml(new RootObject { EstateList = _estateManager.GetAll(), PersonList = _personManager.GetAll(), PaymentList = _paymentManager.GetAll() });
+            // string xml = XmlHelper.SerializeToXml(_paymentManager.GetAll());
+            File.WriteAllText(FileName, xml);
         }
     }
     #endregion
@@ -389,6 +378,5 @@ public class RootObject
 {
     public List<Estate> EstateList { get; set; }
     public List<Person> PersonList { get; set; }
-
     public List<Payment> PaymentList { get; set; }
 }

@@ -20,6 +20,11 @@ public class Address
         Country = country;
     }
 
+    public Address()
+    {
+        
+    }
+
     // Copy constructor for deep cloning
     public Address(Address other)
     {

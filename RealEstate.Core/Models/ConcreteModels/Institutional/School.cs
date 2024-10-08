@@ -14,7 +14,10 @@ namespace RealEstate.Core.Models.ConcreteModels
         {
             NumberOfClassrooms = numberOfClassrooms;
         }
-
+        public School() : base(Guid.NewGuid().ToString("D"), new Address(), new LegalForm(), 0)
+        {
+            
+        }
         public override Estate AutoFill()
         {
             return new School(Guid.NewGuid().ToString("D"), new Address("123 Main St", "17523", "Stockholm", Country.Sverige),

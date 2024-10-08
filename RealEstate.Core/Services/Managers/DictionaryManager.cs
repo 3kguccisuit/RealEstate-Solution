@@ -22,6 +22,11 @@ namespace RealEstate.Core.Services
             return _dictionary.Remove(key);
         }
 
+        public void Clear()
+        {
+            _dictionary.Clear();
+        }
+
         public bool Update(TKey key, TValue value)
         {
             if (_dictionary.ContainsKey(key))

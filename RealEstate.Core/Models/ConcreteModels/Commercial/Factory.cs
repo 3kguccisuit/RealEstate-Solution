@@ -17,6 +17,10 @@ namespace RealEstate.Core.Models.ConcreteModels
         {
             HasWarehouse = hasWarehouse;
         }
+        public Factory() : base(Guid.NewGuid().ToString("D"), new Address(), new LegalForm(), 0)
+        {
+            
+        }
 
         public override Estate AutoFill()
         {

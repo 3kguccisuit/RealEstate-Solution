@@ -12,6 +12,10 @@ public class LegalForm
     {
         FormType = formType;
     }
+    public LegalForm()
+    {
+        
+    }
 
     // Copy constructor for deep cloning
     public LegalForm(LegalForm other)

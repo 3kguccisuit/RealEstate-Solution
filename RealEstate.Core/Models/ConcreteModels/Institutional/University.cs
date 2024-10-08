@@ -15,6 +15,10 @@ namespace RealEstate.Core.Models.ConcreteModels
         {
             NumberOfPrograms = numberOfPrograms;
         }
+        public University() : base(Guid.NewGuid().ToString("D"), new Address(), new LegalForm(), 0)
+        {
+            
+        }
 
         public override Estate AutoFill()
         {

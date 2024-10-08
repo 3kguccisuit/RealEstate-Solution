@@ -6,7 +6,6 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
     public class PayPal : Payment
     {
         public string Email { get; set; }
-        public bool HasLoanApproval { get; set; }
         public override string Type => "PayPal";
         [JsonConstructor]
         public PayPal(string id, string name, decimal amount, string email)
@@ -14,11 +13,16 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
         {
             Email = email;
         }
+
+        public PayPal(PayPal other) : base(other)
+        {
+            Email = other.Email;
+        }
+
         public override Payment AutoFill()
         {
             return new PayPal(Guid.NewGuid().ToString("D"), "My PayPal Name", 8673, "someone@paypal.com");
         }
-
 
         public override string ToString()
         {

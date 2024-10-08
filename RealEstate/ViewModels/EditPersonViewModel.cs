@@ -2,20 +2,24 @@
 using CommunityToolkit.Mvvm.Input;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
+using System.ComponentModel;
 using System.Windows;
 
 namespace RealEstate.ViewModels
 {
     public partial class EditPersonViewModel : ObservableObject
     {
-        private readonly IDataService<Person> _personDataService;
-
+        //private readonly IDataService<Person> _personDataService;
+        public IRelayCommand<CancelEventArgs> OnWindowClosingCommand { get; }
         [ObservableProperty]
         private Person selected;
 
-        public EditPersonViewModel(IDataService<Person> personDataService)
+        private bool _isCancelConfirmed = false;
+        private bool _isSaved = false;
+        public EditPersonViewModel()
         {
-            _personDataService = personDataService;
+            //_personDataService = personDataService;
+            OnWindowClosingCommand = new RelayCommand<CancelEventArgs>(OnWindowClosing);
         }
 
         // Initialize the person based on the provided person (either Seller or Buyer)
@@ -31,11 +35,11 @@ namespace RealEstate.ViewModels
             var app = (App)Application.Current;
             var appName = app.AppName;
 
-            var result = MessageBox.Show("Do you really want to cancel?", appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var result = MessageBox.Show("Do you really want to cancel editing?", appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                //  Selected.ID = "Cancel";
-                window.Close();
+                _isCancelConfirmed = true;
+                window.DialogResult = false;
             }
         }
 
@@ -43,10 +47,33 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void Save(Window window)
         {
-            MessageBox.Show($"Updated {Selected.GetType().Name} with the details: {Selected}");
-            //await _personDataService.UpdateAsync(Selected);
-
+            _isSaved = true;
+            window.DialogResult = true;
+            //await _paymentDataService.UpdateAsync(Selected);
+            MessageBox.Show($"Updated {Selected.Type} with the props: {Selected}");
             window.Close();
+        }
+
+        public void OnWindowClosing(CancelEventArgs e)
+        {
+            Window window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+            if (_isSaved)
+            {
+                window.DialogResult = true;
+            }
+            // Get the current window
+            else if (!_isCancelConfirmed)
+            {
+                var result = MessageBox.Show("Do you really want to cancel?", "Cancel Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.No)
+                {
+                    e.Cancel = true;  // Prevent the window from closing
+                }
+                else
+                {
+                    window.DialogResult = false;
+                }
+            }
         }
     }
 }

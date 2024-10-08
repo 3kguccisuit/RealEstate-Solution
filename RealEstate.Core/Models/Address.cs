@@ -20,6 +20,15 @@ public class Address
         Country = country;
     }
 
+    // Copy constructor for deep cloning
+    public Address(Address other)
+    {
+        Street = other.Street;
+        City = other.City;
+        ZipCode = other.ZipCode;
+        Country = other.Country;
+    }
+
     // Override ToString()
     public override string ToString()
     {

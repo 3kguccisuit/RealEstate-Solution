@@ -41,20 +41,30 @@ namespace RealEstate.ViewModels
         {
             if (selected != null)
             {
+                // Create a deep clone of the selected person
+                Person temporaryPerson = (Person)Activator.CreateInstance(selected.GetType(), selected);
+
                 var viewModel = _serviceProvider.GetRequiredService<EditPersonViewModel>();
-                viewModel.InitializePerson(selected); // Pass the selected person to the view model
+                viewModel.InitializePerson(temporaryPerson); // Pass the temporary person to the view model
 
                 var editWindow = new EditPersonWindow(viewModel);
-                editWindow.ShowDialog();
-                //await RefreshPersonsAsync();
-                _personManager.Update(selected.ID, selected);
-                SelectedPerson = Persons.FirstOrDefault(p => p.ID == selected.ID);
+                var isOK = editWindow.ShowDialog();
+
+                if (isOK == true)
+                {
+                    // Apply the changes to the original person if the user confirms
+                    _personManager.Update(selected.ID, temporaryPerson);
+                    RefreshPersonsAsync();
+                    SelectedPerson = Persons.FirstOrDefault(p => p.ID == temporaryPerson.ID);
+                }
+                // If the user cancels, the original person is left unchanged
             }
             else
             {
-                MessageBox.Show("Please select a person to edit.");
+                MessageBox.Show("Please select a person to edit.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
 
 
         // Command to open the form for creating a new person

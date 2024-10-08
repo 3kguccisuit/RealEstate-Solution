@@ -14,6 +14,11 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
         {
             Email = email;
         }
+
+        public WesternUnion(WesternUnion other) : base(other)
+        {
+            Email = other.Email;
+        }
         public override Payment AutoFill()
         {
             return new WesternUnion(Guid.NewGuid().ToString("D"), "My WesternUnion Name", 2345, "someone@domain.com");

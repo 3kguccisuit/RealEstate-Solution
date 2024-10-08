@@ -43,14 +43,17 @@ namespace RealEstate.ViewModels
         {
             if (selected != null)
             {
+                Estate temporaryEstate = selected.Clone();
                 var viewModel = _serviceProvider.GetRequiredService<EditEstateViewModel>();
-                viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
-
+                //viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
+                viewModel.InitializeEstate(temporaryEstate);
 
                 var editWindow = new EditEstateWindow(viewModel);
                 var isOK = editWindow.ShowDialog();
-                if (isOK == false) {
-
+                if (isOK == true) {
+                    _estateManager.Update(selected.ID, temporaryEstate);
+                    RefreshEstatesAsync();
+                    SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
                 }
             }
             else

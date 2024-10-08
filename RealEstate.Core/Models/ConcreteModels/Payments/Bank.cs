@@ -14,6 +14,10 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
             IbanNumber = ibanNumber;
         }
 
+        public Bank(Bank other) : base(other)
+        {
+            IbanNumber = other.IbanNumber;
+        }
         public override Payment AutoFill()
         {
             return new Bank(Guid.NewGuid().ToString("D"), "My Bank Name", 6093, "DE1234");

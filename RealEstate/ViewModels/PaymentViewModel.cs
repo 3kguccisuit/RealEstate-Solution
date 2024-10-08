@@ -37,18 +37,25 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
     [RelayCommand]
     private void EditPayment(Payment selected)
     {
-        MessageBox.Show($"EditPayment {selected}", "EditPayment", MessageBoxButton.OK, MessageBoxImage.Information);
+       // MessageBox.Show($"EditPayment {selected}", "EditPayment", MessageBoxButton.OK, MessageBoxImage.Information);
         if (selected != null)
         {
+            // Create a deep clone of the selected payment
+            Payment temporaryPayment = (Payment)Activator.CreateInstance(selected.GetType(), selected);
+
             var viewModel = _serviceProvider.GetRequiredService<EditPaymentViewModel>();
-            viewModel.Initialize(selected); // Pass the selected payment to the view model
+            viewModel.Initialize(temporaryPayment); // Pass the temporary payment to the view model
 
             var editWindow = new EditPaymentWindow(viewModel);
-            editWindow.ShowDialog();
-            //await RefreshEstatesAsync();
-            _paymentManager.Update(selected.ID, selected);
-            RefreshPaymentsAsync();
-            Selected = Payments.FirstOrDefault(e => e.ID == selected.ID);
+            var isOK = editWindow.ShowDialog();
+
+            if (isOK == true)
+            {
+                // Apply the changes to the original payment if the user confirms
+                _paymentManager.Update(selected.ID, temporaryPayment);
+                RefreshPaymentsAsync();
+                Selected = Payments.FirstOrDefault(e => e.ID == temporaryPayment.ID);
+            }
 
         }
         else

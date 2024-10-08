@@ -15,6 +15,13 @@ namespace RealEstate.Core.Models.ConcreteModels.Persons
             AskingPrice = askingPrice;
         }
 
+
+        // Copy constructor for deep cloning
+        public Seller(Seller other) : base(other)
+        {
+            AskingPrice = other.AskingPrice;
+        }
+
         public override Person AutoFill()
         {
             return new Seller(Guid.NewGuid().ToString("D"), "John Doe", new Address("123 main st", "165523", "Stockholm", Country.Sverige), 0);

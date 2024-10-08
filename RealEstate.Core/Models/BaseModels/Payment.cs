@@ -17,6 +17,14 @@ namespace RealEstate.Core.Models.BaseModels
             Amount = amount;
         }
 
+        // Copy constructor for deep cloning
+        public Payment(Payment other)
+        {
+            ID = other.ID;
+            Name = other.Name;
+            Amount = other.Amount;
+        }
+
         public abstract Payment AutoFill();
     }
 

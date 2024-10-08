@@ -6,9 +6,11 @@ namespace RealEstate.Core.Models.BaseModels
     {
         public string ID { get; set; }
         public string Name { get; set; }
-        public virtual string Type => "Person";
         public Address Address { get; set; }
+
+        public virtual string Type => "Person";
         public abstract Person AutoFill();
+
         [JsonConstructor]
         public Person(string id, string name, Address address)
         {
@@ -16,6 +18,15 @@ namespace RealEstate.Core.Models.BaseModels
             Name = name;
             Address = address;
         }
+
+        // Copy constructor for deep cloning
+        public Person(Person other)
+        {
+            ID = other.ID;
+            Name = other.Name;
+            Address = new Address(other.Address); // Deep copy of Address
+        }
     }
+
 
 }

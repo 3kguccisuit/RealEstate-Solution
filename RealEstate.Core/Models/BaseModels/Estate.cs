@@ -26,6 +26,21 @@ namespace RealEstate.Core.Models.BaseModels
             LegalForm = legalForm;
         }
 
+        public Estate Clone()
+        {
+            var clonedEstate = (Estate)this.MemberwiseClone();
+
+            // Deep clone reference types
+            clonedEstate.Address = new Address(this.Address);
+            clonedEstate.LegalForm = new LegalForm(this.LegalForm);
+
+            // Deep clone Buyer, Seller, and Payment if they exist
+            if (LinkedBuyer != null) clonedEstate.LinkedBuyer = new Buyer(LinkedBuyer);
+            if (LinkedSeller != null) clonedEstate.LinkedSeller = new Seller(LinkedSeller);
+            if (LinkedPayment != null) clonedEstate.LinkedPayment = (Payment)Activator.CreateInstance(LinkedPayment.GetType(), LinkedPayment);
+
+            return clonedEstate;
+        }
 
         public override string ToString()
         {

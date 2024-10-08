@@ -17,6 +17,12 @@ namespace RealEstate.Core.Models.ConcreteModels.Persons
             HasLoanApproval = hasLoanApproval;
         }
 
+        public Buyer(Buyer other) : base(other)
+        {
+            Budget = other.Budget;
+            HasLoanApproval = other.HasLoanApproval;
+        }
+
         public override Person AutoFill()
         {
             return new Buyer(Guid.NewGuid().ToString("D"), "Alice Johnsson", new Address("321 Main st", "175575", "New York", Country.United_States_of_America), 0, true);

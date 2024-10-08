@@ -14,6 +14,12 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
         {
             PhoneNumber = phoneNumber;
         }
+
+        public Vipps() : base(Guid.NewGuid().ToString("D"), "", 0)
+        {
+
+        }
+
         public override Payment AutoFill()
         {
             return new Vipps(Guid.NewGuid().ToString("D"), "My Vipps Name", 3459, "+4434689834");

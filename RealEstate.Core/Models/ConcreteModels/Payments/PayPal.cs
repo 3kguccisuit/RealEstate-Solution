@@ -14,6 +14,11 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
         {
             Email = email;
         }
+
+        public PayPal() : base(Guid.NewGuid().ToString("D"), "", 0)
+        {
+
+        }
         public override Payment AutoFill()
         {
             return new PayPal(Guid.NewGuid().ToString("D"), "My PayPal Name", 8673, "someone@paypal.com");

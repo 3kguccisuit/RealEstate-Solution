@@ -4,6 +4,7 @@ using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Models.ConcreteModels.Payments;
 using RealEstate.Helpers;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Linq;
@@ -13,13 +14,19 @@ namespace RealEstate.ViewModels
     public partial class CreatePaymentViewModel : ObservableObject
     {
         //private readonly IEstateDataService _estateDataService;
-        private readonly IDataService<Payment> _paymentDataService;
+        //private readonly IDataService<Payment> _paymentDataService;
+        public IRelayCommand<CancelEventArgs> OnWindowClosingCommand { get; }
 
         [ObservableProperty]
         private Payment selected;
-        public CreatePaymentViewModel(IDataService<Payment> paymenmtDataService)
+
+        private bool _isCancelConfirmed = false;
+        private bool _isSaved = false;
+        public CreatePaymentViewModel()
         {
-            _paymentDataService = paymenmtDataService;
+            // _paymentDataService = paymenmtDataService;
+            OnWindowClosingCommand = new RelayCommand<CancelEventArgs>(OnWindowClosing);
+
 
         }
 
@@ -59,18 +66,21 @@ namespace RealEstate.ViewModels
             var result = MessageBox.Show("Do you really want to cancel?", appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Selected.ID = "Cancel";
-                window.Close();
+                _isCancelConfirmed = true;
+                window.DialogResult=false;
+                window.Close(); // Close the window if the user confirms
             }
         }
 
         // Create command to save the estate
         [RelayCommand]
-        private async Task Save(Window window)
+        private void Save(Window window)
         {
 
             MessageBox.Show($"Created {Selected.Type} with the props: {Selected}");
-            await _paymentDataService.AddAsync(Selected);
+            _isSaved = true;
+            window.DialogResult = true;
+            // await _paymentDataService.AddAsync(Selected);
 
             window.Close();
         }
@@ -82,5 +92,28 @@ namespace RealEstate.ViewModels
             // MessageBox.Show($"Autofill");
             Selected = Selected.AutoFill();
         }
+
+        public void OnWindowClosing(CancelEventArgs e)
+        {
+            Window window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+            if (_isSaved)
+            {
+                window.DialogResult = true;
+            }
+            // Get the current window
+            else if (!_isCancelConfirmed)
+            {
+                var result = MessageBox.Show("Do you really want to cancel?", "Cancel Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.No)
+                {
+                    e.Cancel = true;  // Prevent the window from closing
+                }
+                else
+                {
+                    window.DialogResult = false;
+                }
+            }
+        }
+
     }
 }

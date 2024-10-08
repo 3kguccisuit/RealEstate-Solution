@@ -25,7 +25,6 @@ namespace RealEstate.Core.Models.ConcreteModels
                 );
         }
 
-
         public override string DisplayDetails()
         {
             return $"{base.ToString()}, Floor Level: {FloorLevel}";

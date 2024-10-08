@@ -71,18 +71,17 @@ namespace RealEstate.ViewModels
 
             // Open the CreatePersonWindow with the ViewModel
             var window = new CreatePersonWindow(viewModel);
-            window.ShowDialog();
+            var isOK = window.ShowDialog();
 
             // Force refresh after creation
-            RefreshPersonsAsync();
-            if (viewModel.Selected.ID != "Cancel")
+            //RefreshPersonsAsync();
+            if (isOK == true)
             {
                 _personManager.Add(viewModel.Selected.ID, viewModel.Selected);
                 RefreshPersonsAsync();
                 SelectedPerson = Persons.FirstOrDefault(p => p.ID == viewModel.Selected.ID);
-            }
-               
-            else if (temp != null)
+            }   
+            else
                 SelectedPerson = Persons.FirstOrDefault(p => p.ID == temp.ID);
         }
 

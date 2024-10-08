@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models.BaseModels;
+using RealEstate.Core.Services;
 using RealEstate.Windows;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -12,8 +13,10 @@ namespace RealEstate.ViewModels;
 
 public partial class PaymentViewModel : ObservableObject, INavigationAware
 {
-    private readonly IDataService<Payment> _paymentDataService;
+    //private readonly IDataService<Payment> _paymentDataService;
     private readonly IServiceProvider _serviceProvider;
+    private readonly PaymentManager _paymentManager;
+
     private Payment _selected;
 
     public Payment Selected
@@ -24,14 +27,15 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
 
     public ObservableCollection<Payment> Payments { get; private set; } = new ObservableCollection<Payment>();
 
-    public PaymentViewModel(IDataService<Payment> paymentDataService, IServiceProvider serviceProvider)
+    public PaymentViewModel(IServiceProvider serviceProvider, PaymentManager paymentManager)
     {
-        _paymentDataService = paymentDataService;
+        //_paymentDataService = paymentDataService;
         _serviceProvider = serviceProvider;
+        _paymentManager = paymentManager;
     }
 
     [RelayCommand]
-    private async Task EditPayment(Payment selected)
+    private void EditPayment(Payment selected)
     {
         MessageBox.Show($"EditPayment {selected}", "EditPayment", MessageBoxButton.OK, MessageBoxImage.Information);
         if (selected != null)
@@ -41,7 +45,9 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
 
             var editWindow = new EditPaymentWindow(viewModel);
             editWindow.ShowDialog();
-            await RefreshEstatesAsync();
+            //await RefreshEstatesAsync();
+            _paymentManager.Update(selected.ID, selected);
+            RefreshPaymentsAsync();
             Selected = Payments.FirstOrDefault(e => e.ID == selected.ID);
 
         }
@@ -50,7 +56,7 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
     }
 
     [RelayCommand]
-    private async Task DeletePayment(Payment selected)
+    private void DeletePayment(Payment selected)
     {
         if (selected != null)
         {
@@ -63,8 +69,8 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
             {
                 //force update
                 Payments.Remove(selected);
-                //remove from json
-                await _paymentDataService.RemoveAsync(selected.ID);
+                _paymentManager.Remove(selected.ID);
+                //await _paymentDataService.RemoveAsync(selected.ID);
                 Selected = Payments.FirstOrDefault();
             }
         }
@@ -76,7 +82,7 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
 
 
     [RelayCommand]
-    private async Task OpenPaymentForm(string selectedType)
+    private void OpenPaymentForm(string selectedType)
     {
         //MessageBox.Show($"OpenPaymentForm {selectedType}", "OpenPaymentForm", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -89,40 +95,35 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
 
         // Open the CreateEstateWindow with the ViewModel
         var window = new CreatePaymentWindow(viewModel);
-        window.ShowDialog();
+        var isOK = window.ShowDialog();
 
         //force refresh
-        await RefreshEstatesAsync();
-        if (viewModel.Selected.ID != "Cancel")
+        if (isOK == true)
+        {
+            _paymentManager.Add(viewModel.Selected.ID, viewModel.Selected); // Add to PaymentManager
+            RefreshPaymentsAsync();
             Selected = Payments.FirstOrDefault(e => e.ID == viewModel.Selected.ID);
+        }
         else if (temp != null)
             Selected = Payments.FirstOrDefault(e => e.ID == temp.ID);
     }
 
-    private async Task RefreshEstatesAsync()
+    private void RefreshPaymentsAsync()
     {
         Payments.Clear();
 
-        var data = await _paymentDataService.GetAsync();
+        var data = _paymentManager.GetAll();  // Retrieve payments from PaymentManager
 
-        foreach (var estate in data)
+        foreach (var payment in data)
         {
-            Payments.Add(estate);
+            Payments.Add(payment);
         }
     }
 
 
-    public async void OnNavigatedTo(object parameter)
+    public void OnNavigatedTo(object parameter)
     {
-        Payments.Clear();
-
-        var data = await _paymentDataService.GetAsync();
-
-        foreach (var item in data)
-        {
-            Payments.Add(item);
-        }
-
+        RefreshPaymentsAsync();
         Selected = Payments.FirstOrDefault();
     }
 

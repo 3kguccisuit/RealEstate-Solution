@@ -100,6 +100,9 @@ public partial class App : Application
         services.AddSingleton<IDictionaryManager<string, Person>, PersonManager>();
         services.AddSingleton<PersonManager>(); // Register PersonManager
 
+        services.AddSingleton<IDictionaryManager<string, Payment>, PaymentManager>();
+        services.AddSingleton<PaymentManager>();
+
         // Views and ViewModels
         //LH
         services.AddTransient<CreateEstateViewModel>();

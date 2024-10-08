@@ -7,6 +7,7 @@ using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Windows;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Windows;
 
 
@@ -45,13 +46,12 @@ namespace RealEstate.ViewModels
                 var viewModel = _serviceProvider.GetRequiredService<EditEstateViewModel>();
                 viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
 
+
                 var editWindow = new EditEstateWindow(viewModel);
-                editWindow.ShowDialog();
+                var isOK = editWindow.ShowDialog();
+                if (isOK == false) {
 
-                _estateManager.Update(selected.ID, selected);
-                RefreshEstatesAsync();
-                SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
-
+                }
             }
             else
                 MessageBox.Show("Please select an estate");
@@ -95,20 +95,22 @@ namespace RealEstate.ViewModels
 
             // Open the CreateEstateWindow with the ViewModel
             var window = new CreateEstateWindow(viewModel);
-            window.ShowDialog();
+            var isOK =  window.ShowDialog();
             
             //force refresh
-            RefreshEstatesAsync();
-            if (viewModel.SelectedEstate.ID != "Cancel")
+            //RefreshEstatesAsync();
+            if (isOK == true)
             {
                 _estateManager.Add(viewModel.SelectedEstate.ID, viewModel.SelectedEstate);
                 Estates.Add(viewModel.SelectedEstate);
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
-                
+            }
+            else
+            {
+                SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);
+
             }
                 
-            else if (temp != null)
-                SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);
         }
 
         private void RefreshEstatesAsync()

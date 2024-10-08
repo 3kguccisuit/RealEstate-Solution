@@ -12,6 +12,16 @@ namespace RealEstate.Windows
         {
             InitializeComponent();
             DataContext = viewModel;
+
+            this.Closing += (sender, e) =>
+            {
+                var vm = DataContext as EditEstateViewModel;
+                if (vm != null && vm.OnWindowClosingCommand.CanExecute(e))
+                {
+                    vm.OnWindowClosingCommand.Execute(e);
+                }
+            };
+
         }
     }
 }

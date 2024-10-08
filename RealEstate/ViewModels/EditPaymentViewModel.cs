@@ -42,10 +42,10 @@ namespace RealEstate.ViewModels
 
         // Create command to save (update) the payment
         [RelayCommand]
-        private async Task Save(Window window)
+        private void Save(Window window)
         {
             MessageBox.Show($"Updated {Selected.Type} with the props: {Selected}");
-            await _paymentDataService.UpdateAsync(Selected);
+            //await _paymentDataService.UpdateAsync(Selected);
 
             window.Close();
         }

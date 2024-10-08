@@ -15,6 +15,12 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
             Email = email;
         }
 
+        public WesternUnion() : base(Guid.NewGuid().ToString("D"), "", 0)
+        {
+
+        }
+
+
         public WesternUnion(WesternUnion other) : base(other)
         {
             Email = other.Email;

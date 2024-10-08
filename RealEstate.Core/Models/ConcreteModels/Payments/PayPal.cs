@@ -14,6 +14,11 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
             Email = email;
         }
 
+        public PayPal() : base(Guid.NewGuid().ToString("D"), "", 0)
+        {
+
+        }
+
         public PayPal(PayPal other) : base(other)
         {
             Email = other.Email;

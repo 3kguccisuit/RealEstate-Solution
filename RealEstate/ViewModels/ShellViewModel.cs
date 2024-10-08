@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls;
+using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
+using RealEstate.Core.Libs;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Properties;
@@ -28,6 +30,7 @@ public class ShellViewModel : ObservableObject
     private ICommand _unloadedCommand;
     private readonly EstateManager _estateManager;
     private readonly PersonManager _personManager;
+    private readonly PaymentManager _paymentManager;
 
     // Define the commands for the menu items
     public ICommand NewCommand { get; }
@@ -83,12 +86,13 @@ public class ShellViewModel : ObservableObject
 
     public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-    public ShellViewModel(INavigationService navigationService, EstateManager estateManager, PersonManager personManager)
+    public ShellViewModel(INavigationService navigationService, EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager)
     {
         _navigationService = navigationService;
 
         _estateManager = estateManager;
-        _personManager = personManager; 
+        _personManager = personManager;
+        _paymentManager = paymentManager;
 
         NewCommand = new RelayCommand(OnNew);
 
@@ -113,21 +117,21 @@ public class ShellViewModel : ObservableObject
     #region JSON
     private void OpenJsonFile()
     {
-            // Configure open file dialog box
-            var dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.FileName = "Document"; // Default file name
-            dialog.DefaultExt = ".json"; // Default file extension
+        // Configure open file dialog box
+        var dialog = new Microsoft.Win32.OpenFileDialog();
+        dialog.FileName = "Document"; // Default file name
+        dialog.DefaultExt = ".json"; // Default file extension
 
-            dialog.Filter = "JSON|*.json|All Files|*.*";
+        dialog.Filter = "JSON|*.json|All Files|*.*";
 
-            // Show open file dialog box
-            bool? result = dialog.ShowDialog();
+        // Show open file dialog box
+        bool? result = dialog.ShowDialog();
 
-            // Process open file dialog box results
-            if (result == true)
-            {
-                // Open document
-                var name = dialog.FileName;
+        // Process open file dialog box results
+        if (result == true)
+        {
+            // Open document
+            var name = dialog.FileName;
 
             var json = File.ReadAllText(name);
             var options = new JsonSerializerOptions
@@ -135,6 +139,7 @@ public class ShellViewModel : ObservableObject
                 Converters = {
             new EstateJsonConverter(),  // Custom converter for polymorphic deserialization
             new PersonJsonConverter(),
+            new PaymentJsonConverter(),
             new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
         },
                 PropertyNameCaseInsensitive = true
@@ -142,24 +147,36 @@ public class ShellViewModel : ObservableObject
 
             var rootObject = JsonSerializer.Deserialize<RootObject>(json, options);
 
+            // Töm befintliga estates, persons och payments
             foreach (var item in _estateManager.GetAll())
             {
                 _estateManager.Remove(item.ID);
-                
             }
+
             foreach (var item in _personManager.GetAll())
             {
                 _personManager.Remove(item.ID);
-
             }
 
+            foreach (var item in _paymentManager.GetAll())
+            {
+                _paymentManager.Remove(item.ID);
+            }
+
+            // Lägg till nya estates, persons och payments från fil
             foreach (var item in rootObject.EstateList)
             {
-                _estateManager.Add(item.ID,item);
+                _estateManager.Add(item.ID, item);
             }
+
             foreach (var item in rootObject.PersonList)
             {
                 _personManager.Add(item.ID, item);
+            }
+
+            foreach (var item in rootObject.PaymentList)
+            {
+                _paymentManager.Add(item.ID, item);
             }
         }
     }
@@ -201,7 +218,13 @@ public class ShellViewModel : ObservableObject
                 Converters = { new EstateJsonConverter(), new PersonJsonConverter() }  // Ensure the custom converter is used
             };
 
-            var json = JsonSerializer.Serialize(new RootObject { EstateList=_estateManager.GetAll(),PersonList=_personManager.GetAll() }, options);
+            var json = JsonSerializer.Serialize(new RootObject
+            {
+                EstateList = _estateManager.GetAll(),
+                PersonList = _personManager.GetAll(),
+                PaymentList = _paymentManager.GetAll()
+            },
+                options);
 
             File.WriteAllText(name, json);
         }
@@ -230,7 +253,50 @@ public class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            var Name = dialog.FileName;
+            var name = dialog.FileName;
+
+            var xml = File.ReadAllText(name);
+
+            // Deserialize the XML back to a list
+            List<Payment> deserializedList = XmlHelper.DeserializeFromXml<List<Payment>>(xml);
+
+            //var rootObject = JsonSerializer.Deserialize<RootObject>(json, options);
+
+            // Töm befintliga estates, persons och payments
+            foreach (var item in _estateManager.GetAll())
+            {
+                _estateManager.Remove(item.ID);
+            }
+
+            foreach (var item in _personManager.GetAll())
+            {
+                _personManager.Remove(item.ID);
+            }
+
+            foreach (var item in _paymentManager.GetAll())
+            {
+                _paymentManager.Remove(item.ID);
+            }
+
+            // Temp fix
+
+
+            // Lägg till nya estates, persons och payments från fil
+            //foreach (var item in rootObject.EstateList)
+            //{
+            //    _estateManager.Add(item.ID, item);
+            //}
+
+            //foreach (var item in rootObject.PersonList)
+            //{
+            //    _personManager.Add(item.ID, item);
+            //}
+
+            //foreach (var item in rootObject.PaymentList)
+            //{
+            //    _paymentManager.Add(item.ID, item);
+            //}
+
         }
     }
     private void OnSaveXmlFile()
@@ -254,7 +320,12 @@ public class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            var Name = dialog.FileName;
+            var name = dialog.FileName;
+
+            // Serialize the list to XML
+            //string xml = XmlHelper.SerializeToXml(new RootObject { EstateList = _estateManager.GetAll(), PersonList = _personManager.GetAll(), PaymentList = _paymentManager.GetAll() });
+            string xml = XmlHelper.SerializeToXml(_paymentManager.GetAll());
+            File.WriteAllText(name, xml);
         }
     }
     #endregion
@@ -319,5 +390,5 @@ public class RootObject
     public List<Estate> EstateList { get; set; }
     public List<Person> PersonList { get; set; }
 
-    //public List<Payment> PaymentList { get; set; }
+    public List<Payment> PaymentList { get; set; }
 }

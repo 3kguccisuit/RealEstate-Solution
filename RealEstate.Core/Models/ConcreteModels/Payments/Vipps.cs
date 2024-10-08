@@ -14,6 +14,12 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
             PhoneNumber = phoneNumber;
         }
 
+        public Vipps() : base(Guid.NewGuid().ToString("D"), "", 0)
+        {
+
+        }
+
+
         public Vipps(Vipps other) : base(other)
         {
             PhoneNumber = other.PhoneNumber;

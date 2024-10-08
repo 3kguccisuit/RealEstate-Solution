@@ -1,8 +1,14 @@
 ﻿using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models.ConcreteModels.Payments;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace RealEstate.Core.Models.BaseModels
 {
+    [XmlInclude(typeof(Bank))]      // Include Bank type
+    [XmlInclude(typeof(PayPal))]      // Include PayPal type
+    [XmlInclude(typeof(Vipps))]      // Include Vipps type
+    [XmlInclude(typeof(WesternUnion))]      // Include WesternUnion type
     public abstract class Payment : IPayment
     {
         public string ID { get; set; }

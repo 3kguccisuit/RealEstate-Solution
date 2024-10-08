@@ -162,6 +162,25 @@
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
 
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
+
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
             <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusVilla" />
@@ -261,6 +280,25 @@
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
 
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
+
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
             <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusTownhouse"/>
@@ -353,7 +391,26 @@
                     ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
-            
+
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
+
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
             <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusHospital" />
@@ -446,6 +503,25 @@
                     ItemsSource="{Binding DataContext.Buyers, RelativeSource={RelativeSource AncestorType=Window}}"
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
@@ -540,6 +616,24 @@
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
 
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
@@ -634,6 +728,24 @@
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
 
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
@@ -728,7 +840,25 @@
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
 
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
 
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
+            
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
             <TextBox Grid.Row="1" Grid.Column="1" Width="120" Text="{Binding Address.Street}" x:Name="TextBoxFocusShop"/>
@@ -822,6 +952,24 @@
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
 
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />
@@ -916,6 +1064,24 @@
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding DataContext.SelectedBuyer, RelativeSource={RelativeSource AncestorType=Window}}" />
 
+            <!-- Select Payment (New Section for Payment ComboBox) -->
+            <Label Grid.Row="3" Grid.Column="2" Margin="3" Content="Payment" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Width="120"
+                    ItemsSource="{Binding DataContext.Payments, RelativeSource={RelativeSource AncestorType=Window}}"
+                    DisplayMemberPath="Name" 
+                 SelectedItem="{Binding DataContext.SelectedPayment, RelativeSource={RelativeSource AncestorType=Window}}" />
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Create Payment" Margin="3" />
+            <StackPanel Grid.Row="8" Grid.Column="3" Orientation="Horizontal">
+                <ComboBox Width="150" Margin="3" ToolTip="Create New Payment"
+              SelectedValuePath="Tag" 
+              SelectedValue="{Binding DataContext.SelectedPaymentType, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}">
+                    <ComboBoxItem Content="WesternUnion" Tag="WesternUnion" />
+                    <ComboBoxItem Content="Vipps" Tag="Vipps" />
+                    <ComboBoxItem Content="PayPal" Tag="PayPal" />
+                    <ComboBoxItem Content="Bank" Tag="Bank" />
+                </ComboBox>
+            </StackPanel>
 
             <!-- Street Input -->
             <Label Grid.Row="1" Grid.Column="0" Margin="3" Content="Street" />

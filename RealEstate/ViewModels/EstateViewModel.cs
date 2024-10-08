@@ -3,9 +3,11 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Enums;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Windows;
+using Serilog;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Windows;
@@ -30,12 +32,16 @@ namespace RealEstate.ViewModels
         // Observable collection of estates (bound to the ListView)
         public ObservableCollection<Estate> Estates { get; private set; } = new ObservableCollection<Estate>();
 
+        [ObservableProperty]
+        private string searchOption;
+
         // Constructor with the estate data service dependency injected
         public EstateViewModel(IServiceProvider serviceProvider, EstateManager estateManager)
         {
             //_estateDataService = estateDataService;
             _serviceProvider = serviceProvider;
             _estateManager = estateManager;
+            SearchOption = "City";
         }
 
         [RelayCommand]
@@ -55,6 +61,7 @@ namespace RealEstate.ViewModels
                     RefreshEstatesAsync();
                     SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
                 }
+                Log.Information("Hej from EditEstate");
             }
             else
                 MessageBox.Show("Please select an estate");
@@ -109,11 +116,58 @@ namespace RealEstate.ViewModels
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
             }
             else
-            {
-                SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);
+                SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);  
+        }
 
+        [RelayCommand]
+        private void Search(string searchType)
+        {
+
+            IEnumerable<Estate> estatesRes =null;
+            if (string.IsNullOrEmpty(searchType))
+            {
+                MessageBox.Show("Please enter text in the Search Box", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-                
+            else if (string.IsNullOrEmpty(SearchOption))
+            {
+                MessageBox.Show("Please select a type from the combo box", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (SearchOption == "City")
+            {
+                estatesRes = _estateManager.GetEstatesByCity(searchType);
+            }
+            if (SearchOption == "Country")
+            {
+                if (Enum.TryParse<Country>(searchType, true, out var country))
+                {
+                    estatesRes = _estateManager.GetEstatesByCountry(country);
+                }
+            }
+
+            if (estatesRes.Any())
+                UpdateSearchResult(estatesRes);
+        }
+
+        private void UpdateSearchResult(IEnumerable<Estate> estates)
+        {
+            Estates.Clear();
+            foreach (var estate in estates)
+            {
+                Estates.Add(estate);
+            }
+            if (!Estates.Any())
+            {
+                MessageBox.Show($"No estates found, please be precise with query", "Search Result", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+        }
+
+        partial void OnSearchOptionChanged(string value)
+        {
+            SearchOption = value;
         }
 
         private void RefreshEstatesAsync()

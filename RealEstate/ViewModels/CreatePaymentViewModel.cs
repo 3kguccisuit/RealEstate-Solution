@@ -68,7 +68,7 @@ namespace RealEstate.ViewModels
             {
                 _isCancelConfirmed = true;
                 window.DialogResult=false;
-                window.Close(); // Close the window if the user confirms
+                //window.Close(); // Close the window if the user confirms
             }
         }
 

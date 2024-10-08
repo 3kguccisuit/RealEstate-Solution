@@ -1,15 +1,24 @@
-﻿using RealEstate.Core.Models.BaseModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RealEstate.Core.Enums;
+using RealEstate.Core.Models.BaseModels;
 
 namespace RealEstate.Core.Services
 {
     public class EstateManager : DictionaryManager<string, Estate>
     {
-        // Inherits the dictionary management functionality 
-        // with 'string' as the key for Estate objects
+        public List<Estate> GetEstatesByCity(string city)
+        {
+            // Use LINQ to filter estates by city from the Address property
+            return GetAll()
+                .Where(estate => estate.Address != null && estate.Address.City.Equals(city, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
+        public List<Estate> GetEstatesByCountry(Country country)
+        {
+            // Use LINQ to filter estates by enum Country from the Address property
+            return GetAll()
+                .Where(estate => estate.Address != null && estate.Address.Country == country)
+                .ToList();
+        }
     }
-
-
 }

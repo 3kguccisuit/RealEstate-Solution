@@ -4,6 +4,7 @@ using MahApps.Metro.Controls;
 using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
 using RealEstate.Core.Libs;
+using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Properties;
@@ -374,9 +375,4 @@ public partial class ShellViewModel : ObservableObject
     }
 }
 
-public class RootObject
-{
-    public List<Estate> EstateList { get; set; }
-    public List<Person> PersonList { get; set; }
-    public List<Payment> PaymentList { get; set; }
-}
+

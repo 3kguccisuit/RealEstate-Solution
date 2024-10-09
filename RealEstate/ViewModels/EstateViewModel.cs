@@ -61,7 +61,6 @@ namespace RealEstate.ViewModels
                     RefreshEstatesAsync();
                     SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
                 }
-                Log.Information("Hej from EditEstate");
             }
             else
                 MessageBox.Show("Please select an estate");
@@ -174,7 +173,7 @@ namespace RealEstate.ViewModels
         {
             Estates.Clear();
 
-            // Retrieve the list of estates from the EstateManager instead of the data service
+            // Retrieve the list of estates from the EstateManager
             var estates = _estateManager.GetAll();
 
             foreach (var estate in estates)

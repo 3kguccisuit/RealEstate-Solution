@@ -13,7 +13,7 @@ namespace RealEstate.ViewModels
 {
     public partial class PersonViewModel : ObservableObject, INavigationAware
     {
-        private readonly IDataService<Person> _personDataService;
+        //private readonly IDataService<Person> _personDataService;
         private readonly IServiceProvider _serviceProvider;
         private readonly PersonManager _personManager;
 
@@ -28,9 +28,9 @@ namespace RealEstate.ViewModels
         public ObservableCollection<Person> Persons { get; private set; } = new ObservableCollection<Person>();
 
         // Constructor with the person data service dependency injected
-        public PersonViewModel(IDataService<Person> personDataService, IServiceProvider serviceProvider, PersonManager personManager)
+        public PersonViewModel(IServiceProvider serviceProvider, PersonManager personManager)
         {
-            _personDataService = personDataService;
+           // _personDataService = personDataService;
             _serviceProvider = serviceProvider;
             _personManager = personManager;
         }

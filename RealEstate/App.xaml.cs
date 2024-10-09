@@ -87,9 +87,9 @@ public partial class App : Application
 
         //services.AddSingleton<ISampleDataService, SampleDataService>();
         //services.AddSingleton<IEstateDataService, EstateDataService>();
-        services.AddSingleton<IDataService<Estate>, EstateDataService>();
-        services.AddSingleton<IDataService<Person>, PersonDataService>();
-        services.AddSingleton<IDataService<Payment>, PaymentDataService>();
+        //services.AddSingleton<IDataService<Estate>, EstateDataService>();
+        //services.AddSingleton<IDataService<Person>, PersonDataService>();
+        //services.AddSingleton<IDataService<Payment>, PaymentDataService>();
 
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();

@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls;
 using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
+using RealEstate.Core.Enums;
 using RealEstate.Core.Libs;
 using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
@@ -32,6 +33,8 @@ public partial class ShellViewModel : ObservableObject
     private readonly EstateManager _estateManager;
     private readonly PersonManager _personManager;
     private readonly PaymentManager _paymentManager;
+
+    private AppState _appState;
 
     [ObservableProperty]
     private string fileName;
@@ -90,13 +93,15 @@ public partial class ShellViewModel : ObservableObject
 
     public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-    public ShellViewModel(INavigationService navigationService, EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager)
+    public ShellViewModel(INavigationService navigationService, EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager, AppState appState)
     {
         _navigationService = navigationService;
 
         _estateManager = estateManager;
         _personManager = personManager;
         _paymentManager = paymentManager;
+
+        _appState = appState;
 
         NewCommand = new RelayCommand(OnNew);
 
@@ -114,6 +119,17 @@ public partial class ShellViewModel : ObservableObject
 
     private void OnNew()
     {
+        if (_appState.IsDirty)
+        {
+            var app = (App)Application.Current;
+            var appName = app.AppName;
+
+            var result = MessageBox.Show("You have unsave changes! Do you want to save them before creating a new RealEstate_", appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                // DH !!! Lägg till Save
+            }
+        }
         // Töm befintliga estates, persons och payments
         _estateManager.Clear();
         _personManager.Clear();
@@ -178,6 +194,12 @@ public partial class ShellViewModel : ObservableObject
                 _paymentManager.Add(item.ID, item);
             }
 
+            // Set AppState
+            _appState.IsDirty = false;
+            _appState.Format = FileFormats.JSON;
+            _appState.FileName = FileName;
+
+
             // Navigate to Home Page
             _navigationService.NavigateTo(typeof(MainViewModel).FullName);
 
@@ -230,6 +252,11 @@ public partial class ShellViewModel : ObservableObject
                 options);
 
             File.WriteAllText(FileName, json);
+
+            // Set AppState
+            _appState.IsDirty = false;
+            _appState.Format = FileFormats.JSON;
+            _appState.FileName = FileName;
         }
     }
 
@@ -285,6 +312,11 @@ public partial class ShellViewModel : ObservableObject
                 _paymentManager.Add(item.ID, item);
             }
 
+            // Set AppState
+            _appState.IsDirty = false;
+            _appState.Format = FileFormats.XML;
+            _appState.FileName = FileName;
+
             // Navigate to Home Page
             _navigationService.NavigateTo(typeof(MainViewModel).FullName);
         }
@@ -316,6 +348,12 @@ public partial class ShellViewModel : ObservableObject
             string xml = XmlHelper.SerializeToXml(new RootObject { EstateList = _estateManager.GetAll(), PersonList = _personManager.GetAll(), PaymentList = _paymentManager.GetAll() });
             // string xml = XmlHelper.SerializeToXml(_paymentManager.GetAll());
             File.WriteAllText(FileName, xml);
+
+            // Set AppState
+            _appState.IsDirty = false;
+            _appState.Format = FileFormats.XML;
+            _appState.FileName = FileName;
+
         }
     }
     #endregion

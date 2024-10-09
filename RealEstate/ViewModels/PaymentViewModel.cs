@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Enums;
+using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Windows;
@@ -18,6 +20,7 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
     private readonly PaymentManager _paymentManager;
 
     private Payment _selected;
+    private AppState _appState;
 
     public Payment Selected
     {
@@ -27,11 +30,12 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
 
     public ObservableCollection<Payment> Payments { get; private set; } = new ObservableCollection<Payment>();
 
-    public PaymentViewModel(IServiceProvider serviceProvider, PaymentManager paymentManager)
+    public PaymentViewModel(IServiceProvider serviceProvider, PaymentManager paymentManager, AppState appState)
     {
         //_paymentDataService = paymentDataService;
         _serviceProvider = serviceProvider;
         _paymentManager = paymentManager;
+        _appState = appState;
     }
 
     [RelayCommand]
@@ -55,7 +59,10 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
                 _paymentManager.Update(selected.ID, temporaryPayment);
                 RefreshPaymentsAsync();
                 Selected = Payments.FirstOrDefault(e => e.ID == temporaryPayment.ID);
-            }
+
+                // Set AppState dirty bit
+                _appState.IsDirty = true;
+           }
 
         }
         else
@@ -79,6 +86,9 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
                 _paymentManager.Remove(selected.ID);
                 //await _paymentDataService.RemoveAsync(selected.ID);
                 Selected = Payments.FirstOrDefault();
+
+                // Set AppState dirty bit
+                _appState.IsDirty = true;
             }
         }
         else
@@ -110,6 +120,10 @@ public partial class PaymentViewModel : ObservableObject, INavigationAware
             _paymentManager.Add(viewModel.Selected.ID, viewModel.Selected); // Add to PaymentManager
             RefreshPaymentsAsync();
             Selected = Payments.FirstOrDefault(e => e.ID == viewModel.Selected.ID);
+
+            // Set AppState dirty bit
+            _appState.IsDirty = true;
+
         }
         else if (temp != null)
             Selected = Payments.FirstOrDefault(e => e.ID == temp.ID);

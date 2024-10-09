@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using RealEstate.Contracts.Services;
 using RealEstate.Contracts.Views;
 using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Models;
@@ -132,7 +133,7 @@ public partial class App : Application
         services.AddTransient<SettingsViewModel>();
         services.AddTransient<SettingsPage>();
 
-
+        services.AddSingleton<AppState>();
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Enums;
+using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Windows;
@@ -20,7 +21,7 @@ namespace RealEstate.ViewModels
         //private readonly IDataService<Estate> _estateDataService;
         private readonly IServiceProvider _serviceProvider;
         private readonly EstateManager _estateManager;
-
+        private AppState _appState;
         private Estate _selectedEstate;
         public Estate SelectedEstate
         {
@@ -36,12 +37,13 @@ namespace RealEstate.ViewModels
         private string searchOption;
 
         // Constructor with the estate data service dependency injected
-        public EstateViewModel(IServiceProvider serviceProvider, EstateManager estateManager)
+        public EstateViewModel(IServiceProvider serviceProvider, EstateManager estateManager, AppState appState )
         {
             //_estateDataService = estateDataService;
             _serviceProvider = serviceProvider;
             _estateManager = estateManager;
             SearchOption = "City";
+            _appState = appState;
         }
 
         [RelayCommand]
@@ -60,6 +62,7 @@ namespace RealEstate.ViewModels
                     _estateManager.Update(selected.ID, temporaryEstate);
                     RefreshEstatesAsync();
                     SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
+                    _appState.IsDirty = true;
                 }
             }
             else
@@ -83,6 +86,7 @@ namespace RealEstate.ViewModels
                     //force update
                     Estates.Remove(selected);
                     SelectedEstate = Estates.FirstOrDefault();
+                    _appState.IsDirty = true;
                 }
             }
             else
@@ -113,6 +117,7 @@ namespace RealEstate.ViewModels
                 _estateManager.Add(viewModel.SelectedEstate.ID, viewModel.SelectedEstate);
                 Estates.Add(viewModel.SelectedEstate);
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
+                _appState.IsDirty = true;
             }
             else
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);  

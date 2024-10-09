@@ -7,6 +7,7 @@ using RealEstate.Core.Contracts.Services;
 using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
+using RealEstate.Helpers;
 using RealEstate.Models;
 using RealEstate.Services;
 using RealEstate.ViewModels;
@@ -78,18 +79,13 @@ public partial class App : Application
 
         // Core Services
         services.AddSingleton<IFileService, FileService>();
+        services.AddSingleton<FileDataHandler>();
 
         // Services
         services.AddSingleton<IApplicationInfoService, ApplicationInfoService>();
         services.AddSingleton<ISystemService, SystemService>();
         services.AddSingleton<IPersistAndRestoreService, PersistAndRestoreService>();
         services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-
-        //services.AddSingleton<ISampleDataService, SampleDataService>();
-        //services.AddSingleton<IEstateDataService, EstateDataService>();
-        //services.AddSingleton<IDataService<Estate>, EstateDataService>();
-        //services.AddSingleton<IDataService<Person>, PersonDataService>();
-        //services.AddSingleton<IDataService<Payment>, PaymentDataService>();
 
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();

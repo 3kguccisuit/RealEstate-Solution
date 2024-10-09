@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
 using RealEstate.Windows;
@@ -16,6 +17,7 @@ namespace RealEstate.ViewModels
         //private readonly IDataService<Person> _personDataService;
         private readonly IServiceProvider _serviceProvider;
         private readonly PersonManager _personManager;
+        private AppState _appState;
 
         private Person _selectedPerson;
         public Person SelectedPerson
@@ -28,11 +30,12 @@ namespace RealEstate.ViewModels
         public ObservableCollection<Person> Persons { get; private set; } = new ObservableCollection<Person>();
 
         // Constructor with the person data service dependency injected
-        public PersonViewModel(IServiceProvider serviceProvider, PersonManager personManager)
+        public PersonViewModel(IServiceProvider serviceProvider, PersonManager personManager, AppState appState)
         {
            // _personDataService = personDataService;
             _serviceProvider = serviceProvider;
             _personManager = personManager;
+            _appState = appState;
         }
 
 
@@ -56,6 +59,7 @@ namespace RealEstate.ViewModels
                     _personManager.Update(selected.ID, temporaryPerson);
                     RefreshPersonsAsync();
                     SelectedPerson = Persons.FirstOrDefault(p => p.ID == temporaryPerson.ID);
+                    _appState.IsDirty = true;
                 }
                 // If the user cancels, the original person is left unchanged
             }
@@ -90,6 +94,7 @@ namespace RealEstate.ViewModels
                 _personManager.Add(viewModel.Selected.ID, viewModel.Selected);
                 RefreshPersonsAsync();
                 SelectedPerson = Persons.FirstOrDefault(p => p.ID == viewModel.Selected.ID);
+                _appState.IsDirty = true;
             }   
             else
                 SelectedPerson = Persons.FirstOrDefault(p => p.ID == temp.ID);
@@ -111,6 +116,7 @@ namespace RealEstate.ViewModels
                     _personManager.Remove(selected.ID);
                     // await _personDataService.RemoveAsync(selected.ID);
                     SelectedPerson = Persons.FirstOrDefault();
+                    _appState.IsDirty = true;
                 }
             }
             else

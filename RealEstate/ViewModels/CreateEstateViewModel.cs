@@ -261,7 +261,6 @@ namespace RealEstate.ViewModels
                 // Trigger the CreateNewPaymentCommand with the selected type
                 CreateNewPaymentCommand.Execute(value);
 
-                // Optionally, clear the selected payment type to mimic dropdown behavior
                 SelectedPaymentType = null;
             }
         }

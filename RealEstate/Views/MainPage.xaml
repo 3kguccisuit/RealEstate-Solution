@@ -25,6 +25,13 @@
                        FontWeight="Bold" 
                        Foreground="Black"  
                        TextAlignment="Center" />
+            <!-- Filename -->
+            <TextBlock Text="{Binding FileName}" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Foreground="Black"  
+                       TextAlignment="Center" />
+
             <!-- Logo or Icon (Optional) -->
             <Image Source="Logo.png"
                    Width="200" 

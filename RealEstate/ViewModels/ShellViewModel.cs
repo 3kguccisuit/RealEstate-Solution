@@ -36,22 +36,22 @@ public partial class ShellViewModel : ObservableObject
 
     private AppState _appState;
 
-    [ObservableProperty]
-    private string fileName;
+    //[ObservableProperty]
+    //private string fileName;
 
     // Define the commands for the menu items
     public ICommand NewCommand { get; }
 
     // JSON
     public ICommand OpenJsonFileCommand { get; }
-    public ICommand SaveJsonCommand { get; }
+    //public ICommand SaveJsonCommand { get; }
     public ICommand SaveAsJsonFileCommand { get; }
 
     // XML
     public ICommand OpenXmlFileCommand { get; }
-    public ICommand SaveXmlFileCommand { get; }
+    //public ICommand SaveXmlFileCommand { get; }
     public ICommand SaveAsXmlFileCommand { get; }
-
+    public ICommand SaveCommand { get; }
     public ICommand ExitCommand { get; }
 
     public HamburgerMenuItem SelectedMenuItem
@@ -106,12 +106,14 @@ public partial class ShellViewModel : ObservableObject
         NewCommand = new RelayCommand(OnNew);
 
         OpenJsonFileCommand = new RelayCommand(OpenJsonFile);
-        SaveJsonCommand = new RelayCommand(OnSaveJsonFile);
+        //SaveJsonCommand = new RelayCommand(OnSaveJsonFile);
         SaveAsJsonFileCommand = new RelayCommand(OnSaveAsJsonFile);
 
         OpenXmlFileCommand = new RelayCommand(OnOpenXmlFile);
-        SaveXmlFileCommand = new RelayCommand(OnSaveXmlFile);
+        //SaveXmlFileCommand = new RelayCommand(OnSaveXmlFile);
         SaveAsXmlFileCommand = new RelayCommand(OnSaveAsXmlFile);
+
+        SaveCommand = new RelayCommand(OnSave);
 
 
         ExitCommand = new RelayCommand(OnExit);
@@ -157,9 +159,9 @@ public partial class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            FileName = dialog.FileName;
+            _appState.FileName = dialog.FileName;
 
-            var json = File.ReadAllText(FileName);
+            var json = File.ReadAllText(_appState.FileName);
             var options = new JsonSerializerOptions
             {
                 Converters = {
@@ -197,7 +199,7 @@ public partial class ShellViewModel : ObservableObject
             // Set AppState
             _appState.IsDirty = false;
             _appState.Format = FileFormats.JSON;
-            _appState.FileName = FileName;
+            _appState.FileName = _appState.FileName;
 
 
             // Navigate to Home Page
@@ -233,35 +235,54 @@ public partial class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            FileName = dialog.FileName;
+            _appState.FileName = dialog.FileName;
             // var mngr = ((App)Application.Current).EstateManager;
 
-
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,  // Pretty-print JSON
-                Converters = { new EstateJsonConverter(), new PersonJsonConverter() }  // Ensure the custom converter is used
-            };
-
-            var json = JsonSerializer.Serialize(new RootObject
-            {
-                EstateList = _estateManager.GetAll(),
-                PersonList = _personManager.GetAll(),
-                PaymentList = _paymentManager.GetAll()
-            },
-                options);
-
-            File.WriteAllText(FileName, json);
-
-            // Set AppState
-            _appState.IsDirty = false;
-            _appState.Format = FileFormats.JSON;
-            _appState.FileName = FileName;
+            SerializeAsJsonAndSaveToFile();
         }
+    }
+
+    private void SerializeAsJsonAndSaveToFile()
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,  // Pretty-print JSON
+            Converters = { new EstateJsonConverter(), new PersonJsonConverter(), new PaymentJsonConverter() }  // Ensure the custom converter is used
+        };
+
+        var json = JsonSerializer.Serialize(new RootObject
+        {
+            EstateList = _estateManager.GetAll(),
+            PersonList = _personManager.GetAll(),
+            PaymentList = _paymentManager.GetAll()
+        },
+            options);
+
+        File.WriteAllText(_appState.FileName, json);
+
+        // Set AppState
+        _appState.IsDirty = false;
+        _appState.Format = FileFormats.JSON;
     }
 
     private void OnSave()
     {
+        switch (_appState.Format)
+        {
+            case FileFormats.Unknown:
+                break;
+
+            case FileFormats.JSON:
+                SerializeAsJsonAndSaveToFile();
+                break;
+
+            case FileFormats.XML:
+                SerializeAsXmlAndSaveToFile();
+                break;
+
+            default:
+                break;
+        }
     }
     #endregion
 
@@ -283,9 +304,9 @@ public partial class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            FileName = dialog.FileName;
+            _appState.FileName = dialog.FileName;
 
-            var xml = File.ReadAllText(FileName);
+            var xml = File.ReadAllText(_appState.FileName);
 
             // Deserialize the XML back to a list
             RootObject rootObject = XmlHelper.DeserializeFromXml<RootObject>(xml);
@@ -315,7 +336,6 @@ public partial class ShellViewModel : ObservableObject
             // Set AppState
             _appState.IsDirty = false;
             _appState.Format = FileFormats.XML;
-            _appState.FileName = FileName;
 
             // Navigate to Home Page
             _navigationService.NavigateTo(typeof(MainViewModel).FullName);
@@ -342,19 +362,22 @@ public partial class ShellViewModel : ObservableObject
         if (result == true)
         {
             // Open document
-            FileName = dialog.FileName;
+            _appState.FileName = dialog.FileName;
 
-            // Serialize the list to XML
-            string xml = XmlHelper.SerializeToXml(new RootObject { EstateList = _estateManager.GetAll(), PersonList = _personManager.GetAll(), PaymentList = _paymentManager.GetAll() });
-            // string xml = XmlHelper.SerializeToXml(_paymentManager.GetAll());
-            File.WriteAllText(FileName, xml);
+            SerializeAsXmlAndSaveToFile();
 
             // Set AppState
             _appState.IsDirty = false;
             _appState.Format = FileFormats.XML;
-            _appState.FileName = FileName;
-
         }
+    }
+
+    private void SerializeAsXmlAndSaveToFile()
+    {
+        // Serialize the list to XML
+        string xml = XmlHelper.SerializeToXml(new RootObject { EstateList = _estateManager.GetAll(), PersonList = _personManager.GetAll(), PaymentList = _paymentManager.GetAll() });
+        // string xml = XmlHelper.SerializeToXml(_paymentManager.GetAll());
+        File.WriteAllText(_appState.FileName, xml);
     }
     #endregion
 

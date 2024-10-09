@@ -126,16 +126,39 @@ public partial class ShellViewModel : ObservableObject
             var app = (App)Application.Current;
             var appName = app.AppName;
 
-            var result = MessageBox.Show("You have unsave changes! Do you want to save them before creating a new RealEstate_", appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var result = MessageBox.Show("You have unsave changes! Do you want to save them before creating a new RealEstate?", appName, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 // DH !!! Lägg till Save
+                switch (_appState.Format)
+                {
+                    case FileFormats.Unknown:
+                        break;
+                    case FileFormats.JSON:
+                        SerializeAsJsonAndSaveToFile();
+                        break;
+                    case FileFormats.XML:
+                        SerializeAsXmlAndSaveToFile();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (result == MessageBoxResult.Cancel)
+            {
+                return;
             }
         }
         // Töm befintliga estates, persons och payments
         _estateManager.Clear();
         _personManager.Clear();
         _paymentManager.Clear();
+
+        // Set AppState
+        _appState.IsDirty = false;
+        _appState.Format = FileFormats.Unknown;
+        _appState.FileName = "";
+
 
         // Navigate to Home Page
         _navigationService.NavigateTo(typeof(MainViewModel).FullName);

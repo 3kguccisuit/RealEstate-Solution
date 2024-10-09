@@ -100,7 +100,7 @@ namespace RealEstate.ViewModels
             SelectedEstate.LinkedPayment = SelectedPayment;
             _isSaved = true;
             window.DialogResult = true;
-            MessageBox.Show($"Updated: {SelectedEstate}");
+         //   MessageBox.Show($"Updated: {SelectedEstate}");
             window.Close();
         }
 

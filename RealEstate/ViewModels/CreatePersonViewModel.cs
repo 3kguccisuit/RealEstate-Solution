@@ -65,7 +65,7 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void Save(Window window)
         {
-            MessageBox.Show($"Created {Selected.GetType().Name} with the details: {Selected}");
+           // MessageBox.Show($"Created {Selected.GetType().Name} with the details: {Selected}");
             _isSaved = true;
             window.DialogResult = true;
             //await _personDataService.AddAsync(Selected);

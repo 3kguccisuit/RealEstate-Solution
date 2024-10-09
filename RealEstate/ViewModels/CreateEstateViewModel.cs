@@ -217,7 +217,7 @@ namespace RealEstate.ViewModels
             SelectedEstate.LinkedPayment = SelectedPayment;
             _isSaved = true;
             window.DialogResult = true;
-            MessageBox.Show($"Created {SelectedEstate.Type} with the props: {SelectedEstate}");
+            //MessageBox.Show($"Created {SelectedEstate.Type} with the props: {SelectedEstate}");
            // await _estateDataService.AddAsync(SelectedEstate);
 
             window.Close();

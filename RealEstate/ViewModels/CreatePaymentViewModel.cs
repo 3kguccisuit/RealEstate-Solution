@@ -77,7 +77,7 @@ namespace RealEstate.ViewModels
         private void Save(Window window)
         {
 
-            MessageBox.Show($"Created {Selected.Type} with the props: {Selected}");
+          //  MessageBox.Show($"Created {Selected.Type} with the props: {Selected}");
             _isSaved = true;
             window.DialogResult = true;
             // await _paymentDataService.AddAsync(Selected);

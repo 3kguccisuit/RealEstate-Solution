@@ -50,7 +50,7 @@ namespace RealEstate.ViewModels
             _isSaved = true;
             window.DialogResult = true;
             //await _paymentDataService.UpdateAsync(Selected);
-            MessageBox.Show($"Updated {Selected.Type} with the props: {Selected}");
+           // MessageBox.Show($"Updated {Selected.Type} with the props: {Selected}");
             window.Close();
         }
 

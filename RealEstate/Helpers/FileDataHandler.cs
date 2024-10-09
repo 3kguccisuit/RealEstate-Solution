@@ -7,6 +7,8 @@ using System.Text.Json;
 using System.IO;
 using RealEstate.Contracts.Services;
 using RealEstate.ViewModels;
+using Serilog;
+using System.Windows;
 
 namespace RealEstate.Helpers
 {
@@ -36,7 +38,20 @@ namespace RealEstate.Helpers
                     Converters = { new EstateJsonConverter(), new PersonJsonConverter(), new PaymentJsonConverter(), new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
                     PropertyNameCaseInsensitive = true
                 };
-                return JsonSerializer.Deserialize<RootObject>(content, options);
+                try
+                {
+                    return JsonSerializer.Deserialize<RootObject>(content, options);
+                }
+                catch (JsonException ex)
+                {
+                    Log.Information("The selected file is not a valid JSON file.", ex);
+
+                    // Show a message box to the user
+                    MessageBox.Show("The selected file is not a valid JSON file.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    // Return null or handle it gracefully to prevent crashing
+                    return null;
+                }
             });
         }
 
@@ -60,8 +75,32 @@ namespace RealEstate.Helpers
 
         public void OpenXmlFile()
         {
-            OpenFile("xml", "*.xml", FileFormats.XML, (content) => XmlHelper.DeserializeFromXml<RootObject>(content));
+            OpenFile("xml", "*.xml", FileFormats.XML, (content) =>
+            {
+                try
+                {
+                    // Try to deserialize the XML content
+                    var ret = XmlHelper.DeserializeFromXml<RootObject>(content);
+                    return ret;
+                }
+                catch (InvalidDataException ex)
+                {
+                    // Handle the InvalidDataException
+                    Log.Information("The selected file is not a valid XML file.", ex);
+                    MessageBox.Show("The selected file is not a valid XML file.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    // Return null or handle the error as needed
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    // Handle any other unexpected exceptions
+                    Log.Information("An unexpected error occurred.", ex);
+                    MessageBox.Show("An unexpected error occurred while processing the XML file.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return null;
+                }
+            });
         }
+
 
         public void SaveAsXmlFile()
         {
@@ -82,15 +121,33 @@ namespace RealEstate.Helpers
             if (dialog.ShowDialog() == true)
             {
                 _appState.FileName = dialog.FileName;
-                var content = File.ReadAllText(_appState.FileName);
-                var rootObject = deserialize(content);
+                try
+                {
+                    using (var reader = new StreamReader(_appState.FileName))
+                    {
+                        var content = reader.ReadToEnd();
+                        var rootObject = deserialize(content);
 
-                ClearManagers();
-                LoadDataToManagers(rootObject);
+                        ClearManagers();
+                        LoadDataToManagers(rootObject);
 
-                _appState.IsDirty = false;
-                _appState.Format = format;
-                _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+                        _appState.IsDirty = false;
+                        _appState.Format = format;
+                        _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+                    }
+                }
+                catch (FileNotFoundException ex)
+                {
+                    Log.Information("The selected file could not be found.", ex);
+                    MessageBox.Show("The selected file could not be found.");
+                    //throw new FileNotFoundException("The selected file could not be found.", ex);
+                }
+                catch (IOException ex)
+                {
+                    Log.Information("An error occurred while accessing the file.", ex);
+                    MessageBox.Show("An error occurred while accessing the file.");
+                   // throw new IOException("An error occurred while accessing the file.", ex);
+                }
             }
         }
 
@@ -100,11 +157,23 @@ namespace RealEstate.Helpers
             if (dialog.ShowDialog() == true)
             {
                 _appState.FileName = dialog.FileName;
-                var content = serialize();
-                File.WriteAllText(_appState.FileName, content);
-                _appState.IsDirty = false;
+                try
+                {
+                    using (var writer = new StreamWriter(_appState.FileName))
+                    {
+                        var content = serialize();
+                        writer.Write(content);
+                        _appState.IsDirty = false;
+                    }
+                }
+                catch (IOException ex)
+                {
+                    Log.Information("An error occurred while saving the file.", ex);
+                    throw new IOException("An error occurred while saving the file.", ex);
+                }
             }
         }
+
         public void Save()
         {
             switch (_appState.Format)
@@ -122,35 +191,53 @@ namespace RealEstate.Helpers
                     break;
             }
         }
+
         private void SerializeAsJsonAndSaveToFile()
         {
             var options = new JsonSerializerOptions
             {
-                WriteIndented = true,  // Pretty-print JSON
-                Converters = { new EstateJsonConverter(), new PersonJsonConverter(), new PaymentJsonConverter() }  // Ensure the custom converter is used
+                WriteIndented = true,
+                Converters = { new EstateJsonConverter(), new PersonJsonConverter(), new PaymentJsonConverter() }
             };
 
-            var json = JsonSerializer.Serialize(new RootObject
+            try
             {
-                EstateList = _estateManager.GetAll(),
-                PersonList = _personManager.GetAll(),
-                PaymentList = _paymentManager.GetAll()
-            },
-                options);
+                var json = JsonSerializer.Serialize(new RootObject
+                {
+                    EstateList = _estateManager.GetAll(),
+                    PersonList = _personManager.GetAll(),
+                    PaymentList = _paymentManager.GetAll()
+                }, options);
 
-            File.WriteAllText(_appState.FileName, json);
-
-            // Set AppState
-            _appState.IsDirty = false;
-            _appState.Format = FileFormats.JSON;
+                File.WriteAllText(_appState.FileName, json);
+                _appState.IsDirty = false;
+            }
+            catch (IOException ex)
+            {
+                Log.Information("An error occurred while saving the JSON file.", ex);
+                throw new IOException("An error occurred while saving the JSON file.", ex);
+            }
         }
 
         private void SerializeAsXmlAndSaveToFile()
         {
-            // Serialize the list to XML
-            string xml = XmlHelper.SerializeToXml(new RootObject { EstateList = _estateManager.GetAll(), PersonList = _personManager.GetAll(), PaymentList = _paymentManager.GetAll() });
-            // string xml = XmlHelper.SerializeToXml(_paymentManager.GetAll());
-            File.WriteAllText(_appState.FileName, xml);
+            try
+            {
+                var xml = XmlHelper.SerializeToXml(new RootObject
+                {
+                    EstateList = _estateManager.GetAll(),
+                    PersonList = _personManager.GetAll(),
+                    PaymentList = _paymentManager.GetAll()
+                });
+
+                File.WriteAllText(_appState.FileName, xml);
+                _appState.IsDirty = false;
+            }
+            catch (IOException ex)
+            {
+                Log.Information("An error occurred while saving the XML file.", ex);
+                throw new IOException("An error occurred while saving the XML file.", ex);
+            }
         }
 
         private void ClearManagers()
@@ -162,6 +249,11 @@ namespace RealEstate.Helpers
 
         private void LoadDataToManagers(RootObject rootObject)
         {
+            //if user ex opens a json file when it expects xml file rootObject is null
+            if(rootObject == null)
+            {
+                return;
+            }
             foreach (var estate in rootObject.EstateList) _estateManager.Add(estate.ID, estate);
             foreach (var person in rootObject.PersonList) _personManager.Add(person.ID, person);
             foreach (var payment in rootObject.PaymentList) _paymentManager.Add(payment.ID, payment);

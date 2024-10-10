@@ -14,7 +14,10 @@ namespace RealEstate.Core.Models.ConcreteModels
         {
             HasOnlineStore = hasOnlineStore;
         }
-
+        public Shop() : base(Guid.NewGuid().ToString("D"), new Address(), new LegalForm(), 0)
+        {
+            
+        }
         public override Estate AutoFill()
         {
             return new Shop(Guid.NewGuid().ToString("D"), new Address("123 Main St", "17523", "Stockholm", Country.Sverige),

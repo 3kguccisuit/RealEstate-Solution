@@ -3,7 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
+using RealEstate.Core.Services;
 using RealEstate.Windows;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -12,8 +14,10 @@ namespace RealEstate.ViewModels
 {
     public partial class PersonViewModel : ObservableObject, INavigationAware
     {
-        private readonly IDataService<Person> _personDataService;
+        //private readonly IDataService<Person> _personDataService;
         private readonly IServiceProvider _serviceProvider;
+        private readonly PersonManager _personManager;
+        private AppState _appState;
 
         private Person _selectedPerson;
         public Person SelectedPerson
@@ -26,36 +30,50 @@ namespace RealEstate.ViewModels
         public ObservableCollection<Person> Persons { get; private set; } = new ObservableCollection<Person>();
 
         // Constructor with the person data service dependency injected
-        public PersonViewModel(IDataService<Person> personDataService, IServiceProvider serviceProvider)
+        public PersonViewModel(IServiceProvider serviceProvider, PersonManager personManager, AppState appState)
         {
-            _personDataService = personDataService;
+           // _personDataService = personDataService;
             _serviceProvider = serviceProvider;
+            _personManager = personManager;
+            _appState = appState;
         }
 
 
         [RelayCommand]
-        private async Task EditPerson(Person selected)
+        private void EditPerson(Person selected)
         {
             if (selected != null)
             {
+                // Create a deep clone of the selected person
+                Person temporaryPerson = (Person)Activator.CreateInstance(selected.GetType(), selected);
+
                 var viewModel = _serviceProvider.GetRequiredService<EditPersonViewModel>();
-                viewModel.InitializePerson(selected); // Pass the selected person to the view model
+                viewModel.InitializePerson(temporaryPerson); // Pass the temporary person to the view model
 
                 var editWindow = new EditPersonWindow(viewModel);
-                editWindow.ShowDialog();
-                await RefreshPersonsAsync();
-                SelectedPerson = Persons.FirstOrDefault(p => p.ID == selected.ID);
+                var isOK = editWindow.ShowDialog();
+
+                if (isOK == true)
+                {
+                    // Apply the changes to the original person if the user confirms
+                    _personManager.Update(selected.ID, temporaryPerson);
+                    RefreshPersonsAsync();
+                    SelectedPerson = Persons.FirstOrDefault(p => p.ID == temporaryPerson.ID);
+                    _appState.IsDirty = true;
+                }
+                // If the user cancels, the original person is left unchanged
             }
             else
             {
-                MessageBox.Show("Please select a person to edit.");
+                MessageBox.Show("Please select a person to edit.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
 
 
         // Command to open the form for creating a new person
         [RelayCommand]
-        private async Task OpenPersonForm(string selectedType)
+        private void OpenPersonForm(string selectedType)
         {
             var temp = SelectedPerson;
 
@@ -67,18 +85,23 @@ namespace RealEstate.ViewModels
 
             // Open the CreatePersonWindow with the ViewModel
             var window = new CreatePersonWindow(viewModel);
-            window.ShowDialog();
+            var isOK = window.ShowDialog();
 
             // Force refresh after creation
-            await RefreshPersonsAsync();
-            if (viewModel.Selected.ID != "Cancel")
+            //RefreshPersonsAsync();
+            if (isOK == true)
+            {
+                _personManager.Add(viewModel.Selected.ID, viewModel.Selected);
+                RefreshPersonsAsync();
                 SelectedPerson = Persons.FirstOrDefault(p => p.ID == viewModel.Selected.ID);
-            else if (temp != null)
+                _appState.IsDirty = true;
+            }   
+            else
                 SelectedPerson = Persons.FirstOrDefault(p => p.ID == temp.ID);
         }
 
         [RelayCommand]
-        private async Task DeletePerson(Person selected)
+        private void DeletePerson(Person selected)
         {
             if (selected != null)
             {
@@ -90,8 +113,10 @@ namespace RealEstate.ViewModels
                 if (result == MessageBoxResult.Yes)
                 {
                     Persons.Remove(selected);
-                    await _personDataService.RemoveAsync(selected.ID);
+                    _personManager.Remove(selected.ID);
+                    // await _personDataService.RemoveAsync(selected.ID);
                     SelectedPerson = Persons.FirstOrDefault();
+                    _appState.IsDirty = true;
                 }
             }
             else
@@ -100,31 +125,24 @@ namespace RealEstate.ViewModels
             }
         }
 
-        private async Task RefreshPersonsAsync()
+
+        private void RefreshPersonsAsync()
         {
             Persons.Clear();
 
-            var data = await _personDataService.GetAsync();
+            // Retrieve the list of persons from the PersonManager
+            var persons = _personManager.GetAll();
 
-            foreach (var person in data)
+            foreach (var person in persons)
             {
                 Persons.Add(person);
             }
-
         }
 
         // This method will be called when the view is navigated to
-        public async void OnNavigatedTo(object parameter)
+        public void OnNavigatedTo(object parameter)
         {
-            Persons.Clear();
-
-            var data = await _personDataService.GetAsync();
-
-            foreach (var person in data)
-            {
-                Persons.Add(person);
-            }
-
+            RefreshPersonsAsync();
             SelectedPerson = Persons.FirstOrDefault();
         }
 

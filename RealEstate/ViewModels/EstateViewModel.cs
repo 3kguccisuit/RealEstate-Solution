@@ -3,9 +3,14 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Enums;
+using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
+using RealEstate.Core.Services;
 using RealEstate.Windows;
+using Serilog;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Windows;
 
 
@@ -13,9 +18,10 @@ namespace RealEstate.ViewModels
 {
     public partial class EstateViewModel : ObservableObject, INavigationAware
     {
-        //private readonly IEstateDataService _estateDataService;
-        private readonly IDataService<Estate> _estateDataService;
+        //private readonly IDataService<Estate> _estateDataService;
         private readonly IServiceProvider _serviceProvider;
+        private readonly EstateManager _estateManager;
+        private AppState _appState;
         private Estate _selectedEstate;
         public Estate SelectedEstate
         {
@@ -27,26 +33,37 @@ namespace RealEstate.ViewModels
         // Observable collection of estates (bound to the ListView)
         public ObservableCollection<Estate> Estates { get; private set; } = new ObservableCollection<Estate>();
 
+        [ObservableProperty]
+        private string searchOption;
+
         // Constructor with the estate data service dependency injected
-        public EstateViewModel(IDataService<Estate> estateDataService, IServiceProvider serviceProvider)
+        public EstateViewModel(IServiceProvider serviceProvider, EstateManager estateManager, AppState appState )
         {
-            _estateDataService = estateDataService;
+            //_estateDataService = estateDataService;
             _serviceProvider = serviceProvider;
+            _estateManager = estateManager;
+            SearchOption = "City";
+            _appState = appState;
         }
 
         [RelayCommand]
-        private async Task EditEstate(Estate selected)
+        private void EditEstate(Estate selected)
         {
             if (selected != null)
             {
+                Estate temporaryEstate = selected.Clone();
                 var viewModel = _serviceProvider.GetRequiredService<EditEstateViewModel>();
-                await viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
+                //viewModel.InitializeEstate(selected); // Pass the selected estate to the view model
+                viewModel.InitializeEstate(temporaryEstate);
 
                 var editWindow = new EditEstateWindow(viewModel);
-                editWindow.ShowDialog();
-                await RefreshEstatesAsync();
-                SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
-
+                var isOK = editWindow.ShowDialog();
+                if (isOK == true) {
+                    _estateManager.Update(selected.ID, temporaryEstate);
+                    RefreshEstatesAsync();
+                    SelectedEstate = Estates.FirstOrDefault(e => e.ID == selected.ID);
+                    _appState.IsDirty = true;
+                }
             }
             else
                 MessageBox.Show("Please select an estate");
@@ -54,7 +71,7 @@ namespace RealEstate.ViewModels
 
 
         [RelayCommand]
-        private async Task DeleteEstate(Estate selected)
+        private void DeleteEstate(Estate selected)
         {
             if (selected != null)
             {
@@ -65,11 +82,11 @@ namespace RealEstate.ViewModels
 
                 if (result == MessageBoxResult.Yes)
                 {
+                    _estateManager.Remove(selected.ID);
                     //force update
                     Estates.Remove(selected);
-                    //remove from json
-                    await _estateDataService.RemoveAsync(selected.ID);
                     SelectedEstate = Estates.FirstOrDefault();
+                    _appState.IsDirty = true;
                 }
             }
             else
@@ -80,54 +97,101 @@ namespace RealEstate.ViewModels
 
 
         [RelayCommand]
-        private async Task AddEstateForm(string selectedType) // addEstate
+        private void AddEstateForm(string selectedType) // addEstate
         {
             var temp = SelectedEstate;
             // Resolve the ViewModel from the DI container
             var viewModel = _serviceProvider.GetRequiredService<CreateEstateViewModel>();
 
             // Initialize the ViewModel with the estate
-            await viewModel.InitializeEstate(selectedType);
+            viewModel.InitializeEstate(selectedType);
 
             // Open the CreateEstateWindow with the ViewModel
             var window = new CreateEstateWindow(viewModel);
-            window.ShowDialog();
-
+            var isOK =  window.ShowDialog();
+            
             //force refresh
-            await RefreshEstatesAsync();
-            if (viewModel.SelectedEstate.ID != "Cancel")
+            //RefreshEstatesAsync();
+            if (isOK == true)
+            {
+                _estateManager.Add(viewModel.SelectedEstate.ID, viewModel.SelectedEstate);
+                Estates.Add(viewModel.SelectedEstate);
                 SelectedEstate = Estates.FirstOrDefault(e => e.ID == viewModel.SelectedEstate.ID);
-            else if (temp != null)
-                SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);
+                _appState.IsDirty = true;
+            }
+            else
+                SelectedEstate = Estates.FirstOrDefault(e => e.ID == temp.ID);  
         }
 
-        private async Task RefreshEstatesAsync()
+        [RelayCommand]
+        private void Search(string searchType)
+        {
+
+            IEnumerable<Estate> estatesRes =null;
+            if (string.IsNullOrEmpty(searchType))
+            {
+                MessageBox.Show("Please enter text in the Search Box", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else if (string.IsNullOrEmpty(SearchOption))
+            {
+                MessageBox.Show("Please select a type from the combo box", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (SearchOption == "City")
+            {
+                estatesRes = _estateManager.GetEstatesByCity(searchType);
+            }
+            if (SearchOption == "Country")
+            {
+                if (Enum.TryParse<Country>(searchType, true, out var country))
+                {
+                    estatesRes = _estateManager.GetEstatesByCountry(country);
+                }
+            }
+
+            if (estatesRes.Any())
+                UpdateSearchResult(estatesRes);
+        }
+
+        private void UpdateSearchResult(IEnumerable<Estate> estates)
+        {
+            Estates.Clear();
+            foreach (var estate in estates)
+            {
+                Estates.Add(estate);
+            }
+            if (!Estates.Any())
+            {
+                MessageBox.Show($"No estates found, please be precise with query", "Search Result", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+        }
+
+        partial void OnSearchOptionChanged(string value)
+        {
+            SearchOption = value;
+        }
+
+        private void RefreshEstatesAsync()
         {
             Estates.Clear();
 
-            var data = await _estateDataService.GetAsync();
+            // Retrieve the list of estates from the EstateManager
+            var estates = _estateManager.GetAll();
 
-            foreach (var estate in data)
+            foreach (var estate in estates)
             {
                 Estates.Add(estate);
             }
         }
 
-        // This method will be called when the view is navigated to
-        public async void OnNavigatedTo(object parameter)
+        public void OnNavigatedTo(object parameter)
         {
-            Estates.Clear();
-
-            var data = await _estateDataService.GetAsync();
-
-            foreach (var estate in data)
-            {
-                Estates.Add(estate);
-            }
-
+            RefreshEstatesAsync();
             SelectedEstate = Estates.FirstOrDefault();
         }
-
 
         // Empty method to handle navigation away from the view
         public void OnNavigatedFrom()

@@ -8,12 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Enums\" />
+    <None Remove="TestData\AllEstates.json" />
+    <None Remove="TestData\AllEstates.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TestData\AllEstates.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\AllEstates.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
-    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 </Project>

@@ -16,6 +16,16 @@ namespace RealEstate.Core.Models.ConcreteModels.Persons
             Budget = budget;
             HasLoanApproval = hasLoanApproval;
         }
+        public Buyer(): base(Guid.NewGuid().ToString("D"), "", new Address())
+        {
+            
+        }
+
+        public Buyer(Buyer other) : base(other)
+        {
+            Budget = other.Budget;
+            HasLoanApproval = other.HasLoanApproval;
+        }
 
         public override Person AutoFill()
         {

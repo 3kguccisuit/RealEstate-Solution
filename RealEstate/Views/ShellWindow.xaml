@@ -21,6 +21,17 @@
             <i:InvokeCommandAction Command="{Binding UnloadedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+
+    <Window.InputBindings>
+        <!-- Ctrl+N to trigger NewCommand -->
+        <KeyBinding Key="N"
+                    Modifiers="Control"
+                    Command="{Binding NewCommand}" />
+        <KeyBinding Key="X"
+                    Modifiers="Alt"
+                    Command="{Binding ExitCommand}" />
+    </Window.InputBindings>
+
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
             <Button
@@ -91,7 +102,33 @@
         </templateSelectors:MenuItemTemplateSelector>
     </controls:MetroWindow.Resources>
     <controls:MetroWindow.Content>
-        <controls:HamburgerMenu
+
+        <DockPanel>
+            <!--Vanlig meny-->
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="New" InputGestureText="Ctrl+N" Command="{Binding NewCommand}" />
+
+                    <MenuItem Header="Open">
+                        <MenuItem Header="Open JSON..." Command="{Binding OpenJsonFileCommand}" />
+                        <MenuItem Header="Open XML..." Command="{Binding OpenXmlFileCommand}" />
+                    </MenuItem>
+
+                    <MenuItem Header="Save" Command="{Binding SaveCommand}" />
+
+                    <!-- Save As... with sub-items -->
+                    <MenuItem Header="Save as" >
+                        <MenuItem Header="Save as JSON..." Command="{Binding SaveAsJsonFileCommand}" />
+                        <MenuItem Header="Save as XML..." Command="{Binding SaveAsXmlFileCommand}" />
+                    </MenuItem>
+
+                    <!-- Exit -->
+                    <MenuItem Header="Exit" InputGestureText="Alt+X" Command="{Binding ExitCommand}" />
+                </MenuItem>
+            </Menu>
+
+            <!--Hamburger Meny-->
+            <controls:HamburgerMenu
             x:Name="hamburgerMenu"
             HamburgerButtonName="{x:Static properties:Resources.ShellHamburgerButtonName}"
             IsPaneOpen="False"
@@ -104,13 +141,14 @@
             OptionsItemCommand="{Binding OptionsMenuItemInvokedCommand}"
             OptionsItemTemplateSelector="{StaticResource MenuItemTemplateSelector}"
             ItemTemplateSelector="{StaticResource MenuItemTemplateSelector}">
-            <controls:HamburgerMenu.Content>
-                <Frame
+                <controls:HamburgerMenu.Content>
+                    <Frame
                     x:Name="shellFrame"
                     Grid.Row="1"
                     NavigationUIVisibility="Hidden"
                     Focusable="False" />
-            </controls:HamburgerMenu.Content>
-        </controls:HamburgerMenu>
+                </controls:HamburgerMenu.Content>
+            </controls:HamburgerMenu>
+        </DockPanel>
     </controls:MetroWindow.Content>
 </controls:MetroWindow>

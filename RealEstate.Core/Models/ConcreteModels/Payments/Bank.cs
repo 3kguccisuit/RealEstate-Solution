@@ -1,5 +1,6 @@
 ﻿using RealEstate.Core.Models.BaseModels;
 using System.Text.Json.Serialization;
+using System.Xml.Linq;
 
 namespace RealEstate.Core.Models.ConcreteModels.Payments
 {
@@ -13,7 +14,15 @@ namespace RealEstate.Core.Models.ConcreteModels.Payments
         {
             IbanNumber = ibanNumber;
         }
+        public Bank() : base(Guid.NewGuid().ToString("D"), "", 0)
+        {
+            
+        }
 
+        public Bank(Bank other) : base(other)
+        {
+            IbanNumber = other.IbanNumber;
+        }
         public override Payment AutoFill()
         {
             return new Bank(Guid.NewGuid().ToString("D"), "My Bank Name", 6093, "DE1234");

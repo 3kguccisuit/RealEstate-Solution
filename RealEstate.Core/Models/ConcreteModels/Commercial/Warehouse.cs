@@ -14,7 +14,10 @@ namespace RealEstate.Core.Models.ConcreteModels
         {
             LoadingDocks = loadingDocks;
         }
-
+        public Warehouse() : base(Guid.NewGuid().ToString("D"), new Address(), new LegalForm(), 0)
+        {
+            
+        }
         public override Estate AutoFill()
         {
             return new Warehouse(Guid.NewGuid().ToString("D"), new Address("123 Main St", "17523", "Stockholm", Country.Sverige),

@@ -13,6 +13,10 @@ namespace RealEstate.Core.Models.ConcreteModels
         {
             ParkingSpaces = parkingSpaces;
         }
+        protected Institutional() : base(Guid.NewGuid().ToString("D"), new Address(), new LegalForm())
+        {
+            
+        }
 
         public override string ToString()
         {

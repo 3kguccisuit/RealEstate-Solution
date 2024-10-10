@@ -1,8 +1,14 @@
 ﻿using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models.ConcreteModels.Payments;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace RealEstate.Core.Models.BaseModels
 {
+    [XmlInclude(typeof(Bank))]      // Include Bank type
+    [XmlInclude(typeof(PayPal))]      // Include PayPal type
+    [XmlInclude(typeof(Vipps))]      // Include Vipps type
+    [XmlInclude(typeof(WesternUnion))]      // Include WesternUnion type
     public abstract class Payment : IPayment
     {
         public string ID { get; set; }
@@ -15,6 +21,14 @@ namespace RealEstate.Core.Models.BaseModels
             ID = id;
             Name = name;
             Amount = amount;
+        }
+
+        // Copy constructor for deep cloning
+        public Payment(Payment other)
+        {
+            ID = other.ID;
+            Name = other.Name;
+            Amount = other.Amount;
         }
 
         public abstract Payment AutoFill();

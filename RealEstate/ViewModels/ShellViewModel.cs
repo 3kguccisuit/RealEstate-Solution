@@ -1,14 +1,28 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls;
+using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
+using RealEstate.Core.Enums;
+using RealEstate.Core.Libs;
+using RealEstate.Core.Models;
+using RealEstate.Core.Models.BaseModels;
+using RealEstate.Core.Services;
+using RealEstate.Helpers;
 using RealEstate.Properties;
+using System.CodeDom;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Windows;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace RealEstate.ViewModels;
 
-public class ShellViewModel : ObservableObject
+public partial class ShellViewModel : ObservableObject
 {
     private readonly INavigationService _navigationService;
     private HamburgerMenuItem _selectedMenuItem;
@@ -18,6 +32,30 @@ public class ShellViewModel : ObservableObject
     private ICommand _optionsMenuItemInvokedCommand;
     private ICommand _loadedCommand;
     private ICommand _unloadedCommand;
+    private readonly EstateManager _estateManager;
+    private readonly PersonManager _personManager;
+    private readonly PaymentManager _paymentManager;
+    private readonly FileDataHandler _fileDataHandler;
+
+    private AppState _appState;
+
+    //[ObservableProperty]
+    //private string fileName;
+
+    // Define the commands for the menu items
+    public ICommand NewCommand { get; }
+
+    // JSON
+    public ICommand OpenJsonFileCommand { get; }
+    //public ICommand SaveJsonCommand { get; }
+    public ICommand SaveAsJsonFileCommand { get; }
+
+    // XML
+    public ICommand OpenXmlFileCommand { get; }
+    //public ICommand SaveXmlFileCommand { get; }
+    public ICommand SaveAsXmlFileCommand { get; }
+    public ICommand SaveCommand { get; }
+    public ICommand ExitCommand { get; }
 
     public HamburgerMenuItem SelectedMenuItem
     {
@@ -58,9 +96,61 @@ public class ShellViewModel : ObservableObject
 
     public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-    public ShellViewModel(INavigationService navigationService)
+    public ShellViewModel(INavigationService navigationService, FileDataHandler fileDataHandler, EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager, AppState appState)
     {
         _navigationService = navigationService;
+
+        _estateManager = estateManager;
+        _personManager = personManager;
+        _paymentManager = paymentManager;
+
+        _appState = appState;
+        _fileDataHandler = fileDataHandler;
+
+        OpenJsonFileCommand = new RelayCommand(_fileDataHandler.OpenJsonFile);
+        SaveAsJsonFileCommand = new RelayCommand(_fileDataHandler.SaveAsJsonFile);
+        OpenXmlFileCommand = new RelayCommand(_fileDataHandler.OpenXmlFile);
+        SaveAsXmlFileCommand = new RelayCommand(_fileDataHandler.SaveAsXmlFile);
+        SaveCommand = new RelayCommand(_fileDataHandler.Save);
+
+        NewCommand = new RelayCommand(OnNew);
+        ExitCommand = new RelayCommand(OnExit);
+    }
+
+    private void OnNew()
+    {
+        if (_appState.IsDirty)
+        {
+            var app = (App)Application.Current;
+            var appName = app.AppName;
+
+            var result = MessageBox.Show("You have unsaved changes! Do you want to save them before creating a new RealEstate?", appName, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                _fileDataHandler.Save();  // Delegate file saving to FileDataHandler
+            }
+            else if (result == MessageBoxResult.Cancel)
+            {
+                return;  // User canceled the operation
+            }
+        }
+        // Töm befintliga estates, persons och payments
+        _estateManager.Clear();
+        _personManager.Clear();
+        _paymentManager.Clear();
+
+        // Set AppState
+        _appState.IsDirty = false;
+        _appState.Format = FileFormats.Unknown;
+        _appState.FileName = "";
+
+        // Navigate to Home Page
+        _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+    }
+
+    private void OnExit()
+    {
+        System.Windows.Application.Current.Shutdown();
     }
 
     private void OnLoaded()
@@ -112,3 +202,5 @@ public class ShellViewModel : ObservableObject
         GoBackCommand.NotifyCanExecuteChanged();
     }
 }
+
+

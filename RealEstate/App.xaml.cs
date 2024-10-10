@@ -4,8 +4,10 @@ using Microsoft.Extensions.Hosting;
 using RealEstate.Contracts.Services;
 using RealEstate.Contracts.Views;
 using RealEstate.Core.Contracts.Services;
+using RealEstate.Core.Models;
 using RealEstate.Core.Models.BaseModels;
 using RealEstate.Core.Services;
+using RealEstate.Helpers;
 using RealEstate.Models;
 using RealEstate.Services;
 using RealEstate.ViewModels;
@@ -77,6 +79,7 @@ public partial class App : Application
 
         // Core Services
         services.AddSingleton<IFileService, FileService>();
+        services.AddSingleton<FileDataHandler>();
 
         // Services
         services.AddSingleton<IApplicationInfoService, ApplicationInfoService>();
@@ -84,15 +87,18 @@ public partial class App : Application
         services.AddSingleton<IPersistAndRestoreService, PersistAndRestoreService>();
         services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
 
-        //services.AddSingleton<ISampleDataService, SampleDataService>();
-        //services.AddSingleton<IEstateDataService, EstateDataService>();
-        services.AddSingleton<IDataService<Estate>, EstateDataService>();
-        services.AddSingleton<IDataService<Person>, PersonDataService>();
-        services.AddSingleton<IDataService<Payment>, PaymentDataService>();
-
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();
 
+        // Register EstateManager as a singleton, so it's available application-wide
+        services.AddSingleton<IDictionaryManager<string, Estate>, EstateManager>();
+        services.AddSingleton<EstateManager>(); // Register the concrete class
+
+        services.AddSingleton<IDictionaryManager<string, Person>, PersonManager>();
+        services.AddSingleton<PersonManager>(); // Register PersonManager
+
+        services.AddSingleton<IDictionaryManager<string, Payment>, PaymentManager>();
+        services.AddSingleton<PaymentManager>();
 
         // Views and ViewModels
         //LH
@@ -123,7 +129,7 @@ public partial class App : Application
         services.AddTransient<SettingsViewModel>();
         services.AddTransient<SettingsPage>();
 
-
+        services.AddSingleton<AppState>();
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));

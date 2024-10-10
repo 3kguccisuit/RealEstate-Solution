@@ -13,6 +13,10 @@ namespace RealEstate.Core.Models.BaseModels
             this.NumberOfRooms = numberOfRooms;
         }
 
+        protected Residential() : base(Guid.NewGuid().ToString("D"), new Address(), new LegalForm())
+        {
+            
+        }
         public override string ToString()
         {
             return $"{base.ToString()}, Number of Rooms: {NumberOfRooms}";

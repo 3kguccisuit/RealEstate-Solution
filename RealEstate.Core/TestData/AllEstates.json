@@ -1,0 +1,574 @@
+{
+  "EstateList": [
+    {
+      "FloorLevel": 3,
+      "Type": "Apartment",
+      "NumberOfRooms": 5,
+      "ID": "5a84a275-849c-4acb-aa48-8aed1c349ae2",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Stockholm",
+        "Country": 164
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": {
+        "Budget": 1231,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0",
+        "Name": "Alice Johnsson2",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 1234,
+        "Type": "Seller",
+        "ID": "f5e019fc-e84b-4ee6-a034-88bde56c8a5c",
+        "Name": "John Doe",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "Email": "someone@domain.com",
+        "Type": "WesternUnion",
+        "ID": "a30d440c-50ad-4943-8a0e-8810444c604b",
+        "Name": "My WesternUnion Name",
+        "Amount": 2345
+      },
+      "ImagePath": null
+    },
+    {
+      "NumberOfFloors": 0,
+      "HasGarage": true,
+      "Type": "Villa",
+      "NumberOfRooms": 0,
+      "ID": "9b56a8e8-3ca0-432c-83ce-b68b2fdbecef",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Stockholm",
+        "Country": 164
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": {
+        "Budget": 1231,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0",
+        "Name": "Alice Johnsson2",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 3124,
+        "Type": "Seller",
+        "ID": "1ed586b2-763e-4294-86f8-6d1dace04942",
+        "Name": "John Doe2",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "PhoneNumber": "\u002B4434689834",
+        "Type": "Vipps",
+        "ID": "be90c2e4-e220-4961-94f5-db5f4b2c9c83",
+        "Name": "My Vipps Name",
+        "Amount": 3459
+      },
+      "ImagePath": null
+    },
+    {
+      "HasGarden": true,
+      "Type": "Townhouse",
+      "NumberOfRooms": 0,
+      "ID": "9b2f6541-d75a-4e05-b0ba-9ccf199b6164",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Stockholm",
+        "Country": 164
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": {
+        "Budget": 23,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "aee98811-d74a-436b-94d9-c0b3430e030e",
+        "Name": "Alice Johnsson",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 3124,
+        "Type": "Seller",
+        "ID": "1ed586b2-763e-4294-86f8-6d1dace04942",
+        "Name": "John Doe2",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "Email": "someone@paypal.com",
+        "Type": "PayPal",
+        "ID": "c0b5b7ff-653f-4519-9fe1-309e9ae7a09f",
+        "Name": "My PayPal Name",
+        "Amount": 8673
+      },
+      "ImagePath": null
+    },
+    {
+      "NumberOfBeds": 22,
+      "Type": "Hospital",
+      "ParkingSpaces": 32,
+      "ID": "0a64e6fe-e59c-4d03-9a0c-8e59eebae31a",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Malmo",
+        "Country": 164
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": {
+        "Budget": 23,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "aee98811-d74a-436b-94d9-c0b3430e030e",
+        "Name": "Alice Johnsson",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 1234,
+        "Type": "Seller",
+        "ID": "f5e019fc-e84b-4ee6-a034-88bde56c8a5c",
+        "Name": "John Doe",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "IbanNumber": "DE1234",
+        "Type": "Bank",
+        "ID": "da027ac6-a173-4f75-929e-8ec6cd4a25f9",
+        "Name": "My Bank Name",
+        "Amount": 6093
+      },
+      "ImagePath": null
+    },
+    {
+      "NumberOfClassrooms": 12,
+      "Type": "School",
+      "ParkingSpaces": 26,
+      "ID": "d3d6aab4-d68e-4180-9ca5-6105bbb1981f",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Damascus",
+        "Country": 166
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": {
+        "Budget": 23,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "aee98811-d74a-436b-94d9-c0b3430e030e",
+        "Name": "Alice Johnsson",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 1234,
+        "Type": "Seller",
+        "ID": "f5e019fc-e84b-4ee6-a034-88bde56c8a5c",
+        "Name": "John Doe",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "PhoneNumber": "\u002B4434689834",
+        "Type": "Vipps",
+        "ID": "be90c2e4-e220-4961-94f5-db5f4b2c9c83",
+        "Name": "My Vipps Name",
+        "Amount": 3459
+      },
+      "ImagePath": null
+    },
+    {
+      "NumberOfPrograms": 20,
+      "Type": "University",
+      "ParkingSpaces": 100,
+      "ID": "2e4c7ddd-b96a-4953-ab54-a99a89c69ae3",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Taipei",
+        "Country": 167
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": {
+        "Budget": 1231,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0",
+        "Name": "Alice Johnsson2",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 1234,
+        "Type": "Seller",
+        "ID": "f5e019fc-e84b-4ee6-a034-88bde56c8a5c",
+        "Name": "John Doe",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "PhoneNumber": "\u002B4434689834",
+        "Type": "Vipps",
+        "ID": "be90c2e4-e220-4961-94f5-db5f4b2c9c83",
+        "Name": "My Vipps Name",
+        "Amount": 3459
+      },
+      "ImagePath": null
+    },
+    {
+      "HasSpa": true,
+      "Type": "Hotel",
+      "SquareMeters": 10,
+      "ID": "01a486d5-86a9-4b04-afb9-42d09fa8181d",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Paris",
+        "Country": 59
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": {
+        "Budget": 23,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "aee98811-d74a-436b-94d9-c0b3430e030e",
+        "Name": "Alice Johnsson",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 3124,
+        "Type": "Seller",
+        "ID": "1ed586b2-763e-4294-86f8-6d1dace04942",
+        "Name": "John Doe2",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "IbanNumber": "DE1234",
+        "Type": "Bank",
+        "ID": "2d58cdbd-873f-4212-b027-9ec87ef40972",
+        "Name": "My Bank Name2",
+        "Amount": 6093
+      },
+      "ImagePath": null
+    },
+    {
+      "HasOnlineStore": true,
+      "Type": "Shop",
+      "SquareMeters": 1111,
+      "ID": "068bba9b-429b-4f32-ba82-a4f9d8f17ab4",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Berlin",
+        "Country": 63
+      },
+      "LegalForm": {
+        "FormType": 1
+      },
+      "LinkedBuyer": {
+        "Budget": 23,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "aee98811-d74a-436b-94d9-c0b3430e030e",
+        "Name": "Alice Johnsson",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 1234,
+        "Type": "Seller",
+        "ID": "f5e019fc-e84b-4ee6-a034-88bde56c8a5c",
+        "Name": "John Doe",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "Email": "someone@domain.com",
+        "Type": "WesternUnion",
+        "ID": "a30d440c-50ad-4943-8a0e-8810444c604b",
+        "Name": "My WesternUnion Name",
+        "Amount": 2345
+      },
+      "ImagePath": null
+    },
+    {
+      "LoadingDocks": 5,
+      "Type": "Warehouse",
+      "SquareMeters": 321,
+      "ID": "e25ce00c-7213-4ed8-a2ed-4754e4e4de14",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Paris",
+        "Country": 59
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": {
+        "Budget": 23,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "aee98811-d74a-436b-94d9-c0b3430e030e",
+        "Name": "Alice Johnsson",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 3124,
+        "Type": "Seller",
+        "ID": "1ed586b2-763e-4294-86f8-6d1dace04942",
+        "Name": "John Doe2",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "Email": "someone@domain.com",
+        "Type": "WesternUnion",
+        "ID": "a30d440c-50ad-4943-8a0e-8810444c604b",
+        "Name": "My WesternUnion Name",
+        "Amount": 2345
+      },
+      "ImagePath": null
+    },
+    {
+      "HasWarehouse": true,
+      "Type": "Factory",
+      "SquareMeters": 1111,
+      "ID": "564ec156-e915-44dd-8f20-e6e0ce908a28",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "TaiPei",
+        "Country": 167
+      },
+      "LegalForm": {
+        "FormType": 2
+      },
+      "LinkedBuyer": {
+        "Budget": 1231,
+        "HasLoanApproval": true,
+        "Type": "Buyer",
+        "ID": "0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0",
+        "Name": "Alice Johnsson2",
+        "Address": {
+          "Street": "321 Main st",
+          "ZipCode": "175575",
+          "City": "New York",
+          "Country": 182
+        }
+      },
+      "LinkedSeller": {
+        "AskingPrice": 1234,
+        "Type": "Seller",
+        "ID": "f5e019fc-e84b-4ee6-a034-88bde56c8a5c",
+        "Name": "John Doe",
+        "Address": {
+          "Street": "123 main st",
+          "ZipCode": "165523",
+          "City": "Stockholm",
+          "Country": 164
+        }
+      },
+      "LinkedPayment": {
+        "Email": "someone@paypal.com",
+        "Type": "PayPal",
+        "ID": "c0b5b7ff-653f-4519-9fe1-309e9ae7a09f",
+        "Name": "My PayPal Name",
+        "Amount": 8673
+      },
+      "ImagePath": null
+    }
+  ],
+  "PersonList": [
+    {
+      "Budget": 23,
+      "HasLoanApproval": true,
+      "Type": "Buyer",
+      "ID": "aee98811-d74a-436b-94d9-c0b3430e030e",
+      "Name": "Alice Johnsson",
+      "Address": {
+        "Street": "321 Main st",
+        "ZipCode": "175575",
+        "City": "New York",
+        "Country": 182
+      }
+    },
+    {
+      "AskingPrice": 1234,
+      "Type": "Seller",
+      "ID": "f5e019fc-e84b-4ee6-a034-88bde56c8a5c",
+      "Name": "John Doe",
+      "Address": {
+        "Street": "123 main st",
+        "ZipCode": "165523",
+        "City": "Stockholm",
+        "Country": 164
+      }
+    },
+    {
+      "Budget": 1231,
+      "HasLoanApproval": true,
+      "Type": "Buyer",
+      "ID": "0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0",
+      "Name": "Alice Johnsson2",
+      "Address": {
+        "Street": "321 Main st",
+        "ZipCode": "175575",
+        "City": "New York",
+        "Country": 182
+      }
+    },
+    {
+      "AskingPrice": 3124,
+      "Type": "Seller",
+      "ID": "1ed586b2-763e-4294-86f8-6d1dace04942",
+      "Name": "John Doe2",
+      "Address": {
+        "Street": "123 main st",
+        "ZipCode": "165523",
+        "City": "Stockholm",
+        "Country": 164
+      }
+    }
+  ],
+  "PaymentList": [
+    {
+      "Email": "someone@domain.com",
+      "Type": "WesternUnion",
+      "ID": "a30d440c-50ad-4943-8a0e-8810444c604b",
+      "Name": "My WesternUnion Name",
+      "Amount": 2345
+    },
+    {
+      "PhoneNumber": "\u002B4434689834",
+      "Type": "Vipps",
+      "ID": "be90c2e4-e220-4961-94f5-db5f4b2c9c83",
+      "Name": "My Vipps Name",
+      "Amount": 3459
+    },
+    {
+      "Email": "someone@paypal.com",
+      "Type": "PayPal",
+      "ID": "c0b5b7ff-653f-4519-9fe1-309e9ae7a09f",
+      "Name": "My PayPal Name",
+      "Amount": 8673
+    },
+    {
+      "IbanNumber": "DE1234",
+      "Type": "Bank",
+      "ID": "da027ac6-a173-4f75-929e-8ec6cd4a25f9",
+      "Name": "My Bank Name",
+      "Amount": 6093
+    },
+    {
+      "IbanNumber": "DE1234",
+      "Type": "Bank",
+      "ID": "2d58cdbd-873f-4212-b027-9ec87ef40972",
+      "Name": "My Bank Name2",
+      "Amount": 6093
+    }
+  ]
+}

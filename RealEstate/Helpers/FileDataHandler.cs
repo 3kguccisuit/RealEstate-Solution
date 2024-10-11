@@ -9,6 +9,7 @@ using RealEstate.Contracts.Services;
 using RealEstate.ViewModels;
 using Serilog;
 using System.Windows;
+using RealEstate.Models;
 
 namespace RealEstate.Helpers
 {

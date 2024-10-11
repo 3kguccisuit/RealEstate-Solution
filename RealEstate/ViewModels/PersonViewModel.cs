@@ -9,7 +9,7 @@ using RealEstate.Core.Services;
 using RealEstate.Windows;
 using System.Collections.ObjectModel;
 using System.Windows;
-
+using RealEstate.Models;
 namespace RealEstate.ViewModels
 {
     public partial class PersonViewModel : ObservableObject, INavigationAware

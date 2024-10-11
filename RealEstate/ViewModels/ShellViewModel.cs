@@ -19,6 +19,7 @@ using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
+using RealEstate.Models;
 
 namespace RealEstate.ViewModels;
 

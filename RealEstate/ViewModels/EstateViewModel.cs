@@ -12,7 +12,7 @@ using Serilog;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Windows;
-
+using RealEstate.Models;
 
 namespace RealEstate.ViewModels
 {

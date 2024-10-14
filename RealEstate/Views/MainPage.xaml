@@ -26,7 +26,7 @@
                        Foreground="Black"  
                        TextAlignment="Center" />
             <!-- Filename -->
-            <TextBlock Text="{Binding FileName}" 
+            <TextBlock Text="{Binding AppState.FileName}" 
                        FontSize="24" 
                        FontWeight="Bold" 
                        Foreground="Black"  

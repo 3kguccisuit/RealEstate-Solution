@@ -3,28 +3,24 @@ using RealEstate.Contracts.ViewModels;
 using RealEstate.Core.Models;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
-
+using RealEstate.Models;
 namespace RealEstate.ViewModels;
 
 public partial class MainViewModel : ObservableObject, INotifyPropertyChanged, INavigationAware
 {
+    [ObservableProperty]
     private AppState _appState;
 
-    [ObservableProperty]
-    public string fileName;
     public MainViewModel(AppState appState)
     {
-        _appState = appState;
-        fileName = appState.FileName;
+        AppState = appState;
     }
 
     public void OnNavigatedTo(object parameter)
     {
-        FileName = _appState.FileName;
     }
 
     public void OnNavigatedFrom()
     {
-        
     }
 }

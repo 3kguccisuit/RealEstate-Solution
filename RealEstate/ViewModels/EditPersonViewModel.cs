@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Models.BaseModels;
+using RealEstateBLL.Models.BaseModels;
 using System.ComponentModel;
 using System.Windows;
 

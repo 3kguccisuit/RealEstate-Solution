@@ -1,13 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels.Payments;
 using RealEstate.Helpers;
+using RealEstateBLL.Models.BaseModels;
+using RealEstateBLL.Models.ConcreteModels.Payments;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Xml.Linq;
 
 namespace RealEstate.ViewModels
 {

@@ -2,15 +2,12 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Models;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Services;
 using RealEstate.Windows;
 using System.Collections.ObjectModel;
 using System.Windows;
 using RealEstate.Models;
+using RealEstateDLL.Managers;
+using RealEstateBLL.Models.BaseModels;
 namespace RealEstate.ViewModels;
 
 public partial class PaymentViewModel : ObservableObject, INavigationAware

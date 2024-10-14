@@ -1,7 +1,4 @@
-﻿using RealEstate.Core.Enums;
-using RealEstate.Core.Libs;
-using RealEstate.Core.Models;
-using RealEstate.Core.Services;
+﻿using RealEstate.Core.Libs;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.IO;
@@ -10,6 +7,10 @@ using RealEstate.ViewModels;
 using Serilog;
 using System.Windows;
 using RealEstate.Models;
+using RealEstateDLL.Managers;
+using RealEstateDAL.Enums;
+using RealEstateDAL.JsonConverter;
+using RealEstateDAL.Files;
 
 namespace RealEstate.Helpers
 {

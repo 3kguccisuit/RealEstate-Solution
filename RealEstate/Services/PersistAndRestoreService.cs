@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
-using RealEstate.Core.Contracts.Services;
 using RealEstate.Models;
+using RealEstateDAL.Interfaces;
 using System.Collections;
 using System.IO;
 

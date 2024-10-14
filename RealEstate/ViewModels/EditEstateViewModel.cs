@@ -2,12 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Win32;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels.Persons;
-using RealEstate.Core.Services;
 using RealEstate.Windows;
+using RealEstateBLL.Enums;
+using RealEstateBLL.Models.BaseModels;
+using RealEstateBLL.Models.ConcreteModels.Persons;
+using RealEstateDLL.Managers;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls.Primitives;

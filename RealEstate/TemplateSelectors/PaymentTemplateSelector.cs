@@ -1,4 +1,4 @@
-﻿using RealEstate.Core.Models.ConcreteModels.Payments;
+﻿using RealEstateBLL.Models.ConcreteModels.Payments;
 using System.Windows;
 using System.Windows.Controls;
 

@@ -1,25 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls;
-using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Libs;
-using RealEstate.Core.Models;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Services;
 using RealEstate.Helpers;
 using RealEstate.Properties;
-using System.CodeDom;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Input;
-using System.Xml.Linq;
 using RealEstate.Models;
+using RealEstateDLL.Managers;
+using RealEstateDAL.Enums;
 
 namespace RealEstate.ViewModels;
 

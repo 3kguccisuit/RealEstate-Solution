@@ -1,4 +1,4 @@
-﻿using RealEstate.Core.Models.ConcreteModels;
+﻿using RealEstateBLL.Models.ConcreteModels;
 using System.Windows;
 using System.Windows.Controls;
 

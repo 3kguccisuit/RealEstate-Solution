@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RealEstate.Contracts.Services;
 using RealEstate.Contracts.Views;
-using RealEstate.Helpers;
+using RealEstateDLL.Helpers;
 using RealEstate.Models; 
 using RealEstate.Services;
 using RealEstate.ViewModels;

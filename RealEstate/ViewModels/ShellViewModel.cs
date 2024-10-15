@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls;
 using RealEstate.Contracts.Services;
-using RealEstate.Helpers;
+using RealEstateDLL.Helpers;
 using RealEstate.Properties;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -238,7 +238,27 @@ public partial class ShellViewModel : ObservableObject
 
     private void OnExit()
     {
-        System.Windows.Application.Current.Shutdown();
+        if (_appState.IsDirty)
+        {
+            var app = (App)Application.Current;
+            var appName = app.AppName;
+
+            var result = MessageBox.Show("You have unsaved changes! Do you want to save them before creating a new RealEstate?", appName, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                OnSave();
+                System.Windows.Application.Current.Shutdown();
+            }
+            else if (result == MessageBoxResult.Cancel)
+            {
+                return;  // User canceled the operation
+            }
+        }
+        else
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
     }
 
     private void OnLoaded()

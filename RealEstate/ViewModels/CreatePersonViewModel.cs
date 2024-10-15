@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using RealEstate.Helpers;
 using DTO.Enums;
 using DTO.Models;
 using DTO.Models.BaseModels;
 using DTO.Models.ConcreteModels.Persons;
 using System.ComponentModel;
 using System.Windows;
+using RealEstateDLL.Helpers;
 
 namespace RealEstate.ViewModels
 {

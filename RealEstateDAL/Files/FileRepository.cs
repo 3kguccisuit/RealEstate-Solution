@@ -1,4 +1,5 @@
 ﻿using DTO.Models;
+using RealEstate.Core.Libs;
 using RealEstateDAL.JsonConverter;
 using Serilog;
 using System.Text.Json;
@@ -82,6 +83,45 @@ namespace RealEstateDAL.Files
             }
         }
 
+        public void SaveDataAsXml(RootObject lists, string filePath)
+        {
+            try
+            {
+                // Step 3: Serialize the RootObject into an XML string
+                var xmlContent = XmlHelper.SerializeToXml(lists);
 
+                // Step 4: Write the XML content to the selected file
+                using (var writer = new StreamWriter(filePath))
+                {
+                    writer.Write(xmlContent);        // Write the serialized XML content to the file
+                }
+            }
+            catch (IOException ex)
+            {
+                // Step 5: Handle any I/O errors that occur during file saving
+                Log.Information("An error occurred while saving the XML file.", ex);
+                throw new IOException("An error occurred while saving the file.", ex);
+            }
+        }
+
+        public RootObject LoadDataFromXml(string filePath)
+        {
+            try
+            {
+                // Step 3: Read the XML content from the selected file
+                var xmlContent = File.ReadAllText(filePath);
+
+                // Step 4: Deserialize the XML content into a RootObject object
+                var lists = XmlHelper.DeserializeFromXml<RootObject>(xmlContent);
+
+                return lists;
+            }
+            catch (IOException ex)
+            {
+                // Step 5: Handle any I/O errors that occur during file loading
+                Log.Information("An error occurred while loading the XML file.", ex);
+                throw new IOException("An error occurred while loading the file.", ex);
+            }
+        }
     }
 }

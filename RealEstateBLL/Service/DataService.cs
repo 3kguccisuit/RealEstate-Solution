@@ -19,12 +19,23 @@ namespace RealEstateBLL.Service
             _personManager = personManager;
         }
 
+        public void LoadDataFromXml(string filePath)
+        {
+            ClearManagers();
+            var lists = _fileRepository.LoadDataFromXml(filePath);
+            LoadDataToManagers(lists);
+        }
+
+        public void SaveDataAsXml(string filePath)
+        {
+            var list = GetAllObjects(new RootObject());
+            _fileRepository.SaveDataAsXml(list, filePath);
+        }
+
         public void SaveDataAsJson(string filePath)
         {
-            var list = new RootObject();
-            list.EstateList = _estateManager.GetAll();
-            list.PersonList = _personManager.GetAll();
-            list.PaymentList = _paymentManager.GetAll();
+            var list = GetAllObjects(new RootObject());
+
             _fileRepository.SaveDataAsJson(list, filePath);
         }
 
@@ -33,6 +44,15 @@ namespace RealEstateBLL.Service
             ClearManagers();
             var lists = _fileRepository.LoadDataFromJson(filePath);
             LoadDataToManagers(lists);  
+
+        }
+
+        private RootObject GetAllObjects(RootObject rootObject)
+        {
+            rootObject.EstateList = _estateManager.GetAll();
+            rootObject.PersonList = _personManager.GetAll();
+            rootObject.PaymentList = _paymentManager.GetAll();
+            return rootObject;
 
         }
         private void ClearManagers()

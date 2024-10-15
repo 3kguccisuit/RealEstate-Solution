@@ -103,16 +103,53 @@ public partial class ShellViewModel : ObservableObject
         _appState = appState;
         _fileDataHandler = fileDataHandler;
 
-
-        //SaveAsJsonFileCommand = new RelayCommand(_fileDataHandler.SaveAsJsonFile);
-        //OpenXmlFileCommand = new RelayCommand(_fileDataHandler.OpenXmlFile);
-        //SaveAsXmlFileCommand = new RelayCommand(_fileDataHandler.SaveAsXmlFile);
         //SaveCommand = new RelayCommand(_fileDataHandler.Save);
-
+        OpenXmlFileCommand = new RelayCommand(OnOpenXmlFile);
+        SaveAsXmlFileCommand = new RelayCommand(OnSaveAsXmlFile);
         SaveAsJsonFileCommand = new RelayCommand(OnSaveAsJsonFile);
         OpenJsonFileCommand = new RelayCommand(OnOpenJsonFile);
         NewCommand = new RelayCommand(OnNew);
         ExitCommand = new RelayCommand(OnExit);
+    }
+
+    private void OnOpenXmlFile()
+    {
+        var dialog = new OpenFileDialog
+        {
+            Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*",
+            FilterIndex = 1,
+            FileName = _appState.FileName,
+            DefaultExt = ".xml"
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            _appState.FileName = dialog.FileName;
+            _appState.Format = FileFormats.XML;
+            _appState.IsDirty = false;
+            _dataService.LoadDataFromXml(_appState.FileName);
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+        }
+    }
+
+    private void OnSaveAsXmlFile() {
+        var dialog = new SaveFileDialog
+        {
+            Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*",
+            FilterIndex = 1,
+            FileName = _appState.FileName,
+            DefaultExt = ".xml"
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            _appState.FileName = dialog.FileName;
+            _appState.Format = FileFormats.XML;
+            _appState.IsDirty = false;
+            _dataService.SaveDataAsXml(_appState.FileName);
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+        }
+
     }
 
     private void OnOpenJsonFile() {
@@ -128,6 +165,7 @@ public partial class ShellViewModel : ObservableObject
         {
             _appState.FileName = dialog.FileName;
             _appState.Format = FileFormats.JSON;
+            _appState.IsDirty = false;
             _dataService.LoadDataFromJson(_appState.FileName);
             _navigationService.NavigateTo(typeof(MainViewModel).FullName);
         }
@@ -148,6 +186,7 @@ public partial class ShellViewModel : ObservableObject
         {
             _appState.FileName = dialog.FileName;
             _appState.Format = FileFormats.JSON;
+            _appState.IsDirty = false;
             _dataService.SaveDataAsJson(_appState.FileName);
             _navigationService.NavigateTo(typeof(MainViewModel).FullName);
         }

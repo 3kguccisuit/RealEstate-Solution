@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-16"?>
+<RootObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EstateList>
+    <Estate xsi:type="Townhouse">
+      <ID>06429225-2a11-43df-a1eb-2a7998f779a6</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Stockholm</City>
+        <Country>Sverige</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>17f7733e-9889-4f01-bbee-c16807ea483a</ID>
+        <Name>Alice Johnsson</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>0</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>20fa787b-3ca7-43ba-879f-c6c36c71256c</ID>
+        <Name>John Doe</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>0</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="Vipps">
+        <ID>5df3d226-f662-472a-bb32-3c4cbd681f00</ID>
+        <Name>My Vipps Name</Name>
+        <Amount>3459</Amount>
+        <PhoneNumber>+4434689834</PhoneNumber>
+      </LinkedPayment>
+      <NumberOfRooms>0</NumberOfRooms>
+      <HasGarden>true</HasGarden>
+    </Estate>
+  </EstateList>
+  <PersonList>
+    <Person xsi:type="Buyer">
+      <ID>17f7733e-9889-4f01-bbee-c16807ea483a</ID>
+      <Name>Alice Johnsson</Name>
+      <Address>
+        <Street>321 Main st</Street>
+        <ZipCode>175575</ZipCode>
+        <City>New York</City>
+        <Country>United_States_of_America</Country>
+      </Address>
+      <Budget>0</Budget>
+      <HasLoanApproval>true</HasLoanApproval>
+    </Person>
+    <Person xsi:type="Seller">
+      <ID>20fa787b-3ca7-43ba-879f-c6c36c71256c</ID>
+      <Name>John Doe</Name>
+      <Address>
+        <Street>123 main st</Street>
+        <ZipCode>165523</ZipCode>
+        <City>Stockholm</City>
+        <Country>Sverige</Country>
+      </Address>
+      <AskingPrice>0</AskingPrice>
+    </Person>
+  </PersonList>
+  <PaymentList>
+    <Payment xsi:type="Vipps">
+      <ID>5df3d226-f662-472a-bb32-3c4cbd681f00</ID>
+      <Name>My Vipps Name</Name>
+      <Amount>3459</Amount>
+      <PhoneNumber>+4434689834</PhoneNumber>
+    </Payment>
+  </PaymentList>
+</RootObject>

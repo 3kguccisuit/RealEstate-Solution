@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-16"?>
+<RootObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EstateList>
+    <Estate xsi:type="Apartment">
+      <ID>5a84a275-849c-4acb-aa48-8aed1c349ae2</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Stockholm</City>
+        <Country>Sverige</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0</ID>
+        <Name>Alice Johnsson2</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>1231</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>f5e019fc-e84b-4ee6-a034-88bde56c8a5c</ID>
+        <Name>John Doe</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>1234</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="WesternUnion">
+        <ID>a30d440c-50ad-4943-8a0e-8810444c604b</ID>
+        <Name>My WesternUnion Name</Name>
+        <Amount>2345</Amount>
+        <Email>someone@domain.com</Email>
+      </LinkedPayment>
+      <NumberOfRooms>5</NumberOfRooms>
+      <FloorLevel>3</FloorLevel>
+    </Estate>
+    <Estate xsi:type="Villa">
+      <ID>9b56a8e8-3ca0-432c-83ce-b68b2fdbecef</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Stockholm</City>
+        <Country>Sverige</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0</ID>
+        <Name>Alice Johnsson2</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>1231</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>1ed586b2-763e-4294-86f8-6d1dace04942</ID>
+        <Name>John Doe2</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>3124</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="Vipps">
+        <ID>be90c2e4-e220-4961-94f5-db5f4b2c9c83</ID>
+        <Name>My Vipps Name</Name>
+        <Amount>3459</Amount>
+        <PhoneNumber>+4434689834</PhoneNumber>
+      </LinkedPayment>
+      <NumberOfRooms>0</NumberOfRooms>
+      <NumberOfFloors>0</NumberOfFloors>
+      <HasGarage>true</HasGarage>
+    </Estate>
+    <Estate xsi:type="Townhouse">
+      <ID>9b2f6541-d75a-4e05-b0ba-9ccf199b6164</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Stockholm</City>
+        <Country>Sverige</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>aee98811-d74a-436b-94d9-c0b3430e030e</ID>
+        <Name>Alice Johnsson</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>23</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>1ed586b2-763e-4294-86f8-6d1dace04942</ID>
+        <Name>John Doe2</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>3124</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="PayPal">
+        <ID>c0b5b7ff-653f-4519-9fe1-309e9ae7a09f</ID>
+        <Name>My PayPal Name</Name>
+        <Amount>8673</Amount>
+        <Email>someone@paypal.com</Email>
+      </LinkedPayment>
+      <NumberOfRooms>0</NumberOfRooms>
+      <HasGarden>true</HasGarden>
+    </Estate>
+    <Estate xsi:type="Hospital">
+      <ID>0a64e6fe-e59c-4d03-9a0c-8e59eebae31a</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Malmo</City>
+        <Country>Sverige</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>aee98811-d74a-436b-94d9-c0b3430e030e</ID>
+        <Name>Alice Johnsson</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>23</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>f5e019fc-e84b-4ee6-a034-88bde56c8a5c</ID>
+        <Name>John Doe</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>1234</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="Bank">
+        <ID>da027ac6-a173-4f75-929e-8ec6cd4a25f9</ID>
+        <Name>My Bank Name</Name>
+        <Amount>6093</Amount>
+        <IbanNumber>DE1234</IbanNumber>
+      </LinkedPayment>
+      <ParkingSpaces>32</ParkingSpaces>
+      <NumberOfBeds>22</NumberOfBeds>
+    </Estate>
+    <Estate xsi:type="School">
+      <ID>d3d6aab4-d68e-4180-9ca5-6105bbb1981f</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Damascus</City>
+        <Country>Syria</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>aee98811-d74a-436b-94d9-c0b3430e030e</ID>
+        <Name>Alice Johnsson</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>23</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>f5e019fc-e84b-4ee6-a034-88bde56c8a5c</ID>
+        <Name>John Doe</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>1234</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="Vipps">
+        <ID>be90c2e4-e220-4961-94f5-db5f4b2c9c83</ID>
+        <Name>My Vipps Name</Name>
+        <Amount>3459</Amount>
+        <PhoneNumber>+4434689834</PhoneNumber>
+      </LinkedPayment>
+      <ParkingSpaces>26</ParkingSpaces>
+      <NumberOfClassrooms>12</NumberOfClassrooms>
+    </Estate>
+    <Estate xsi:type="University">
+      <ID>2e4c7ddd-b96a-4953-ab54-a99a89c69ae3</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Taipei</City>
+        <Country>Taiwan</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0</ID>
+        <Name>Alice Johnsson2</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>1231</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>f5e019fc-e84b-4ee6-a034-88bde56c8a5c</ID>
+        <Name>John Doe</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>1234</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="Vipps">
+        <ID>be90c2e4-e220-4961-94f5-db5f4b2c9c83</ID>
+        <Name>My Vipps Name</Name>
+        <Amount>3459</Amount>
+        <PhoneNumber>+4434689834</PhoneNumber>
+      </LinkedPayment>
+      <ParkingSpaces>100</ParkingSpaces>
+      <NumberOfPrograms>20</NumberOfPrograms>
+    </Estate>
+    <Estate xsi:type="Hotel">
+      <ID>01a486d5-86a9-4b04-afb9-42d09fa8181d</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Paris</City>
+        <Country>France</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>aee98811-d74a-436b-94d9-c0b3430e030e</ID>
+        <Name>Alice Johnsson</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>23</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>1ed586b2-763e-4294-86f8-6d1dace04942</ID>
+        <Name>John Doe2</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>3124</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="Bank">
+        <ID>2d58cdbd-873f-4212-b027-9ec87ef40972</ID>
+        <Name>My Bank Name2</Name>
+        <Amount>6093</Amount>
+        <IbanNumber>DE1234</IbanNumber>
+      </LinkedPayment>
+      <SquareMeters>10</SquareMeters>
+      <HasSpa>true</HasSpa>
+    </Estate>
+    <Estate xsi:type="Shop">
+      <ID>068bba9b-429b-4f32-ba82-a4f9d8f17ab4</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Berlin</City>
+        <Country>Germany</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Tenement</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>aee98811-d74a-436b-94d9-c0b3430e030e</ID>
+        <Name>Alice Johnsson</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>23</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>f5e019fc-e84b-4ee6-a034-88bde56c8a5c</ID>
+        <Name>John Doe</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>1234</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="WesternUnion">
+        <ID>a30d440c-50ad-4943-8a0e-8810444c604b</ID>
+        <Name>My WesternUnion Name</Name>
+        <Amount>2345</Amount>
+        <Email>someone@domain.com</Email>
+      </LinkedPayment>
+      <SquareMeters>1111</SquareMeters>
+      <HasOnlineStore>true</HasOnlineStore>
+    </Estate>
+    <Estate xsi:type="Warehouse">
+      <ID>e25ce00c-7213-4ed8-a2ed-4754e4e4de14</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>Paris</City>
+        <Country>France</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>aee98811-d74a-436b-94d9-c0b3430e030e</ID>
+        <Name>Alice Johnsson</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>23</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>1ed586b2-763e-4294-86f8-6d1dace04942</ID>
+        <Name>John Doe2</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>3124</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="WesternUnion">
+        <ID>a30d440c-50ad-4943-8a0e-8810444c604b</ID>
+        <Name>My WesternUnion Name</Name>
+        <Amount>2345</Amount>
+        <Email>someone@domain.com</Email>
+      </LinkedPayment>
+      <SquareMeters>321</SquareMeters>
+      <LoadingDocks>5</LoadingDocks>
+    </Estate>
+    <Estate xsi:type="Factory">
+      <ID>564ec156-e915-44dd-8f20-e6e0ce908a28</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>TaiPei</City>
+        <Country>Taiwan</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Rental</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0</ID>
+        <Name>Alice Johnsson2</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>1231</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>f5e019fc-e84b-4ee6-a034-88bde56c8a5c</ID>
+        <Name>John Doe</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>1234</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="PayPal">
+        <ID>c0b5b7ff-653f-4519-9fe1-309e9ae7a09f</ID>
+        <Name>My PayPal Name</Name>
+        <Amount>8673</Amount>
+        <Email>someone@paypal.com</Email>
+      </LinkedPayment>
+      <SquareMeters>1111</SquareMeters>
+      <HasWarehouse>true</HasWarehouse>
+    </Estate>
+    <Estate xsi:type="Factory">
+      <ID>c6cf2a6e-15b1-4d33-8e27-03a46607c35f</ID>
+      <Address>
+        <Street>123 Main St</Street>
+        <ZipCode>17523</ZipCode>
+        <City>TestingXML</City>
+        <Country>Sverige</Country>
+      </Address>
+      <LegalForm>
+        <FormType>Ownership</FormType>
+      </LegalForm>
+      <LinkedBuyer>
+        <ID>0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0</ID>
+        <Name>Alice Johnsson2</Name>
+        <Address>
+          <Street>321 Main st</Street>
+          <ZipCode>175575</ZipCode>
+          <City>New York</City>
+          <Country>United_States_of_America</Country>
+        </Address>
+        <Budget>1231</Budget>
+        <HasLoanApproval>true</HasLoanApproval>
+      </LinkedBuyer>
+      <LinkedSeller>
+        <ID>1ed586b2-763e-4294-86f8-6d1dace04942</ID>
+        <Name>John Doe2</Name>
+        <Address>
+          <Street>123 main st</Street>
+          <ZipCode>165523</ZipCode>
+          <City>Stockholm</City>
+          <Country>Sverige</Country>
+        </Address>
+        <AskingPrice>3124</AskingPrice>
+      </LinkedSeller>
+      <LinkedPayment xsi:type="Vipps">
+        <ID>be90c2e4-e220-4961-94f5-db5f4b2c9c83</ID>
+        <Name>My Vipps Name</Name>
+        <Amount>3459</Amount>
+        <PhoneNumber>+4434689834</PhoneNumber>
+      </LinkedPayment>
+      <SquareMeters>0</SquareMeters>
+      <HasWarehouse>true</HasWarehouse>
+    </Estate>
+  </EstateList>
+  <PersonList>
+    <Person xsi:type="Buyer">
+      <ID>aee98811-d74a-436b-94d9-c0b3430e030e</ID>
+      <Name>Alice Johnsson</Name>
+      <Address>
+        <Street>321 Main st</Street>
+        <ZipCode>175575</ZipCode>
+        <City>New York</City>
+        <Country>United_States_of_America</Country>
+      </Address>
+      <Budget>23</Budget>
+      <HasLoanApproval>true</HasLoanApproval>
+    </Person>
+    <Person xsi:type="Seller">
+      <ID>f5e019fc-e84b-4ee6-a034-88bde56c8a5c</ID>
+      <Name>John Doe</Name>
+      <Address>
+        <Street>123 main st</Street>
+        <ZipCode>165523</ZipCode>
+        <City>Stockholm</City>
+        <Country>Sverige</Country>
+      </Address>
+      <AskingPrice>1234</AskingPrice>
+    </Person>
+    <Person xsi:type="Buyer">
+      <ID>0f8f3fe3-db36-4bdc-b556-7f8c67eb4ca0</ID>
+      <Name>Alice Johnsson2</Name>
+      <Address>
+        <Street>321 Main st</Street>
+        <ZipCode>175575</ZipCode>
+        <City>New York</City>
+        <Country>United_States_of_America</Country>
+      </Address>
+      <Budget>1231</Budget>
+      <HasLoanApproval>true</HasLoanApproval>
+    </Person>
+    <Person xsi:type="Seller">
+      <ID>1ed586b2-763e-4294-86f8-6d1dace04942</ID>
+      <Name>John Doe2</Name>
+      <Address>
+        <Street>123 main st</Street>
+        <ZipCode>165523</ZipCode>
+        <City>Stockholm</City>
+        <Country>Sverige</Country>
+      </Address>
+      <AskingPrice>3124</AskingPrice>
+    </Person>
+  </PersonList>
+  <PaymentList>
+    <Payment xsi:type="WesternUnion">
+      <ID>a30d440c-50ad-4943-8a0e-8810444c604b</ID>
+      <Name>My WesternUnion Name</Name>
+      <Amount>2345</Amount>
+      <Email>someone@domain.com</Email>
+    </Payment>
+    <Payment xsi:type="Vipps">
+      <ID>be90c2e4-e220-4961-94f5-db5f4b2c9c83</ID>
+      <Name>My Vipps Name</Name>
+      <Amount>3459</Amount>
+      <PhoneNumber>+4434689834</PhoneNumber>
+    </Payment>
+    <Payment xsi:type="PayPal">
+      <ID>c0b5b7ff-653f-4519-9fe1-309e9ae7a09f</ID>
+      <Name>My PayPal Name</Name>
+      <Amount>8673</Amount>
+      <Email>someone@paypal.com</Email>
+    </Payment>
+    <Payment xsi:type="Bank">
+      <ID>da027ac6-a173-4f75-929e-8ec6cd4a25f9</ID>
+      <Name>My Bank Name</Name>
+      <Amount>6093</Amount>
+      <IbanNumber>DE1234</IbanNumber>
+    </Payment>
+    <Payment xsi:type="Bank">
+      <ID>2d58cdbd-873f-4212-b027-9ec87ef40972</ID>
+      <Name>My Bank Name2</Name>
+      <Amount>6093</Amount>
+      <IbanNumber>DE1234</IbanNumber>
+    </Payment>
+  </PaymentList>
+</RootObject>

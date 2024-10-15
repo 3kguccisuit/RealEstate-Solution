@@ -1,4 +1,5 @@
-﻿using DTO.Models;
+﻿using DTO.Enums;
+using DTO.Models;
 using RealEstateDAL.Files;
 using RealEstateDLL.Managers;
 
@@ -17,6 +18,28 @@ namespace RealEstateBLL.Service
             _estateManager = estateManager;
             _paymentManager = paymentManager;
             _personManager = personManager;
+        }
+
+        public void NewFile()
+        {
+            ClearManagers();
+        }
+
+        public Boolean SaveData(string filePath, FileFormats fileFormat)
+        {
+            switch (fileFormat)
+            {
+                case FileFormats.Unknown:
+                    return false;
+                case FileFormats.JSON:
+                    SaveDataAsJson(filePath);
+                    return true;
+                case FileFormats.XML:
+                    SaveDataAsXml(filePath);
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         public void LoadDataFromXml(string filePath)

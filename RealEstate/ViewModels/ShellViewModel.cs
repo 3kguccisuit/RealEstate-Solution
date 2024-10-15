@@ -29,7 +29,6 @@ public partial class ShellViewModel : ObservableObject
     private readonly EstateManager _estateManager;
     private readonly PersonManager _personManager;
     private readonly PaymentManager _paymentManager;
-    private readonly FileDataHandler _fileDataHandler;
     private readonly DataService _dataService;
 
     private AppState _appState;
@@ -91,7 +90,7 @@ public partial class ShellViewModel : ObservableObject
 
     public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-    public ShellViewModel(INavigationService navigationService, DataService dataService ,FileDataHandler fileDataHandler, EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager, AppState appState)
+    public ShellViewModel(INavigationService navigationService, DataService dataService , EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager, AppState appState)
     {
         _navigationService = navigationService;
 
@@ -101,15 +100,27 @@ public partial class ShellViewModel : ObservableObject
         _dataService = dataService;
 
         _appState = appState;
-        _fileDataHandler = fileDataHandler;
 
-        //SaveCommand = new RelayCommand(_fileDataHandler.Save);
+        SaveCommand = new RelayCommand(OnSave);
         OpenXmlFileCommand = new RelayCommand(OnOpenXmlFile);
         SaveAsXmlFileCommand = new RelayCommand(OnSaveAsXmlFile);
         SaveAsJsonFileCommand = new RelayCommand(OnSaveAsJsonFile);
         OpenJsonFileCommand = new RelayCommand(OnOpenJsonFile);
         NewCommand = new RelayCommand(OnNew);
         ExitCommand = new RelayCommand(OnExit);
+    }
+
+    private void OnSave()
+    {
+
+       Boolean ret = _dataService.SaveData(_appState.FileName, _appState.Format);
+        if (!ret)
+        {
+            MessageBox.Show("Please create a json file first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            OnSaveAsJsonFile();
+        }
+
+        _appState.IsDirty = true;
     }
 
     private void OnOpenXmlFile()
@@ -202,17 +213,15 @@ public partial class ShellViewModel : ObservableObject
             var result = MessageBox.Show("You have unsaved changes! Do you want to save them before creating a new RealEstate?", appName, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                _fileDataHandler.Save();  // Delegate file saving to FileDataHandler
+                OnSave();
             }
             else if (result == MessageBoxResult.Cancel)
             {
                 return;  // User canceled the operation
             }
         }
-        // Töm befintliga estates, persons och payments
-        _estateManager.Clear();
-        _personManager.Clear();
-        _paymentManager.Clear();
+
+        _dataService.NewFile();
 
         // Set AppState
         _appState.IsDirty = false;

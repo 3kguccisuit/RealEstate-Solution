@@ -1,6 +1,6 @@
 ﻿using DTO.Models;
-using RealEstate.Core.Libs;
 using RealEstateDAL.JsonConverter;
+using RealEstateDAL.Libs;
 using Serilog;
 using System.Text.Json;
 
@@ -122,7 +122,8 @@ namespace RealEstateDAL.Files
             {
                 // Step 5: Handle any I/O errors that occur during file loading
                 Log.Information("An error occurred while loading the XML file.", ex);
-                throw new IOException("An error occurred while loading the file.", ex);
+                return null;
+                //throw new IOException("An error occurred while loading the file.", ex);
             }
         }
     }

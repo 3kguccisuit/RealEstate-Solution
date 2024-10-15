@@ -44,11 +44,11 @@ namespace RealEstateBLL.Service
             }
         }
 
-        public void LoadDataFromXml(string filePath)
+        public Boolean LoadDataFromXml(string filePath)
         {
             ClearManagers();
             var lists = _fileRepository.LoadDataFromXml(filePath);
-            LoadDataToManagers(lists);
+            return LoadDataToManagers(lists);
         }
 
         public void SaveDataAsXml(string filePath)

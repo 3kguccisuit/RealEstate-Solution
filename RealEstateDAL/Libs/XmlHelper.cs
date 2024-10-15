@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using System.Xml.Serialization;
 
-namespace RealEstate.Core.Libs
+namespace RealEstateDAL.Libs
 {
     public static class XmlHelper
     {
@@ -47,14 +47,16 @@ namespace RealEstate.Core.Libs
                 // Log the error
                 Log.Information("Failed to deserialize XML to object.", ex);
                 // Throw a more specific exception to be caught at a higher level
-                throw new InvalidDataException("The provided XML data is invalid.", ex);
+                return default(T);
+                //throw new InvalidDataException("The provided XML data is invalid.", ex);
             }
             catch (Exception ex)
             {
                 // Log any other unexpected errors
                 Log.Information("An unexpected error occurred during XML deserialization.", ex);
                 // Re-throw the exception for higher-level handling
-                throw new Exception("An unexpected error occurred during XML deserialization.", ex);
+                return default(T);
+                //throw new Exception("An unexpected error occurred during XML deserialization.", ex);
             }
         }
 

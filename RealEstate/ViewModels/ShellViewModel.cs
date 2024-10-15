@@ -113,8 +113,6 @@ public partial class ShellViewModel : ObservableObject
             MessageBox.Show("Please create a json file first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             OnSaveAsJsonFile();
         }
-
-        _appState.IsDirty = true;
     }
 
     private void OnOpenXmlFile()
@@ -129,11 +127,17 @@ public partial class ShellViewModel : ObservableObject
 
         if (dialog.ShowDialog() == true)
         {
-            _appState.FileName = dialog.FileName;
-            _appState.Format = FileFormats.XML;
-            _appState.IsDirty = false;
-            _dataService.LoadDataFromXml(_appState.FileName);
-            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+            var ret = _dataService.LoadDataFromXml(dialog.FileName);
+            if (ret)
+            {
+                _appState.FileName = dialog.FileName;
+                _appState.Format = FileFormats.XML;
+                _appState.IsDirty = false;
+                _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+            }
+            else
+                MessageBox.Show($"Error opening {dialog.FileName} as xml", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
         }
     }
 
@@ -177,7 +181,7 @@ public partial class ShellViewModel : ObservableObject
                 _navigationService.NavigateTo(typeof(MainViewModel).FullName);
             }
             else
-                MessageBox.Show($"Error opening {dialog.FileName} as a json", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error opening {dialog.FileName} as .json", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
 

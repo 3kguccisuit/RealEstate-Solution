@@ -2,6 +2,8 @@
 using DTO.Models;
 using RealEstateDAL.Files;
 using RealEstateDLL.Managers;
+using Serilog;
+using System.Text.Json;
 
 namespace RealEstateBLL.Service
 {
@@ -61,11 +63,11 @@ namespace RealEstateBLL.Service
             _fileRepository.SaveDataAsJson(list, filePath);
         }
 
-        public void LoadDataFromJson(string filePath)
+        public Boolean LoadDataFromJson(string filePath)
         {
             ClearManagers();
             var lists = _fileRepository.LoadDataFromJson(filePath);
-            LoadDataToManagers(lists);  
+            return LoadDataToManagers(lists);
 
         }
 
@@ -83,16 +85,17 @@ namespace RealEstateBLL.Service
             _personManager.Clear();
             _paymentManager.Clear();
         }
-        private void LoadDataToManagers(RootObject rootObject)
+        private Boolean LoadDataToManagers(RootObject rootObject)
         {
             //if user ex opens a json file when it expects xml file rootObject is null
             if (rootObject == null)
             {
-                return;
+                return false;
             }
             foreach (var estate in rootObject.EstateList) _estateManager.Add(estate.ID, estate);
             foreach (var person in rootObject.PersonList) _personManager.Add(person.ID, person);
             foreach (var payment in rootObject.PaymentList) _paymentManager.Add(payment.ID, payment);
+            return true;
         }
     }
 }

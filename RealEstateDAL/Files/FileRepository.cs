@@ -51,36 +51,38 @@ namespace RealEstateDAL.Files
 
         public RootObject LoadDataFromJson(string filePath)
         {
-            Console.WriteLine("Loading data from JSON inside DAL");
-
+            var lists = new RootObject();
             try
             {
-                // Step 1: Read the JSON content from the specified file path
+                // Read the JSON content from the file
                 var jsonContent = File.ReadAllText(filePath);
 
-                // Step 2: Set up JSON deserialization options with necessary converters
                 var options = new JsonSerializerOptions
                 {
                     Converters =
             {
-                new EstateJsonConverter(), // Custom converter for Estate objects
-                new PersonJsonConverter(), // Custom converter for Person objects
-                new PaymentJsonConverter() // Custom converter for Payment objects
+                new EstateJsonConverter(),
+                new PersonJsonConverter(),
+                new PaymentJsonConverter()
             }
                 };
 
-                // Step 3: Deserialize the JSON content into a RootObject (lists) object
-                var lists = JsonSerializer.Deserialize<RootObject>(jsonContent, options);
-                Console.WriteLine("Data successfully loaded from JSON.");
-
-                return lists;
+                // Deserialize the JSON content into a RootObject
+                lists = JsonSerializer.Deserialize<RootObject>(jsonContent, options);
             }
             catch (IOException ex)
             {
-                // Step 5: Handle any I/O errors during the file read process
-                Log.Information("An error occurred while loading the file.", ex);
-                throw new IOException("An error occurred while loading the file.", ex);
+                Log.Error(ex, "An error occurred while reading the file.");
+                return null;
+                //throw new IOException("An error occurred while loading the file.", ex);
             }
+            catch (JsonException ex)
+            {
+                Log.Error(ex, "An error occurred while deserializing JSON.");
+                return null;
+                //throw new InvalidOperationException("The file content is not valid JSON.", ex);
+            }
+            return lists;
         }
 
         public void SaveDataAsXml(RootObject lists, string filePath)

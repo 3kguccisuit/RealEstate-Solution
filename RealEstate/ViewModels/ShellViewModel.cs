@@ -26,9 +26,6 @@ public partial class ShellViewModel : ObservableObject
     private ICommand _optionsMenuItemInvokedCommand;
     private ICommand _loadedCommand;
     private ICommand _unloadedCommand;
-    private readonly EstateManager _estateManager;
-    private readonly PersonManager _personManager;
-    private readonly PaymentManager _paymentManager;
     private readonly DataService _dataService;
 
     private AppState _appState;
@@ -90,13 +87,10 @@ public partial class ShellViewModel : ObservableObject
 
     public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-    public ShellViewModel(INavigationService navigationService, DataService dataService , EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager, AppState appState)
+    public ShellViewModel(INavigationService navigationService, DataService dataService, AppState appState)
     {
         _navigationService = navigationService;
 
-        _estateManager = estateManager;
-        _personManager = personManager;
-        _paymentManager = paymentManager;
         _dataService = dataService;
 
         _appState = appState;
@@ -174,11 +168,17 @@ public partial class ShellViewModel : ObservableObject
 
         if (dialog.ShowDialog() == true)
         {
-            _appState.FileName = dialog.FileName;
-            _appState.Format = FileFormats.JSON;
-            _appState.IsDirty = false;
-            _dataService.LoadDataFromJson(_appState.FileName);
-            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+            var ret = _dataService.LoadDataFromJson(dialog.FileName);
+            if (ret)
+            {
+                _appState.FileName = dialog.FileName;
+                _appState.Format = FileFormats.JSON;
+                _appState.IsDirty = false;
+                _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+            }
+            else
+                MessageBox.Show($"Error opening {dialog.FileName} as a json", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
         }
 
     }

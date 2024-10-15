@@ -55,6 +55,8 @@ namespace RealEstateDLL.Managers
             return _dictionary.Values.ToList();
         }
 
+
+
     }
 
 

@@ -103,15 +103,35 @@ public partial class ShellViewModel : ObservableObject
         _appState = appState;
         _fileDataHandler = fileDataHandler;
 
-       // OpenJsonFileCommand = new RelayCommand(_fileDataHandler.OpenJsonFile);
+
         //SaveAsJsonFileCommand = new RelayCommand(_fileDataHandler.SaveAsJsonFile);
         //OpenXmlFileCommand = new RelayCommand(_fileDataHandler.OpenXmlFile);
         //SaveAsXmlFileCommand = new RelayCommand(_fileDataHandler.SaveAsXmlFile);
         //SaveCommand = new RelayCommand(_fileDataHandler.Save);
 
         SaveAsJsonFileCommand = new RelayCommand(OnSaveAsJsonFile);
+        OpenJsonFileCommand = new RelayCommand(OnOpenJsonFile);
         NewCommand = new RelayCommand(OnNew);
         ExitCommand = new RelayCommand(OnExit);
+    }
+
+    private void OnOpenJsonFile() {
+        var dialog = new OpenFileDialog
+        {
+            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+            FilterIndex = 1,
+            FileName = _appState.FileName,
+            DefaultExt = ".json"
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            _appState.FileName = dialog.FileName;
+            _appState.Format = FileFormats.JSON;
+            _dataService.LoadDataFromJson(_appState.FileName);
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+        }
+
     }
 
     private void OnSaveAsJsonFile()
@@ -128,18 +148,11 @@ public partial class ShellViewModel : ObservableObject
         {
             _appState.FileName = dialog.FileName;
             _appState.Format = FileFormats.JSON;
-            var list = new RootObject();
-            list.EstateList = _estateManager.GetAll();
-            list.PersonList = _personManager.GetAll();
-            list.PaymentList = _paymentManager.GetAll();
-            _dataService.SaveDataAsJson(list, _appState.FileName);
+            _dataService.SaveDataAsJson(_appState.FileName);
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
         }
-
-
-
-
-        // _fileDataHandler.SaveAsJsonFile();
     }
+
     private void OnNew()
     {
         if (_appState.IsDirty)

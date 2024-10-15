@@ -14,7 +14,7 @@ namespace RealEstateDAL.Files
 
         public void SaveDataAsJson(RootObject lists, string filePath)
         {
-            Console.WriteLine("Saving data as JSON inside DAL");
+            //Console.WriteLine("Saving data as JSON inside DAL");
 
             try
             {
@@ -37,7 +37,7 @@ namespace RealEstateDAL.Files
                 using (var writer = new StreamWriter(filePath))
                 {
                     writer.Write(jsonContent); // Write the serialized JSON content to the file
-                    Console.WriteLine("Data successfully saved as JSON.");
+                   // Console.WriteLine("Data successfully saved as JSON.");
                 }
             }
             catch (IOException ex)
@@ -45,6 +45,40 @@ namespace RealEstateDAL.Files
                 // Step 4: Handle any I/O errors during the file write process
                 Log.Information("An error occurred while saving the file.", ex);
                 throw new IOException("An error occurred while saving the file.", ex);
+            }
+        }
+
+        public RootObject LoadDataFromJson(string filePath)
+        {
+            Console.WriteLine("Loading data from JSON inside DAL");
+
+            try
+            {
+                // Step 1: Read the JSON content from the specified file path
+                var jsonContent = File.ReadAllText(filePath);
+
+                // Step 2: Set up JSON deserialization options with necessary converters
+                var options = new JsonSerializerOptions
+                {
+                    Converters =
+            {
+                new EstateJsonConverter(), // Custom converter for Estate objects
+                new PersonJsonConverter(), // Custom converter for Person objects
+                new PaymentJsonConverter() // Custom converter for Payment objects
+            }
+                };
+
+                // Step 3: Deserialize the JSON content into a RootObject (lists) object
+                var lists = JsonSerializer.Deserialize<RootObject>(jsonContent, options);
+                Console.WriteLine("Data successfully loaded from JSON.");
+
+                return lists;
+            }
+            catch (IOException ex)
+            {
+                // Step 5: Handle any I/O errors during the file read process
+                Log.Information("An error occurred while loading the file.", ex);
+                throw new IOException("An error occurred while loading the file.", ex);
             }
         }
 

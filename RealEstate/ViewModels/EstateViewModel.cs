@@ -2,17 +2,13 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using RealEstate.Contracts.ViewModels;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Models;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Services;
 using RealEstate.Windows;
-using Serilog;
 using System.Collections.ObjectModel;
-using System.Configuration;
 using System.Windows;
 using RealEstate.Models;
+using RealEstateDLL.Managers;
+using DTO.Models.BaseModels;
+using DTO.Enums;
 
 namespace RealEstate.ViewModels
 {

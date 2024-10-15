@@ -1,8 +1,5 @@
-﻿using RealEstate.Core.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DTO.Enums;
 
 namespace RealEstate.Models
 {

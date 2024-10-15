@@ -2,18 +2,18 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Win32;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Models;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels;
-using RealEstate.Core.Models.ConcreteModels.Persons;
-using RealEstate.Core.Services;
-using RealEstate.Helpers;
+using RealEstateDLL.Helpers;
 using RealEstate.Windows;
+using DTO.Enums;
+using DTO.Models;
+using DTO.Models.BaseModels;
+using DTO.Models.ConcreteModels;
+using DTO.Models.ConcreteModels.Persons;
+using RealEstateDLL.Managers;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using UtilitiesLib.Helpers;
 
 namespace RealEstate.ViewModels
 {
@@ -212,6 +212,12 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void Save(Window window)
         {
+            if (UIHelper.HasValidationError(window))
+            {
+                // If validation errors exist, show a message and stop the save
+                MessageBox.Show("Please fix the input errors before saving.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             SelectedEstate.LinkedBuyer = SelectedBuyer;
             SelectedEstate.LinkedSeller = SelectedSeller;
             SelectedEstate.LinkedPayment = SelectedPayment;

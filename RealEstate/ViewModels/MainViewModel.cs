@@ -1,8 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using RealEstate.Contracts.ViewModels;
-using RealEstate.Core.Models;
 using System.ComponentModel;
-using System.Net.NetworkInformation;
 using RealEstate.Models;
 namespace RealEstate.ViewModels;
 

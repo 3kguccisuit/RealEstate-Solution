@@ -1,13 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Models;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Models.ConcreteModels.Persons;
-using RealEstate.Helpers;
+using DTO.Enums;
+using DTO.Models;
+using DTO.Models.BaseModels;
+using DTO.Models.ConcreteModels.Persons;
 using System.ComponentModel;
 using System.Windows;
+using RealEstateDLL.Helpers;
+using UtilitiesLib.Helpers;
 
 namespace RealEstate.ViewModels
 {
@@ -65,11 +65,14 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void Save(Window window)
         {
-           // MessageBox.Show($"Created {Selected.GetType().Name} with the details: {Selected}");
+            if (UIHelper.HasValidationError(window))
+            {
+                // If validation errors exist, show a message and stop the save
+                MessageBox.Show("Please fix the input errors before saving.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _isSaved = true;
             window.DialogResult = true;
-            //await _personDataService.AddAsync(Selected);
-
             window.Close();
         }
 

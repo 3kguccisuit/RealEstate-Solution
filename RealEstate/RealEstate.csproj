@@ -24,12 +24,15 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
     <PackageReference Include="WPF-UI" Version="3.0.5" />
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\RealEstate.Core\RealEstate.Core.csproj" />
+	  <ProjectReference Include="..\DTO\DTO.csproj" />
+	  <ProjectReference Include="..\RealEstateBLL\RealEstateBLL.csproj" />
+	  <ProjectReference Include="..\UtilitiesLib\UtilitiesLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

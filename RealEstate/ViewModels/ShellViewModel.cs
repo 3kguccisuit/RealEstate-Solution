@@ -1,25 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls;
-using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
-using RealEstate.Core.Enums;
-using RealEstate.Core.Libs;
-using RealEstate.Core.Models;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Services;
-using RealEstate.Helpers;
+using RealEstateDLL.Helpers;
 using RealEstate.Properties;
-using System.CodeDom;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Input;
-using System.Xml.Linq;
 using RealEstate.Models;
+using RealEstateDLL.Managers;
+using DTO.Enums;
+using Microsoft.Win32;
+using DTO.Models;
+using RealEstateBLL.Service;
 
 namespace RealEstate.ViewModels;
 
@@ -33,10 +26,7 @@ public partial class ShellViewModel : ObservableObject
     private ICommand _optionsMenuItemInvokedCommand;
     private ICommand _loadedCommand;
     private ICommand _unloadedCommand;
-    private readonly EstateManager _estateManager;
-    private readonly PersonManager _personManager;
-    private readonly PaymentManager _paymentManager;
-    private readonly FileDataHandler _fileDataHandler;
+    private readonly DataService _dataService;
 
     private AppState _appState;
 
@@ -97,25 +87,124 @@ public partial class ShellViewModel : ObservableObject
 
     public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-    public ShellViewModel(INavigationService navigationService, FileDataHandler fileDataHandler, EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager, AppState appState)
+    public ShellViewModel(INavigationService navigationService, DataService dataService, AppState appState)
     {
         _navigationService = navigationService;
 
-        _estateManager = estateManager;
-        _personManager = personManager;
-        _paymentManager = paymentManager;
+        _dataService = dataService;
 
         _appState = appState;
-        _fileDataHandler = fileDataHandler;
 
-        OpenJsonFileCommand = new RelayCommand(_fileDataHandler.OpenJsonFile);
-        SaveAsJsonFileCommand = new RelayCommand(_fileDataHandler.SaveAsJsonFile);
-        OpenXmlFileCommand = new RelayCommand(_fileDataHandler.OpenXmlFile);
-        SaveAsXmlFileCommand = new RelayCommand(_fileDataHandler.SaveAsXmlFile);
-        SaveCommand = new RelayCommand(_fileDataHandler.Save);
-
+        SaveCommand = new RelayCommand(OnSave);
+        OpenXmlFileCommand = new RelayCommand(OnOpenXmlFile);
+        SaveAsXmlFileCommand = new RelayCommand(OnSaveAsXmlFile);
+        SaveAsJsonFileCommand = new RelayCommand(OnSaveAsJsonFile);
+        OpenJsonFileCommand = new RelayCommand(OnOpenJsonFile);
         NewCommand = new RelayCommand(OnNew);
         ExitCommand = new RelayCommand(OnExit);
+    }
+
+    private void OnSave()
+    {
+
+       Boolean ret = _dataService.SaveData(_appState.FileName, _appState.Format);
+        if (!ret)
+        {
+            MessageBox.Show("Please create a json file first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            OnSaveAsJsonFile();
+        }
+    }
+
+    private void OnOpenXmlFile()
+    {
+        var dialog = new OpenFileDialog
+        {
+            Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*",
+            FilterIndex = 1,
+            FileName = _appState.FileName,
+            DefaultExt = ".xml"
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            var ret = _dataService.LoadDataFromXml(dialog.FileName);
+            if (ret)
+            {
+                _appState.FileName = dialog.FileName;
+                _appState.Format = FileFormats.XML;
+                _appState.IsDirty = false;
+                _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+            }
+            else
+                MessageBox.Show($"Error opening {dialog.FileName} as xml", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+        }
+    }
+
+    private void OnSaveAsXmlFile() {
+        var dialog = new SaveFileDialog
+        {
+            Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*",
+            FilterIndex = 1,
+            FileName = _appState.FileName,
+            DefaultExt = ".xml"
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            _appState.FileName = dialog.FileName;
+            _appState.Format = FileFormats.XML;
+            _appState.IsDirty = false;
+            _dataService.SaveDataAsXml(_appState.FileName);
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+        }
+
+    }
+
+    private void OnOpenJsonFile() {
+        var dialog = new OpenFileDialog
+        {
+            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+            FilterIndex = 1,
+            FileName = _appState.FileName,
+            DefaultExt = ".json"
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            var ret = _dataService.LoadDataFromJson(dialog.FileName);
+            if (ret)
+            {
+                _appState.FileName = dialog.FileName;
+                _appState.Format = FileFormats.JSON;
+                _appState.IsDirty = false;
+                _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+            }
+            else
+                MessageBox.Show($"Error opening {dialog.FileName} as .json", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+        }
+
+    }
+
+    private void OnSaveAsJsonFile()
+    {
+        var dialog = new SaveFileDialog
+        {
+            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+            FilterIndex = 1,
+            FileName = _appState.FileName,
+            DefaultExt = ".json"
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            _appState.FileName = dialog.FileName;
+            _appState.Format = FileFormats.JSON;
+            _appState.IsDirty = false;
+            _dataService.SaveDataAsJson(_appState.FileName);
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+        }
     }
 
     private void OnNew()
@@ -128,17 +217,15 @@ public partial class ShellViewModel : ObservableObject
             var result = MessageBox.Show("You have unsaved changes! Do you want to save them before creating a new RealEstate?", appName, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                _fileDataHandler.Save();  // Delegate file saving to FileDataHandler
+                OnSave();
             }
             else if (result == MessageBoxResult.Cancel)
             {
                 return;  // User canceled the operation
             }
         }
-        // Töm befintliga estates, persons och payments
-        _estateManager.Clear();
-        _personManager.Clear();
-        _paymentManager.Clear();
+
+        _dataService.NewFile();
 
         // Set AppState
         _appState.IsDirty = false;
@@ -151,7 +238,27 @@ public partial class ShellViewModel : ObservableObject
 
     private void OnExit()
     {
-        System.Windows.Application.Current.Shutdown();
+        if (_appState.IsDirty)
+        {
+            var app = (App)Application.Current;
+            var appName = app.AppName;
+
+            var result = MessageBox.Show("You have unsaved changes! Do you want to save them before creating a new RealEstate?", appName, MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                OnSave();
+                System.Windows.Application.Current.Shutdown();
+            }
+            else if (result == MessageBoxResult.Cancel)
+            {
+                return;  // User canceled the operation
+            }
+        }
+        else
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
     }
 
     private void OnLoaded()

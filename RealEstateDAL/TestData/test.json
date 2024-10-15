@@ -1,0 +1,25 @@
+{
+  "EstateList": [
+    {
+      "FloorLevel": 0,
+      "Type": "Apartment",
+      "NumberOfRooms": 0,
+      "ID": "33225a20-9570-449a-934a-dc478344e868",
+      "Address": {
+        "Street": "123 Main St",
+        "ZipCode": "17523",
+        "City": "Stockholm",
+        "Country": 164
+      },
+      "LegalForm": {
+        "FormType": 0
+      },
+      "LinkedBuyer": null,
+      "LinkedSeller": null,
+      "LinkedPayment": null,
+      "ImagePath": null
+    }
+  ],
+  "PersonList": [],
+  "PaymentList": []
+}

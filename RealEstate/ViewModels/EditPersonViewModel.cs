@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Models.BaseModels;
+using DTO.Models.BaseModels;
 using System.ComponentModel;
 using System.Windows;
+using UtilitiesLib.Helpers;
 
 namespace RealEstate.ViewModels
 {
@@ -47,10 +47,14 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void Save(Window window)
         {
+            if (UIHelper.HasValidationError(window))
+            {
+                // If validation errors exist, show a message and stop the save
+                MessageBox.Show("Please fix the input errors before saving.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _isSaved = true;
             window.DialogResult = true;
-            //await _paymentDataService.UpdateAsync(Selected);
-           // MessageBox.Show($"Updated {Selected.Type} with the props: {Selected}");
             window.Close();
         }
 

@@ -3,25 +3,27 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RealEstate.Contracts.Services;
 using RealEstate.Contracts.Views;
-using RealEstate.Core.Contracts.Services;
-using RealEstate.Core.Models;
-using RealEstate.Core.Models.BaseModels;
-using RealEstate.Core.Services;
-using RealEstate.Helpers;
-using RealEstate.Models;
+using RealEstateDLL.Helpers;
+using RealEstate.Models; 
 using RealEstate.Services;
 using RealEstate.ViewModels;
 using RealEstate.Views;
+using RealEstateBLL.Interfaces;
+using DTO.Models.BaseModels;
+using RealEstateDAL.Files;
+using RealEstateDAL.Interfaces;
+using RealEstateDLL.Managers;
 using Serilog;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
+using RealEstateBLL.Service;
 
 namespace RealEstate;
 
 // For more information about application lifecycle events see https://docs.microsoft.com/dotnet/framework/wpf/app-development/application-management-overview
-
+// create branch
 // WPF UI elements use language en-US by default.
 // If you need to support other cultures make sure you add converters and review dates and numbers in your UI to ensure everything adapts correctly.
 // Tracking issue for improving this is https://github.com/dotnet/wpf/issues/1946
@@ -79,7 +81,7 @@ public partial class App : Application
 
         // Core Services
         services.AddSingleton<IFileService, FileService>();
-        services.AddSingleton<FileDataHandler>();
+        services.AddSingleton<DataService>();
 
         // Services
         services.AddSingleton<IApplicationInfoService, ApplicationInfoService>();
@@ -92,10 +94,10 @@ public partial class App : Application
 
         // Register EstateManager as a singleton, so it's available application-wide
         services.AddSingleton<IDictionaryManager<string, Estate>, EstateManager>();
-        services.AddSingleton<EstateManager>(); // Register the concrete class
+        services.AddSingleton<EstateManager>();
 
         services.AddSingleton<IDictionaryManager<string, Person>, PersonManager>();
-        services.AddSingleton<PersonManager>(); // Register PersonManager
+        services.AddSingleton<PersonManager>();
 
         services.AddSingleton<IDictionaryManager<string, Payment>, PaymentManager>();
         services.AddSingleton<PaymentManager>();

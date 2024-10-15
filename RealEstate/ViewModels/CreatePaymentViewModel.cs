@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RealEstate.Helpers;
-using RealEstateBLL.Models.BaseModels;
-using RealEstateBLL.Models.ConcreteModels.Payments;
+using DTO.Models.BaseModels;
+using DTO.Models.ConcreteModels.Payments;
 using System.ComponentModel;
 using System.Windows;
 

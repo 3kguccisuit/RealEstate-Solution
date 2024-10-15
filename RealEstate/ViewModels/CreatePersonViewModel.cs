@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RealEstate.Helpers;
-using RealEstateBLL.Enums;
-using RealEstateBLL.Models;
-using RealEstateBLL.Models.BaseModels;
-using RealEstateBLL.Models.ConcreteModels.Persons;
+using DTO.Enums;
+using DTO.Models;
+using DTO.Models.BaseModels;
+using DTO.Models.ConcreteModels.Persons;
 using System.ComponentModel;
 using System.Windows;
 

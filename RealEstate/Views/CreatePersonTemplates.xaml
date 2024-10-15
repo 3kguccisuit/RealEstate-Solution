@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:models="clr-namespace:RealEstateBLL.Models.ConcreteModels.Persons;assembly=RealEstateBLL">
+                    xmlns:models="clr-namespace:DTO.Models.ConcreteModels.Persons;assembly=DTO">
 
     <!-- DataTemplate for Buyer -->
     <DataTemplate x:Key="BuyerCreateTemplate" DataType="{x:Type models:Buyer}">

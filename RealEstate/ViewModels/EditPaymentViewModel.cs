@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using RealEstateBLL.Models.BaseModels;
+using DTO.Models.BaseModels;
 using System.ComponentModel;
 using System.Windows;
 

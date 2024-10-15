@@ -9,7 +9,7 @@ using RealEstate.Services;
 using RealEstate.ViewModels;
 using RealEstate.Views;
 using RealEstateBLL.Interfaces;
-using RealEstateBLL.Models.BaseModels;
+using DTO.Models.BaseModels;
 using RealEstateDAL.Files;
 using RealEstateDAL.Interfaces;
 using RealEstateDLL.Managers;
@@ -18,6 +18,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
+using RealEstateBLL.Service;
 
 namespace RealEstate;
 
@@ -81,6 +82,7 @@ public partial class App : Application
         // Core Services
         services.AddSingleton<IFileService, FileService>();
         services.AddSingleton<FileDataHandler>();
+        services.AddSingleton<DataService>();
 
         // Services
         services.AddSingleton<IApplicationInfoService, ApplicationInfoService>();
@@ -93,10 +95,10 @@ public partial class App : Application
 
         // Register EstateManager as a singleton, so it's available application-wide
         services.AddSingleton<IDictionaryManager<string, Estate>, EstateManager>();
-        services.AddSingleton<EstateManager>(); // Register the concrete class
+        services.AddSingleton<EstateManager>();
 
         services.AddSingleton<IDictionaryManager<string, Person>, PersonManager>();
-        services.AddSingleton<PersonManager>(); // Register PersonManager
+        services.AddSingleton<PersonManager>();
 
         services.AddSingleton<IDictionaryManager<string, Payment>, PaymentManager>();
         services.AddSingleton<PaymentManager>();

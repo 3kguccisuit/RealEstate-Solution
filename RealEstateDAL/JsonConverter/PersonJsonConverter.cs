@@ -1,5 +1,6 @@
-﻿using RealEstateBLL.Models.BaseModels;
-using RealEstateBLL.Models.ConcreteModels.Persons;
+﻿
+using DTO.Models.BaseModels;
+using DTO.Models.ConcreteModels.Persons;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 //TODO add DTO since currently DAL needs refrence to BLL

@@ -3,13 +3,12 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Win32;
 using RealEstate.Windows;
-using RealEstateBLL.Enums;
-using RealEstateBLL.Models.BaseModels;
-using RealEstateBLL.Models.ConcreteModels.Persons;
+using DTO.Enums;
+using DTO.Models.BaseModels;
+using DTO.Models.ConcreteModels.Persons;
 using RealEstateDLL.Managers;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls.Primitives;
 
 namespace RealEstate.ViewModels
 {

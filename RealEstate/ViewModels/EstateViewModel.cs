@@ -7,8 +7,8 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using RealEstate.Models;
 using RealEstateDLL.Managers;
-using RealEstateBLL.Models.BaseModels;
-using RealEstateBLL.Enums;
+using DTO.Models.BaseModels;
+using DTO.Enums;
 
 namespace RealEstate.ViewModels
 {

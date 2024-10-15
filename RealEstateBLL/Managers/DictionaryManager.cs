@@ -1,6 +1,4 @@
-﻿
-
-using RealEstateBLL.Interfaces;
+﻿using RealEstateBLL.Interfaces;
 
 namespace RealEstateDLL.Managers
 {

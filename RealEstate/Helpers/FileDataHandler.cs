@@ -8,9 +8,9 @@ using Serilog;
 using System.Windows;
 using RealEstate.Models;
 using RealEstateDLL.Managers;
-using RealEstateDAL.Enums;
+using DTO.Enums;
 using RealEstateDAL.JsonConverter;
-using RealEstateDAL.Files;
+using DTO.Models;
 
 namespace RealEstate.Helpers
 {

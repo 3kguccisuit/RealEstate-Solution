@@ -1,6 +1,4 @@
 ﻿using Serilog;
-using System;
-using System.IO;
 using System.Xml.Serialization;
 
 namespace RealEstate.Core.Libs

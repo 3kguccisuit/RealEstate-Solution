@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using RealEstateDAL.Enums;
+using DTO.Enums;
 
 namespace RealEstate.Models
 {

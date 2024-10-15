@@ -9,7 +9,10 @@ using System.Windows;
 using System.Windows.Input;
 using RealEstate.Models;
 using RealEstateDLL.Managers;
-using RealEstateDAL.Enums;
+using DTO.Enums;
+using Microsoft.Win32;
+using DTO.Models;
+using RealEstateBLL.Service;
 
 namespace RealEstate.ViewModels;
 
@@ -27,6 +30,7 @@ public partial class ShellViewModel : ObservableObject
     private readonly PersonManager _personManager;
     private readonly PaymentManager _paymentManager;
     private readonly FileDataHandler _fileDataHandler;
+    private readonly DataService _dataService;
 
     private AppState _appState;
 
@@ -87,27 +91,55 @@ public partial class ShellViewModel : ObservableObject
 
     public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-    public ShellViewModel(INavigationService navigationService, FileDataHandler fileDataHandler, EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager, AppState appState)
+    public ShellViewModel(INavigationService navigationService, DataService dataService ,FileDataHandler fileDataHandler, EstateManager estateManager, PersonManager personManager, PaymentManager paymentManager, AppState appState)
     {
         _navigationService = navigationService;
 
         _estateManager = estateManager;
         _personManager = personManager;
         _paymentManager = paymentManager;
+        _dataService = dataService;
 
         _appState = appState;
         _fileDataHandler = fileDataHandler;
 
-        OpenJsonFileCommand = new RelayCommand(_fileDataHandler.OpenJsonFile);
-        SaveAsJsonFileCommand = new RelayCommand(_fileDataHandler.SaveAsJsonFile);
-        OpenXmlFileCommand = new RelayCommand(_fileDataHandler.OpenXmlFile);
-        SaveAsXmlFileCommand = new RelayCommand(_fileDataHandler.SaveAsXmlFile);
-        SaveCommand = new RelayCommand(_fileDataHandler.Save);
+       // OpenJsonFileCommand = new RelayCommand(_fileDataHandler.OpenJsonFile);
+        //SaveAsJsonFileCommand = new RelayCommand(_fileDataHandler.SaveAsJsonFile);
+        //OpenXmlFileCommand = new RelayCommand(_fileDataHandler.OpenXmlFile);
+        //SaveAsXmlFileCommand = new RelayCommand(_fileDataHandler.SaveAsXmlFile);
+        //SaveCommand = new RelayCommand(_fileDataHandler.Save);
 
+        SaveAsJsonFileCommand = new RelayCommand(OnSaveAsJsonFile);
         NewCommand = new RelayCommand(OnNew);
         ExitCommand = new RelayCommand(OnExit);
     }
 
+    private void OnSaveAsJsonFile()
+    {
+        var dialog = new SaveFileDialog
+        {
+            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+            FilterIndex = 1,
+            FileName = _appState.FileName,
+            DefaultExt = ".json"
+        };
+
+        if (dialog.ShowDialog() == true)
+        {
+            _appState.FileName = dialog.FileName;
+            _appState.Format = FileFormats.JSON;
+            var list = new RootObject();
+            list.EstateList = _estateManager.GetAll();
+            list.PersonList = _personManager.GetAll();
+            list.PaymentList = _paymentManager.GetAll();
+            _dataService.SaveDataAsJson(list, _appState.FileName);
+        }
+
+
+
+
+        // _fileDataHandler.SaveAsJsonFile();
+    }
     private void OnNew()
     {
         if (_appState.IsDirty)

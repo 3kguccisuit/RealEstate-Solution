@@ -1,5 +1,5 @@
-﻿using RealEstateBLL.Enums;
-using RealEstateBLL.Models.BaseModels;
+﻿using DTO.Enums;
+using DTO.Models.BaseModels;
 
 namespace RealEstateDLL.Managers
 {

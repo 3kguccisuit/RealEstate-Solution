@@ -35,7 +35,6 @@ namespace RealEstateBLL.Service
         public void SaveDataAsJson(string filePath)
         {
             var list = GetAllObjects(new RootObject());
-
             _fileRepository.SaveDataAsJson(list, filePath);
         }
 

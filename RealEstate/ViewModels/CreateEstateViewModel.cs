@@ -13,6 +13,7 @@ using RealEstateDLL.Managers;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using UtilitiesLib.Helpers;
 
 namespace RealEstate.ViewModels
 {
@@ -211,6 +212,12 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void Save(Window window)
         {
+            if (UIHelper.HasValidationError(window))
+            {
+                // If validation errors exist, show a message and stop the save
+                MessageBox.Show("Please fix the input errors before saving.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             SelectedEstate.LinkedBuyer = SelectedBuyer;
             SelectedEstate.LinkedSeller = SelectedSeller;
             SelectedEstate.LinkedPayment = SelectedPayment;

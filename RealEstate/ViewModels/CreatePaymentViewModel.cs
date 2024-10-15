@@ -5,6 +5,7 @@ using DTO.Models.ConcreteModels.Payments;
 using System.ComponentModel;
 using System.Windows;
 using RealEstateDLL.Helpers;
+using UtilitiesLib.Helpers;
 
 namespace RealEstate.ViewModels
 {
@@ -73,14 +74,20 @@ namespace RealEstate.ViewModels
         [RelayCommand]
         private void Save(Window window)
         {
+            // Use HasValidationError from UtilitiesLib to check for validation errors
+            if (UIHelper.HasValidationError(window))
+            {
+                // If validation errors exist, show a message and stop the save
+                MessageBox.Show("Please fix the input errors before saving.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-          //  MessageBox.Show($"Created {Selected.Type} with the props: {Selected}");
+            // If no validation errors, proceed with the save
             _isSaved = true;
             window.DialogResult = true;
-            // await _paymentDataService.AddAsync(Selected);
-
             window.Close();
         }
+
 
         // AutofillCommand to populate the TextBoxes with default values
         [RelayCommand]

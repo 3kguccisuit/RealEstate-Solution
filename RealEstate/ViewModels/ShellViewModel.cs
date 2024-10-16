@@ -112,7 +112,9 @@ public partial class ShellViewModel : ObservableObject
         {
             MessageBox.Show("Please create a json file first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             OnSaveAsJsonFile();
+            _appState.IsDirty = false;
         }
+        _appState.IsDirty = false;
     }
 
     private void OnOpenXmlFile()

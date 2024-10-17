@@ -2,12 +2,17 @@
 
   <PropertyGroup>
 	  <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+	  <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <!--<Nullable>enable</Nullable>-->
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+  </ItemGroup>
+	
 	<ItemGroup>
-		<ProjectReference Include="..\DTO\DTO.csproj" />
+		<ProjectReference Include="..\DataModels\DataModels.csproj" />
 		<ProjectReference Include="..\RealEstateDAL\RealEstateDAL.csproj" />
 	</ItemGroup>
 

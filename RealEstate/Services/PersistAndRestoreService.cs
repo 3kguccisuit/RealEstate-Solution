@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using RealEstate.Contracts.Services;
-using RealEstate.Models;
+using RealEstateBLL.Models;
 using RealEstateDAL.Interfaces;
 using System.Collections;
 using System.IO;

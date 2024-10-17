@@ -3,7 +3,7 @@
     {
       "FloorLevel": 3,
       "Type": "Apartment",
-      "NumberOfRooms": 5,
+      "NumberOfRooms": 53,
       "ID": "5a84a275-849c-4acb-aa48-8aed1c349ae2",
       "Address": {
         "Street": "123 Main St",
@@ -44,7 +44,7 @@
         "Type": "WesternUnion",
         "ID": "a30d440c-50ad-4943-8a0e-8810444c604b",
         "Name": "My WesternUnion Name",
-        "Amount": 2345
+        "Amount": 111
       },
       "ImagePath": null
     },

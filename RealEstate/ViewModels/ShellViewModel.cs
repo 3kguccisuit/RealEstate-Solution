@@ -7,7 +7,7 @@ using RealEstate.Properties;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using RealEstate.Models;
+using RealEstateBLL.Models;
 using RealEstateDLL.Managers;
 using DTO.Enums;
 using Microsoft.Win32;

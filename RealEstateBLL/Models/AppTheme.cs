@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Models;
+﻿namespace RealEstateBLL.Models;
 
 public enum AppTheme
 {

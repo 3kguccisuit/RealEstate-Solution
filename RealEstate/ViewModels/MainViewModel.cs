@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using RealEstate.Contracts.ViewModels;
 using System.ComponentModel;
-using RealEstate.Models;
+using RealEstateBLL.Models;
 namespace RealEstate.ViewModels;
 
 public partial class MainViewModel : ObservableObject, INotifyPropertyChanged, INavigationAware

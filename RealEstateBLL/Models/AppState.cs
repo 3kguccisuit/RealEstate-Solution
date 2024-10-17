@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using DTO.Enums;
 
-namespace RealEstate.Models
+namespace RealEstateBLL.Models
 {
     public partial class AppState : ObservableObject
     {

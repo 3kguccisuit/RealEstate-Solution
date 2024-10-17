@@ -5,7 +5,7 @@ using RealEstate.Contracts.ViewModels;
 using RealEstate.Windows;
 using System.Collections.ObjectModel;
 using System.Windows;
-using RealEstate.Models;
+using RealEstateBLL.Models;
 using RealEstateDLL.Managers;
 using DTO.Models.BaseModels;
 namespace RealEstate.ViewModels

@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<!-- Set a Windows-specific target framework -->
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<!-- Enable WPF for the project -->
 	</PropertyGroup>

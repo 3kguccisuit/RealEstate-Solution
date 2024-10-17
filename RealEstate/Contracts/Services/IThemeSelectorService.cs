@@ -1,4 +1,4 @@
-﻿using RealEstate.Models;
+﻿using RealEstateBLL.Models;
 
 namespace RealEstate.Contracts.Services;
 

@@ -1,7 +1,7 @@
 ﻿using ControlzEx.Theming;
 using MahApps.Metro.Theming;
 using RealEstate.Contracts.Services;
-using RealEstate.Models;
+using RealEstateBLL.Models;
 using System.Windows;
 
 namespace RealEstate.Services;

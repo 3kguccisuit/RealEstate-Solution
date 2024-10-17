@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:converters="clr-namespace:RealEstate.Converters"
-    xmlns:models="clr-namespace:RealEstate.Models"
+    xmlns:models="clr-namespace:RealEstateBLL.Models;assembly=RealEstateBLL"
     xmlns:properties="clr-namespace:RealEstate.Properties"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     mc:Ignorable="d"

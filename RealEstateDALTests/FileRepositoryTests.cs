@@ -87,10 +87,9 @@ namespace RealEstateDALTests
         {
             // Arrange
             var nonexistentFilePath = Path.Combine(Path.GetTempPath(), "non_existent.json");
-            var fileRepository = new FileRepository();
 
             // Act
-            var result = fileRepository.LoadDataFromJson(nonexistentFilePath);
+            var result = _fileRepository.LoadDataFromJson(nonexistentFilePath);
 
             // Assert
             Assert.IsNull(result, "LoadDataFromJson should return null when the file does not exist.");

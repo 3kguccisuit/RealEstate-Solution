@@ -65,7 +65,7 @@ namespace RealEstateBLLTests
         public void LoadDataFromJson_ShouldReturnTrue_ForValidData()
         {
             // Arrange
-            string filePath = "C:\\Users\\ludwi\\source\\repos\\RealEstate-Solution\\RealEstateDAL\\TestData\\test.json";
+            string filePath = "test.json";
 
             // Act
             bool result = _dataService.LoadDataFromJson(filePath);

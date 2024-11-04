@@ -158,5 +158,61 @@ namespace RealEstateBLLTests
             // Assert
             Assert.AreEqual(1, estates.Count, "The city search should be case-insensitive.");
         }
+
+        [TestMethod]
+        public void GetEstatesByCountry_ShouldReturnCorrectEstates_ForGivenCountry()
+        {
+            // Arrange
+            Estate estate = new Apartment(Guid.NewGuid().ToString(),
+                    new Address("123 Main St", "17523", "Stockholm", Country.Sverige),
+                    new LegalForm(LegalFormType.Rental),
+                    0,
+                    0
+                );
+
+            Estate estate2 = new Hospital(Guid.NewGuid().ToString(),
+                    new Address("123 Main St", "17523", "Malmo", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0,
+                    0
+                );
+
+            _estateManager.Add(estate.ID, estate);
+            _estateManager.Add(estate2.ID, estate2);
+
+            // Act
+            var swedishEstates = _estateManager.GetEstatesByCountry(Country.Sverige);
+
+            // Assert
+            Assert.AreEqual(2, swedishEstates.Count, "There should be 2 estates in Sweden.");
+        }
+
+        [TestMethod]
+        public void GetEstatesByType_ShouldReturnCorrectEstates_ForGivenType()
+        {
+            // Arrange
+            Estate estate = new Apartment(Guid.NewGuid().ToString(),
+                    new Address("123 Main St", "17523", "Stockholm", Country.Sverige),
+                    new LegalForm(LegalFormType.Rental),
+                    0,
+                    0
+                );
+
+            Estate estate2 = new Hospital(Guid.NewGuid().ToString(),
+                    new Address("123 Main St", "17523", "Malmo", Country.Sverige),
+                    new LegalForm(LegalFormType.Ownership),
+                    0,
+                    0
+                );
+
+            _estateManager.Add(estate.ID, estate);
+            _estateManager.Add(estate2.ID, estate2);
+
+            // Act
+            var apartmentEstates = _estateManager.GetEstatesByType("Apartment");
+
+            // Assert
+            Assert.AreEqual(1, apartmentEstates.Count, "There should be 1 apartment estate.");
+        }
     }
 }

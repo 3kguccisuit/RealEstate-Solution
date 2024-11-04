@@ -18,5 +18,13 @@ namespace RealEstateDLL.Managers
                 .Where(estate => estate.Address != null && estate.Address.Country == country)
                 .ToList();
         }
+
+        public List<Estate> GetEstatesByType(string type)
+        {
+            return GetAll()
+                .Where(estate => estate.Type.Equals(type, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
     }
 }

@@ -146,6 +146,10 @@ namespace RealEstate.ViewModels
                     estatesRes = _estateManager.GetEstatesByCountry(country);
                 }
             }
+            if(SearchOption == "Type")
+            {
+                estatesRes = _estateManager.GetEstatesByType(searchType);
+            }
 
             if (estatesRes.Any())
                 UpdateSearchResult(estatesRes);

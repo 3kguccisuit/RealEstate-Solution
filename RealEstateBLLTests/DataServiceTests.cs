@@ -66,7 +66,6 @@ namespace RealEstateBLLTests
         {
             // Arrange
             string filePath = "C:\\Users\\ludwi\\source\\repos\\RealEstate-Solution\\RealEstateDAL\\TestData\\test.json";
-            // You may need to create this file with valid JSON data beforehand or mock file I/O operations.
 
             // Act
             bool result = _dataService.LoadDataFromJson(filePath);

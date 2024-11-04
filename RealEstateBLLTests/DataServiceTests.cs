@@ -101,6 +101,20 @@ namespace RealEstateBLLTests
             }
         }
 
+        [TestMethod]
+        public void LoadDataFromJson_ShouldReturnFalse_ForInvalidData()
+        {
+            // Arrange
+            AddTestDataEstate();
+            AddTestDataPerson();
+            AddTestDataPayment();
+
+            var testDirectory = Path.GetTempPath(); // Using the system temporary path
+            string filePath = Path.Combine(testDirectory, "test_output.json");
+
+            // Act & Assert
+            Assert.IsFalse(_dataService.LoadDataFromJson(filePath), "LoadDataFromJson should return false for invalid JSON data.");
+        }
 
         private void AddTestDataEstate()
         {

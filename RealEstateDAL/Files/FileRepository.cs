@@ -19,7 +19,7 @@ namespace RealEstateDAL.Files
 
             try
             {
-                // Step 1: Set up JSON serialization options with necessary converters
+                // JSON serialization options with necessary converters
                 var options = new JsonSerializerOptions
                 {
                     WriteIndented = true, // Makes the JSON human-readable
@@ -31,10 +31,10 @@ namespace RealEstateDAL.Files
             }
                 };
 
-                // Step 2: Serialize the RootObject (lists) into a JSON string
+                //Serialize the RootObject (lists) into a JSON string
                 var jsonContent = JsonSerializer.Serialize(lists, options);
 
-                // Step 3: Write the JSON string to the specified file path
+                // Write the JSON string to the specified file path
                 using (var writer = new StreamWriter(filePath))
                 {
                     writer.Write(jsonContent); // Write the serialized JSON content to the file
@@ -43,7 +43,7 @@ namespace RealEstateDAL.Files
             }
             catch (IOException ex)
             {
-                // Step 4: Handle any I/O errors during the file write process
+                // Handle any I/O errors during the file write process
                 Log.Information("An error occurred while saving the file.", ex);
                 throw new IOException("An error occurred while saving the file.", ex);
             }
@@ -89,10 +89,10 @@ namespace RealEstateDAL.Files
         {
             try
             {
-                // Step 3: Serialize the RootObject into an XML string
+                // Serialize the RootObject into an XML string
                 var xmlContent = XmlHelper.SerializeToXml(lists);
 
-                // Step 4: Write the XML content to the selected file
+                // Write the XML content to the selected file
                 using (var writer = new StreamWriter(filePath))
                 {
                     writer.Write(xmlContent);        // Write the serialized XML content to the file
@@ -100,7 +100,7 @@ namespace RealEstateDAL.Files
             }
             catch (IOException ex)
             {
-                // Step 5: Handle any I/O errors that occur during file saving
+                // Handle any I/O errors that occur during file saving
                 Log.Information("An error occurred while saving the XML file.", ex);
                 throw new IOException("An error occurred while saving the file.", ex);
             }
@@ -110,17 +110,17 @@ namespace RealEstateDAL.Files
         {
             try
             {
-                // Step 3: Read the XML content from the selected file
+                // Read the XML content from the selected file
                 var xmlContent = File.ReadAllText(filePath);
 
-                // Step 4: Deserialize the XML content into a RootObject object
+                // Deserialize the XML content into a RootObject object
                 var lists = XmlHelper.DeserializeFromXml<RootObject>(xmlContent);
 
                 return lists;
             }
             catch (IOException ex)
             {
-                // Step 5: Handle any I/O errors that occur during file loading
+                // Handle any I/O errors that occur during file loading
                 Log.Information("An error occurred while loading the XML file.", ex);
                 return null;
                 //throw new IOException("An error occurred while loading the file.", ex);

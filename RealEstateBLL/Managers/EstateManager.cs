@@ -7,7 +7,6 @@ namespace RealEstateDLL.Managers
     {
         public List<Estate> GetEstatesByCity(string city)
         {
-            // Use LINQ to filter estates by city from the Address property
             return GetAll()
                 .Where(estate => estate.Address != null && estate.Address.City.Equals(city, StringComparison.OrdinalIgnoreCase))
                 .ToList();
@@ -15,10 +14,17 @@ namespace RealEstateDLL.Managers
 
         public List<Estate> GetEstatesByCountry(Country country)
         {
-            // Use LINQ to filter estates by enum Country from the Address property
             return GetAll()
                 .Where(estate => estate.Address != null && estate.Address.Country == country)
                 .ToList();
         }
+
+        public List<Estate> GetEstatesByType(string type)
+        {
+            return GetAll()
+                .Where(estate => estate.Type.Equals(type, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
     }
 }

@@ -65,7 +65,7 @@ namespace RealEstateBLLTests
         public void LoadDataFromJson_ShouldReturnTrue_ForValidData()
         {
             // Arrange
-            string filePath = "test.json";
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"test.json");
 
             // Act
             bool result = _dataService.LoadDataFromJson(filePath);

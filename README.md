@@ -27,7 +27,7 @@ A WPF application designed to manage estates, buyers, sellers, and payments, ini
 4. Build and run the project. 
 
 ## Technologies Used
-- **MVVM Framework**: [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm/)
+- **MVVM**: [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm/)
 - **UI Framework**: [MahApps.Metro](https://github.com/MahApps/MahApps.Metro), [WPF-UI](https://github.com/lepoco/WPFUI)
 - **JSON Serialization**: [Newtonsoft.Json](https://www.newtonsoft.com/json), [System.Text.Json](https://docs.microsoft.com/en-us/dotnet/api/system.text.json)
 - **Logging**: [Serilog](https://serilog.net/)
